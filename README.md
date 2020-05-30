@@ -61,6 +61,7 @@ Application:                Repository:
 ------------                -----------
 bin                         github.com/w4/bin
 blocky                      github.com/0xERR0R/blocky
+bw                          github.com/bitwarden/cli
 caddy                       github.com/caddyserver/caddy
 composer                    github.com/composer/composer
 croc                        github.com/schollz/croc

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GINSTALL_VERSION="1.3.0"
+GINSTALL_VERSION="1.4.0"
 
 APP_NAME="$1"
 APP_VERSION="$2"
@@ -17,6 +17,7 @@ PREFIX_NONE="@"
 
 REPO_BIN="github.com/w4/bin"
 REPO_BLOCKY="github.com/0xERR0R/blocky"
+REPO_BW="github.com/bitwarden/cli"
 REPO_CADDY="github.com/caddyserver/caddy"
 REPO_COMPOSER="github.com/composer/composer"
 REPO_CROC="github.com/schollz/croc"
@@ -58,6 +59,7 @@ SUPPORTED_APPS_HEADER="Application:                Repository:
 SUPPORTED_APPS_LIST="
 bin                         $REPO_BIN
 blocky                      $REPO_BLOCKY
+bw                          $REPO_BW
 caddy                       $REPO_CADDY
 composer                    $REPO_COMPOSER
 croc                        $REPO_CROC
@@ -146,6 +148,7 @@ if [ "$1" == "--check" ] || [ "$1" == "-c" ]; then
 case "$2" in
   "bin" | \
   "blocky" | \
+  "bw" | \
   "caddy" | \
   "composer" | \
   "croc" | \
@@ -247,6 +250,7 @@ if [ "$1" == "--remove" ] || [ "$1" == "-r" ]; then
 case "$2" in
   "bin" | \
   "blocky" | \
+  "bw" | \
   "caddy" | \
   "composer" | \
   "croc" | \
@@ -344,6 +348,13 @@ case "$1" in
   "blocky")
     gget --stdout ${REPO_BLOCKY}${PREFIX_V}${APP_VERSION} 'blocky_v*_linux_amd64' > ${APP_DIR}/${APP_NAME} && \
     chmod +x ${APP_DIR}/${APP_NAME}
+  ;;
+
+  "bw")
+    gget --stdout ${REPO_BW}${PREFIX_V}${APP_VERSION} 'bw-linux-*.zip' > ${TMP_DIR_ZIP} && \
+    unzip -jo ${TMP_DIR_ZIP} ${APP_NAME} -d ${APP_DIR} && \
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    rm ${TMP_DIR_ZIP}
   ;;
 
   "caddy")
