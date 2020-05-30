@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GINSTALL_VERSION="1.2.0"
+GINSTALL_VERSION="1.3.0"
 
 APP_NAME="$1"
 APP_VERSION="$2"
@@ -16,6 +16,7 @@ PREFIX_V="@v"
 PREFIX_NONE="@"
 
 REPO_BIN="github.com/w4/bin"
+REPO_BLOCKY="github.com/0xERR0R/blocky"
 REPO_CADDY="github.com/caddyserver/caddy"
 REPO_COMPOSER="github.com/composer/composer"
 REPO_CROC="github.com/schollz/croc"
@@ -56,6 +57,7 @@ SUPPORTED_APPS_HEADER="Application:                Repository:
 
 SUPPORTED_APPS_LIST="
 bin                         $REPO_BIN
+blocky                      $REPO_BLOCKY
 caddy                       $REPO_CADDY
 composer                    $REPO_COMPOSER
 croc                        $REPO_CROC
@@ -100,6 +102,7 @@ Examples:
 
 Flags:
   --check, -c           Prints the latest available version of an application
+  --first-run           Installs ginstall.sh's dependency gget via curl
   --help, -h            Shows this page
   --list, -l            Prints a list of supported applications
   --remove, -r          Uninstalls an application
@@ -129,9 +132,20 @@ case "$1" in
   ;;
 esac
 
+if [ "$1" == "--first-run" ] && [ "$(id -u)" -ne 0 ]; then
+  echo -e "Error: This script is not running as root or with sudo! Exiting..."
+  exit 1
+elif [ "$1" == "--first-run" ] && [ "$(id -u)" == 0 ]; then
+  curl -Lf -o ${APP_DIR}/gget https://${REPO_GGET}/releases/download/v0.2.0/gget-0.2.0-linux-amd64 && \
+  chmod +x ${APP_DIR}/gget && \
+  echo -e "\nThe dependencies for ginstall.sh have been successfully installed and it is now ready for use."
+  exit 0
+fi
+
 if [ "$1" == "--check" ] || [ "$1" == "-c" ]; then
 case "$2" in
   "bin" | \
+  "blocky" | \
   "caddy" | \
   "composer" | \
   "croc" | \
@@ -211,9 +225,28 @@ if [ "$1" == "--self-update" ]; then
   exit 0
 fi
 
+if [ "$1" == "--remove" ] || [ "$1" == "-r" ] && [ "$2" == "gget" ]; then
+echo -e "Are you sure that you want to uninstall ginstall.sh's dependency gget?"
+echo -e "\nPlease type the number next to your desired answer."
+select yn in "yes" "no"; do
+  case $yn in
+    "yes")
+      rm ${APP_DIR}/"$2" && \
+      echo -e "The dependency gget for ginstall.sh has been successfully uninstalled."
+      exit 0
+    ;;
+    "no")
+      echo -e "Exiting..."
+      exit 0
+    ;;
+  esac
+done
+fi
+
 if [ "$1" == "--remove" ] || [ "$1" == "-r" ]; then
 case "$2" in
   "bin" | \
+  "blocky" | \
   "caddy" | \
   "composer" | \
   "croc" | \
@@ -222,7 +255,6 @@ case "$2" in
   "docker-credential-pass" | \
   "ffmpeg" | \
   "ffsend" | \
-  "gget" | \
   "ginstall.sh" | \
   "gitea" | \
   "gosu" | \
@@ -252,6 +284,11 @@ case "$2" in
     exit 0
   ;;
 
+  "go")
+    rm -r /usr/local/"$2"
+    exit 0
+  ;;
+
   "nebula")
     rm ${APP_DIR}/"$2" ${APP_DIR}/"$2"-cert
     exit 0
@@ -270,7 +307,7 @@ if [ -z "$1" ]; then
 fi
 
 if [ -z "$2" ]; then
-  echo "You forgot to supply a version number. Please run \"ginstall.sh --help\" for usage information."
+  echo -e "You forgot to supply a version number. Please run \"ginstall.sh --help\" for usage information."
   exit 1
 fi
 
@@ -302,6 +339,11 @@ case "$1" in
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
     rm ${TMP_DIR_TAR_GZ}
+  ;;
+
+  "blocky")
+    gget --stdout ${REPO_BLOCKY}${PREFIX_V}${APP_VERSION} 'blocky_v*_linux_amd64' > ${APP_DIR}/${APP_NAME} && \
+    chmod +x ${APP_DIR}/${APP_NAME}
   ;;
 
   "caddy")

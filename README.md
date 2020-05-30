@@ -7,13 +7,17 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 
 • [gget](https://github.com/dpb587/gget) v0.2.0 or later
 
+• [curl](https://packages.debian.org/buster/curl)
+
 • [tar](https://packages.debian.org/buster/tar)
 
 • [unzip](https://packages.debian.org/buster/unzip)
 
 ## Installation
 
-You can install `ginstall.sh` by downloading the latest release and moving it to `/usr/local/bin`.
+You can install `ginstall.sh` by downloading the latest release, moving it to `/usr/local/bin` and making it executable.
+
+The dependency `gget` can be installed by running `ginstall.sh` with the `--first-run` flag. Once it has been installed, you can update `gget` like any other supported application.
 
 ## Usage
 
@@ -26,11 +30,11 @@ Examples:
   ginstall.sh docker-compose 1.25.5
   ginstall.sh docker-compose latest
   ginstall.sh --check docker-compose
-  ginstall.sh --remove docker-compose
   ginstall.sh --search sync
 
 Flags:
   --check, -c           Prints the latest available version of an application
+  --first-run           Installs ginstall.sh's dependency gget via curl
   --help, -h            Shows this page
   --list, -l            Prints a list of supported applications
   --remove, -r          Uninstalls an application
@@ -54,6 +58,7 @@ whalehub@pdh:~# ginstall.sh --list
 Application:                Repository:
 ------------                -----------
 bin                         github.com/w4/bin
+blocky                      github.com/0xERR0R/blocky
 caddy                       github.com/caddyserver/caddy
 composer                    github.com/composer/composer
 croc                        github.com/schollz/croc
