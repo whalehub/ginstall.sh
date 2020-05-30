@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GINSTALL_VERSION="1.1.0"
+GINSTALL_VERSION="1.2.0"
 
 APP_NAME="$1"
 APP_VERSION="$2"
@@ -44,6 +44,7 @@ REPO_STEP="github.com/smallstep/cli"
 REPO_STRELAYSRV="github.com/syncthing/relaysrv"
 REPO_SYNCTHING="github.com/syncthing/syncthing"
 REPO_TLDR_PLUS_PLUS="github.com/isacikgoz/tldr"
+REPO_TRAEFIK="github.com/containous/traefik"
 REPO_UPX="github.com/upx/upx"
 REPO_VIGIL="github.com/valeriansaliou/vigil"
 REPO_YOUTUBE_DL="github.com/ytdl-org/youtube-dl"
@@ -68,6 +69,7 @@ ginstall.sh                 $REPO_GINSTALL_SH
 gitea                       $REPO_GITEA
 go                          $REPO_GO
 gosu                        $REPO_GOSU
+hey                         $REPO_HEY
 hugo                        $REPO_HUGO
 imdl                        $REPO_IMDL
 komga                       $REPO_KOMGA
@@ -82,6 +84,7 @@ step                        $REPO_STEP
 strelaysrv                  $REPO_STRELAYSRV
 syncthing                   $REPO_SYNCTHING
 tldr++                      $REPO_TLDR_PLUS_PLUS
+traefik                     $REPO_TRAEFIK
 upx                         $REPO_UPX
 vigil                       $REPO_VIGIL
 youtube-dl                  $REPO_YOUTUBE_DL"
@@ -99,6 +102,7 @@ Flags:
   --check, -c           Prints the latest available version of an application
   --help, -h            Shows this page
   --list, -l            Prints a list of supported applications
+  --remove, -r          Uninstalls an application
   --search, -s          Performs a search on the list of supported applications
   --self-update         Updates ginstall.sh to the latest available version
   --version, -v         Prints ginstall.sh version information"
@@ -127,9 +131,34 @@ esac
 
 if [ "$1" == "--check" ] || [ "$1" == "-c" ]; then
 case "$2" in
-  "ffmpeg" | "hey" | "go")
-    echo -e "The $1 flag currently does not support $2."
-    exit 1
+  "bin" | \
+  "caddy" | \
+  "composer" | \
+  "croc" | \
+  "ctop" | \
+  "ffsend" | \
+  "gget" | \
+  "gitea" | \
+  "gosu" | \
+  "hugo" | \
+  "imdl" | \
+  "komga" | \
+  "lazydocker" | \
+  "lego" | \
+  "mkcert" | \
+  "nebula" | \
+  "portainer" | \
+  "rclone" | \
+  "stdiscosrv" | \
+  "step" | \
+  "strelaysrv" | \
+  "syncthing" | \
+  "traefik" | \
+  "upx" | \
+  "vigil")
+    echo -e "The latest version of $2 is" && \
+    gget --show-ref ${!REPO}
+    exit 0
   ;;
 
   "docker-compose")
@@ -162,10 +191,11 @@ case "$2" in
     exit 0
   ;;
 
-  *)
-    echo -e "The latest version of $2 is" && \
-    gget --show-ref ${!REPO}
-    exit 0
+  "ffmpeg" | \
+  "go" | \
+  "hey")
+    echo -e "The $1 flag currently does not support $2."
+    exit 1
   ;;
 esac
 fi
@@ -181,6 +211,59 @@ if [ "$1" == "--self-update" ]; then
   exit 0
 fi
 
+if [ "$1" == "--remove" ] || [ "$1" == "-r" ]; then
+case "$2" in
+  "bin" | \
+  "caddy" | \
+  "composer" | \
+  "croc" | \
+  "ctop" | \
+  "docker-compose" | \
+  "docker-credential-pass" | \
+  "ffmpeg" | \
+  "ffsend" | \
+  "gget" | \
+  "ginstall.sh" | \
+  "gitea" | \
+  "gosu" | \
+  "hey" | \
+  "hugo" | \
+  "imdl" | \
+  "komga" | \
+  "lazydocker" | \
+  "lego" | \
+  "mkcert" | \
+  "portainer" | \
+  "rclone" | \
+  "stdiscosrv" | \
+  "step" | \
+  "strelaysrv" | \
+  "syncthing" | \
+  "traefik" | \
+  "upx" | \
+  "vigil" | \
+  "youtube-dl")
+    rm ${APP_DIR}/"$2"
+    exit 0
+  ;;
+
+  "go")
+    rm -r /usr/local/"$2"
+    exit 0
+  ;;
+
+  "nebula")
+    rm ${APP_DIR}/"$2" ${APP_DIR}/"$2"-cert
+    exit 0
+  ;;
+
+  "tldr++")
+    rm ${APP_DIR}/tldr
+    exit 0
+  ;;
+esac
+fi
+
 if [ -z "$1" ]; then
   echo -e "You forgot to supply an application name. Please run \"ginstall.sh --help\" for usage information."
   exit 1
@@ -193,9 +276,16 @@ fi
 
 if [ "$2" == "latest" ]; then
 case "$1" in
-  "ffmpeg" | "go" |  "rclone" |  "stdiscosrv" |  "step" |  "strelaysrv" | "syncthing" | "upx")
-  echo -e "This application currently does not support the version argument \"$2\"."
-  exit 1
+  "ffmpeg" | \
+  "go" | \
+  "rclone" | \
+  "stdiscosrv" | \
+  "step" | \
+  "strelaysrv" | \
+  "syncthing" | \
+  "upx")
+    echo -e "This application currently does not support the version argument \"$2\"."
+    exit 1
   ;;
 
   *)
@@ -388,6 +478,13 @@ case "$1" in
     gget --stdout ${REPO_TLDR_PLUS_PLUS}${PREFIX_V}${APP_VERSION} 'tldr_*_linux_amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} tldr ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/tldr && \
+    rm ${TMP_DIR_TAR_GZ}
+  ;;
+
+  "traefik")
+    gget --stdout ${REPO_TRAEFIK}${PREFIX_V}${APP_VERSION} 'traefik_v*_linux_amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
+    tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
+    chmod +x ${APP_DIR}/${APP_NAME} && \
     rm ${TMP_DIR_TAR_GZ}
   ;;
 
