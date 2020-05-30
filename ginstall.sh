@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GINSTALL_VERSION="1.0.0"
+GINSTALL_VERSION="1.1.0"
 
 APP_NAME="$1"
 APP_VERSION="$2"
@@ -16,6 +16,7 @@ PREFIX_V="@v"
 PREFIX_NONE="@"
 
 REPO_BIN="github.com/w4/bin"
+REPO_CADDY="github.com/caddyserver/caddy"
 REPO_COMPOSER="github.com/composer/composer"
 REPO_CROC="github.com/schollz/croc"
 REPO_CTOP="github.com/bcicen/ctop"
@@ -42,7 +43,7 @@ REPO_STDISCOSRV="github.com/syncthing/discosrv"
 REPO_STEP="github.com/smallstep/cli"
 REPO_STRELAYSRV="github.com/syncthing/relaysrv"
 REPO_SYNCTHING="github.com/syncthing/syncthing"
-REPO_TLDR="github.com/isacikgoz/tldr"
+REPO_TLDR_PLUS_PLUS="github.com/isacikgoz/tldr"
 REPO_UPX="github.com/upx/upx"
 REPO_VIGIL="github.com/valeriansaliou/vigil"
 REPO_YOUTUBE_DL="github.com/ytdl-org/youtube-dl"
@@ -54,6 +55,7 @@ SUPPORTED_APPS_HEADER="Application:                Repository:
 
 SUPPORTED_APPS_LIST="
 bin                         $REPO_BIN
+caddy                       $REPO_CADDY
 composer                    $REPO_COMPOSER
 croc                        $REPO_CROC
 ctop                        $REPO_CTOP
@@ -79,7 +81,7 @@ stdiscosrv                  $REPO_STDISCOSRV
 step                        $REPO_STEP
 strelaysrv                  $REPO_STRELAYSRV
 syncthing                   $REPO_SYNCTHING
-tldr                        $REPO_TLDR
+tldr++                      $REPO_TLDR_PLUS_PLUS
 upx                         $REPO_UPX
 vigil                       $REPO_VIGIL
 youtube-dl                  $REPO_YOUTUBE_DL"
@@ -125,15 +127,9 @@ esac
 
 if [ "$1" == "--check" ] || [ "$1" == "-c" ]; then
 case "$2" in
-  "bin" | "composer" | "croc" | "ctop" | "ffsend" | \
-  "gget" | "ginstall" | "gitea" | "gosu" | "hugo" | \
-  "imdl" | "komga" | "lazydocker" | "lego" | "mkcert" | \
-  "nebula" | "portainer" | "rclone" | "stdiscosrv" | \
-  "step" | "strelaysrv" | "syncthing" | "tldr" | \
-  "upx" | "vigil")
-    echo -e "The latest version of $2 is" && \
-    gget --show-ref ${!REPO}
-    exit 0
+  "ffmpeg" | "hey" | "go")
+    echo -e "The $1 flag currently does not support $2."
+    exit 1
   ;;
 
   "docker-compose")
@@ -154,15 +150,22 @@ case "$2" in
     exit 0
   ;;
 
+  "tldr++")
+    echo -e "The latest version of $2 is" && \
+    gget --show-ref ${REPO_TLDR_PLUS_PLUS}
+    exit 0
+  ;;
+
   "youtube-dl")
     echo -e "The latest version of $2 is" && \
     gget --show-ref ${REPO_YOUTUBE_DL}
     exit 0
   ;;
 
-  "ffmpeg" | "hey" | "go")
-  echo -e "The $1 flag currently does not support $2."
-  exit 1
+  *)
+    echo -e "The latest version of $2 is" && \
+    gget --show-ref ${!REPO}
+    exit 0
   ;;
 esac
 fi
@@ -206,6 +209,13 @@ fi
 case "$1" in
   "bin")
     gget --stdout ${REPO_BIN}${PREFIX_V}${APP_VERSION} 'bin-v*-x86_64-unknown-linux-gnu.tar.gz' > ${TMP_DIR_TAR_GZ} && \
+    tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    rm ${TMP_DIR_TAR_GZ}
+  ;;
+
+  "caddy")
+    gget --stdout ${REPO_CADDY}${PREFIX_V}${APP_VERSION} 'caddy_*_linux_amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
     rm ${TMP_DIR_TAR_GZ}
@@ -374,10 +384,10 @@ case "$1" in
     rm ${TMP_DIR_TAR_GZ}
   ;;
 
-  "tldr")
-    gget --stdout ${REPO_TLDR}${PREFIX_V}${APP_VERSION} 'tldr_*_linux_amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
-    tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
-    chmod +x ${APP_DIR}/${APP_NAME} && \
+  "tldr++")
+    gget --stdout ${REPO_TLDR_PLUS_PLUS}${PREFIX_V}${APP_VERSION} 'tldr_*_linux_amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
+    tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} tldr ${TAR_ARGS} && \
+    chmod +x ${APP_DIR}/tldr && \
     rm ${TMP_DIR_TAR_GZ}
   ;;
 

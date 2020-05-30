@@ -44,6 +44,7 @@ whalehub@pdh:~# ginstall.sh --list
 Application:                Repository:
 ------------                -----------
 bin                         github.com/w4/bin
+caddy                       github.com/caddyserver/caddy
 composer                    github.com/composer/composer
 croc                        github.com/schollz/croc
 ctop                        github.com/bcicen/ctop
@@ -69,7 +70,7 @@ stdiscosrv                  github.com/syncthing/discosrv
 step                        github.com/smallstep/cli
 strelaysrv                  github.com/syncthing/relaysrv
 syncthing                   github.com/syncthing/syncthing
-tldr                        github.com/isacikgoz/tldr
+tldr++                      github.com/isacikgoz/tldr
 upx                         github.com/upx/upx
 vigil                       github.com/valeriansaliou/vigil
 youtube-dl                  github.com/ytdl-org/youtube-dl
