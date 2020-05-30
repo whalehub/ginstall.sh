@@ -17,7 +17,9 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 
 You can install `ginstall.sh` by downloading the latest release, moving it to `/usr/local/bin` and making it executable.
 
-The dependency `gget` can be installed by running `ginstall.sh` with the `--first-run` flag. Once it has been installed, you can update `gget` like any other supported application.
+The dependency `gget` can be installed by running `ginstall.sh` with the `--first-run` flag.
+
+Once `gget` has been installed, you can update it with `ginstall.sh` just like any other supported application.
 
 ## Usage
 
