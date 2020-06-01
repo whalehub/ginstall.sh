@@ -288,11 +288,6 @@ case "$2" in
     exit 0
   ;;
 
-  "go")
-    rm -r /usr/local/"$2"
-    exit 0
-  ;;
-
   "nebula")
     rm ${APP_DIR}/"$2" ${APP_DIR}/"$2"-cert
     exit 0
