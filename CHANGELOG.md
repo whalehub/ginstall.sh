@@ -3,6 +3,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2020-06-02
+### Added
+- Support for [ShellCheck](https://github.com/koalaman/shellcheck).
+- The flag `--directory` which allows a user to specify a custom installation directory.
+- The flag `--first-run-dir` which allows a user to specify a custom installation directory for `ginstall.sh`'s dependency `gget`.
+- The flag `--rm-from-dir` which allows a user to spcify a custom uninstallation directory.
+
+### Changed
+- The script's internal logic underwent a major rewrite to significantly improve its error handling and argument parsing capabilities.
+- The `rm` command is now verbose when uninstalling an application via `--remove`.
+- The `--self-update` flag now allows `ginstall.sh` to update itself without prompting for root/sudo whenever possible.
+- The `--help` page now features examples for every valid flag.
+- Bump required `gget` version to 0.3.0.
+
+### Fixed
+- A bug that was preventing `gget` from being updated via `ginstall.sh gget <version>` has been fixed.
+
 ## [1.5.0] - 2020-06-02
 ### Added
 - Support for [FZF](https://github.com/junegunn/fzf).

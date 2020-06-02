@@ -5,7 +5,7 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 
 ## Dependencies
 
-• [gget](https://github.com/dpb587/gget) v0.2.0 or later
+• [gget](https://github.com/dpb587/gget) v0.3.0 or later
 
 • [curl](https://packages.debian.org/buster/curl)
 
@@ -32,14 +32,27 @@ Examples:
   ginstall.sh docker-compose 1.25.5
   ginstall.sh docker-compose latest
   ginstall.sh --check docker-compose
-  ginstall.sh --search sync
+  ginstall.sh --directory /home/whalehub/apps docker-compose 1.25.5
+  ginstall.sh --directory /home/whalehub/apps docker-compose latest
+  ginstall.sh --first-run
+  ginstall.sh --first-run-dir /home/whalehub/apps
+  ginstall.sh --help
+  ginstall.sh --list
+  ginstall.sh --remove docker-compose
+  ginstall.sh --rm-from-dir /home/whalehub/apps docker-compose
+  ginstall.sh --search docker
+  ginstall.sh --self-update
+  ginstall.sh --version
 
 Flags:
   --check, -c           Prints the latest available version of an application
+  --directory, -d       Specifies a custom installation directory
   --first-run           Installs ginstall.sh's dependency gget via curl
+  --first-run-dir       Installs ginstall.sh's dependency gget via curl into the specified directory
   --help, -h            Shows this page
   --list, -l            Prints a list of supported applications
   --remove, -r          Uninstalls an application
+  --rm-from-dir           Uninstalls an application from the specified directory
   --search, -s          Performs a search on the list of supported applications
   --self-update         Updates ginstall.sh to the latest available version
   --version, -v         Prints ginstall.sh version information
@@ -86,6 +99,7 @@ mkcert                      github.com/FiloSottile/mkcert
 nebula                      github.com/slackhq/nebula
 portainer                   github.com/portainer/portainer
 rclone                      github.com/rclone/rclone
+shellcheck                  github.com/koalaman/shellcheck
 stdiscosrv                  github.com/syncthing/discosrv
 step                        github.com/smallstep/cli
 strelaysrv                  github.com/syncthing/relaysrv
