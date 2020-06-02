@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GINSTALL_VERSION="1.4.0"
+GINSTALL_SH_VERSION="1.5.0"
 
 APP_NAME="$1"
 APP_VERSION="$2"
@@ -8,12 +8,16 @@ APP_DIR="/usr/local/bin"
 
 TMP_DIR_TAR_GZ="/tmp/ginstall.tar.gz"
 TMP_DIR_TAR_XZ="/tmp/ginstall.tar.xz"
+TMP_DIR_TGZ="/tmp/ginstall.tgz"
 TMP_DIR_ZIP="/tmp/ginstall.zip"
 
 TAR_ARGS="--no-same-owner --no-same-permissions"
 
 PREFIX_V="@v"
 PREFIX_NONE="@"
+
+INSTALL_SUCCESS="$1 v$2 was installed successfully."
+UNINSTALL_SUCCESS="$2 was uninstalled successfully."
 
 REPO_BIN="github.com/w4/bin"
 REPO_BLOCKY="github.com/0xERR0R/blocky"
@@ -26,6 +30,7 @@ REPO_DOCKER_COMPOSE="github.com/docker/compose"
 REPO_DOCKER_CREDENTIAL_PASS="github.com/docker/docker-credential-helpers"
 REPO_FFMPEG="github.com/FFmpeg/FFmpeg"
 REPO_FFSEND="github.com/timvisee/ffsend"
+REPO_FZF="github.com/junegunn/fzf-bin"
 REPO_GGET="github.com/dpb587/gget"
 REPO_GINSTALL_SH="github.com/whalehub/ginstall.sh"
 REPO_GITEA="github.com/go-gitea/gitea"
@@ -68,6 +73,7 @@ docker-compose              $REPO_DOCKER_COMPOSE
 docker-credential-pass      $REPO_DOCKER_CREDENTIAL_PASS
 ffmpeg                      $REPO_FFMPEG
 ffsend                      $REPO_FFSEND
+fzf                         $REPO_FZF
 gget                        $REPO_GGET
 ginstall.sh                 $REPO_GINSTALL_SH
 gitea                       $REPO_GITEA
@@ -129,7 +135,7 @@ case "$1" in
   ;;
 
   "--version" | "-v")
-    echo -e "ginstall version $GINSTALL_VERSION linux/amd64"
+    echo -e "ginstall version $GINSTALL_SH_VERSION linux/amd64"
     exit 0
   ;;
 esac
@@ -154,6 +160,7 @@ case "$2" in
   "croc" | \
   "ctop" | \
   "ffsend" | \
+  "fzf" | \
   "gget" | \
   "gitea" | \
   "gosu" | \
@@ -259,6 +266,7 @@ case "$2" in
   "docker-credential-pass" | \
   "ffmpeg" | \
   "ffsend" | \
+  "fzf" | \
   "ginstall.sh" | \
   "gitea" | \
   "gosu" | \
@@ -279,22 +287,26 @@ case "$2" in
   "upx" | \
   "vigil" | \
   "youtube-dl")
-    rm ${APP_DIR}/"$2"
+    rm ${APP_DIR}/"$2" && \
+    echo -e ${UNINSTALL_SUCCESS}
     exit 0
   ;;
 
   "go")
-    rm -r /usr/local/"$2"
+    rm -r /usr/local/"$2" && \
+    echo -e ${UNINSTALL_SUCCESS}
     exit 0
   ;;
 
   "nebula")
-    rm ${APP_DIR}/"$2" ${APP_DIR}/"$2"-cert
+    rm ${APP_DIR}/"$2" ${APP_DIR}/"$2"-cert && \
+    echo -e ${UNINSTALL_SUCCESS}
     exit 0
   ;;
 
   "tldr++")
-    rm ${APP_DIR}/tldr
+    rm ${APP_DIR}/tldr && \
+    echo -e ${UNINSTALL_SUCCESS}
     exit 0
   ;;
 esac
@@ -337,55 +349,64 @@ case "$1" in
     gget --stdout ${REPO_BIN}${PREFIX_V}${APP_VERSION} 'bin-v*-x86_64-unknown-linux-gnu.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "blocky")
     gget --stdout ${REPO_BLOCKY}${PREFIX_V}${APP_VERSION} 'blocky_v*_linux_amd64' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "bw")
     gget --stdout ${REPO_BW}${PREFIX_V}${APP_VERSION} 'bw-linux-*.zip' > ${TMP_DIR_ZIP} && \
     unzip -jo ${TMP_DIR_ZIP} ${APP_NAME} -d ${APP_DIR} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_ZIP}
+    rm ${TMP_DIR_ZIP} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "caddy")
     gget --stdout ${REPO_CADDY}${PREFIX_V}${APP_VERSION} 'caddy_*_linux_amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "composer")
     gget --stdout ${REPO_COMPOSER}${PREFIX_NONE}${APP_VERSION} 'composer.phar' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "croc")
     gget --stdout ${REPO_CROC}${PREFIX_V}${APP_VERSION} 'croc_*_Linux-64bit.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "ctop")
     gget --stdout ${REPO_CTOP}${PREFIX_V}${APP_VERSION} 'ctop-*-linux-amd64' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "docker-compose")
     gget --stdout ${REPO_DOCKER_COMPOSE}${PREFIX_NONE}${APP_VERSION} 'docker-compose-Linux-x86_64' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "docker-credential-pass")
     gget --stdout ${REPO_DOCKER_CREDENTIAL_PASS}${PREFIX_V}${APP_VERSION} 'docker-credential-pass-v*-amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "ffmpeg")
@@ -393,27 +414,39 @@ case "$1" in
     tar -xf ${TMP_DIR_TAR_XZ} -C ${APP_DIR} ffmpeg-${APP_VERSION}-amd64-static/${APP_NAME} ${TAR_ARGS} --strip-components=1 && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
     rm ${TMP_DIR_TAR_XZ} && \
-    echo -e "\n$APP_NAME v$APP_VERSION has been successfully installed."
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "ffsend")
     gget --stdout ${REPO_FFSEND}${PREFIX_V}${APP_VERSION} 'ffsend-v*-linux-x64-static' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
+  ;;
+
+  "fzf")
+    gget --stdout ${REPO_FZF}${PREFIX_NONE}${APP_VERSION} 'fzf-*-linux_amd64.tgz' > ${TMP_DIR_TGZ} && \
+    tar -xf ${TMP_DIR_TGZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    rm ${TMP_DIR_TGZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "gget")
     gget --stdout ${REPO_GGET}${PREFIX_V}${APP_VERSION} 'gget-*-linux-amd64' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "ginstall.sh")
     gget --stdout ${REPO_GINSTALL_SH}${PREFIX_V}${APP_VERSION} 'ginstall.sh' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "gitea")
     gget --stdout ${REPO_GITEA}${PREFIX_V}${APP_VERSION} 'gitea-*-linux-amd64' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "go")
@@ -421,138 +454,157 @@ case "$1" in
     rm -rf /usr/local/go && \
     tar -xf ${TMP_DIR_TAR_GZ} -C /usr/local ${TAR_ARGS} && \
     rm ${TMP_DIR_TAR_GZ} && \
-    echo -e "\n$APP_NAME v$APP_VERSION has been successfully installed."
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "gosu")
     gget --stdout ${REPO_GOSU}${PREFIX_NONE}${APP_VERSION} 'gosu-amd64' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "hey")
     curl -Lf -o ${APP_DIR}/${APP_NAME} https://storage.googleapis.com/hey-release/hey_linux_amd64 && \
-    chmod +x ${APP_DIR}/${APP_NAME} && \
-    echo -e "\n$APP_NAME v0.1.2 has been successfully installed."
+    chmod +x ${APP_DIR}/${APP_NAME}  && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "hugo")
     gget --stdout ${REPO_HUGO}${PREFIX_V}${APP_VERSION} 'hugo_extended_*_Linux-64bit.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "imdl")
     gget --stdout ${REPO_IMDL}${PREFIX_V}${APP_VERSION} 'imdl-v*-x86_64-unknown-linux-musl.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "komga")
     gget --stdout ${REPO_KOMGA}${PREFIX_V}${APP_VERSION} 'komga-*.jar' > ${APP_DIR}/${APP_NAME}.jar && \
-    chmod +x ${APP_DIR}/${APP_NAME}.jar
+    chmod +x ${APP_DIR}/${APP_NAME}.jar && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "lazydocker")
     gget --stdout ${REPO_LAZYDOCKER}${PREFIX_V}${APP_VERSION} 'lazydocker_*_Linux_x86_64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "lego")
     gget --stdout ${REPO_LEGO}${PREFIX_V}${APP_VERSION} 'lego_v*_linux_amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "mkcert")
     gget --stdout ${REPO_MKCERT}${PREFIX_V}${APP_VERSION} 'mkcert-v*-linux-amd64' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "nebula")
     gget --stdout ${REPO_NEBULA}${PREFIX_V}${APP_VERSION} 'nebula-linux-amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "portainer")
     gget --stdout ${REPO_PORTAINER}${PREFIX_NONE}${APP_VERSION} 'portainer-*-linux-amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} portainer/${APP_NAME} ${TAR_ARGS} --strip-components=1 && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "rclone")
     gget --stdout ${REPO_RCLONE}${PREFIX_V}${APP_VERSION} 'rclone-v*-linux-amd64.zip' > ${TMP_DIR_ZIP} && \
     unzip -jo ${TMP_DIR_ZIP} rclone-v${APP_VERSION}-linux-amd64/rclone -d ${APP_DIR} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_ZIP}
+    rm ${TMP_DIR_ZIP} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "stdiscosrv")
     gget --stdout ${REPO_STDISCOSRV}${PREFIX_V}${APP_VERSION} 'stdiscosrv-linux-amd64-v*.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} stdiscosrv-linux-amd64-v${APP_VERSION}/${APP_NAME} ${TAR_ARGS} --strip-components=1 && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "step")
     gget --stdout ${REPO_STEP}${PREFIX_V}${APP_VERSION} 'step_linux_*_amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} step_${APP_VERSION}/bin/${APP_NAME} ${TAR_ARGS} --strip-components=2 && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "strelaysrv")
     gget --stdout ${REPO_STRELAYSRV}${PREFIX_V}${APP_VERSION} 'strelaysrv-linux-amd64-v*.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} strelaysrv-linux-amd64-v${APP_VERSION}/${APP_NAME} ${TAR_ARGS} --strip-components=1 && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "syncthing")
     gget --stdout ${REPO_SYNCTHING}${PREFIX_V}${APP_VERSION} 'syncthing-linux-amd64-v*.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} syncthing-linux-amd64-v${APP_VERSION}/syncthing ${TAR_ARGS} --strip-components=1 && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "tldr++")
     gget --stdout ${REPO_TLDR_PLUS_PLUS}${PREFIX_V}${APP_VERSION} 'tldr_*_linux_amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} tldr ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/tldr && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "traefik")
     gget --stdout ${REPO_TRAEFIK}${PREFIX_V}${APP_VERSION} 'traefik_v*_linux_amd64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "upx")
     gget --stdout ${REPO_UPX}${PREFIX_V}${APP_VERSION} 'upx-*-amd64_linux.tar.xz' > ${TMP_DIR_TAR_XZ} && \
     tar -xf ${TMP_DIR_TAR_XZ} -C ${APP_DIR} upx-${APP_VERSION}-amd64_linux/${APP_NAME} ${TAR_ARGS} --strip-components=1 && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_XZ}
+    rm ${TMP_DIR_TAR_XZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "vigil")
     gget --stdout ${REPO_VIGIL}${PREFIX_V}${APP_VERSION} 'v*-x86_64.tar.gz' > ${TMP_DIR_TAR_GZ} && \
     tar -xf ${TMP_DIR_TAR_GZ} -C ${APP_DIR} ./vigil/${APP_NAME} ${TAR_ARGS} --strip-components=2 && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
-    rm ${TMP_DIR_TAR_GZ}
+    rm ${TMP_DIR_TAR_GZ} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   "youtube-dl")
     gget --stdout ${REPO_YOUTUBE_DL}${PREFIX_NONE}${APP_VERSION} 'youtube-dl' > ${APP_DIR}/${APP_NAME} && \
-    chmod +x ${APP_DIR}/${APP_NAME}
+    chmod +x ${APP_DIR}/${APP_NAME} && \
+    echo -e ${INSTALL_SUCCESS}
   ;;
 
   *)
