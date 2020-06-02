@@ -70,6 +70,7 @@ docker-compose              github.com/docker/compose
 docker-credential-pass      github.com/docker/docker-credential-helpers
 ffmpeg                      github.com/FFmpeg/FFmpeg
 ffsend                      github.com/timvisee/ffsend
+fzf                         github.com/junegunn/fzf-bin
 gget                        github.com/dpb587/gget
 ginstall.sh                 github.com/whalehub/ginstall.sh
 gitea                       github.com/go-gitea/gitea
