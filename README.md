@@ -52,7 +52,7 @@ Flags:
   --help, -h            Shows this page
   --list, -l            Prints a list of supported applications
   --remove, -r          Uninstalls an application
-  --rm-from-dir           Uninstalls an application from the specified directory
+  --rm-from-dir         Uninstalls an application from the specified directory
   --search, -s          Performs a search on the list of supported applications
   --self-update         Updates ginstall.sh to the latest available version
   --version, -v         Prints ginstall.sh version information
