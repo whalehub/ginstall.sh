@@ -30,7 +30,8 @@ REPO_DOCKER_COMPOSE="github.com/docker/compose"
 REPO_DOCKER_CREDENTIAL_PASS="github.com/docker/docker-credential-helpers"
 REPO_FFMPEG="github.com/FFmpeg/FFmpeg"
 REPO_FFSEND="github.com/timvisee/ffsend"
-REPO_FZF="github.com/junegunn/fzf-bin"
+REPO_FZF="github.com/junegunn/fzf"
+REPO_FZF_BIN="github.com/junegunn/fzf-bin"
 REPO_GGET="github.com/dpb587/gget"
 REPO_GINSTALL_SH="github.com/whalehub/ginstall.sh"
 REPO_GITEA="github.com/go-gitea/gitea"
@@ -424,7 +425,7 @@ case "$1" in
   ;;
 
   "fzf")
-    gget --stdout ${REPO_FZF}${PREFIX_NONE}${APP_VERSION} 'fzf-*-linux_amd64.tgz' > ${TMP_DIR_TGZ} && \
+    gget --stdout ${REPO_FZF_BIN}${PREFIX_NONE}${APP_VERSION} 'fzf-*-linux_amd64.tgz' > ${TMP_DIR_TGZ} && \
     tar -xf ${TMP_DIR_TGZ} -C ${APP_DIR} ${APP_NAME} ${TAR_ARGS} && \
     chmod +x ${APP_DIR}/${APP_NAME} && \
     rm ${TMP_DIR_TGZ} && \
