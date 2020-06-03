@@ -91,9 +91,9 @@ docker-credential-pass      github.com/docker/docker-credential-helpers
 ffmpeg                      github.com/FFmpeg/FFmpeg
 ffsend                      github.com/timvisee/ffsend
 filebrowser                 github.com/filebrowser/filebrowser
-fzf                         github.com/junegunn/fzf
 frpc                        github.com/fatedier/frp
 frps                        github.com/fatedier/frp
+fzf                         github.com/junegunn/fzf
 gdrive                      github.com/gdrive-org/gdrive
 gget                        github.com/dpb587/gget
 gh                          github.com/cli/cli

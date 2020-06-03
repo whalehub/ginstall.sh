@@ -109,9 +109,9 @@ docker-credential-pass      $REPO_DOCKER_CREDENTIAL_PASS
 ffmpeg                      $REPO_FFMPEG
 ffsend                      $REPO_FFSEND
 filebrowser                 $REPO_FILEBROWSER
-fzf                         $REPO_FZF_SOURCE
 frpc                        $REPO_FRPC
 frps                        $REPO_FRPS
+fzf                         $REPO_FZF_SOURCE
 gdrive                      $REPO_GDRIVE
 gget                        $REPO_GGET
 gh                          $REPO_GH
