@@ -1,11 +1,13 @@
 #!/bin/bash
 
-GINSTALL_SH_VERSION="1.6.0"
+GINSTALL_SH_VERSION="1.7.0"
 
 APP_DIR="/usr/local/bin"
 GO_DIR="/usr/local"
 
 TMP_DIR_GGET="/tmp/gget"
+TMP_DIR_BZ2="/tmp/ginstall.bz2"
+TMP_DIR_GZ="/tmp/ginstall.gz"
 TMP_DIR_TAR_GZ="/tmp/ginstall.tar.gz"
 TMP_DIR_TAR_XZ="/tmp/ginstall.tar.xz"
 TMP_DIR_TGZ="/tmp/ginstall.tgz"
@@ -21,85 +23,137 @@ UNINSTALL_SUCCESS="$2 was uninstalled successfully."
 UNSUPPORTED="This application is not supported by ginstall.sh. Please run \"ginstall.sh --help\" for usage information."
 NO_PERMISSION="Error: This script is not running as root or with sudo! Exiting..."
 
+REPO_ANNIE="github.com/iawia002/annie"
 REPO_BIN="github.com/w4/bin"
 REPO_BLOCKY="github.com/0xERR0R/blocky"
 REPO_BW="github.com/bitwarden/cli"
 REPO_CADDY="github.com/caddyserver/caddy"
+REPO_CAIRE="github.com/esimov/caire"
 REPO_COMPOSER="github.com/composer/composer"
+REPO_COREDNS="github.com/coredns/coredns"
 REPO_CROC="github.com/schollz/croc"
 REPO_CTOP="github.com/bcicen/ctop"
+REPO_DIVE="github.com/wagoodman/dive"
+REPO_DNSCRYPT_PROXY="github.com/DNSCrypt/dnscrypt-proxy"
 REPO_DOCKER_COMPOSE="github.com/docker/compose"
 REPO_DOCKER_CREDENTIAL_PASS="github.com/docker/docker-credential-helpers"
 REPO_FFMPEG="github.com/FFmpeg/FFmpeg"
 REPO_FFSEND="github.com/timvisee/ffsend"
+REPO_FILEBROWSER="github.com/filebrowser/filebrowser"
+REPO_FRPC="github.com/fatedier/frp"
+REPO_FRPS="github.com/fatedier/frp"
 REPO_FZF="github.com/junegunn/fzf-bin"
 REPO_FZF_SOURCE="github.com/junegunn/fzf"
+REPO_GDRIVE="github.com/gdrive-org/gdrive"
 REPO_GGET="github.com/dpb587/gget"
+REPO_GH="github.com/cli/cli"
 REPO_GINSTALL_SH="github.com/whalehub/ginstall.sh"
 REPO_GITEA="github.com/go-gitea/gitea"
 REPO_GO="github.com/golang/go"
+REPO_GOGS="github.com/gogs/gogs"
+REPO_GORELEASER="github.com/goreleaser/goreleaser"
 REPO_GOSU="github.com/tianon/gosu"
+REPO_GOTTY="github.com/yudai/gotty"
 REPO_HEY="github.com/rakyll/hey"
+REPO_HTTPSTAT="github.com/davecheney/httpstat"
 REPO_HUGO="github.com/gohugoio/hugo"
 REPO_IMDL="github.com/casey/intermodal"
+REPO_INLETS="github.com/inlets/inlets"
+REPO_K3S="github.com/rancher/k3s"
 REPO_KOMGA="github.com/gotson/komga"
+REPO_KOMPOSE="github.com/kubernetes/kompose"
 REPO_LAZYDOCKER="github.com/jesseduffield/lazydocker"
 REPO_LEGO="github.com/go-acme/lego"
+REPO_MICRO="github.com/zyedidia/micro"
 REPO_MKCERT="github.com/FiloSottile/mkcert"
 REPO_NEBULA="github.com/slackhq/nebula"
+REPO_PGWEB="github.com/sosedoff/pgweb"
+REPO_PODMAN_REMOTE="github.com/containers/libpod"
 REPO_PORTAINER="github.com/portainer/portainer"
+REPO_QRCP="github.com/claudiodangelis/qrcp"
 REPO_RCLONE="github.com/rclone/rclone"
+REPO_RESTIC="github.com/restic/restic"
 REPO_SHELLCHECK="github.com/koalaman/shellcheck"
+REPO_SLACK_TERM="github.com/erroneousboat/slack-term"
 REPO_STDISCOSRV="github.com/syncthing/discosrv"
 REPO_STEP="github.com/smallstep/cli"
 REPO_STRELAYSRV="github.com/syncthing/relaysrv"
 REPO_SYNCTHING="github.com/syncthing/syncthing"
 REPO_TLDR_PLUS_PLUS="github.com/isacikgoz/tldr"
 REPO_TRAEFIK="github.com/containous/traefik"
+REPO_TRANSFERSH="github.com/dutchcoders/transfer.sh"
 REPO_UPX="github.com/upx/upx"
 REPO_VIGIL="github.com/valeriansaliou/vigil"
+REPO_WATCHTOWER="github.com/containrrr/watchtower"
+REPO_WUZZ="github.com/asciimoo/wuzz"
 REPO_YOUTUBE_DL="github.com/ytdl-org/youtube-dl"
 
 SUPPORTED_APPS_HEADER="Application:                Repository:
 ------------                -----------"
 
 SUPPORTED_APPS_LIST="
+annie                       $REPO_ANNIE
 bin                         $REPO_BIN
 blocky                      $REPO_BLOCKY
 bw                          $REPO_BW
 caddy                       $REPO_CADDY
+caire                       $REPO_CAIRE
 composer                    $REPO_COMPOSER
+coredns                     $REPO_COREDNS
 croc                        $REPO_CROC
 ctop                        $REPO_CTOP
+dive                        $REPO_DIVE
+dnscrypt-proxy              $REPO_DNSCRYPT_PROXY
 docker-compose              $REPO_DOCKER_COMPOSE
 docker-credential-pass      $REPO_DOCKER_CREDENTIAL_PASS
 ffmpeg                      $REPO_FFMPEG
 ffsend                      $REPO_FFSEND
+filebrowser                 $REPO_FILEBROWSER
 fzf                         $REPO_FZF_SOURCE
+frpc                        $REPO_FRPC
+frps                        $REPO_FRPS
+gdrive                      $REPO_GDRIVE
 gget                        $REPO_GGET
+gh                          $REPO_GH
 ginstall.sh                 $REPO_GINSTALL_SH
 gitea                       $REPO_GITEA
 go                          $REPO_GO
+gogs                        $REPO_GOGS
+goreleaser                  $REPO_GORELEASER
 gosu                        $REPO_GOSU
+gotty                       $REPO_GOTTY
 hey                         $REPO_HEY
+httpstat                    $REPO_HTTPSTAT
 hugo                        $REPO_HUGO
 imdl                        $REPO_IMDL
+inlets                      $REPO_INLETS
+k3s                         $REPO_K3S
 komga                       $REPO_KOMGA
+kompose                     $REPO_KOMPOSE
 lazydocker                  $REPO_LAZYDOCKER
 lego                        $REPO_LEGO
+micro                       $REPO_MICRO
 mkcert                      $REPO_MKCERT
 nebula                      $REPO_NEBULA
+pgweb                       $REPO_PGWEB
+podman-remote               $REPO_PODMAN_REMOTE
 portainer                   $REPO_PORTAINER
+qrcp                        $REPO_QRCP
 rclone                      $REPO_RCLONE
+restic                      $REPO_RESTIC
 shellcheck                  $REPO_SHELLCHECK
+slack-term                  $REPO_SLACK_TERM
 stdiscosrv                  $REPO_STDISCOSRV
 step                        $REPO_STEP
 strelaysrv                  $REPO_STRELAYSRV
 syncthing                   $REPO_SYNCTHING
 tldr++                      $REPO_TLDR_PLUS_PLUS
 traefik                     $REPO_TRAEFIK
+transfersh                  $REPO_TRANSFERSH
 upx                         $REPO_UPX
 vigil                       $REPO_VIGIL
+watchtower                  $REPO_WATCHTOWER
+wuzz                        $REPO_WUZZ
 youtube-dl                  $REPO_YOUTUBE_DL"
 
 HELP="Usage:
@@ -332,7 +386,7 @@ fi
 
 if [ "$3" == "latest" ]; then
   case "$2" in
-    "ffmpeg" | "go" | "rclone" | "stdiscosrv" | "shellcheck" | "step" | "strelaysrv" | "syncthing" | "upx")
+    "caire" | "ffmpeg" | "frpc" | "frps" | "gh" | "go" | "micro" | "rclone" | "stdiscosrv" | "shellcheck" | "step" | "strelaysrv" | "syncthing" | "upx")
       echo -e "This application currently does not support the version argument \"$3\"."
       exit 1
     ;;
@@ -353,6 +407,14 @@ fi
 
 if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
   case "$2" in
+    "annie")
+      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'annie_*_Linux_64-bit.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}/${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "bin")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'bin-v*-x86_64-unknown-linux-gnu.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
@@ -383,9 +445,25 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "caire")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'caire-*-linux-amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" caire-"${APP_VERSION}"-linux-amd64/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "composer")
       gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'composer.phar' > "${APP_DIR}"/"${APP_NAME}" && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "coredns")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'coredns_*_linux_amd64.tgz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
@@ -400,6 +478,22 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
     "ctop")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'ctop-*-linux-amd64' > "${APP_DIR}"/"${APP_NAME}" && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "dive")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'dive_*_linux_amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "dnscrypt-proxy")
+      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'dnscrypt-proxy-linux_x86_64-*.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" linux-x86_64/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
@@ -431,6 +525,30 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "filebrowser")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'linux-amd64-filebrowser.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "frpc")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'frp_*_linux_amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" frp_"${APP_VERSION}"_linux_amd64/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "frps")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'frp_*_linux_amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" frp_"${APP_VERSION}"_linux_amd64/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "fzf")
       gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'fzf-*-linux_amd64.tgz' > "${TMP_DIR_TGZ}" && \
       tar -xf "${TMP_DIR_TGZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
@@ -439,10 +557,24 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "gdrive")
+      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'gdrive-linux-x64' > "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "gget")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'gget-*-linux-amd64' > "${TMP_DIR_GGET}" && \
       mv "${TMP_DIR_GGET}" "${APP_DIR}"/"${APP_NAME}" && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "gh")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'gh_*_linux_amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" gh_"${APP_VERSION}"_linux_amd64/bin/"${APP_NAME}" ${TAR_ARGS} --strip-components=2 && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
@@ -466,9 +598,33 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "gogs")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'linux_amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" gogs/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "goreleaser")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'goreleaser_Linux_x86_64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "gosu")
       gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'gosu-amd64' > "${APP_DIR}"/"${APP_NAME}" && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "gotty")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'gotty_linux_amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" ./"${APP_NAME}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
@@ -486,6 +642,12 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "httpstat")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'httpstat-linux-amd64-v*' > "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "imdl")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'imdl-v*-x86_64-unknown-linux-musl.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
@@ -494,9 +656,30 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "inlets")
+      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'inlets' > "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "k3s")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'k3s' > "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "komga")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'komga-*.jar' > "${APP_DIR}"/"${APP_NAME}".jar && \
       chmod +x "${APP_DIR}"/"${APP_NAME}".jar && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "kompose")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'kompose-linux-amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}"-linux-amd64 ${TAR_ARGS} && \
+      mv "${APP_DIR}"/"${APP_NAME}"-linux-amd64 "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}/${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
@@ -516,6 +699,14 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "micro")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'micro-*-linux64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" micro-"${APP_VERSION}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "mkcert")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'mkcert-v*-linux-amd64' > "${APP_DIR}"/"${APP_NAME}" && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
@@ -530,11 +721,44 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "pgweb")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'pgweb_linux_amd64.zip' > "${TMP_DIR_ZIP}" && \
+      unzip -jo "${TMP_DIR_ZIP}" "${APP_NAME}"_linux_amd64 -d "${APP_DIR}" && \
+      mv "${APP_DIR}"/"${APP_NAME}"_linux_amd64 "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_ZIP}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "podman-remote")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'podman-remote-static.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "portainer")
       gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'portainer-*-linux-amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" portainer/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "qrcp")
+      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'qrcp_*_linux_x86_64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "restic")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'restic_*_linux_amd64.bz2' > "${TMP_DIR_BZ2}" && \
+      bzip2 -d "${TMP_DIR_BZ2}" -c > "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_BZ2}" && \
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
@@ -551,6 +775,12 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       tar -xf "${TMP_DIR_TAR_XZ}" -C "${APP_DIR}" shellcheck-v"${APP_VERSION}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_XZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "slack-term")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'slack-term-linux-amd64' > "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
@@ -602,6 +832,12 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "transfersh")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'transfersh-v*-linux-amd64' > "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "upx")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'upx-*-amd64_linux.tar.xz' > "${TMP_DIR_TAR_XZ}" && \
       tar -xf "${TMP_DIR_TAR_XZ}" -C "${APP_DIR}" upx-"${APP_VERSION}"-amd64_linux/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
@@ -615,6 +851,20 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" ./vigil/"${APP_NAME}" ${TAR_ARGS} --strip-components=2 && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "watchtower")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'watchtower_linux_amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "wuzz")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'wuzz_linux_amd64' > "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
       echo -e "${INSTALL_SUCCESS}"
     ;;
 

@@ -7,6 +7,8 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 
 • [gget](https://github.com/dpb587/gget) v0.3.0 or later
 
+• [bzip2](https://packages.debian.org/buster/bzip2) (only needed for `restic`)
+
 • [curl](https://packages.debian.org/buster/curl)
 
 • [tar](https://packages.debian.org/buster/tar)
@@ -72,42 +74,68 @@ export GITHUB_TOKEN=replace_this_string_with_your_token
 whalehub@pdh:~# ginstall.sh --list
 Application:                Repository:
 ------------                -----------
+annie                       github.com/iawia002/annie
 bin                         github.com/w4/bin
 blocky                      github.com/0xERR0R/blocky
 bw                          github.com/bitwarden/cli
 caddy                       github.com/caddyserver/caddy
+caire                       github.com/esimov/caire
 composer                    github.com/composer/composer
+coredns                     github.com/coredns/coredns
 croc                        github.com/schollz/croc
 ctop                        github.com/bcicen/ctop
+dive                        github.com/wagoodman/dive
+dnscrypt-proxy              github.com/DNSCrypt/dnscrypt-proxy
 docker-compose              github.com/docker/compose
 docker-credential-pass      github.com/docker/docker-credential-helpers
 ffmpeg                      github.com/FFmpeg/FFmpeg
 ffsend                      github.com/timvisee/ffsend
+filebrowser                 github.com/filebrowser/filebrowser
 fzf                         github.com/junegunn/fzf
+frpc                        github.com/fatedier/frp
+frps                        github.com/fatedier/frp
+gdrive                      github.com/gdrive-org/gdrive
 gget                        github.com/dpb587/gget
+gh                          github.com/cli/cli
 ginstall.sh                 github.com/whalehub/ginstall.sh
 gitea                       github.com/go-gitea/gitea
 go                          github.com/golang/go
+gogs                        github.com/gogs/gogs
+goreleaser                  github.com/goreleaser/goreleaser
 gosu                        github.com/tianon/gosu
+gotty                       github.com/yudai/gotty
 hey                         github.com/rakyll/hey
+httpstat                    github.com/davecheney/httpstat
 hugo                        github.com/gohugoio/hugo
 imdl                        github.com/casey/intermodal
+inlets                      github.com/inlets/inlets
+k3s                         github.com/rancher/k3s
 komga                       github.com/gotson/komga
+kompose                     github.com/kubernetes/kompose
 lazydocker                  github.com/jesseduffield/lazydocker
 lego                        github.com/go-acme/lego
+micro                       github.com/zyedidia/micro
 mkcert                      github.com/FiloSottile/mkcert
 nebula                      github.com/slackhq/nebula
+pgweb                       github.com/sosedoff/pgweb
+podman-remote               github.com/containers/libpod
 portainer                   github.com/portainer/portainer
+qrcp                        github.com/claudiodangelis/qrcp
 rclone                      github.com/rclone/rclone
+restic                      github.com/restic/restic
 shellcheck                  github.com/koalaman/shellcheck
+slack-term                  github.com/erroneousboat/slack-term
 stdiscosrv                  github.com/syncthing/discosrv
 step                        github.com/smallstep/cli
 strelaysrv                  github.com/syncthing/relaysrv
 syncthing                   github.com/syncthing/syncthing
 tldr++                      github.com/isacikgoz/tldr
 traefik                     github.com/containous/traefik
+transfersh                  github.com/dutchcoders/transfer.sh
 upx                         github.com/upx/upx
 vigil                       github.com/valeriansaliou/vigil
+watchtower                  github.com/containrrr/watchtower
+wuzz                        github.com/asciimoo/wuzz
 youtube-dl                  github.com/ytdl-org/youtube-dl
 ```
 

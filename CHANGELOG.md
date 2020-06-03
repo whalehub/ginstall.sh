@@ -3,6 +3,34 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2020-06-03
+### Added
+- Support for [Annie](https://github.com/iawia002/annie).
+- Support for [Caire](https://github.com/esimov/caire).
+- Support for [CoreDNS](https://github.com/coredns/coredns).
+- Support for [Dive](https://github.com/wagoodman/dive).
+- Support for [DNSCrypt Proxy](https://github.com/DNSCrypt/dnscrypt-proxy).
+- Support for [FileBrowser](https://github.com/filebrowser/filebrowser).
+- Support for [FRP](https://github.com/fatedier/frp)'s two components `frpc` and `frps`.
+- Support for [Google Drive CLI](https://github.com/gdrive-org/gdrive).
+- Support for [GitHub CLI](https://github.com/cli/cli).
+- Support for [Gogs](https://github.com/gogs/gogs).
+- Support for [GoReleaser](https://github.com/goreleaser/goreleaser).
+- Support for [GoTTY](https://github.com/yudai/gotty).
+- Support for [HTTPStat](https://github.com/davecheney/httpstat).
+- Support for [Inlets](https://github.com/inlets/inlets).
+- Support for [K3S](https://github.com/rancher/k3s).
+- Support for [Kompose](https://github.com/kubernetes/kompose).
+- Support for [Micro](https://github.com/zyedidia/micro).
+- Support for [Pgweb](https://github.com/sosedoff/pgweb).
+- Support for [Podman](https://github.com/containers/libpod).
+- Support for [QRCP](https://github.com/claudiodangelis/qrcp).
+- Support for [Restic](https://github.com/restic/restic).
+- Support for [Slack-Term](https://github.com/erroneousboat/slack-term).
+- Support for [TransferSH](https://github.com/dutchcoders/transfer.sh).
+- Support for [Watchtower](https://github.com/containrrr/watchtower).
+- Support for [Wuzz](https://github.com/asciimoo/wuzz).
+
 ## [1.6.0] - 2020-06-02
 ### Added
 - Support for [ShellCheck](https://github.com/koalaman/shellcheck).
