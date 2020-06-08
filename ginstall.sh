@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------ #
 
-GINSTALL_SH_VERSION="2.0.0"
+GINSTALL_SH_VERSION="2.0.1"
 
 # ------------------------------------------------------------------ #
 
@@ -410,6 +410,13 @@ case "$1" in
       "go")
         APP_DIR="$(command -v $2 | sed 's|/bin/go||g')"
         rm -vr "${APP_DIR:?}" && \
+        echo -e "${UNINSTALL_SUCCESS}"
+        exit 0
+      ;;
+
+      "komga")
+        APP_DIR="$(command -v $2.jar)"
+        rm -v "${APP_DIR:?}" && \
         echo -e "${UNINSTALL_SUCCESS}"
         exit 0
       ;;

@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2020-06-09
+### Fixed
+- A bug that was preventing the `--remove` command from working on `komga` due to its file extension `.jar`.
+
 ## [2.0.0] - 2020-06-08
 ### Added
 - A sanity check to verify that `ginstall.sh`'s dependency `gget` is installed in the user's `PATH` when using a flag that requires it.
@@ -75,7 +79,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Bump required `gget` version to 0.3.0.
 
 ### Fixed
-- A bug that was preventing `gget` from being updated via `ginstall.sh gget <version>` has been fixed.
+- A bug that was preventing `gget` from being updated via `ginstall.sh gget <version>`.
 
 ## [1.5.0] - 2020-06-02
 ### Added
