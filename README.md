@@ -27,37 +27,32 @@ Once `gget` has been installed, you can update it with `ginstall.sh` just like a
 
 ```
 whalehub@pdh:~# ginstall.sh --help
+About:
+  ginstall.sh is a script for installing and updating statically compiled applications.
+
 Usage:
   ginstall.sh [flags] <app> <version>
 
 Examples:
-  ginstall.sh docker-compose 1.25.5
-  ginstall.sh docker-compose latest
-  ginstall.sh --check docker-compose
-  ginstall.sh --directory /home/whalehub/apps docker-compose 1.25.5
-  ginstall.sh --directory /home/whalehub/apps docker-compose latest
-  ginstall.sh --first-run
-  ginstall.sh --first-run-dir /home/whalehub/apps
-  ginstall.sh --help
-  ginstall.sh --list
-  ginstall.sh --remove docker-compose
-  ginstall.sh --rm-from-dir /home/whalehub/apps docker-compose
-  ginstall.sh --search docker
-  ginstall.sh --self-update
-  ginstall.sh --version
+  ginstall.sh hugo 0.72.0
+  ginstall.sh -d /opt/apps hugo latest
+  ginstall.sh -d /opt/apps --first-run
+  ginstall.sh -c hugo
+  ginstall.sh -r hugo
+  ginstall.sh -s hugo
 
 Flags:
-  --check, -c           Prints the latest available version of an application
-  --directory, -d       Specifies a custom installation directory
-  --first-run           Installs ginstall.sh's dependency gget via curl
-  --first-run-dir       Installs ginstall.sh's dependency gget via curl into the specified directory
-  --help, -h            Shows this page
-  --list, -l            Prints a list of supported applications
-  --remove, -r          Uninstalls an application
-  --rm-from-dir         Uninstalls an application from the specified directory
-  --search, -s          Performs a search on the list of supported applications
-  --self-update         Updates ginstall.sh to the latest available version
-  --version, -v         Prints ginstall.sh version information
+  --check, -c           Print the latest available version of an application
+  --directory, -d       Specify a custom directory to use instead of /usr/local/bin
+  --first-run           Install ginstall.sh's dependency gget via curl
+  --remove, -r          Uninstall an application
+  --search, -s          Perform a search on the list of supported applications
+  --self-update         Update ginstall.sh to the latest available version
+
+Info:
+  --help, -h            Show this page
+  --list, -l            Print a list of supported applications
+  --version, -v         Print the ginstall.sh version information
 ```
 
 ## API Rate Limits

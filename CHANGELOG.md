@@ -3,6 +3,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2020-06-08
+### Added
+- A sanity check to verify that `ginstall.sh`'s dependency `gget` is installed in the user's `PATH` when using a flag that requires it.
+- A sanity check that makes `ginstall.sh` exit safely if the `INSTALL_DIR_APP` or `INSTALL_DIR_GO` variable is empty (this can never happen during regular use, it's just a matter of good practice).
+- A sanity check to make sure that the `--directory` flag is used with a valid argument or secondary flag.
+
+### Changed
+- The `--check` flag now only outputs an application's latest version number instead of the tag and commit hash.
+- The output of the `--help` flag was rewritten from scratch to be more user-friendly.
+- The `--remove` flag can now remove applications that were installed to a custom directory as long as the directory is in the user's `PATH`.
+- The `--check` flag and the version argument `latest` now work for all of the applications that are supported by `ginstall.sh`.
+- The `--first-run` flag, just like the app argument, can now be prefixed with the `--directory` flag to specify a custom installation directory.
+
+### Removed
+- The `--first-run-dir` and `--rm-from-dir` flags as they are now obsolete.
+
 ## [1.8.0] - 2020-06-08
 ### Added
 - Support for [Delta](https://github.com/dandavison/delta).
