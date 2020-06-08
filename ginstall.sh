@@ -1,6 +1,10 @@
 #!/bin/bash
 
-GINSTALL_SH_VERSION="1.7.0"
+# ------------------------------------------------------------------ #
+
+GINSTALL_SH_VERSION="1.8.0"
+
+# ------------------------------------------------------------------ #
 
 APP_DIR="/usr/local/bin"
 GO_DIR="/usr/local"
@@ -23,20 +27,35 @@ UNINSTALL_SUCCESS="$2 was uninstalled successfully."
 UNSUPPORTED="This application is not supported by ginstall.sh. Please run \"ginstall.sh --help\" for usage information."
 NO_PERMISSION="Error: This script is not running as root or with sudo! Exiting..."
 
+# ------------------------------------------------------------------ #
+
+# A
 REPO_ANNIE="github.com/iawia002/annie"
+
+# B
 REPO_BIN="github.com/w4/bin"
 REPO_BLOCKY="github.com/0xERR0R/blocky"
 REPO_BW="github.com/bitwarden/cli"
+
+# C
 REPO_CADDY="github.com/caddyserver/caddy"
 REPO_CAIRE="github.com/esimov/caire"
 REPO_COMPOSER="github.com/composer/composer"
 REPO_COREDNS="github.com/coredns/coredns"
 REPO_CROC="github.com/schollz/croc"
 REPO_CTOP="github.com/bcicen/ctop"
+
+# D
+REPO_DELTA="github.com/dandavison/delta"
 REPO_DIVE="github.com/wagoodman/dive"
 REPO_DNSCRYPT_PROXY="github.com/DNSCrypt/dnscrypt-proxy"
 REPO_DOCKER_COMPOSE="github.com/docker/compose"
 REPO_DOCKER_CREDENTIAL_PASS="github.com/docker/docker-credential-helpers"
+
+# E
+REPO_EXA="github.com/ogham/exa"
+
+# F
 REPO_FFMPEG="github.com/FFmpeg/FFmpeg"
 REPO_FFSEND="github.com/timvisee/ffsend"
 REPO_FILEBROWSER="github.com/filebrowser/filebrowser"
@@ -44,6 +63,8 @@ REPO_FRPC="github.com/fatedier/frp"
 REPO_FRPS="github.com/fatedier/frp"
 REPO_FZF="github.com/junegunn/fzf-bin"
 REPO_FZF_SOURCE="github.com/junegunn/fzf"
+
+# G
 REPO_GDRIVE="github.com/gdrive-org/gdrive"
 REPO_GGET="github.com/dpb587/gget"
 REPO_GH="github.com/cli/cli"
@@ -54,64 +75,113 @@ REPO_GOGS="github.com/gogs/gogs"
 REPO_GORELEASER="github.com/goreleaser/goreleaser"
 REPO_GOSU="github.com/tianon/gosu"
 REPO_GOTTY="github.com/yudai/gotty"
+
+# H
 REPO_HEY="github.com/rakyll/hey"
 REPO_HTTPSTAT="github.com/davecheney/httpstat"
 REPO_HUGO="github.com/gohugoio/hugo"
+
+# I
 REPO_IMDL="github.com/casey/intermodal"
 REPO_INLETS="github.com/inlets/inlets"
+
+# K
 REPO_K3S="github.com/rancher/k3s"
+REPO_K9S="github.com/derailed/k9s"
 REPO_KOMGA="github.com/gotson/komga"
 REPO_KOMPOSE="github.com/kubernetes/kompose"
+
+# L
 REPO_LAZYDOCKER="github.com/jesseduffield/lazydocker"
 REPO_LEGO="github.com/go-acme/lego"
+
+# M
 REPO_MICRO="github.com/zyedidia/micro"
 REPO_MKCERT="github.com/FiloSottile/mkcert"
+
+# N
 REPO_NEBULA="github.com/slackhq/nebula"
+
+# P
 REPO_PGWEB="github.com/sosedoff/pgweb"
 REPO_PODMAN_REMOTE="github.com/containers/libpod"
 REPO_PORTAINER="github.com/portainer/portainer"
+
+# Q
 REPO_QRCP="github.com/claudiodangelis/qrcp"
+
+# R
 REPO_RCLONE="github.com/rclone/rclone"
 REPO_RESTIC="github.com/restic/restic"
+
+# S
 REPO_SHELLCHECK="github.com/koalaman/shellcheck"
 REPO_SLACK_TERM="github.com/erroneousboat/slack-term"
+REPO_STATPING="github.com/statping/statping"
 REPO_STDISCOSRV="github.com/syncthing/discosrv"
 REPO_STEP="github.com/smallstep/cli"
 REPO_STRELAYSRV="github.com/syncthing/relaysrv"
 REPO_SYNCTHING="github.com/syncthing/syncthing"
+
+# T
 REPO_TLDR_PLUS_PLUS="github.com/isacikgoz/tldr"
 REPO_TRAEFIK="github.com/containous/traefik"
 REPO_TRANSFERSH="github.com/dutchcoders/transfer.sh"
+
+# U
 REPO_UPX="github.com/upx/upx"
+
+# V
 REPO_VIGIL="github.com/valeriansaliou/vigil"
+
+# W
 REPO_WATCHTOWER="github.com/containrrr/watchtower"
 REPO_WUZZ="github.com/asciimoo/wuzz"
+
+# Y
 REPO_YOUTUBE_DL="github.com/ytdl-org/youtube-dl"
+
+# ------------------------------------------------------------------ #
 
 SUPPORTED_APPS_HEADER="Application:                Repository:
 ------------                -----------"
 
 SUPPORTED_APPS_LIST="
+A
 annie                       $REPO_ANNIE
+
+B
 bin                         $REPO_BIN
 blocky                      $REPO_BLOCKY
 bw                          $REPO_BW
+
+C
 caddy                       $REPO_CADDY
 caire                       $REPO_CAIRE
 composer                    $REPO_COMPOSER
 coredns                     $REPO_COREDNS
 croc                        $REPO_CROC
 ctop                        $REPO_CTOP
+
+D
+delta                       $REPO_DELTA
 dive                        $REPO_DIVE
 dnscrypt-proxy              $REPO_DNSCRYPT_PROXY
 docker-compose              $REPO_DOCKER_COMPOSE
 docker-credential-pass      $REPO_DOCKER_CREDENTIAL_PASS
+
+E
+exa                         $REPO_EXA
+
+F
 ffmpeg                      $REPO_FFMPEG
 ffsend                      $REPO_FFSEND
 filebrowser                 $REPO_FILEBROWSER
 frpc                        $REPO_FRPC
 frps                        $REPO_FRPS
 fzf                         $REPO_FZF_SOURCE
+
+G
 gdrive                      $REPO_GDRIVE
 gget                        $REPO_GGET
 gh                          $REPO_GH
@@ -122,39 +192,73 @@ gogs                        $REPO_GOGS
 goreleaser                  $REPO_GORELEASER
 gosu                        $REPO_GOSU
 gotty                       $REPO_GOTTY
+
+H
 hey                         $REPO_HEY
 httpstat                    $REPO_HTTPSTAT
 hugo                        $REPO_HUGO
+
+I
 imdl                        $REPO_IMDL
 inlets                      $REPO_INLETS
+
+K
 k3s                         $REPO_K3S
+k9s                         $REPO_K9S
 komga                       $REPO_KOMGA
 kompose                     $REPO_KOMPOSE
+
+L
 lazydocker                  $REPO_LAZYDOCKER
 lego                        $REPO_LEGO
+
+M
 micro                       $REPO_MICRO
 mkcert                      $REPO_MKCERT
+
+N
 nebula                      $REPO_NEBULA
+
+P
 pgweb                       $REPO_PGWEB
 podman-remote               $REPO_PODMAN_REMOTE
 portainer                   $REPO_PORTAINER
+
+Q
 qrcp                        $REPO_QRCP
+
+R
 rclone                      $REPO_RCLONE
 restic                      $REPO_RESTIC
+
+S
 shellcheck                  $REPO_SHELLCHECK
 slack-term                  $REPO_SLACK_TERM
+statping                    $REPO_STATPING
 stdiscosrv                  $REPO_STDISCOSRV
 step                        $REPO_STEP
 strelaysrv                  $REPO_STRELAYSRV
 syncthing                   $REPO_SYNCTHING
+
+T
 tldr++                      $REPO_TLDR_PLUS_PLUS
 traefik                     $REPO_TRAEFIK
 transfersh                  $REPO_TRANSFERSH
+
+U
 upx                         $REPO_UPX
+
+V
 vigil                       $REPO_VIGIL
+
+W
 watchtower                  $REPO_WATCHTOWER
 wuzz                        $REPO_WUZZ
+
+Y
 youtube-dl                  $REPO_YOUTUBE_DL"
+
+# ------------------------------------------------------------------ #
 
 HELP="Usage:
   ginstall.sh [flags] <app> <version>
@@ -188,14 +292,22 @@ Flags:
   --self-update         Updates ginstall.sh to the latest available version
   --version, -v         Prints ginstall.sh version information"
 
+# ------------------------------------------------------------------ #
+
 ARGS=$(getopt -l check:,directory:,first-run,first-run-dir:,help,list,remove:,rm-from-dir:,search:,self-update,version -o c:d:hlr:s:v -n ginstall.sh -- "$@") 
+
+# ------------------------------------------------------------------ #
 
 if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# ------------------------------------------------------------------ #
+
 eval set -- "$ARGS"
 unset ARGS
+
+# ------------------------------------------------------------------ #
 
 case "$1" in
   "--check" | "-c")
@@ -369,24 +481,32 @@ case "$1" in
   ;;
 esac
 
+# ------------------------------------------------------------------ #
+
 REPO=$(echo "REPO_${2^^}" | sed 's/[-.]/_/g' | sed 's/+/_PLUS/g')
 APP_NAME="$2"
 APP_VERSION="$3"
 INSTALL_SUCCESS="${APP_NAME} v${APP_VERSION} was installed successfully."
+
+# ------------------------------------------------------------------ #
 
 if [ -z "$2" ]; then
   echo -e "You forgot to supply an application name. Please run \"ginstall.sh --help\" for usage information."
   exit 1
 fi
 
+# ------------------------------------------------------------------ #
+
 if [ -z "$3" ]; then
   echo -e "You forgot to supply a version number. Please run \"ginstall.sh --help\" for usage information."
   exit 1
 fi
 
+# ------------------------------------------------------------------ #
+
 if [ "$3" == "latest" ]; then
   case "$2" in
-    "caire" | "ffmpeg" | "frpc" | "frps" | "gh" | "go" | "micro" | "rclone" | "stdiscosrv" | "shellcheck" | "step" | "strelaysrv" | "syncthing" | "upx")
+    "caire" | "delta" | "ffmpeg" | "frpc" | "frps" | "gh" | "go" | "micro" | "rclone" | "stdiscosrv" | "shellcheck" | "step" | "strelaysrv" | "syncthing" | "upx")
       echo -e "This application currently does not support the version argument \"$3\"."
       exit 1
     ;;
@@ -404,6 +524,8 @@ if [ "$3" == "latest" ]; then
     ;;
   esac
 fi
+
+# ------------------------------------------------------------------ #
 
 if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
   case "$2" in
@@ -481,6 +603,14 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "delta")
+      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'delta-*-x86_64-unknown-linux-gnu.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" delta-"${APP_VERSION}"-x86_64-unknown-linux-gnu/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "dive")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'dive_*_linux_amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
@@ -511,6 +641,15 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "exa")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'exa-linux-x86_64-*.zip' > "${TMP_DIR_ZIP}" && \
+      unzip -jo "${TMP_DIR_ZIP}" "${APP_NAME}"-linux-x86_64 -d "${APP_DIR}" && \
+      mv "${APP_DIR}"/"${APP_NAME}"-linux-x86_64 "${APP_DIR}"/"${APP_NAME}" && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_ZIP}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "ffmpeg")
       curl -Lf -o "${TMP_DIR_TAR_XZ}" https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz && \
       tar -xf "${TMP_DIR_TAR_XZ}" -C "${APP_DIR}" ffmpeg-"${APP_VERSION}"-amd64-static/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
@@ -527,7 +666,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
 
     "filebrowser")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'linux-amd64-filebrowser.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
-      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" ${TAR_ARGS} && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
@@ -668,6 +807,14 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
       echo -e "${INSTALL_SUCCESS}"
     ;;
 
+    "k9s")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'k9s_Linux_x86_64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
     "komga")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'komga-*.jar' > "${APP_DIR}"/"${APP_NAME}".jar && \
       chmod +x "${APP_DIR}"/"${APP_NAME}".jar && \
@@ -748,7 +895,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
 
     "qrcp")
       gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'qrcp_*_linux_x86_64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
-      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" ${TAR_ARGS} && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
@@ -781,6 +928,14 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_ARG}" == "true" ]; then
     "slack-term")
       gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'slack-term-linux-amd64' > "${APP_DIR}"/"${APP_NAME}" && \
       chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      echo -e "${INSTALL_SUCCESS}"
+    ;;
+
+    "statping")
+      gget --stdout "${!REPO}""${PREFIX_V}""${APP_VERSION}" 'statping-linux-amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${APP_DIR}" "${APP_NAME}" ${TAR_ARGS} && \
+      chmod +x "${APP_DIR}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
     ;;
 

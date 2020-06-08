@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2020-06-08
+### Added
+- Support for [Delta](https://github.com/dandavison/delta).
+- Support for [Exa](https://github.com/ogham/exa).
+- Support for [K9S](https://github.com/derailed/k9s).
+- Support for [Statping](github.com/statping/statping).
+
+### Changed
+- The supported applications are now grouped by their first letter for better readability.
+
+### Fixed
+- Installing `filebrowser` and `qrcp` no longer extracts `README` and `LICENSE` files.
+
 ## [1.7.0] - 2020-06-03
 ### Added
 - Support for [Annie](https://github.com/iawia002/annie).
