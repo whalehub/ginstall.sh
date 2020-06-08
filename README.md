@@ -74,26 +74,41 @@ export GITHUB_TOKEN=replace_this_string_with_your_token
 whalehub@pdh:~# ginstall.sh --list
 Application:                Repository:
 ------------                -----------
+A
 annie                       github.com/iawia002/annie
+
+B
 bin                         github.com/w4/bin
 blocky                      github.com/0xERR0R/blocky
 bw                          github.com/bitwarden/cli
+
+C
 caddy                       github.com/caddyserver/caddy
 caire                       github.com/esimov/caire
 composer                    github.com/composer/composer
 coredns                     github.com/coredns/coredns
 croc                        github.com/schollz/croc
 ctop                        github.com/bcicen/ctop
+
+D
+delta                       github.com/dandavison/delta
 dive                        github.com/wagoodman/dive
 dnscrypt-proxy              github.com/DNSCrypt/dnscrypt-proxy
 docker-compose              github.com/docker/compose
 docker-credential-pass      github.com/docker/docker-credential-helpers
+
+E
+exa                         github.com/ogham/exa
+
+F
 ffmpeg                      github.com/FFmpeg/FFmpeg
 ffsend                      github.com/timvisee/ffsend
 filebrowser                 github.com/filebrowser/filebrowser
 frpc                        github.com/fatedier/frp
 frps                        github.com/fatedier/frp
 fzf                         github.com/junegunn/fzf
+
+G
 gdrive                      github.com/gdrive-org/gdrive
 gget                        github.com/dpb587/gget
 gh                          github.com/cli/cli
@@ -104,38 +119,70 @@ gogs                        github.com/gogs/gogs
 goreleaser                  github.com/goreleaser/goreleaser
 gosu                        github.com/tianon/gosu
 gotty                       github.com/yudai/gotty
+
+H
 hey                         github.com/rakyll/hey
 httpstat                    github.com/davecheney/httpstat
 hugo                        github.com/gohugoio/hugo
+
+I
 imdl                        github.com/casey/intermodal
 inlets                      github.com/inlets/inlets
+
+K
 k3s                         github.com/rancher/k3s
+k9s                         github.com/derailed/k9s
 komga                       github.com/gotson/komga
 kompose                     github.com/kubernetes/kompose
+
+L
 lazydocker                  github.com/jesseduffield/lazydocker
 lego                        github.com/go-acme/lego
+
+M
 micro                       github.com/zyedidia/micro
 mkcert                      github.com/FiloSottile/mkcert
+
+N
 nebula                      github.com/slackhq/nebula
+
+P
 pgweb                       github.com/sosedoff/pgweb
 podman-remote               github.com/containers/libpod
 portainer                   github.com/portainer/portainer
+
+Q
 qrcp                        github.com/claudiodangelis/qrcp
+
+R
 rclone                      github.com/rclone/rclone
 restic                      github.com/restic/restic
+
+S
 shellcheck                  github.com/koalaman/shellcheck
 slack-term                  github.com/erroneousboat/slack-term
+statping                    github.com/statping/statping
 stdiscosrv                  github.com/syncthing/discosrv
 step                        github.com/smallstep/cli
 strelaysrv                  github.com/syncthing/relaysrv
 syncthing                   github.com/syncthing/syncthing
+
+T
 tldr++                      github.com/isacikgoz/tldr
 traefik                     github.com/containous/traefik
 transfersh                  github.com/dutchcoders/transfer.sh
+
+U
 upx                         github.com/upx/upx
+
+V
 vigil                       github.com/valeriansaliou/vigil
+
+W
 watchtower                  github.com/containrrr/watchtower
 wuzz                        github.com/asciimoo/wuzz
+
+Y
 youtube-dl                  github.com/ytdl-org/youtube-dl
 ```
 
