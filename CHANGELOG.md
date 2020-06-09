@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.1.0] - 2020-06-09
 ### Added
-- A sanity check to prevent the accidental uninstallation of an unsupported application with the --remove flag.
+- A sanity check to prevent the accidental uninstallation of an unsupported application with the `--remove` flag.
 
 ## [2.0.3] - 2020-06-09
 ### Fixed
@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [2.0.2] - 2020-06-09
 ### Fixed
 - A bug that was preventing `gget` from parsing release version tags that are not prefixed with a "v".
-- Added a workaround for installing the latest version of ffmpeg if the latest version number is used as an argument instead of "latest".
+- Implemented a workaround for installing the latest version of `ffmpeg` if the latest version number is used as an argument instead of "latest".
 
 ## [2.0.1] - 2020-06-09
 ### Fixed
