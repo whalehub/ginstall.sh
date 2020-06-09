@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.3] - 2020-06-09
+### Fixed
+- A bug which made `ginstall.sh` print more information than needed when a user tries to install an unsupported application with the version argument "latest".
+
 ## [2.0.2] - 2020-06-09
 ### Fixed
 - A bug that was preventing `gget` from parsing release version tags that are not prefixed with a "v".

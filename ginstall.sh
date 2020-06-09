@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------ #
 
-GINSTALL_SH_VERSION="2.0.2"
+GINSTALL_SH_VERSION="2.0.3"
 
 # ------------------------------------------------------------------ #
 
@@ -499,7 +499,7 @@ if [ "$3" == "latest" ]; then
       ;;
 
       *)
-        APP_VERSION="$(gget --show-ref "${!REPO}" | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+        APP_VERSION="$(gget --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
         INSTALL_SUCCESS="The latest version of $2 (v$APP_VERSION) was successfully installed to ${INSTALL_DIR_APP}."
       ;;
     esac
