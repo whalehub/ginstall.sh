@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.0.1] - 2020-06-09
 ### Fixed
-- A bug that was preventing the `--remove` command from working on `komga` due to its file extension `.jar`.
+- A bug that was preventing the `--remove` flag from working on `komga` due to its file extension `.jar`.
 
 ## [2.0.0] - 2020-06-08
 ### Added
@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 - The `--check` flag now only outputs an application's latest version number instead of the tag and commit hash.
+- The installation directory that an application was installed in is now printed along with the version number if the installation is successful.
 - The output of the `--help` flag was rewritten from scratch to be more user-friendly.
 - The `--remove` flag can now remove applications that were installed to a custom directory as long as the directory is in the user's `PATH`.
 - The `--check` flag and the version argument `latest` now work for all of the applications that are supported by `ginstall.sh`.
