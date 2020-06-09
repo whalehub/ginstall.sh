@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------ #
 
-GINSTALL_SH_VERSION="2.0.3"
+GINSTALL_SH_VERSION="2.1.0"
 
 # ------------------------------------------------------------------ #
 
@@ -386,62 +386,67 @@ case "$1" in
 
   "--remove" | "-r")
     UNINSTALL_SUCCESS="$2 was uninstalled successfully."
+    REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g' | sed 's/+/_PLUS/g')"
+    if [ -z "${!REPO}" ]; then
+      echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}"
+      exit 1
+    else
+      case "$2" in
+        "gget")
+          echo -e "Are you sure that you want to uninstall ginstall.sh's dependency gget?\n" && \
+          echo -e "Please type the number next to your desired answer." && \
+          select yn in "yes" "no"; do
+          case $yn in
+            "yes")
+                echo -e "" && \
+                rm -v "${GGET_DIR:?}" && \
+                echo -e "The dependency gget for ginstall.sh has been successfully uninstalled."
+                exit 0
+              ;;
+              "no")
+                echo -e "Exiting..."
+                exit 0
+              ;;
+          esac
+          done
+        ;;
 
-    case "$2" in
-      "gget")
-        echo -e "Are you sure that you want to uninstall ginstall.sh's dependency gget?\n" && \
-        echo -e "Please type the number next to your desired answer." && \
-        select yn in "yes" "no"; do
-        case $yn in
-          "yes")
-              echo -e "" && \
-              rm -v "${GGET_DIR:?}" && \
-              echo -e "The dependency gget for ginstall.sh has been successfully uninstalled."
-              exit 0
-            ;;
-            "no")
-              echo -e "Exiting..."
-              exit 0
-            ;;
-        esac
-        done
-      ;;
+        "go")
+          APP_DIR="$(command -v $2 | sed 's|/bin/go||g')"
+          rm -vr "${APP_DIR:?}" && \
+          echo -e "${UNINSTALL_SUCCESS}"
+          exit 0
+        ;;
 
-      "go")
-        APP_DIR="$(command -v $2 | sed 's|/bin/go||g')"
-        rm -vr "${APP_DIR:?}" && \
-        echo -e "${UNINSTALL_SUCCESS}"
-        exit 0
-      ;;
+        "komga")
+          APP_DIR="$(command -v $2.jar)"
+          rm -v "${APP_DIR:?}" && \
+          echo -e "${UNINSTALL_SUCCESS}"
+          exit 0
+        ;;
 
-      "komga")
-        APP_DIR="$(command -v $2.jar)"
-        rm -v "${APP_DIR:?}" && \
-        echo -e "${UNINSTALL_SUCCESS}"
-        exit 0
-      ;;
+        "nebula")
+          APP_DIR="$(command -v $2)"
+          rm -v "${APP_DIR:?}" "${APP_DIR:?}"-cert && \
+          echo -e "${UNINSTALL_SUCCESS}"
+          exit 0
+        ;;
 
-      "nebula")
-        APP_DIR="$(command -v $2)"
-        rm -v "${APP_DIR:?}" "${APP_DIR:?}"-cert && \
-        echo -e "${UNINSTALL_SUCCESS}"
-        exit 0
-      ;;
+        "tldr++")
+          APP_DIR="$(command -v tldr)"
+          rm -v "${APP_DIR:?}" && \
+          echo -e "${UNINSTALL_SUCCESS}"
+          exit 0
+        ;;
 
-      "tldr++")
-        APP_DIR="$(command -v tldr)"
-        rm -v "${APP_DIR:?}" && \
-        echo -e "${UNINSTALL_SUCCESS}"
-        exit 0
-      ;;
-
-      *)
-        APP_DIR="$(command -v $2)"
-        rm -v "${APP_DIR:?}" && \
-        echo -e "${UNINSTALL_SUCCESS}"
-        exit 0
-      ;;
-    esac
+        *)
+          APP_DIR="$(command -v $2)"
+          rm -v "${APP_DIR:?}" && \
+          echo -e "${UNINSTALL_SUCCESS}"
+          exit 0
+        ;;
+      esac
+    fi
   ;;
 
   "--search" | "-s")

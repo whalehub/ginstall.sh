@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2020-06-09
+### Added
+- A sanity check to prevent the accidental uninstallation of an unsupported application with the --remove flag.
+
 ## [2.0.3] - 2020-06-09
 ### Fixed
 - A bug which made `ginstall.sh` print more information than needed when a user tries to install an unsupported application with the version argument "latest".
