@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------ #
 
-GINSTALL_SH_VERSION="2.0.1"
+GINSTALL_SH_VERSION="2.0.2"
 
 # ------------------------------------------------------------------ #
 
@@ -514,7 +514,7 @@ fi
 if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
   case "$2" in
     "annie")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'annie_*_Linux_64-bit.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'annie_*_Linux_64-bit.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_GZ}" && \
@@ -566,7 +566,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "composer")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'composer.phar' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'composer.phar' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       echo -e "${INSTALL_SUCCESS}"
       exit 0
@@ -598,7 +598,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "delta")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'delta-*-x86_64-unknown-linux-gnu.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'delta-*-x86_64-unknown-linux-gnu.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" delta-"${APP_VERSION}"-x86_64-unknown-linux-gnu/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_GZ}" && \
@@ -616,7 +616,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "dnscrypt-proxy")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'dnscrypt-proxy-linux_x86_64-*.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'dnscrypt-proxy-linux_x86_64-*.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" linux-x86_64/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_GZ}" && \
@@ -625,7 +625,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "docker-compose")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'docker-compose-Linux-x86_64' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'docker-compose-Linux-x86_64' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       echo -e "${INSTALL_SUCCESS}"
       exit 0
@@ -654,6 +654,8 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
       if [ "$3" == "latest" ]; then
         APP_VERSION="$(curl -sSL https://ffmpeg.org/releases/ | grep "tar.gz\"" | sed 's|^.\{62\}||g;s|.tar.gz.*||g' | sort | sed '$!d')"
         INSTALL_SUCCESS="The latest version of $2 (v$APP_VERSION) was successfully installed to ${INSTALL_DIR_APP}."
+        FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
+      elif [ "$3" == "4.2.3" ]; then
         FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
       else
         FFMPEG_URL="https://www.johnvansickle.com/ffmpeg/old-releases/ffmpeg-${APP_VERSION}-amd64-static.tar.xz"
@@ -701,7 +703,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "fzf")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'fzf-*-linux_amd64.tgz' > "${TMP_DIR_TGZ}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'fzf-*-linux_amd64.tgz' > "${TMP_DIR_TGZ}" && \
       tar -xf "${TMP_DIR_TGZ}" -C "${INSTALL_DIR_APP:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TGZ}" && \
@@ -710,7 +712,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "gdrive")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'gdrive-linux-x64' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'gdrive-linux-x64' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       echo -e "${INSTALL_SUCCESS}"
       exit 0
@@ -779,7 +781,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "gosu")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'gosu-amd64' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'gosu-amd64' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       echo -e "${INSTALL_SUCCESS}"
       exit 0
@@ -827,7 +829,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "inlets")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'inlets' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'inlets' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       echo -e "${INSTALL_SUCCESS}"
       exit 0
@@ -929,7 +931,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "portainer")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'portainer-*-linux-amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'portainer-*-linux-amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" portainer/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_GZ}" && \
@@ -938,7 +940,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "qrcp")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'qrcp_*_linux_x86_64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'qrcp_*_linux_x86_64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_GZ}" && \
@@ -1085,7 +1087,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "youtube-dl")
-      gget --stdout "${!REPO}""${PREFIX_NONE}""${APP_VERSION}" 'youtube-dl' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'youtube-dl' > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       echo -e "${INSTALL_SUCCESS}"
       exit 0

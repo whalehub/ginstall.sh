@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.2] - 2020-06-09
+### Fixed
+- A bug that was preventing `gget` from parsing release version tags that are not prefixed with a "v".
+- Added a workaround for installing the latest version of ffmpeg if the latest version number is used as an argument instead of "latest".
+
 ## [2.0.1] - 2020-06-09
 ### Fixed
 - A bug that was preventing the `--remove` command from working on `komga` due to its file extension `.jar`.
