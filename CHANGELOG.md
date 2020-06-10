@@ -3,6 +3,34 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2020-06-10
+### Added
+- Support for [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome).
+- Support for [Age](https://github.com/FiloSottile/age).
+- Support for [Archiver](https://github.com/mholt/archiver).
+- Support for [Argo CD](https://github.com/argoproj/argo-cd).
+- Support for [Cloud Torrent](https://github.com/jpillora/cloud-torrent).
+- Support for [Cobalt](https://github.com/cobalt-org/cobalt.rs).
+- Support for [Docker-Gen](https://github.com/jwilder/docker-gen).
+- Support for [Docker Machine](https://github.com/docker/machine).
+- Support for [Duplicacy](https://github.com/gilbertchen/duplicacy).
+- Support for [EdgeDNS](https://github.com/jedisct1/edgedns).
+- Support for [Etcd](https://github.com/etcd-io/etcd).
+- Support for [Ethr](https://github.com/microsoft/ethr).
+- Support for [Firecracker](https://github.com/firecracker-microvm/firecracker)'s two components `firecracker` and `jailer`.
+- Support for [Flux](https://github.com/fluxcd/flux).
+- Support for [GoBuster](https://github.com/OJ/gobuster).
+- Support for [GolangCI-Lint](https://github.com/golangci/golangci-lint).
+- Support for [GoPass](https://github.com/gopasspw/gopass).
+- Support for [IPFS](https://github.com/ipfs/go-ipfs).
+- Support for [LinuxKit](https://github.com/linuxkit/linuxkit).
+- Support for [mdBook](https://github.com/rust-lang/mdBook).
+- Support for [Monitoror](https://github.com/monitoror/monitoror).
+- Support for [Rage](https://github.com/str4d/rage).
+- Support for [Starship](https://github.com/starship/starship).
+- Support for [Vuls](https://github.com/future-architect/vuls).
+- Support for [Zola](https://github.com/getzola/zola).
+
 ## [2.1.0] - 2020-06-09
 ### Added
 - A sanity check to prevent the accidental uninstallation of an unsupported application with the `--remove` flag.

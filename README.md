@@ -4,16 +4,21 @@ This script can be used to install/update a number of statically compiled applic
 It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to dynamically fetch git repository assets whenever possible.
 
 ## Dependencies
-
+### Mandatory
 • [gget](https://github.com/dpb587/gget) v0.3.0 or later
-
-• [bzip2](https://packages.debian.org/buster/bzip2) (only needed for `restic`)
 
 • [curl](https://packages.debian.org/buster/curl)
 
 • [tar](https://packages.debian.org/buster/tar)
 
 • [unzip](https://packages.debian.org/buster/unzip)
+
+### Optional
+• [bzip2](https://packages.debian.org/buster/bzip2) (only required for installing `restic`)
+
+• [gzip](https://packages.debian.org/buster/gzip) (only required for installing `cloud-torrnt`)
+
+• [p7zip](https://packages.debian.org/buster/p7zip) (only required for installing `gobuster`)
 
 ## Installation
 
@@ -65,7 +70,7 @@ export GITHUB_TOKEN=replace_this_string_with_your_token
 
 ## Supported Applications
 
-You can view a markdown-formatted version of the list (one with easily-clickable repository links) by opening the spoiler below.
+You can view a markdown-formatted version of the list with easily-clickable repository links by opening the spoiler below.
 
 <details>
   <summary>Spoiler</summary>
@@ -73,12 +78,18 @@ You can view a markdown-formatted version of the list (one with easily-clickable
 
 | Application | Repository |
 | ----------- | ---------- |
+| adguardhome                 | https://github.com/AdguardTeam/AdGuardHome |
+| age                         | https://github.com/FiloSottile/age |
 | annie                       | https://github.com/iawia002/annie |
+| arc                         | https://github.com/mholt/archiver |
+| argocd                      | https://github.com/argoproj/argo-cd |
 | bin                         | https://github.com/w4/bin |
 | blocky                      | https://github.com/0xERR0R/blocky |
 | bw                          | https://github.com/bitwarden/cli |
 | caddy                       | https://github.com/caddyserver/caddy |
 | caire                       | https://github.com/esimov/caire |
+| cloud-torrent               | https://github.com/jpillora/cloud-torrent |
+| cobalt                      | https://github.com/cobalt-org/cobalt.rs |
 | composer                    | https://github.com/composer/composer |
 | coredns                     | https://github.com/coredns/coredns |
 | croc                        | https://github.com/schollz/croc |
@@ -88,10 +99,18 @@ You can view a markdown-formatted version of the list (one with easily-clickable
 | dnscrypt-proxy              | https://github.com/DNSCrypt/dnscrypt-proxy |
 | docker-compose              | https://github.com/docker/compose |
 | docker-credential-pass      | https://github.com/docker/docker-credential-helpers |
+| docker-gen                  | https://github.com/jwilder/docker-gen |
+| docker-machine              | https://github.com/docker/machine |
+| duplicacy                   | https://github.com/gilbertchen/duplicacy |
+| edgedns                     | https://github.com/jedisct1/edgedns |
+| etcd                        | https://github.com/etcd-io/etcd |
+| ethr                        | https://github.com/microsoft/ethr |
 | exa                         | https://github.com/ogham/exa |
 | ffmpeg                      | https://github.com/FFmpeg/FFmpeg |
 | ffsend                      | https://github.com/timvisee/ffsend |
 | filebrowser                 | https://github.com/filebrowser/filebrowser |
+| firecracker                 | https://github.com/firecracker-microvm/firecracker |
+| flux                        | https://github.com/fluxcd/flux |
 | frpc                        | https://github.com/fatedier/frp |
 | frps                        | https://github.com/fatedier/frp |
 | fzf                         | https://github.com/junegunn/fzf |
@@ -101,7 +120,10 @@ You can view a markdown-formatted version of the list (one with easily-clickable
 | ginstall.sh                 | https://github.com/whalehub/ginstall.sh |
 | gitea                       | https://github.com/go-gitea/gitea |
 | go                          | https://github.com/golang/go |
+| gobuster                    | https://github.com/OJ/gobuster |
 | gogs                        | https://github.com/gogs/gogs |
+| golangci-lint               | https://github.com/golangci/golangci-lint |
+| gopass                      | https://github.com/gopasspw/gopass |
 | goreleaser                  | https://github.com/goreleaser/goreleaser |
 | gosu                        | https://github.com/tianon/gosu |
 | gotty                       | https://github.com/yudai/gotty |
@@ -110,23 +132,30 @@ You can view a markdown-formatted version of the list (one with easily-clickable
 | hugo                        | https://github.com/gohugoio/hugo |
 | imdl                        | https://github.com/casey/intermodal |
 | inlets                      | https://github.com/inlets/inlets |
+| ipfs                        | https://github.com/ipfs/go-ipfs |
+| jailer                      | https://github.com/firecracker-microvm/firecracker |
 | k3s                         | https://github.com/rancher/k3s |
 | k9s                         | https://github.com/derailed/k9s |
 | komga                       | https://github.com/gotson/komga |
 | kompose                     | https://github.com/kubernetes/kompose |
 | lazydocker                  | https://github.com/jesseduffield/lazydocker |
 | lego                        | https://github.com/go-acme/lego |
+| linuxkit                    | https://github.com/linuxkit/linuxkit |
+| mdbook                      | https://github.com/rust-lang/mdBook |
 | micro                       | https://github.com/zyedidia/micro |
 | mkcert                      | https://github.com/FiloSottile/mkcert |
+| monitoror                   | https://github.com/monitoror/monitoror |
 | nebula                      | https://github.com/slackhq/nebula |
 | pgweb                       | https://github.com/sosedoff/pgweb |
 | podman-remote               | https://github.com/containers/libpod |
 | portainer                   | https://github.com/portainer/portainer |
 | qrcp                        | https://github.com/claudiodangelis/qrcp |
+| rage                        | https://github.com/str4d/rage |
 | rclone                      | https://github.com/rclone/rclone |
 | restic                      | https://github.com/restic/restic |
 | shellcheck                  | https://github.com/koalaman/shellcheck |
 | slack-term                  | https://github.com/erroneousboat/slack-term |
+| starship                    | https://github.com/starship/starship |
 | statping                    | https://github.com/statping/statping |
 | stdiscosrv                  | https://github.com/syncthing/discosrv |
 | step                        | https://github.com/smallstep/cli |
@@ -137,9 +166,11 @@ You can view a markdown-formatted version of the list (one with easily-clickable
 | transfersh                  | https://github.com/dutchcoders/transfer.sh |
 | upx                         | https://github.com/upx/upx |
 | vigil                       | https://github.com/valeriansaliou/vigil |
+| vuls                        | https://github.com/future-architect/vuls |
 | watchtower                  | https://github.com/containrrr/watchtower |
 | wuzz                        | https://github.com/asciimoo/wuzz |
 | youtube-dl                  | https://github.com/ytdl-org/youtube-dl |
+| zola                        | https://github.com/getzola/zola |
 
 </details>
 
@@ -148,7 +179,11 @@ whalehub@pdh:~# ginstall.sh --list
 Application:                Repository:
 ------------                -----------
 A
+adguardhome                 github.com/AdguardTeam/AdGuardHome
+age                         github.com/FiloSottile/age
 annie                       github.com/iawia002/annie
+arc                         github.com/mholt/archiver
+argocd                      github.com/argoproj/argo-cd
 
 B
 bin                         github.com/w4/bin
@@ -158,6 +193,8 @@ bw                          github.com/bitwarden/cli
 C
 caddy                       github.com/caddyserver/caddy
 caire                       github.com/esimov/caire
+cloud-torrent               github.com/jpillora/cloud-torrent
+cobalt                      github.com/cobalt-org/cobalt.rs
 composer                    github.com/composer/composer
 coredns                     github.com/coredns/coredns
 croc                        github.com/schollz/croc
@@ -169,14 +206,21 @@ dive                        github.com/wagoodman/dive
 dnscrypt-proxy              github.com/DNSCrypt/dnscrypt-proxy
 docker-compose              github.com/docker/compose
 docker-credential-pass      github.com/docker/docker-credential-helpers
+docker-gen                  github.com/jwilder/docker-gen
+docker-machine              github.com/docker/machine
+duplicacy                   github.com/gilbertchen/duplicacy
 
 E
+edgedns                     github.com/jedisct1/edgedns
+etcd                        github.com/etcd-io/etcd
 exa                         github.com/ogham/exa
 
 F
 ffmpeg                      github.com/FFmpeg/FFmpeg
 ffsend                      github.com/timvisee/ffsend
 filebrowser                 github.com/filebrowser/filebrowser
+firecracker                 github.com/firecracker-microvm/firecracker
+flux                        github.com/fluxcd/flux
 frpc                        github.com/fatedier/frp
 frps                        github.com/fatedier/frp
 fzf                         github.com/junegunn/fzf
@@ -188,7 +232,10 @@ gh                          github.com/cli/cli
 ginstall.sh                 github.com/whalehub/ginstall.sh
 gitea                       github.com/go-gitea/gitea
 go                          github.com/golang/go
+gobuster                    github.com/OJ/gobuster
 gogs                        github.com/gogs/gogs
+golangci-lint               github.com/golangci/golangci-lint
+gopass                      github.com/gopasspw/gopass
 goreleaser                  github.com/goreleaser/goreleaser
 gosu                        github.com/tianon/gosu
 gotty                       github.com/yudai/gotty
@@ -201,6 +248,10 @@ hugo                        github.com/gohugoio/hugo
 I
 imdl                        github.com/casey/intermodal
 inlets                      github.com/inlets/inlets
+ipfs                        github.com/ipfs/go-ipfs
+
+J
+jailer                      github.com/firecracker-microvm/firecracker
 
 K
 k3s                         github.com/rancher/k3s
@@ -211,10 +262,13 @@ kompose                     github.com/kubernetes/kompose
 L
 lazydocker                  github.com/jesseduffield/lazydocker
 lego                        github.com/go-acme/lego
+linuxkit                    github.com/linuxkit/linuxkit
 
 M
+mdbook                      github.com/rust-lang/mdBook
 micro                       github.com/zyedidia/micro
 mkcert                      github.com/FiloSottile/mkcert
+monitoror                   github.com/monitoror/monitoror
 
 N
 nebula                      github.com/slackhq/nebula
@@ -228,12 +282,14 @@ Q
 qrcp                        github.com/claudiodangelis/qrcp
 
 R
+rage                        github.com/str4d/rage
 rclone                      github.com/rclone/rclone
 restic                      github.com/restic/restic
 
 S
 shellcheck                  github.com/koalaman/shellcheck
 slack-term                  github.com/erroneousboat/slack-term
+starship                    github.com/starship/starship
 statping                    github.com/statping/statping
 stdiscosrv                  github.com/syncthing/discosrv
 step                        github.com/smallstep/cli
@@ -250,6 +306,7 @@ upx                         github.com/upx/upx
 
 V
 vigil                       github.com/valeriansaliou/vigil
+vuls                        github.com/future-architect/vuls
 
 W
 watchtower                  github.com/containrrr/watchtower
@@ -257,6 +314,9 @@ wuzz                        github.com/asciimoo/wuzz
 
 Y
 youtube-dl                  github.com/ytdl-org/youtube-dl
+
+Z
+zola                        github.com/getzola/zola
 ```
 
 ## Development
