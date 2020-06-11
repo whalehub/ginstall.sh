@@ -3,6 +3,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] - 2020-06-11
+### Added
+- Support for [DNS Proxy](https://github.com/AdguardTeam/dnsproxy).
+- Support for [Drive](https://github.com/odeke-em/drive).
+- Support for [Frece](https://github.com/YodaEmbedding/frece).
+- Support for [Hyperfine](https://github.com/sharkdp/hyperfine).
+- Support for [Naabu](https://github.com/projectdiscovery/naabu).
+- Support for [Open Policy Agent](github.com/open-policy-agent/opa).
+- Support for [Shadowsocks-Rust](https://github.com/shadowsocks/shadowsocks-rust)'s components `sslocal`, `ssmanager`, `ssserver` and `ssurl`.
+- Support for [Swagger](https://github.com/go-swagger/go-swagger).
+- Support for [Trivy](https://github.com/aquasecurity/trivy).
+- Support for [unFTP](https://github.com/bolcom/unFTP).
+- Support for [Vector](https://github.com/timberio/vector).
+- Support for [Velero](https://github.com/vmware-tanzu/velero).
+- Support for [XSV](https://github.com/BurntSushi/xsv).
+- Support for [Ytop](https://github.com/cjbassi/ytop).
+- Support for [Zenith](https://github.com/bvaisvil/zenith).
+
+### Changed
+- Start consolidating application code blocks to eliminate duplicated code throughout the script.
+
 ## [2.3.0] - 2020-06-11
 ### Added
 - Support for [ACME-DNS](https://github.com/joohoi/acme-dns).
