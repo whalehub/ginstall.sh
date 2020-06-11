@@ -9,7 +9,7 @@ GINSTALL_SH_VERSION="2.3.0"
 INSTALL_DIR_APP="/usr/local/bin"
 INSTALL_DIR_GO="/usr/local"
 
-GGET_DIR="$(command -v gget)"
+GGET_DIR="$(command -v "gget")"
 
 TMP_DIR_GGET="/tmp/gget"
 TMP_DIR_7Z="/tmp/ginstall.7z"
@@ -671,14 +671,14 @@ case "$1" in
     else
       case "$2" in
         "age" | "rage")
-          APP_DIR="$(command -v $2)"
+          APP_DIR="$(command -v "$2")"
           rm -v "${APP_DIR:?}" "${APP_DIR:?}"-keygen && \
           echo -e "${UNINSTALL_SUCCESS}"
           exit 0
         ;;
 
         "etcd")
-          APP_DIR="$(command -v $2)"
+          APP_DIR="$(command -v "$2")"
           rm -v "${APP_DIR:?}" "${APP_DIR:?}"ctl && \
           echo -e "${UNINSTALL_SUCCESS}"
           exit 0
@@ -704,28 +704,28 @@ case "$1" in
         ;;
 
         "go")
-          APP_DIR="$(command -v $2 | sed 's|/bin/go||g')"
+          APP_DIR="$(command -v "$2" | sed 's|/bin/go||g')"
           rm -vr "${APP_DIR:?}" && \
           echo -e "${UNINSTALL_SUCCESS}"
           exit 0
         ;;
 
         "komga")
-          APP_DIR="$(command -v $2.jar)"
+          APP_DIR="$(command -v "$2".jar)"
           rm -v "${APP_DIR:?}" && \
           echo -e "${UNINSTALL_SUCCESS}"
           exit 0
         ;;
 
         "nebula")
-          APP_DIR="$(command -v $2)"
+          APP_DIR="$(command -v "$2")"
           rm -v "${APP_DIR:?}" "${APP_DIR:?}"-cert && \
           echo -e "${UNINSTALL_SUCCESS}"
           exit 0
         ;;
 
         "rootlesskit")
-          APP_DIR="$(command -v $2)"
+          APP_DIR="$(command -v "$2")"
           APP_DIR_CTL="$(command -v rootlessctl)"
           rm -v "${APP_DIR:?}" "${APP_DIR_CTL:?}" && \
           echo -e "${UNINSTALL_SUCCESS}"
@@ -733,14 +733,14 @@ case "$1" in
         ;;
 
         "tldr++")
-          APP_DIR="$(command -v tldr)"
+          APP_DIR="$(command -v "tldr")"
           rm -v "${APP_DIR:?}" && \
           echo -e "${UNINSTALL_SUCCESS}"
           exit 0
         ;;
 
         *)
-          APP_DIR="$(command -v $2)"
+          APP_DIR="$(command -v "$2")"
           rm -v "${APP_DIR:?}" && \
           echo -e "${UNINSTALL_SUCCESS}"
           exit 0
@@ -1672,7 +1672,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "json2csv")
-      JSON2CSV_PATH="$(gget --show-resources ${!REPO}${VERSION_PREFIX_V}${APP_VERSION} 'json2csv-*.linux-amd64.go*.tar.gz' | sed 's|.tar.gz||g')"
+      JSON2CSV_PATH="$(gget --show-resources "${!REPO}""${VERSION_PREFIX_V}""${APP_VERSION}" 'json2csv-*.linux-amd64.go*.tar.gz' | sed 's|.tar.gz||g')"
       gget --stdout "${!REPO}""${VERSION_PREFIX_V}""${APP_VERSION}" 'json2csv-*.linux-amd64.go*.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" "${JSON2CSV_PATH:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
@@ -1906,7 +1906,7 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     ;;
 
     "oauth2-proxy")
-      OAUTH2_PROXY_PATH="$(gget --show-resources ${!REPO}${VERSION_PREFIX_V}${APP_VERSION} 'oauth2_proxy-v*.linux-amd64.go*.tar.gz' | sed 's|.tar.gz||g')"
+      OAUTH2_PROXY_PATH="$(gget --show-resources "${!REPO}""${VERSION_PREFIX_V}""${APP_VERSION}" 'oauth2_proxy-v*.linux-amd64.go*.tar.gz' | sed 's|.tar.gz||g')"
       gget --stdout "${!REPO}""${VERSION_PREFIX_V}""${APP_VERSION}" 'oauth2_proxy-v*.linux-amd64.go*.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" "${OAUTH2_PROXY_PATH:?}"/oauth2_proxy ${TAR_ARGS} --strip-components=1 && \
       mv "${INSTALL_DIR_APP:?}"/oauth2_proxy "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \

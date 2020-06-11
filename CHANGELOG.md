@@ -5,18 +5,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [2.3.0] - 2020-06-11
 ### Added
-- Support for [A Pizza](https://github.com/harrybrwn/apizza).
 - Support for [ACME-DNS](https://github.com/joohoi/acme-dns).
 - Support for [Andesite](https://github.com/nektro/andesite).
+- Support for [Apizza](https://github.com/harrybrwn/apizza).
 - Support for [Autocert](https://github.com/smallstep/autocert).
-- Support for [BED](https://github.com/itchyny/bed).
+- Support for [Bed](https://github.com/itchyny/bed).
 - Support for [Bombardier](https://github.com/codesenberg/bombardier).
 - Support for [Brig](https://github.com/sahib/brig).
 - Support for [CCat](https://github.com/jingweno/ccat).
-- Support for [Captain Hook](https://github.com/bketelsen/captainhook).
+- Support for [CaptainHook](https://github.com/bketelsen/captainhook).
 - Support for [Chroma](https://github.com/alecthomas/chroma).
 - Support for [Comics Downloader](https://github.com/Girbons/comics-downloader).
-- Support for [Compress](https://github.com/klauspost/compress)'s components `s2c` and `s2d`.
+- Support for [Compress](https://github.com/klauspost/compress)' components `s2c` and `s2d`.
 - Support for [DDGR](https://github.com/jarun/ddgr).
 - Support for [DDNS-Route53](https://github.com/crazy-max/ddns-route53).
 - Support for [DNSControl](https://github.com/StackExchange/dnscontrol).
@@ -29,7 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [FTPGrab](https://github.com/ftpgrab/ftpgrab).
 - Support for [FX](https://github.com/metrue/fx).
 - Support for [GeoIP-Updater](https://github.com/crazy-max/geoip-updater).
-- Support for [Git Hooks](https://github.com/git-hooks/git-hooks).
+- Support for [Git-Hooks](https://github.com/git-hooks/git-hooks).
 - Support for [Git-Rewrite-Author](https://github.com/crazy-max/git-rewrite-author).
 - Support for [GitBatch](https://github.com/isacikgoz/gitbatch).
 - Support for [Go-AVIF](https://github.com/Kagami/go-avif).
@@ -40,6 +40,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [Googler](https://github.com/jarun/googler).
 - Support for [Goploader](https://github.com/Depado/goploader)'s components `gpldr-server` and `gpldr-client`.
 - Support for [Gossa](https://github.com/pldubouilh/gossa).
+- Support for [Govmomi](https://github.com/vmware/govmomi)'s component `govc`.
 - Support for [Intercert](https://github.com/evenh/intercert).
 - Support for [IronFunctions](https://github.com/iron-io/functions)' component `fn`.
 - Support for [JSON2CSV](https://github.com/jehiah/json2csv/).
@@ -82,9 +83,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [Tengo](https://github.com/d5/tengo).
 - Support for [Travis-Wait-Enhanced](https://github.com/crazy-max/travis-wait-enhanced).
 - Support for [Up](https://github.com/apex/up).
+- Support for [vSphere-InfluxDB-Go](https://github.com/Oxalide/vsphere-influxdb-go).
 - Support for [YQ](https://github.com/mikefarah/yq).
-- Support for [govmomi](https://github.com/vmware/govmomi)'s component `govc`.
-- Support for [vSphere InfluxDB Go](https://github.com/Oxalide/vsphere-influxdb-go).
 
 ## Changed
 - The `unzip` command is now executed silently with the `-q` flag.
@@ -105,7 +105,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [Ethr](https://github.com/microsoft/ethr).
 - Support for [Firecracker](https://github.com/firecracker-microvm/firecracker)'s components `firecracker` and `jailer`.
 - Support for [Flux](https://github.com/fluxcd/flux).
-- Support for [GoBuster](https://github.com/OJ/gobuster).
+- Support for [Gobuster](https://github.com/OJ/gobuster).
 - Support for [GolangCI-Lint](https://github.com/golangci/golangci-lint).
 - Support for [GoPass](https://github.com/gopasspw/gopass).
 - Support for [IPFS](https://github.com/ipfs/go-ipfs).
@@ -156,7 +156,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [Delta](https://github.com/dandavison/delta).
 - Support for [Exa](https://github.com/ogham/exa).
 - Support for [K9S](https://github.com/derailed/k9s).
-- Support for [Statping](github.com/statping/statping).
+- Support for [Statping](https://github.com/statping/statping).
 
 ### Changed
 - The supported applications are now grouped by their first letter for better readability.
@@ -188,7 +188,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [QRCP](https://github.com/claudiodangelis/qrcp).
 - Support for [Restic](https://github.com/restic/restic).
 - Support for [Slack-Term](https://github.com/erroneousboat/slack-term).
-- Support for [TransferSH](https://github.com/dutchcoders/transfer.sh).
+- Support for [Transfer.sh](https://github.com/dutchcoders/transfer.sh).
 - Support for [Watchtower](https://github.com/containrrr/watchtower).
 - Support for [Wuzz](https://github.com/asciimoo/wuzz).
 
