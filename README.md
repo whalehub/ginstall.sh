@@ -88,6 +88,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | argocd                      | https://github.com/argoproj/argo-cd |
 | authelia                    | https://github.com/authelia/authelia |
 | autocert                    | https://github.com/smallstep/autocert |
+| bat                         | https://github.com/sharkdp/bat |
 | bed                         | https://github.com/itchyny/bed |
 | bin                         | https://github.com/w4/bin |
 | blocky                      | https://github.com/0xERR0R/blocky |
@@ -129,6 +130,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | ethr                        | https://github.com/microsoft/ethr |
 | eureka                      | https://github.com/mimoo/eureka |
 | exa                         | https://github.com/ogham/exa |
+| fd                          | https://github.com/sharkdp/fd |
 | ffmpeg                      | https://github.com/FFmpeg/FFmpeg |
 | ffsend                      | https://github.com/timvisee/ffsend |
 | filebrowser                 | https://github.com/filebrowser/filebrowser |
@@ -231,6 +233,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | red                         | https://github.com/antonmedv/red |
 | reg                         | https://github.com/genuinetools/reg |
 | restic                      | https://github.com/restic/restic |
+| rg                          | https://github.com/BurntSushi/ripgrep |
 | rio                         | https://github.com/rancher/rio |
 | rootlesskit                 | https://github.com/rootless-containers/rootlesskit |
 | s                           | https://github.com/zquestz/s |
@@ -302,6 +305,7 @@ authelia                    github.com/authelia/authelia
 autocert                    github.com/smallstep/autocert
 
 B
+bat                         github.com/sharkdp/bat
 bed                         github.com/itchyny/bed
 bin                         github.com/w4/bin
 blocky                      github.com/0xERR0R/blocky
@@ -351,6 +355,7 @@ eureka                      github.com/mimoo/eureka
 exa                         github.com/ogham/exa
 
 F
+fd                          github.com/sharkdp/fd
 ffmpeg                      github.com/FFmpeg/FFmpeg
 ffsend                      github.com/timvisee/ffsend
 filebrowser                 github.com/filebrowser/filebrowser
@@ -477,6 +482,7 @@ rclone                      github.com/rclone/rclone
 red                         github.com/antonmedv/red
 reg                         github.com/genuinetools/reg
 restic                      github.com/restic/restic
+rg                          github.com/BurntSushi/ripgrep
 rio                         github.com/rancher/rio
 rootlesskit                 github.com/rootless-containers/rootlesskit
 

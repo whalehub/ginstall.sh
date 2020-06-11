@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------ #
 
-GINSTALL_SH_VERSION="2.4.0"
+GINSTALL_SH_VERSION="2.5.0"
 
 # ------------------------------------------------------------------ #
 
@@ -46,6 +46,7 @@ REPO_AUTHELIA="github.com/authelia/authelia"
 REPO_AUTOCERT="github.com/smallstep/autocert"
 
 # B
+REPO_BAT="github.com/sharkdp/bat"
 REPO_BED="github.com/itchyny/bed"
 REPO_BIN="github.com/w4/bin"
 REPO_BLOCKY="github.com/0xERR0R/blocky"
@@ -95,6 +96,7 @@ REPO_EUREKA="github.com/mimoo/eureka"
 REPO_EXA="github.com/ogham/exa"
 
 # F
+REPO_FD="github.com/sharkdp/fd"
 REPO_FFMPEG="github.com/FFmpeg/FFmpeg"
 REPO_FFSEND="github.com/timvisee/ffsend"
 REPO_FILEBROWSER="github.com/filebrowser/filebrowser"
@@ -223,6 +225,7 @@ REPO_RCLONE="github.com/rclone/rclone"
 REPO_RED="github.com/antonmedv/red"
 REPO_REG="github.com/genuinetools/reg"
 REPO_RESTIC="github.com/restic/restic"
+REPO_RG="github.com/BurntSushi/ripgrep"
 REPO_RIO="github.com/rancher/rio"
 REPO_ROOTLESSKIT="github.com/rootless-containers/rootlesskit"
 
@@ -310,6 +313,7 @@ authelia                    $REPO_AUTHELIA
 autocert                    $REPO_AUTOCERT
 
 B
+bat                         $REPO_BAT
 bed                         $REPO_BED
 bin                         $REPO_BIN
 blocky                      $REPO_BLOCKY
@@ -359,6 +363,7 @@ eureka                      $REPO_EUREKA
 exa                         $REPO_EXA
 
 F
+fd                          $REPO_FD
 ffmpeg                      $REPO_FFMPEG
 ffsend                      $REPO_FFSEND
 filebrowser                 $REPO_FILEBROWSER
@@ -485,6 +490,7 @@ rclone                      $REPO_RCLONE
 red                         $REPO_RED
 reg                         $REPO_REG
 restic                      $REPO_RESTIC
+rg                          $REPO_RG
 rio                         $REPO_RIO
 rootlesskit                 $REPO_ROOTLESSKIT
 
@@ -927,6 +933,8 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
       exit 0
     ;;
 
+# ------------------------------------------------------------------ #
+
     "adguardhome")
       gget --stdout "${!REPO}""${VERSION_PREFIX_V}""${APP_VERSION}" 'AdGuardHome_linux_amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" AdGuardHome/AdGuardHome ${TAR_ARGS} --strip-components=1 && \
@@ -976,6 +984,15 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
     "autocert")
       gget --stdout "${!REPO}""${VERSION_PREFIX_V}""${APP_VERSION}" 'autocert_*_linux_amd64.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
       tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" autocert_"${APP_VERSION}"/bin/"${APP_NAME}" ${TAR_ARGS} --strip-components=2 && \
+      chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
+      echo -e "${INSTALL_SUCCESS}"
+      exit 0
+    ;;
+
+    "bat")
+      gget --stdout "${!REPO}""${VERSION_PREFIX_V}""${APP_VERSION}" 'bat-v*-x86_64-unknown-linux-gnu.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" "${APP_NAME}"-v"${APP_VERSION}"-x86_64-unknown-linux-gnu/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
@@ -1223,6 +1240,15 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
       mv "${INSTALL_DIR_APP:?}"/"${APP_NAME}"-linux-x86_64 "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       rm "${TMP_DIR_ZIP}" && \
+      echo -e "${INSTALL_SUCCESS}"
+      exit 0
+    ;;
+
+    "fd")
+      gget --stdout "${!REPO}""${VERSION_PREFIX_V}""${APP_VERSION}" 'fd-v*-x86_64-unknown-linux-gnu.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" "${APP_NAME}"-v"${APP_VERSION}"-x86_64-unknown-linux-gnu/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
+      chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
       exit 0
     ;;
@@ -2035,6 +2061,15 @@ if [ "$(id -u)" == "0" ] || [ "${DIR_FLAG}" == "true" ]; then
       bzip2 -d "${TMP_DIR_BZ2}" -c > "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
       rm "${TMP_DIR_BZ2}" && \
+      echo -e "${INSTALL_SUCCESS}"
+      exit 0
+    ;;
+
+    "rg")
+      gget --stdout "${!REPO}""${VERSION_PREFIX_NONE}""${APP_VERSION}" 'ripgrep-*-x86_64-unknown-linux-musl.tar.gz' > "${TMP_DIR_TAR_GZ}" && \
+      tar -xf "${TMP_DIR_TAR_GZ}" -C "${INSTALL_DIR_APP:?}" ripgrep-"${APP_VERSION}"-x86_64-unknown-linux-musl/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
+      chmod +x "${INSTALL_DIR_APP:?}"/"${APP_NAME}" && \
+      rm "${TMP_DIR_TAR_GZ}" && \
       echo -e "${INSTALL_SUCCESS}"
       exit 0
     ;;
