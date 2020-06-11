@@ -3,6 +3,92 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2020-06-11
+### Added
+- Support for [A Pizza](https://github.com/harrybrwn/apizza).
+- Support for [ACME-DNS](https://github.com/joohoi/acme-dns).
+- Support for [Andesite](https://github.com/nektro/andesite).
+- Support for [Autocert](https://github.com/smallstep/autocert).
+- Support for [BED](https://github.com/itchyny/bed).
+- Support for [Bombardier](https://github.com/codesenberg/bombardier).
+- Support for [Brig](https://github.com/sahib/brig).
+- Support for [CCat](https://github.com/jingweno/ccat).
+- Support for [Captain Hook](https://github.com/bketelsen/captainhook).
+- Support for [Chroma](https://github.com/alecthomas/chroma).
+- Support for [Comics Downloader](https://github.com/Girbons/comics-downloader).
+- Support for [Compress](https://github.com/klauspost/compress)'s components `s2c` and `s2d`.
+- Support for [DDGR](https://github.com/jarun/ddgr).
+- Support for [DDNS-Route53](https://github.com/crazy-max/ddns-route53).
+- Support for [DNSControl](https://github.com/StackExchange/dnscontrol).
+- Support for [Discord-Delete](https://github.com/adversarialtools/discord-delete).
+- Support for [DiscordConsole](https://github.com/discordconsole-team/DiscordConsole).
+- Support for [Diun](https://github.com/crazy-max/diun).
+- Support for [Dobi](https://github.com/dnephin/dobi).
+- Support for [Drone CLI](https://github.com/drone/drone-cli).
+- Support for [Eureka](https://github.com/mimoo/eureka).
+- Support for [FTPGrab](https://github.com/ftpgrab/ftpgrab).
+- Support for [FX](https://github.com/metrue/fx).
+- Support for [GeoIP-Updater](https://github.com/crazy-max/geoip-updater).
+- Support for [Git Hooks](https://github.com/git-hooks/git-hooks).
+- Support for [Git-Rewrite-Author](https://github.com/crazy-max/git-rewrite-author).
+- Support for [GitBatch](https://github.com/isacikgoz/gitbatch).
+- Support for [Go-AVIF](https://github.com/Kagami/go-avif).
+- Support for [GoAutoYT](https://github.com/XiovV/Golty).
+- Support for [GoatCounter](https://github.com/zgoat/goatcounter).
+- Support for [Gomplate](https://github.com/hairyhenderson/gomplate).
+- Support for [Gomuks](https://github.com/tulir/gomuks).
+- Support for [Googler](https://github.com/jarun/googler).
+- Support for [Goploader](https://github.com/Depado/goploader)'s components `gpldr-server` and `gpldr-client`.
+- Support for [Gossa](https://github.com/pldubouilh/gossa).
+- Support for [Intercert](https://github.com/evenh/intercert).
+- Support for [IronFunctions](https://github.com/iron-io/functions)' component `fn`.
+- Support for [JSON2CSV](https://github.com/jehiah/json2csv/).
+- Support for [JSON5](https://github.com/yosuke-furukawa/json5).
+- Support for [Jellycli](https://github.com/tryffel/jellycli).
+- Support for [Jsteg](https://github.com/lukechampine/jsteg)'s components `jsteg` and `slink`.
+- Support for [Linx Server](https://github.com/andreimarcu/linx-server)'s components `linx-server`, `linx-genkey` and `linx-cleanup`.
+- Support for [Loki](https://github.com/grafana/loki)'s components `loki`, `logcli` and `promtail`.
+- Support for [Louketo Proxy](https://github.com/louketo/louketo-proxy).
+- Support for [Magnetico](https://github.com/boramalper/magnetico)'s components `magneticod` and `magneticow`.
+- Support for [Matterbridge](https://github.com/42wim/matterbridge).
+- Support for [Minify](https://github.com/tdewolff/minify).
+- Support for [NNN](https://github.com/jarun/nnn).
+- Support for [Navidrome](https://github.com/deluan/navidrome).
+- Support for [Niltalk](https://github.com/knadh/niltalk).
+- Support for [OAuth2 Proxy](https://github.com/oauth2-proxy/oauth2-proxy).
+- Support for [Oragono](https://github.com/oragono/oragono).
+- Support for [Parcello](https://github.com/phogolabs/parcello).
+- Support for [Peach](https://github.com/peachdocs/peach).
+- Support for [Pebble](https://github.com/letsencrypt/pebble)'s components `pebble` and `pebble-challtestsrv`.
+- Support for [Pkger](https://github.com/markbates/pkger).
+- Support for [Plexdrive](https://github.com/plexdrive/plexdrive).
+- Support for [Plik](https://github.com/root-gg/plik)'s components `plik` and `plikd`.
+- Support for [Pomerium](https://github.com/pomerium/pomerium)'s components `pomerium` and `pomerium-cli`.
+- Support for [RattlesnakeOS-Stack](https://github.com/dan-v/rattlesnakeos-stack).
+- Support for [Red](https://github.com/antonmedv/red).
+- Support for [Reg](https://github.com/genuinetools/reg).
+- Support for [Rio](https://github.com/rancher/rio).
+- Support for [RootlessKit](https://github.com/rootless-containers/rootlesskit).
+- Support for [SDNS](https://github.com/semihalev/sdns).
+- Support for [SSH Auditor](https://github.com/ncsa/ssh-auditor).
+- Support for [S](https://github.com/zquestz/s).
+- Support for [Simple-VPN](https://github.com/skx/simple-vpn).
+- Support for [Stack Up](https://github.com/pressly/sup).
+- Support for [Storj](https://github.com/storj/storj)'s components `identity` and `uplink`.
+- Support for [Swarm-Cronjob](https://github.com/crazy-max/swarm-cronjob).
+- Support for [TXEH](https://github.com/txn2/txeh).
+- Support for [TableView](https://github.com/informationsea/tableview).
+- Support for [Task](https://github.com/go-task/task).
+- Support for [Tengo](https://github.com/d5/tengo).
+- Support for [Travis-Wait-Enhanced](https://github.com/crazy-max/travis-wait-enhanced).
+- Support for [Up](https://github.com/apex/up).
+- Support for [YQ](https://github.com/mikefarah/yq).
+- Support for [govmomi](https://github.com/vmware/govmomi)'s component `govc`.
+- Support for [vSphere InfluxDB Go](https://github.com/Oxalide/vsphere-influxdb-go).
+
+## Changed
+- The `unzip` command is now executed silently with the `-q` flag.
+
 ## [2.2.0] - 2020-06-10
 ### Added
 - Support for [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome).
@@ -17,7 +103,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [EdgeDNS](https://github.com/jedisct1/edgedns).
 - Support for [Etcd](https://github.com/etcd-io/etcd).
 - Support for [Ethr](https://github.com/microsoft/ethr).
-- Support for [Firecracker](https://github.com/firecracker-microvm/firecracker)'s two components `firecracker` and `jailer`.
+- Support for [Firecracker](https://github.com/firecracker-microvm/firecracker)'s components `firecracker` and `jailer`.
 - Support for [Flux](https://github.com/fluxcd/flux).
 - Support for [GoBuster](https://github.com/OJ/gobuster).
 - Support for [GolangCI-Lint](https://github.com/golangci/golangci-lint).
@@ -86,7 +172,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [Dive](https://github.com/wagoodman/dive).
 - Support for [DNSCrypt Proxy](https://github.com/DNSCrypt/dnscrypt-proxy).
 - Support for [FileBrowser](https://github.com/filebrowser/filebrowser).
-- Support for [FRP](https://github.com/fatedier/frp)'s two components `frpc` and `frps`.
+- Support for [FRP](https://github.com/fatedier/frp)'s components `frpc` and `frps`.
 - Support for [Google Drive CLI](https://github.com/gdrive-org/gdrive).
 - Support for [GitHub CLI](https://github.com/cli/cli).
 - Support for [Gogs](https://github.com/gogs/gogs).
