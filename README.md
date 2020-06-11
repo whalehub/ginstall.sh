@@ -115,11 +115,13 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | dive                        | https://github.com/wagoodman/dive |
 | dnscontrol                  | https://github.com/StackExchange/dnscontrol |
 | dnscrypt-proxy              | https://github.com/DNSCrypt/dnscrypt-proxy |
+| dnsproxy                    | https://github.com/AdguardTeam/dnsproxy |
 | dobi                        | https://github.com/dnephin/dobi |
 | docker-compose              | https://github.com/docker/compose |
 | docker-credential-pass      | https://github.com/docker/docker-credential-helpers |
 | docker-gen                  | https://github.com/jwilder/docker-gen |
 | docker-machine              | https://github.com/docker/machine |
+| drive                       | https://github.com/odeke-em/drive |
 | drone                       | https://github.com/drone/drone-cli |
 | duplicacy                   | https://github.com/gilbertchen/duplicacy |
 | edgedns                     | https://github.com/jedisct1/edgedns |
@@ -168,6 +170,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | hey                         | https://github.com/rakyll/hey |
 | httpstat                    | https://github.com/davecheney/httpstat |
 | hugo                        | https://github.com/gohugoio/hugo |
+| hyperfine                   | https://github.com/sharkdp/hyperfine |
 | identity                    | https://github.com/storj/storj |
 | imdl                        | https://github.com/casey/intermodal |
 | inlets                      | https://github.com/inlets/inlets |
@@ -199,11 +202,13 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | minify                      | https://github.com/tdewolff/minify |
 | mkcert                      | https://github.com/FiloSottile/mkcert |
 | monitoror                   | https://github.com/monitoror/monitoror |
+| naabu                       | https://github.com/projectdiscovery/naabu |
 | navidrome                   | https://github.com/deluan/navidrome |
 | nebula                      | https://github.com/slackhq/nebula |
 | niltalk                     | https://github.com/knadh/niltalk |
 | nnn                         | https://github.com/jarun/nnn |
 | oauth2-proxy                | https://github.com/oauth2-proxy/oauth2-proxy |
+| opa                         | https://github.com/open-policy-agent/opa |
 | oragono                     | https://github.com/oragono/oragono |
 | parcello                    | https://github.com/phogolabs/parcello |
 | peach                       | https://github.com/peachdocs/peach |
@@ -237,6 +242,10 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | slack-term                  | https://github.com/erroneousboat/slack-term |
 | slink                       | https://github.com/lukechampine/jsteg |
 | ssh-auditor                 | https://github.com/ncsa/ssh-auditor |
+| sslocal                     | https://github.com/shadowsocks/shadowsocks-rust |
+| ssmanager                   | https://github.com/shadowsocks/shadowsocks-rust |
+| ssserver                    | https://github.com/shadowsocks/shadowsocks-rust |
+| ssurl                       | https://github.com/shadowsocks/shadowsocks-rust |
 | starship                    | https://github.com/starship/starship |
 | statping                    | https://github.com/statping/statping |
 | stdiscosrv                  | https://github.com/syncthing/discosrv |
@@ -244,6 +253,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | step                        | https://github.com/smallstep/cli |
 | strelaysrv                  | https://github.com/syncthing/relaysrv |
 | sup                         | https://github.com/pressly/sup |
+| swagger                     | https://github.com/go-swagger/go-swagger |
 | swarm-cronjob               | https://github.com/crazy-max/swarm-cronjob |
 | syncthing                   | https://github.com/syncthing/syncthing |
 | tableview                   | https://github.com/informationsea/tableview |
@@ -253,17 +263,24 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | traefik                     | https://github.com/containous/traefik |
 | transfersh                  | https://github.com/dutchcoders/transfer.sh |
 | travis-wait-enhanced        | https://github.com/crazy-max/travis-wait-enhanced |
+| trivy                       | https://github.com/aquasecurity/trivy |
 | txeh                        | https://github.com/txn2/txeh |
+| unftp                       | https://github.com/bolcom/unFTP |
 | up                          | https://github.com/apex/up |
 | uplink                      | https://github.com/storj/storj |
 | upx                         | https://github.com/upx/upx |
+| vector                      | https://github.com/timberio/vector |
+| velero                      | https://github.com/vmware-tanzu/velero |
 | vigil                       | https://github.com/valeriansaliou/vigil |
 | vsphere-influxdb-go         | https://github.com/Oxalide/vsphere-influxdb-go |
 | vuls                        | https://github.com/future-architect/vuls |
 | watchtower                  | https://github.com/containrrr/watchtower |
 | wuzz                        | https://github.com/asciimoo/wuzz |
+| xsv                         | https://github.com/BurntSushi/xsv |
 | youtube-dl                  | https://github.com/ytdl-org/youtube-dl |
+| ytop                        | https://github.com/cjbassi/ytop |
 | yq                          | https://github.com/mikefarah/yq |
+| zenith                      | https://github.com/bvaisvil/zenith |
 | zola                        | https://github.com/getzola/zola |
 
 </details>
@@ -316,11 +333,13 @@ diun                        github.com/crazy-max/diun
 dive                        github.com/wagoodman/dive
 dnscontrol                  github.com/StackExchange/dnscontrol
 dnscrypt-proxy              github.com/DNSCrypt/dnscrypt-proxy
+dnsproxy                    github.com/AdguardTeam/dnsproxy
 dobi                        github.com/dnephin/dobi
 docker-compose              github.com/docker/compose
 docker-credential-pass      github.com/docker/docker-credential-helpers
 docker-gen                  github.com/jwilder/docker-gen
 docker-machine              github.com/docker/machine
+drive                       github.com/odeke-em/drive
 drone                       github.com/drone/drone-cli
 duplicacy                   github.com/gilbertchen/duplicacy
 
@@ -377,6 +396,7 @@ H
 hey                         github.com/rakyll/hey
 httpstat                    github.com/davecheney/httpstat
 hugo                        github.com/gohugoio/hugo
+hyperfine                   github.com/sharkdp/hyperfine
 
 I
 identity                    github.com/storj/storj
@@ -420,6 +440,7 @@ mkcert                      github.com/FiloSottile/mkcert
 monitoror                   github.com/monitoror/monitoror
 
 N
+naabu                       github.com/projectdiscovery/naabu
 navidrome                   github.com/deluan/navidrome
 nebula                      github.com/slackhq/nebula
 niltalk                     github.com/knadh/niltalk
@@ -427,6 +448,7 @@ nnn                         github.com/jarun/nnn
 
 O
 oauth2-proxy                github.com/oauth2-proxy/oauth2-proxy
+opa                         github.com/open-policy-agent/opa
 oragono                     github.com/oragono/oragono
 
 P
@@ -468,6 +490,10 @@ simple-vpn                  github.com/skx/simple-vpn
 slack-term                  github.com/erroneousboat/slack-term
 slink                       github.com/lukechampine/jsteg
 ssh-auditor                 github.com/ncsa/ssh-auditor
+sslocal                     github.com/shadowsocks/shadowsocks-rust
+ssmanager                   github.com/shadowsocks/shadowsocks-rust
+ssserver                    github.com/shadowsocks/shadowsocks-rust
+ssurl                       github.com/shadowsocks/shadowsocks-rust
 starship                    github.com/starship/starship
 statping                    github.com/statping/statping
 stdiscosrv                  github.com/syncthing/discosrv
@@ -475,6 +501,7 @@ stegify                     github.com/DimitarPetrov/stegify
 step                        github.com/smallstep/cli
 strelaysrv                  github.com/syncthing/relaysrv
 sup                         github.com/pressly/sup
+swagger                     github.com/go-swagger/go-swagger
 swarm-cronjob               github.com/crazy-max/swarm-cronjob
 syncthing                   github.com/syncthing/syncthing
 
@@ -486,14 +513,18 @@ tldr++                      github.com/isacikgoz/tldr
 traefik                     github.com/containous/traefik
 transfersh                  github.com/dutchcoders/transfer.sh
 travis-wait-enhanced        github.com/crazy-max/travis-wait-enhanced
+trivy                       github.com/aquasecurity/trivy
 txeh                        github.com/txn2/txeh
 
 U
+unftp                       github.com/bolcom/unFTP
 up                          github.com/apex/up
 uplink                      github.com/storj/storj
 upx                         github.com/upx/upx
 
 V
+vector                      github.com/timberio/vector
+velero                      github.com/vmware-tanzu/velero
 vigil                       github.com/valeriansaliou/vigil
 vsphere-influxdb-go         github.com/Oxalide/vsphere-influxdb-go
 vuls                        github.com/future-architect/vuls
@@ -502,11 +533,16 @@ W
 watchtower                  github.com/containrrr/watchtower
 wuzz                        github.com/asciimoo/wuzz
 
+X
+xsv                         github.com/BurntSushi/xsv
+
 Y
 youtube-dl                  github.com/ytdl-org/youtube-dl
+ytop                        github.com/cjbassi/ytop
 yq                          github.com/mikefarah/yq
 
 Z
+zenith                      github.com/bvaisvil/zenith
 zola                        github.com/getzola/zola
 ```
 
