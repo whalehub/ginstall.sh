@@ -3,6 +3,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.0] - 2020-06-14
+### Added
+- Support for [Chisel](https://github.com/jpillora/chisel).
+- Support for [Diskus](https://github.com/sharkdp/diskus).
+- Support for [Hexyl](https://github.com/sharkdp/hexyl).
+- Support for [Hugo Extended](https://github.com/gohugoio/hugo).
+- Support for [Insect](https://github.com/sharkdp/insect).
+- Support for [Lucid](https://github.com/sharkdp/lucid).
+- Support for [Migrate](https://github.com/golang-migrate/migrate).
+- Support for [Pastel](https://github.com/sharkdp/pastel).
+- Support for [RipGrep-All](https://github.com/phiresky/ripgrep-all)'s components `rga` and `rga-preproc`.
+- Support for [Vivid](https://github.com/sharkdp/vivid).
+
+### Changed
+- Cut the total size of `ginstall.sh` in half by rewriting the entire application installation section from scratch.
+- The binary for `composer` is now installed as `composer.phar` to bring it in line with the language-specific binary extension standard used for `komga`.
+- The different components of `age`, `etcd`, `nebula`, `rage`, `rootlesskit` and `vuls` can and must now be installed/uninstalled separately.
+
+### Fixed
+- The CLI tools `avif` and `fluxctl` and were erroneously called `go-avif` and `flux` respectively in `ginstall.sh`.
+
 ## [2.5.0] - 2020-06-11
 ### Added
 - Support for [Bat](https://github.com/sharkdp/bat).
@@ -59,7 +80,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [Git-Hooks](https://github.com/git-hooks/git-hooks).
 - Support for [Git-Rewrite-Author](https://github.com/crazy-max/git-rewrite-author).
 - Support for [GitBatch](https://github.com/isacikgoz/gitbatch).
-- Support for [Go-AVIF](https://github.com/Kagami/go-avif).
+- Support for [Go-AVIF](https://github.com/Kagami/go-avif)'s component `avif`.
 - Support for [GoAutoYT](https://github.com/XiovV/Golty).
 - Support for [GoatCounter](https://github.com/zgoat/goatcounter).
 - Support for [Gomplate](https://github.com/hairyhenderson/gomplate).
@@ -96,7 +117,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [Red](https://github.com/antonmedv/red).
 - Support for [Reg](https://github.com/genuinetools/reg).
 - Support for [Rio](https://github.com/rancher/rio).
-- Support for [RootlessKit](https://github.com/rootless-containers/rootlesskit).
+- Support for [RootlessKit](https://github.com/rootless-containers/rootlesskit)'s components `rootlesskit` and `rootlessctl`.
 - Support for [SDNS](https://github.com/semihalev/sdns).
 - Support for [SSH Auditor](https://github.com/ncsa/ssh-auditor).
 - Support for [S](https://github.com/zquestz/s).
@@ -119,7 +140,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [2.2.0] - 2020-06-10
 ### Added
 - Support for [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome).
-- Support for [Age](https://github.com/FiloSottile/age).
+- Support for [Age](https://github.com/FiloSottile/age)'s components `age` and `age-keygen`.
 - Support for [Archiver](https://github.com/mholt/archiver).
 - Support for [Argo CD](https://github.com/argoproj/argo-cd).
 - Support for [Cloud Torrent](https://github.com/jpillora/cloud-torrent).
@@ -128,7 +149,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [Docker Machine](https://github.com/docker/machine).
 - Support for [Duplicacy](https://github.com/gilbertchen/duplicacy).
 - Support for [EdgeDNS](https://github.com/jedisct1/edgedns).
-- Support for [Etcd](https://github.com/etcd-io/etcd).
+- Support for [Etcd](https://github.com/etcd-io/etcd)'s components `etcd` and `etcdctl`.
 - Support for [Ethr](https://github.com/microsoft/ethr).
 - Support for [Firecracker](https://github.com/firecracker-microvm/firecracker)'s components `firecracker` and `jailer`.
 - Support for [Flux](https://github.com/fluxcd/flux).
@@ -139,9 +160,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [LinuxKit](https://github.com/linuxkit/linuxkit).
 - Support for [mdBook](https://github.com/rust-lang/mdBook).
 - Support for [Monitoror](https://github.com/monitoror/monitoror).
-- Support for [Rage](https://github.com/str4d/rage).
+- Support for [Rage](https://github.com/str4d/rage)'s components `rage` and `rage-keygen`.
 - Support for [Starship](https://github.com/starship/starship).
-- Support for [Vuls](https://github.com/future-architect/vuls).
+- Support for [Vuls](https://github.com/future-architect/vuls)'s components `vuls`, `future-vuls` and `trivy-to-vuls`.
 - Support for [Zola](https://github.com/getzola/zola).
 
 ## [2.1.0] - 2020-06-09
