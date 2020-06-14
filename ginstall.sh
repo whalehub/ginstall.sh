@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------ #
 
-GINSTALL_SH_VERSION="2.6.0"
+GINSTALL_SH_VERSION="2.6.1"
 
 # ------------------------------------------------------------------ #
 
@@ -943,11 +943,13 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "age" | "age-keygen" | "frpc" | "frps" | "ipfs" | "plik" | "plikd" | "rage" | "rage-keygen" | "step" | "vector" | "vigil")
+    "age" | "age-keygen" | "autocert" | "frpc" | "frps" | "gh" | "ipfs" | "plik" | "plikd" | "rage" | "rage-keygen" | "step" | "vector" | "vigil")
       COMPONENT_COUNT="1"
       APP_RESOURCE_PREFIX="inux"
       if [ "$2" = "age" ] || [ "$2" = "age-keygen" ]; then FOLDER_PREFIX="age"; fi
+      if [ "$2" = "autocert" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
       if [ "$2" = "frpc" ] || [ "$2" = "frps" ]; then FOLDER_PREFIX="frp_${APP_VERSION}_linux_amd64"; fi
+      if [ "$2" = "gh" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz|/bin|g')" COMPONENT_COUNT="2"; fi
       if [ "$2" = "ipfs" ]; then FOLDER_PREFIX="go-ipfs"; fi
       if [ "$2" = "plik" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/clients/linux-amd64" COMPONENT_COUNT="3"; fi
       if [ "$2" = "plikd" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/server" COMPONENT_COUNT="2"; fi
@@ -1026,7 +1028,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "comics-downloader" | "composer" | "firecracker" | "magneticod" | "magneticow" | "ginstall.sh" | "gosu" | "inlets" | "k3s" | "komga" | "youtube-dl")
+    "comics-downloader" | "composer" | "firecracker" | "jailer" | "magneticod" | "magneticow" | "ginstall.sh" | "gosu" | "inlets" | "k3s" | "komga" | "youtube-dl")
       APP_RESOURCE_SUFFIX="*"
       case "$2" in
         "comics-downloader" | "ginstall.sh" | "inlets" | "k3s" | "magneticod" | "magneticow" | "youtube-dl")
