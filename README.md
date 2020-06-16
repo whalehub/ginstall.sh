@@ -79,9 +79,11 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | Application | Repository |
 | ----------- | ---------- |
 | acme-dns                    | https://github.com/joohoi/acme-dns |
+| act                         | https://github.com/nektos/act |
 | adguardhome                 | https://github.com/AdguardTeam/AdGuardHome |
 | age                         | https://github.com/FiloSottile/age |
 | age-keygen                  | https://github.com/FiloSottile/age |
+| amass                       | https://github.com/OWASP/Amass |
 | andesite                    | https://github.com/nektro/andesite |
 | annie                       | https://github.com/iawia002/annie |
 | apizza                      | https://github.com/harrybrwn/apizza |
@@ -90,11 +92,13 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | authelia                    | https://github.com/authelia/authelia |
 | autocert                    | https://github.com/smallstep/autocert |
 | avif                        | https://github.com/Kagami/go-avif |
+| badger                      | https://github.com/dgraph-io/dgraph |
 | bat                         | https://github.com/sharkdp/bat |
 | bed                         | https://github.com/itchyny/bed |
 | bin                         | https://github.com/w4/bin |
 | blocky                      | https://github.com/0xERR0R/blocky |
 | bombardier                  | https://github.com/codesenberg/bombardier |
+| borg                        | https://github.com/borgbackup/borg |
 | brig                        | https://github.com/sahib/brig |
 | bw                          | https://github.com/bitwarden/cli |
 | caddy                       | https://github.com/caddyserver/caddy |
@@ -113,6 +117,8 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | ddgr                        | https://github.com/jarun/ddgr |
 | ddns-route53                | https://github.com/crazy-max/ddns-route53 |
 | delta                       | https://github.com/dandavison/delta |
+| dgraph                      | https://github.com/dgraph-io/dgraph |
+| dgraph-ratel                | https://github.com/dgraph-io/dgraph |
 | discord-console             | https://github.com/discordconsole-team/DiscordConsole |
 | discord-delete              | https://github.com/adversarialtools/discord-delete |
 | diskus                      | https://github.com/sharkdp/diskus |
@@ -139,6 +145,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | ffmpeg                      | https://github.com/FFmpeg/FFmpeg |
 | ffsend                      | https://github.com/timvisee/ffsend |
 | filebrowser                 | https://github.com/filebrowser/filebrowser |
+| findomain                   | https://github.com/Edu4rdSHL/findomain |
 | firecracker                 | https://github.com/firecracker-microvm/firecracker |
 | fluxctl                     | https://github.com/fluxcd/flux |
 | fn                          | https://github.com/iron-io/functions |
@@ -149,6 +156,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | future-vuls                 | https://github.com/future-architect/vuls |
 | fx                          | https://github.com/metrue/fx |
 | fzf                         | https://github.com/junegunn/fzf |
+| gau                         | https://github.com/lc/gau |
 | gdrive                      | https://github.com/gdrive-org/gdrive |
 | geoip-updater               | https://github.com/crazy-max/geoip-updater |
 | gget                        | https://github.com/dpb587/gget |
@@ -175,9 +183,11 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | govc                        | https://github.com/vmware/govmomi |
 | gpldr-client                | https://github.com/Depado/goploader |
 | gpldr-server                | https://github.com/Depado/goploader |
+| handlr                      | https://github.com/chmln/handlr |
 | hexyl                       | https://github.com/sharkdp/hexyl |
 | hey                         | https://github.com/rakyll/hey |
 | httpstat                    | https://github.com/davecheney/httpstat |
+| hub                         | https://github.com/github/hub |
 | hugo                        | https://github.com/gohugoio/hugo |
 | hugo-extended               | https://github.com/gohugoio/hugo |
 | hyperfine                   | https://github.com/sharkdp/hyperfine |
@@ -189,6 +199,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | ipfs                        | https://github.com/ipfs/go-ipfs |
 | jailer                      | https://github.com/firecracker-microvm/firecracker |
 | jellycli                    | https://github.com/tryffel/jellycli |
+| jq                          | https://github.com/stedolan/jq |
 | json2csv                    | https://github.com/jehiah/json2csv |
 | json5                       | https://github.com/yosuke-furukawa/json5 |
 | jsteg                       | https://github.com/lukechampine/jsteg |
@@ -229,7 +240,9 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | peach                       | https://github.com/peachdocs/peach |
 | pebble                      | https://github.com/letsencrypt/pebble |
 | pebble-challtestsrv         | https://github.com/letsencrypt/pebble |
+| pegasus-fe                  | https://github.com/mmatyas/pegasus-frontend |
 | pgweb                       | https://github.com/sosedoff/pgweb |
+| phoneinfoga                 | https://github.com/sundowndev/PhoneInfoga |
 | pkger                       | https://github.com/markbates/pkger |
 | plexdrive                   | https://github.com/plexdrive/plexdrive |
 | plik                        | https://github.com/root-gg/plik |
@@ -253,6 +266,9 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | rio                         | https://github.com/rancher/rio |
 | rootlessctl                 | https://github.com/rootless-containers/rootlesskit |
 | rootlesskit                 | https://github.com/rootless-containers/rootlesskit |
+| rqbench                     | https://github.com/rqlite/rqlite |
+| rqlite                      | https://github.com/rqlite/rqlite |
+| rqlited                     | https://github.com/rqlite/rqlite |
 | s                           | https://github.com/zquestz/s |
 | s2c                         | https://github.com/klauspost/compress |
 | s2d                         | https://github.com/klauspost/compress |
@@ -261,6 +277,8 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | simple-vpn                  | https://github.com/skx/simple-vpn |
 | slack-term                  | https://github.com/erroneousboat/slack-term |
 | slink                       | https://github.com/lukechampine/jsteg |
+| spotifyd                    | https://github.com/Spotifyd/spotifyd |
+| spt                         | https://github.com/Rigellute/spotify-tui |
 | ssh-auditor                 | https://github.com/ncsa/ssh-auditor |
 | sslocal                     | https://github.com/shadowsocks/shadowsocks-rust |
 | ssmanager                   | https://github.com/shadowsocks/shadowsocks-rust |
@@ -286,6 +304,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | trivy                       | https://github.com/aquasecurity/trivy |
 | trivy-to-vuls               | https://github.com/future-architect/vuls |
 | txeh                        | https://github.com/txn2/txeh |
+| unetbootin                  | https://github.com/unetbootin/unetbootin |
 | unftp                       | https://github.com/bolcom/unFTP |
 | up                          | https://github.com/apex/up |
 | uplink                      | https://github.com/storj/storj |
@@ -297,6 +316,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | vsphere-influxdb-go         | https://github.com/Oxalide/vsphere-influxdb-go |
 | vuls                        | https://github.com/future-architect/vuls |
 | watchtower                  | https://github.com/containrrr/watchtower |
+| wrangler                    | https://github.com/cloudflare/wrangler |
 | wuzz                        | https://github.com/asciimoo/wuzz |
 | xsv                         | https://github.com/BurntSushi/xsv |
 | youtube-dl                  | https://github.com/ytdl-org/youtube-dl |
@@ -313,9 +333,11 @@ Application:                Repository:
 ------------                -----------
 A
 acme-dns                    github.com/joohoi/acme-dns
+act                         github.com/nektos/act
 adguardhome                 github.com/AdguardTeam/AdGuardHome
 age                         github.com/FiloSottile/age
 age-keygen                  github.com/FiloSottile/age
+amass                       github.com/OWASP/Amass
 andesite                    github.com/nektro/andesite
 annie                       github.com/iawia002/annie
 apizza                      github.com/harrybrwn/apizza
@@ -326,11 +348,13 @@ autocert                    github.com/smallstep/autocert
 avif                        github.com/Kagami/go-avif
 
 B
+badger                      github.com/dgraph-io/dgraph
 bat                         github.com/sharkdp/bat
 bed                         github.com/itchyny/bed
 bin                         github.com/w4/bin
 blocky                      github.com/0xERR0R/blocky
 bombardier                  github.com/codesenberg/bombardier
+borg                        github.com/borgbackup/borg
 brig                        github.com/sahib/brig
 bw                          github.com/bitwarden/cli
 
@@ -353,6 +377,8 @@ D
 ddgr                        github.com/jarun/ddgr
 ddns-route53                github.com/crazy-max/ddns-route53
 delta                       github.com/dandavison/delta
+dgraph                      github.com/dgraph-io/dgraph
+dgraph-ratel                github.com/dgraph-io/dgraph
 discord-console             github.com/discordconsole-team/DiscordConsole
 discord-delete              github.com/adversarialtools/discord-delete
 diskus                      github.com/sharkdp/diskus
@@ -383,6 +409,7 @@ fd                          github.com/sharkdp/fd
 ffmpeg                      github.com/FFmpeg/FFmpeg
 ffsend                      github.com/timvisee/ffsend
 filebrowser                 github.com/filebrowser/filebrowser
+findomain                   github.com/Edu4rdSHL/findomain
 firecracker                 github.com/firecracker-microvm/firecracker
 fluxctl                     github.com/fluxcd/flux
 fn                          github.com/iron-io/functions
@@ -395,6 +422,7 @@ fx                          github.com/metrue/fx
 fzf                         github.com/junegunn/fzf
 
 G
+gau                         github.com/lc/gau
 gdrive                      github.com/gdrive-org/gdrive
 geoip-updater               github.com/crazy-max/geoip-updater
 gget                        github.com/dpb587/gget
@@ -423,9 +451,11 @@ gpldr-client                github.com/Depado/goploader
 gpldr-server                github.com/Depado/goploader
 
 H
+handlr                      github.com/chmln/handlr
 hexyl                       github.com/sharkdp/hexyl
 hey                         github.com/rakyll/hey
 httpstat                    github.com/davecheney/httpstat
+hub                         github.com/github/hub
 hugo                        github.com/gohugoio/hugo
 hugo-extended               github.com/gohugoio/hugo
 hyperfine                   github.com/sharkdp/hyperfine
@@ -441,6 +471,7 @@ ipfs                        github.com/ipfs/go-ipfs
 J
 jailer                      github.com/firecracker-microvm/firecracker
 jellycli                    github.com/tryffel/jellycli
+jq                          github.com/stedolan/jq
 json2csv                    github.com/jehiah/json2csv
 json5                       github.com/yosuke-furukawa/json5
 jsteg                       github.com/lukechampine/jsteg
@@ -493,7 +524,9 @@ pastel                      github.com/sharkdp/pastel
 peach                       github.com/peachdocs/peach
 pebble                      github.com/letsencrypt/pebble
 pebble-challtestsrv         github.com/letsencrypt/pebble
+pegasus-fe                  github.com/mmatyas/pegasus-frontend
 pgweb                       github.com/sosedoff/pgweb
+phoneinfoga                 github.com/sundowndev/PhoneInfoga
 pkger                       github.com/markbates/pkger
 plexdrive                   github.com/plexdrive/plexdrive
 plik                        github.com/root-gg/plik
@@ -521,6 +554,9 @@ rga-preproc                 github.com/phiresky/ripgrep-all
 rio                         github.com/rancher/rio
 rootlessctl                 github.com/rootless-containers/rootlesskit
 rootlesskit                 github.com/rootless-containers/rootlesskit
+rqbench                     github.com/rqlite/rqlite
+rqlite                      github.com/rqlite/rqlite
+rqlited                     github.com/rqlite/rqlite
 
 S
 s                           github.com/zquestz/s
@@ -531,6 +567,8 @@ shellcheck                  github.com/koalaman/shellcheck
 simple-vpn                  github.com/skx/simple-vpn
 slack-term                  github.com/erroneousboat/slack-term
 slink                       github.com/lukechampine/jsteg
+spotifyd                    github.com/Spotifyd/spotifyd
+spt                         github.com/Rigellute/spotify-tui
 ssh-auditor                 github.com/ncsa/ssh-auditor
 sslocal                     github.com/shadowsocks/shadowsocks-rust
 ssmanager                   github.com/shadowsocks/shadowsocks-rust
@@ -560,6 +598,7 @@ trivy-to-vuls               github.com/future-architect/vuls
 txeh                        github.com/txn2/txeh
 
 U
+unetbootin                  github.com/unetbootin/unetbootin
 unftp                       github.com/bolcom/unFTP
 up                          github.com/apex/up
 uplink                      github.com/storj/storj
@@ -575,6 +614,7 @@ vuls                        github.com/future-architect/vuls
 
 W
 watchtower                  github.com/containrrr/watchtower
+wrangler                    github.com/cloudflare/wrangler
 wuzz                        github.com/asciimoo/wuzz
 
 X

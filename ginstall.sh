@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------ #
 
-GINSTALL_SH_VERSION="2.6.1"
+GINSTALL_SH_VERSION="2.7.0"
 
 # ------------------------------------------------------------------ #
 
@@ -28,9 +28,11 @@ USAGE_INFORMATION="Please run \"ginstall.sh --help\" for usage information."
 
 # A
 REPO_ACME_DNS="github.com/joohoi/acme-dns"
+REPO_ACT="github.com/nektos/act"
 REPO_ADGUARDHOME="github.com/AdguardTeam/AdGuardHome"
 REPO_AGE="github.com/FiloSottile/age"
 REPO_AGE_KEYGEN="github.com/FiloSottile/age"
+REPO_AMASS="github.com/OWASP/Amass"
 REPO_ANDESITE="github.com/nektro/andesite"
 REPO_ANNIE="github.com/iawia002/annie"
 REPO_APIZZA="github.com/harrybrwn/apizza"
@@ -41,11 +43,13 @@ REPO_AUTOCERT="github.com/smallstep/autocert"
 REPO_AVIF="github.com/Kagami/go-avif"
 
 # B
+REPO_BADGER="github.com/dgraph-io/dgraph"
 REPO_BAT="github.com/sharkdp/bat"
 REPO_BED="github.com/itchyny/bed"
 REPO_BIN="github.com/w4/bin"
 REPO_BLOCKY="github.com/0xERR0R/blocky"
 REPO_BOMBARDIER="github.com/codesenberg/bombardier"
+REPO_BORG="github.com/borgbackup/borg"
 REPO_BRIG="github.com/sahib/brig"
 REPO_BW="github.com/bitwarden/cli"
 
@@ -68,6 +72,8 @@ REPO_CTOP="github.com/bcicen/ctop"
 REPO_DDGR="github.com/jarun/ddgr"
 REPO_DDNS_ROUTE53="github.com/crazy-max/ddns-route53"
 REPO_DELTA="github.com/dandavison/delta"
+REPO_DGRAPH="github.com/dgraph-io/dgraph"
+REPO_DGRAPH_RATEL="github.com/dgraph-io/dgraph"
 REPO_DISCORD_CONSOLE="github.com/discordconsole-team/DiscordConsole"
 REPO_DISCORD_DELETE="github.com/adversarialtools/discord-delete"
 REPO_DISKUS="github.com/sharkdp/diskus"
@@ -98,6 +104,7 @@ REPO_FD="github.com/sharkdp/fd"
 REPO_FFMPEG="github.com/FFmpeg/FFmpeg"
 REPO_FFSEND="github.com/timvisee/ffsend"
 REPO_FILEBROWSER="github.com/filebrowser/filebrowser"
+REPO_FINDOMAIN="github.com/Edu4rdSHL/findomain"
 REPO_FIRECRACKER="github.com/firecracker-microvm/firecracker"
 REPO_FLUXCTL="github.com/fluxcd/flux"
 REPO_FN="github.com/iron-io/functions"
@@ -111,6 +118,7 @@ REPO_FZF="github.com/junegunn/fzf-bin"
 REPO_FZF_SOURCE="github.com/junegunn/fzf"
 
 # G
+REPO_GAU="github.com/lc/gau"
 REPO_GDRIVE="github.com/gdrive-org/gdrive"
 REPO_GEOIP_UPDATER="github.com/crazy-max/geoip-updater"
 REPO_GGET="github.com/dpb587/gget"
@@ -139,9 +147,11 @@ REPO_GPLDR_CLIENT="github.com/Depado/goploader"
 REPO_GPLDR_SERVER="github.com/Depado/goploader"
 
 # H
+REPO_HANDLR="github.com/chmln/handlr"
 REPO_HEXYL="github.com/sharkdp/hexyl"
 REPO_HEY="github.com/rakyll/hey"
 REPO_HTTPSTAT="github.com/davecheney/httpstat"
+REPO_HUB="github.com/github/hub"
 REPO_HUGO="github.com/gohugoio/hugo"
 REPO_HUGO_EXTENDED="github.com/gohugoio/hugo"
 REPO_HYPERFINE="github.com/sharkdp/hyperfine"
@@ -157,6 +167,7 @@ REPO_IPFS="github.com/ipfs/go-ipfs"
 # J
 REPO_JAILER="github.com/firecracker-microvm/firecracker"
 REPO_JELLYCLI="github.com/tryffel/jellycli"
+REPO_JQ="github.com/stedolan/jq"
 REPO_JSON2CSV="github.com/jehiah/json2csv"
 REPO_JSON5="github.com/yosuke-furukawa/json5"
 REPO_JSTEG="github.com/lukechampine/jsteg"
@@ -209,7 +220,9 @@ REPO_PASTEL="github.com/sharkdp/pastel"
 REPO_PEACH="github.com/peachdocs/peach"
 REPO_PEBBLE="github.com/letsencrypt/pebble"
 REPO_PEBBLE_CHALLTESTSRV="github.com/letsencrypt/pebble"
+REPO_PEGASUS_FE="github.com/mmatyas/pegasus-frontend"
 REPO_PGWEB="github.com/sosedoff/pgweb"
+REPO_PHONEINFOGA="github.com/sundowndev/PhoneInfoga"
 REPO_PKGER="github.com/markbates/pkger"
 REPO_PLEXDRIVE="github.com/plexdrive/plexdrive"
 REPO_PLIK="github.com/root-gg/plik"
@@ -237,6 +250,9 @@ REPO_RGA_PREPROC="github.com/phiresky/ripgrep-all"
 REPO_RIO="github.com/rancher/rio"
 REPO_ROOTLESSCTL="github.com/rootless-containers/rootlesskit"
 REPO_ROOTLESSKIT="github.com/rootless-containers/rootlesskit"
+REPO_RQBENCH="github.com/rqlite/rqlite"
+REPO_RQLITE="github.com/rqlite/rqlite"
+REPO_RQLITED="github.com/rqlite/rqlite"
 
 # S
 REPO_S="github.com/zquestz/s"
@@ -247,6 +263,8 @@ REPO_SHELLCHECK="github.com/koalaman/shellcheck"
 REPO_SIMPLE_VPN="github.com/skx/simple-vpn"
 REPO_SLACK_TERM="github.com/erroneousboat/slack-term"
 REPO_SLINK="github.com/lukechampine/jsteg"
+REPO_SPOTIFYD="github.com/Spotifyd/spotifyd"
+REPO_SPT="github.com/Rigellute/spotify-tui"
 REPO_SSH_AUDITOR="github.com/ncsa/ssh-auditor"
 REPO_SSLOCAL="github.com/shadowsocks/shadowsocks-rust"
 REPO_SSMANAGER="github.com/shadowsocks/shadowsocks-rust"
@@ -276,6 +294,7 @@ REPO_TRIVY_TO_VULS="github.com/future-architect/vuls"
 REPO_TXEH="github.com/txn2/txeh"
 
 # U
+REPO_UNETBOOTIN="github.com/unetbootin/unetbootin"
 REPO_UNFTP="github.com/bolcom/unFTP"
 REPO_UP="github.com/apex/up"
 REPO_UPLINK="github.com/storj/storj"
@@ -291,6 +310,7 @@ REPO_VULS="github.com/future-architect/vuls"
 
 # W
 REPO_WATCHTOWER="github.com/containrrr/watchtower"
+REPO_WRANGLER="github.com/cloudflare/wrangler"
 REPO_WUZZ="github.com/asciimoo/wuzz"
 
 # X
@@ -313,9 +333,11 @@ SUPPORTED_APPS_HEADER="Application:                Repository:
 SUPPORTED_APPS_LIST="
 A
 acme-dns                    $REPO_ACME_DNS
+act                         $REPO_ACT
 adguardhome                 $REPO_ADGUARDHOME
 age                         $REPO_AGE
 age-keygen                  $REPO_AGE_KEYGEN
+amass                       $REPO_AMASS
 andesite                    $REPO_ANDESITE
 annie                       $REPO_ANNIE
 apizza                      $REPO_APIZZA
@@ -326,11 +348,13 @@ autocert                    $REPO_AUTOCERT
 avif                        $REPO_AVIF
 
 B
+badger                      $REPO_BADGER
 bat                         $REPO_BAT
 bed                         $REPO_BED
 bin                         $REPO_BIN
 blocky                      $REPO_BLOCKY
 bombardier                  $REPO_BOMBARDIER
+borg                        $REPO_BORG
 brig                        $REPO_BRIG
 bw                          $REPO_BW
 
@@ -353,6 +377,8 @@ D
 ddgr                        $REPO_DDGR
 ddns-route53                $REPO_DDNS_ROUTE53
 delta                       $REPO_DELTA
+dgraph                      $REPO_DGRAPH
+dgraph-ratel                $REPO_DGRAPH_RATEL
 discord-console             $REPO_DISCORD_CONSOLE
 discord-delete              $REPO_DISCORD_DELETE
 diskus                      $REPO_DISKUS
@@ -383,6 +409,7 @@ fd                          $REPO_FD
 ffmpeg                      $REPO_FFMPEG
 ffsend                      $REPO_FFSEND
 filebrowser                 $REPO_FILEBROWSER
+findomain                   $REPO_FINDOMAIN
 firecracker                 $REPO_FIRECRACKER
 fluxctl                     $REPO_FLUXCTL
 fn                          $REPO_FN
@@ -395,6 +422,7 @@ fx                          $REPO_FX
 fzf                         $REPO_FZF_SOURCE
 
 G
+gau                         $REPO_GAU
 gdrive                      $REPO_GDRIVE
 geoip-updater               $REPO_GEOIP_UPDATER
 gget                        $REPO_GGET
@@ -423,9 +451,11 @@ gpldr-client                $REPO_GPLDR_CLIENT
 gpldr-server                $REPO_GPLDR_SERVER
 
 H
+handlr                      $REPO_HANDLR
 hexyl                       $REPO_HEXYL
 hey                         $REPO_HEY
 httpstat                    $REPO_HTTPSTAT
+hub                         $REPO_HUB
 hugo                        $REPO_HUGO
 hugo-extended               $REPO_HUGO_EXTENDED
 hyperfine                   $REPO_HYPERFINE
@@ -441,6 +471,7 @@ ipfs                        $REPO_IPFS
 J
 jailer                      $REPO_JAILER
 jellycli                    $REPO_JELLYCLI
+jq                          $REPO_JQ
 json2csv                    $REPO_JSON2CSV
 json5                       $REPO_JSON5
 jsteg                       $REPO_JSTEG
@@ -493,7 +524,9 @@ pastel                      $REPO_PASTEL
 peach                       $REPO_PEACH
 pebble                      $REPO_PEBBLE
 pebble-challtestsrv         $REPO_PEBBLE_CHALLTESTSRV
+pegasus-fe                  $REPO_PEGASUS_FE
 pgweb                       $REPO_PGWEB
+phoneinfoga                 $REPO_PHONEINFOGA
 pkger                       $REPO_PKGER
 plexdrive                   $REPO_PLEXDRIVE
 plik                        $REPO_PLIK
@@ -521,6 +554,9 @@ rga-preproc                 $REPO_RGA_PREPROC
 rio                         $REPO_RIO
 rootlessctl                 $REPO_ROOTLESSCTL
 rootlesskit                 $REPO_ROOTLESSKIT
+rqbench                     $REPO_RQBENCH
+rqlite                      $REPO_RQLITE
+rqlited                     $REPO_RQLITED
 
 S
 s                           $REPO_S
@@ -531,6 +567,8 @@ shellcheck                  $REPO_SHELLCHECK
 simple-vpn                  $REPO_SIMPLE_VPN
 slack-term                  $REPO_SLACK_TERM
 slink                       $REPO_SLINK
+spotifyd                    $REPO_SPOTIFYD
+spt                         $REPO_SPT
 ssh-auditor                 $REPO_SSH_AUDITOR
 sslocal                     $REPO_SSLOCAL
 ssmanager                   $REPO_SSMANAGER
@@ -560,6 +598,7 @@ trivy-to-vuls               $REPO_TRIVY_TO_VULS
 txeh                        $REPO_TXEH
 
 U
+unetbootin                  $REPO_UNETBOOTIN
 unftp                       $REPO_UNFTP
 up                          $REPO_UP
 uplink                      $REPO_UPLINK
@@ -575,6 +614,7 @@ vuls                        $REPO_VULS
 
 W
 watchtower                  $REPO_WATCHTOWER
+wrangler                    $REPO_WRANGLER
 wuzz                        $REPO_WUZZ
 
 X
@@ -622,9 +662,7 @@ Info:
 
 ARGS="$(getopt -l check:,directory:,first-run,help,list,remove:,search:,self-update,version -o c:d:hlr:s:v -n ginstall.sh -- "$@")"
 
-if [ $? -ne 0 ]; then
-  exit 1
-fi
+if [ $? -ne 0 ]; then exit 1; fi
 
 eval set -- "$ARGS"
 unset ARGS
@@ -871,7 +909,7 @@ fi
 # ------------------------------------------------------------------ #
 
 rm_tmp_file-chmod_binary-echo_success-exit_0() {
-  rm "${TMP_DIR_ZIP}" && \
+  rm "${TMP_DIR_ZIP:?}" && \
   chmod 0755 "${INSTALL_DIR:?}"/"${APP_NAME}" && \
   echo -e "${INSTALL_SUCCESS}"
   exit 0
@@ -909,47 +947,55 @@ EXCLUDE_ARCHIVES="--exclude=\"*.7z\"        --exclude=\"*.bz2\"         --exclud
 
 if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
   case "$2" in
-    "annie" | "captainhook" | "cloud-torrent" | "composer" | "delta" | "discord-console" | "discord-delete" | "dnscrypt-proxy" | "docker-compose" | \
-    "docker-gen" | "edgedns" | "eureka" | "fluxctl" | "fn" | "frece" | "ftpgrab" | "fx" |"fzf" | "gdrive" | "git-rewrite-author" | "go-auto-yt" | \
-    "gosu" | "inlets" | "louketo-proxy" | "monitoror" | "naabu" | "plexdrive" | "plik" | "plikd" | "portainer" | "qrcp" | "rg" | "simple-vpn" | \
-    "xsv" | "youtube-dl" | "yq" | "ytop" | "zenith")
+    "annie" | "borg" | "captainhook" | "cloud-torrent" | "composer" | "delta" | "discord-console" | "discord-delete" | "dnscrypt-proxy" | "docker-compose" | \
+    "docker-gen" | "edgedns" | "eureka" | "findomain" | "fluxctl" | "fn" | "frece" | "ftpgrab" | "fx" |"fzf" | "gdrive" | "git-rewrite-author" | "go-auto-yt" | \
+    "gosu" | "inlets" | "jq" | "louketo-proxy" | "monitoror" | "naabu" | "pegasus-fe" | "plexdrive" | "plik" | "plikd" | "portainer" | "qrcp" | "rg" | \
+    "simple-vpn" | "unetbootin" | "xsv" | "youtube-dl" | "yq" | "ytop" | "zenith")
       VERSION_PREFIX="@"
     ;;
   esac
 
+  case "$4" in
+    "+debug")
+      gget --show-resources ${EXCL_EXTRAS} ${EXCL_VARIANTS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}"
+      exit 0
+    ;;
+  esac
+
   case "$2" in
-    "acme-dns" | "annie" | "apizza" | "caddy" | "captainhook" | "chroma" | "coredns" | "croc" | "ddns-route53" | "diun" | "dive" | "docker-gen" | \
-    "drone" | "filebrowser" | "ftpgrab" | "fzf" | "geoip-updater" | "git-rewrite-author" | "gitbatch" | "gopass" | "goreleaser" | "intercert" | \
-    "k9s" | "lazydocker" | "lego" | "minify" | "naabu" | "navidrome" | "nebula" | "nebula-cert" | "niltalk" | "parcello" | "peach" | "pkger" | \
-    "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "statping" | "swarm-cronjob" | "task" | "tengo" | "traefik" | \
-    "travis-wait-enhanced" | "trivy" | "txeh" | "up" | "vsphere-influxdb-go" | "watchtower")
+    "acme-dns" | "act" | "annie" | "apizza" | "badger" | "caddy" | "captainhook" | "chroma" | "coredns" | "croc" | "ddns-route53" | "dgraph" | \
+    "dgraph-ratel" | "diun" | "dive" | "docker-gen" | "drone" | "filebrowser" | "ftpgrab" | "fzf" | "gau" | "geoip-updater" | "git-rewrite-author" | \
+    "gitbatch" | "gopass" | "goreleaser" | "intercert" | "k9s" | "lazydocker" | "lego" | "minify" | "naabu" | "navidrome" | "nebula" | \
+    "nebula-cert" | "niltalk" | "parcello" | "peach" | "phoneinfoga" | "pkger" | "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "statping" | \
+    "swarm-cronjob" | "task" | "tengo" | "traefik" | "travis-wait-enhanced" | "trivy" | "txeh" | "up" | "vsphere-influxdb-go" | "watchtower")
       gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
     ;;
 
-    "adguardhome" | "git-hooks" | "gotty" | "gpldr-server" | "micro" | "migrate" | "oauth2-proxy")
+    "adguardhome" | "git-hooks" | "gotty" | "gpldr-server" | "micro" | "migrate" | "oauth2-proxy" | "wrangler")
       APP_RESOURCE_PREFIX="inux"
       if [ "$2" = "adguardhome" ]; then FOLDER_PREFIX="AdGuardHome" APP_NAME_ARCHIVED="AdGuardHome"; fi
       if [ "$2" = "git-hooks" ]; then FOLDER_PREFIX="build" APP_NAME_ARCHIVED="${APP_NAME}_linux_amd64"; fi
       if [ "$2" = "gotty" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}"; fi
       if [ "$2" = "gpldr-server" ]; then APP_RESOURCE_PREFIX="standalone" FOLDER_PREFIX="goploader-server" APP_NAME_ARCHIVED="server-standalone"; fi
-      if [ "$2" = "micro" ]; then APP_RESOURCE_SUFFIX="static.tar.gz" FOLDER_PREFIX="${APP_NAME}-${APP_VERSION}" APP_NAME_ARCHIVED="micro"; fi
+      if [ "$2" = "micro" ]; then APP_RESOURCE_SUFFIX="static.tar.gz" FOLDER_PREFIX="${APP_NAME}-${APP_VERSION}" APP_NAME_ARCHIVED="${APP_NAME}"; fi
       if [ "$2" = "migrate" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}.linux-amd64"; fi
       if [ "$2" = "oauth2-proxy" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')" APP_NAME_ARCHIVED="oauth2_proxy"; fi
+      if [ "$2" = "wrangler" ]; then APP_RESOURCE_PREFIX="" FOLDER_PREFIX="dist" APP_NAME_ARCHIVED="${APP_NAME}"; fi
       gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*64\*"${APP_RESOURCE_SUFFIX}" | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME_ARCHIVED}" ${TAR_ARGS} --strip-components=1 && \
       mv "${INSTALL_DIR:?}"/"${APP_NAME_ARCHIVED}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2>/dev/null ; \
       chmod_binary-echo_success-exit_0
     ;;
 
-    "age" | "age-keygen" | "autocert" | "frpc" | "frps" | "gh" | "ipfs" | "plik" | "plikd" | "rage" | "rage-keygen" | "step" | "vector" | "vigil")
+    "age" | "age-keygen" | "autocert" | "frpc" | "frps" | "gh" | "hub" | "ipfs" | "plik" | "plikd" | "rage" | "rage-keygen" | "step" | "vector" | "vigil")
       COMPONENT_COUNT="1"
       APP_RESOURCE_PREFIX="inux"
       if [ "$2" = "age" ] || [ "$2" = "age-keygen" ]; then FOLDER_PREFIX="age"; fi
       if [ "$2" = "autocert" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
       if [ "$2" = "frpc" ] || [ "$2" = "frps" ]; then FOLDER_PREFIX="frp_${APP_VERSION}_linux_amd64"; fi
-      if [ "$2" = "gh" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz|/bin|g')" COMPONENT_COUNT="2"; fi
+      if [ "$2" = "gh" ] || [ "$2" = "hub" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
       if [ "$2" = "ipfs" ]; then FOLDER_PREFIX="go-ipfs"; fi
       if [ "$2" = "plik" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/clients/linux-amd64" COMPONENT_COUNT="3"; fi
       if [ "$2" = "plikd" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/server" COMPONENT_COUNT="2"; fi
@@ -962,16 +1008,16 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "andesite" | "arc" | "argocd" | "avif" | "blocky" | "bombardier" | "ctop" | "docker-compose" | "docker-machine" | "duplicacy" | "eureka" | \
-    "ffsend" | "fluxctl" | "gdrive" | "gget" | "gitea" | "go-auto-yt" | "gomplate" | "gomuks" | "gossa" | "gpldr-client" | "httpstat" | "insect" | \
+    "andesite" | "arc" | "argocd" | "avif" | "blocky" | "bombardier" | "borg" | "ctop" | "docker-compose" | "docker-machine" | "duplicacy" | "eureka" | \
+    "ffsend" | "fluxctl" | "gdrive" | "gget" | "gitea" | "go-auto-yt" | "gomplate" | "gomuks" | "gossa" | "gpldr-client" | "httpstat" | "insect" | "jq" | \
     "kompose" | "linuxkit" | "matterbridge" | "mkcert" | "monitoror" | "opa" | "plexdrive" | "reg" | "rio" | "simple-vpn" | "slack-term" | "stegify" | \
-    "sup" | "swagger" | "tableview" | "transfersh" | "wuzz" | "yq")
+    "sup" | "swagger" | "tableview" | "unetbootin" | "transfersh" | "wuzz" | "yq")
       if [ "$2" = "ffsend" ]; then APP_RESOURCE_SUFFIX="static"; fi
       gget --executable ${EXCLUDE_GENERIC} ${EXCLUDE_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\*64\*"${APP_RESOURCE_SUFFIX}" && \
       echo_success-exit_0
     ;;
 
-    "authelia" | "brig" | "jellycli" | "nnn" | "podman-remote" | "sdns" | "tldr++" | "zenith")
+    "authelia" | "brig" | "jellycli" | "nnn" | "podman-remote" | "sdns" | "spotifyd" | "spt" | "tldr++" | "zenith")
       APP_RESOURCE_PREFIX="inux"
       APP_RESOURCE_SUFFIX="64"
       if [ "$2" = "authelia" ] || [ "$2" = "brig" ]; then RESOURCE_NAME="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"; fi
@@ -979,6 +1025,8 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "nnn" ]; then APP_RESOURCE_PREFIX="static" RESOURCE_NAME="${APP_NAME}-static"; fi
       if [ "$2" = "podman-remote" ]; then APP_RESOURCE_PREFIX="static" APP_RESOURCE_SUFFIX=".tar.gz" RESOURCE_NAME="${APP_NAME}"; fi
       if [ "$2" = "sdns" ]; then RESOURCE_NAME="${APP_NAME}_linux_amd64"; fi
+      if [ "$2" = "spotifyd" ]; then APP_RESOURCE_SUFFIX="-full" RESOURCE_NAME="${APP_NAME}"; fi
+      if [ "$2" = "spt" ]; then APP_RESOURCE_SUFFIX="" RESOURCE_NAME="${APP_NAME}"; fi
       if [ "$2" = "tldr++" ]; then RESOURCE_NAME="tldr"; fi
       if [ "$2" = "zenith" ]; then APP_RESOURCE_SUFFIX=".tgz" RESOURCE_NAME="${APP_NAME}"; fi
       gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* | \
@@ -997,7 +1045,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     ;;
 
     "bed" | "caire" | "ccat" | "dnscrypt-proxy" | "dnsproxy" | "etcd" | "etcdctl" | "gogs" | "golangci-lint" | "json2csv" | "louketo-proxy" | \
-    "oragono" | "portainer" | "ssh-auditor" | "stdiscosrv" | "strelaysrv" | "syncthing" | "velero")
+    "oragono" | "portainer" | "rqbench" |"rqlite" |"rqlited" | "ssh-auditor" | "stdiscosrv" | "strelaysrv" | "syncthing" | "velero")
       RESOURCE_NAME="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"
       if [ "$2" = "dnscrypt-proxy" ]; then RESOURCE_NAME="linux-x86_64"; fi
       if [ "$2" = "dnsproxy" ]; then RESOURCE_NAME="linux-amd64"; fi
@@ -1016,8 +1064,10 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "bw" | "ethr" | "json5" | "rattlesnakeos-stack")
-      gget ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\* && \
+    "bw" | "ethr" | "json5" | "pegasus-fe" | "rattlesnakeos-stack")
+      APP_RESOURCE_PREFIX="inux"
+      if [ "$2" = "pegasus-fe" ]; then APP_RESOURCE_PREFIX="x11-static"; fi
+      gget ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\*&& \
       unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}" -d "${INSTALL_DIR:?}" && \
       rm_tmp_file-chmod_binary-echo_success-exit_0
     ;;
@@ -1028,10 +1078,10 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "comics-downloader" | "composer" | "firecracker" | "jailer" | "magneticod" | "magneticow" | "ginstall.sh" | "gosu" | "inlets" | "k3s" | "komga" | "youtube-dl")
+    "comics-downloader" | "composer" | "findomain" | "firecracker" | "jailer" | "magneticod" | "magneticow" | "ginstall.sh" | "gosu" | "handlr" | "inlets" | "k3s" | "komga" | "youtube-dl")
       APP_RESOURCE_SUFFIX="*"
       case "$2" in
-        "comics-downloader" | "ginstall.sh" | "inlets" | "k3s" | "magneticod" | "magneticow" | "youtube-dl")
+        "comics-downloader" | "ginstall.sh" | "handlr" | "inlets" | "k3s" | "magneticod" | "magneticow" | "youtube-dl")
            APP_RESOURCE_SUFFIX=""
         ;;
       esac
@@ -1050,7 +1100,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "discord-console" | "rclone" | "s")
+    "amass" | "discord-console" | "rclone" | "s")
       RESOURCE_NAME="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* | sed 's|.zip||g')"
       gget ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\* && \
       if [ "$2" = "discord-console" ]; then
@@ -1150,7 +1200,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "gobuster")
       gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* > "${TMP_DIR_7Z}" && \
       7z e -so "${TMP_DIR_7Z}" > "${INSTALL_DIR:?}"/"${APP_NAME}" && \
-      rm "${TMP_DIR_7Z}" && \
+      rm "${TMP_DIR_7Z:?}" && \
       chmod_binary-echo_success-exit_0
     ;;
 

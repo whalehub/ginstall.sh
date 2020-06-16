@@ -3,6 +3,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.0] - 2020-06-16
+### Added
+- A hidden `+debug` option to enable automated tests (only relevant for other developers).
+- Support for [Act](https://github.com/nektos/act).
+- Support for [Amass](https://github.com/OWASP/Amass).
+- Support for [Borg](https://github.com/borgbackup/borg).
+- Support for [Dgraph](https://github.com/dgraph-io/dgraph)'s components `dgraph`, `dgraph-ratel` and `badger`.
+- Support for [Findomain](https://github.com/Edu4rdSHL/findomain).
+- Support for [Gau](https://github.com/lc/gau).
+- Support for [Handlr](github.com/chmln/handlr).
+- Support for [Hub](https://github.com/github/hub).
+- Support for [JQ](https://github.com/stedolan/jq).
+- Support for [Pegasus Frontend](https://github.com/mmatyas/pegasus-frontend)'s component `pegasus-fe`.
+- Support for [PhoneInfoga](https://github.com/sundowndev/PhoneInfoga).
+- Support for [RQLite](https://github.com/rqlite/rqlite)'s components `rqlite`, `rqlited` and `rqbench`.
+- Support for [Spotifyd](https://github.com/Spotifyd/spotifyd).
+- Support for [Spotify TUI](https://github.com/Rigellute/spotify-tui)'s component `spt`.
+- Support for [UNetbootin](https://github.com/unetbootin/unetbootin).
+- Support for [Wrangler](https://github.com/cloudflare/wrangler).
+
 ## [2.6.1] - 2020-06-14
 ### Fixed
 - A bug that was preventing the successful installation of `autocert`, `jailer` and `gh`.
