@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------ #
 
-GINSTALL_SH_VERSION="2.7.0"
+GINSTALL_SH_VERSION="2.7.1"
 
 # ------------------------------------------------------------------ #
 
@@ -327,312 +327,312 @@ REPO_ZOLA="github.com/getzola/zola"
 
 # ------------------------------------------------------------------ #
 
-SUPPORTED_APPS_HEADER="Application:                Repository:
-------------                -----------"
+SUPPORTED_APPS_HEADER="Application:                Linker Type:        Repository:
+------------                -----------         -----------"
 
 SUPPORTED_APPS_LIST="
 A
-acme-dns                    $REPO_ACME_DNS
-act                         $REPO_ACT
-adguardhome                 $REPO_ADGUARDHOME
-age                         $REPO_AGE
-age-keygen                  $REPO_AGE_KEYGEN
-amass                       $REPO_AMASS
-andesite                    $REPO_ANDESITE
-annie                       $REPO_ANNIE
-apizza                      $REPO_APIZZA
-arc                         $REPO_ARC
-argocd                      $REPO_ARGOCD
-authelia                    $REPO_AUTHELIA
-autocert                    $REPO_AUTOCERT
-avif                        $REPO_AVIF
+acme-dns                    dynamic             $REPO_ACME_DNS
+act                         static              $REPO_ACT
+adguardhome                 static              $REPO_ADGUARDHOME
+age                         static              $REPO_AGE
+age-keygen                  static              $REPO_AGE_KEYGEN
+amass                       static              $REPO_AMASS
+andesite                    dynamic             $REPO_ANDESITE
+annie                       static              $REPO_ANNIE
+apizza                      static              $REPO_APIZZA
+arc                         static              $REPO_ARC
+argocd                      static              $REPO_ARGOCD
+authelia                    static              $REPO_AUTHELIA
+autocert                    static              $REPO_AUTOCERT
+avif                        static              $REPO_AVIF
 
 B
-badger                      $REPO_BADGER
-bat                         $REPO_BAT
-bed                         $REPO_BED
-bin                         $REPO_BIN
-blocky                      $REPO_BLOCKY
-bombardier                  $REPO_BOMBARDIER
-borg                        $REPO_BORG
-brig                        $REPO_BRIG
-bw                          $REPO_BW
+badger                      dynamic             $REPO_BADGER
+bat                         dynamic             $REPO_BAT
+bed                         static              $REPO_BED
+bin                         dynamic             $REPO_BIN
+blocky                      dynamic             $REPO_BLOCKY
+bombardier                  static              $REPO_BOMBARDIER
+borg                        dynamic             $REPO_BORG
+brig                        dynamic             $REPO_BRIG
+bw                          dynamic             $REPO_BW
 
 C
-caddy                       $REPO_CADDY
-caire                       $REPO_CAIRE
-captainhook                 $REPO_CAPTAINHOOK
-ccat                        $REPO_CCAT
-chisel                      $REPO_CHISEL
-chroma                      $REPO_CHROMA
-cloud-torrent               $REPO_CLOUD_TORRENT
-cobalt                      $REPO_COBALT
-comics-downloader           $REPO_COMICS_DOWNLOADER
-composer                    $REPO_COMPOSER
-coredns                     $REPO_COREDNS
-croc                        $REPO_CROC
-ctop                        $REPO_CTOP
+caddy                       static              $REPO_CADDY
+caire                       dynamic             $REPO_CAIRE
+captainhook                 static              $REPO_CAPTAINHOOK
+ccat                        static              $REPO_CCAT
+chisel                      static              $REPO_CHISEL
+chroma                      dynamic             $REPO_CHROMA
+cloud-torrent               static              $REPO_CLOUD_TORRENT
+cobalt                      dynamic             $REPO_COBALT
+comics-downloader           static              $REPO_COMICS_DOWNLOADER
+composer                    dynamic             $REPO_COMPOSER
+coredns                     static              $REPO_COREDNS
+croc                        static              $REPO_CROC
+ctop                        dynamic             $REPO_CTOP
 
 D
-ddgr                        $REPO_DDGR
-ddns-route53                $REPO_DDNS_ROUTE53
-delta                       $REPO_DELTA
-dgraph                      $REPO_DGRAPH
-dgraph-ratel                $REPO_DGRAPH_RATEL
-discord-console             $REPO_DISCORD_CONSOLE
-discord-delete              $REPO_DISCORD_DELETE
-diskus                      $REPO_DISKUS
-diun                        $REPO_DIUN
-dive                        $REPO_DIVE
-dnscontrol                  $REPO_DNSCONTROL
-dnscrypt-proxy              $REPO_DNSCRYPT_PROXY
-dnsproxy                    $REPO_DNSPROXY
-dobi                        $REPO_DOBI
-docker-compose              $REPO_DOCKER_COMPOSE
-docker-credential-pass      $REPO_DOCKER_CREDENTIAL_PASS
-docker-gen                  $REPO_DOCKER_GEN
-docker-machine              $REPO_DOCKER_MACHINE
-drive                       $REPO_DRIVE
-drone                       $REPO_DRONE
-duplicacy                   $REPO_DUPLICACY
+ddgr                        dynamic             $REPO_DDGR
+ddns-route53                static              $REPO_DDNS_ROUTE53
+delta                       dynamic             $REPO_DELTA
+dgraph                      dynamic             $REPO_DGRAPH
+dgraph-ratel                dynamic             $REPO_DGRAPH_RATEL
+discord-console             static              $REPO_DISCORD_CONSOLE
+discord-delete              dynamic             $REPO_DISCORD_DELETE
+diskus                      dynamic             $REPO_DISKUS
+diun                        static              $REPO_DIUN
+dive                        static              $REPO_DIVE
+dnscontrol                  static              $REPO_DNSCONTROL
+dnscrypt-proxy              static              $REPO_DNSCRYPT_PROXY
+dnsproxy                    dynamic             $REPO_DNSPROXY
+dobi                        static              $REPO_DOBI
+docker-compose              dynamic             $REPO_DOCKER_COMPOSE
+docker-credential-pass      static              $REPO_DOCKER_CREDENTIAL_PASS
+docker-gen                  static              $REPO_DOCKER_GEN
+docker-machine              static              $REPO_DOCKER_MACHINE
+drive                       static              $REPO_DRIVE
+drone                       static              $REPO_DRONE
+duplicacy                   static              $REPO_DUPLICACY
 
 E
-edgedns                     $REPO_EDGEDNS
-etcd                        $REPO_ETCD
-etcdctl                     $REPO_ETCDCTL
-ethr                        $REPO_ETHR
-eureka                      $REPO_EUREKA
-exa                         $REPO_EXA
+edgedns                     dynamic             $REPO_EDGEDNS
+etcd                        static              $REPO_ETCD
+etcdctl                     static              $REPO_ETCDCTL
+ethr                        dynamic             $REPO_ETHR
+eureka                      static              $REPO_EUREKA
+exa                         dynamic             $REPO_EXA
 
 F
-fd                          $REPO_FD
-ffmpeg                      $REPO_FFMPEG
-ffsend                      $REPO_FFSEND
-filebrowser                 $REPO_FILEBROWSER
-findomain                   $REPO_FINDOMAIN
-firecracker                 $REPO_FIRECRACKER
-fluxctl                     $REPO_FLUXCTL
-fn                          $REPO_FN
-frece                       $REPO_FRECE
-frpc                        $REPO_FRPC
-frps                        $REPO_FRPS
-ftpgrab                     $REPO_FTPGRAB
-future-vuls                 $REPO_FUTURE_VULS
-fx                          $REPO_FX
-fzf                         $REPO_FZF_SOURCE
+fd                          dynamic             $REPO_FD
+ffmpeg                      static              $REPO_FFMPEG
+ffsend                      static              $REPO_FFSEND
+filebrowser                 static              $REPO_FILEBROWSER
+findomain                   dynamic             $REPO_FINDOMAIN
+firecracker                 static              $REPO_FIRECRACKER
+fluxctl                     static              $REPO_FLUXCTL
+fn                          dynamic             $REPO_FN
+frece                       dynamic             $REPO_FRECE
+frpc                        static              $REPO_FRPC
+frps                        static              $REPO_FRPS
+ftpgrab                     static              $REPO_FTPGRAB
+future-vuls                 dynamic             $REPO_FUTURE_VULS
+fx                          dynamic             $REPO_FX
+fzf                         static              $REPO_FZF_SOURCE
 
 G
-gau                         $REPO_GAU
-gdrive                      $REPO_GDRIVE
-geoip-updater               $REPO_GEOIP_UPDATER
-gget                        $REPO_GGET
-gh                          $REPO_GH
-ginstall.sh                 $REPO_GINSTALL_SH
-git-hooks                   $REPO_GIT_HOOKS
-git-rewrite-author          $REPO_GIT_REWRITE_AUTHOR
-gitbatch                    $REPO_GITBATCH
-gitea                       $REPO_GITEA
-go                          $REPO_GO
-go-auto-yt                  $REPO_GO_AUTO_YT
-goatcounter                 $REPO_GOATCOUNTER
-gobuster                    $REPO_GOBUSTER
-gogs                        $REPO_GOGS
-golangci-lint               $REPO_GOLANGCI_LINT
-gomplate                    $REPO_GOMPLATE
-gomuks                      $REPO_GOMUKS
-googler                     $REPO_GOOGLER
-gopass                      $REPO_GOPASS
-goreleaser                  $REPO_GORELEASER
-gossa                       $REPO_GOSSA
-gosu                        $REPO_GOSU
-gotty                       $REPO_GOTTY
-govc                        $REPO_GOVC
-gpldr-client                $REPO_GPLDR_CLIENT
-gpldr-server                $REPO_GPLDR_SERVER
+gau                         static              $REPO_GAU
+gdrive                      dynamic             $REPO_GDRIVE
+geoip-updater               static              $REPO_GEOIP_UPDATER
+gget                        static              $REPO_GGET
+gh                          dynamic             $REPO_GH
+ginstall.sh                 dynamic             $REPO_GINSTALL_SH
+git-hooks                   static              $REPO_GIT_HOOKS
+git-rewrite-author          static              $REPO_GIT_REWRITE_AUTHOR
+gitbatch                    static              $REPO_GITBATCH
+gitea                       static              $REPO_GITEA
+go                          dynamic             $REPO_GO
+go-auto-yt                  dynamic             $REPO_GO_AUTO_YT
+goatcounter                 static              $REPO_GOATCOUNTER
+gobuster                    dynamic             $REPO_GOBUSTER
+gogs                        dynamic             $REPO_GOGS
+golangci-lint               static              $REPO_GOLANGCI_LINT
+gomplate                    static              $REPO_GOMPLATE
+gomuks                      static              $REPO_GOMUKS
+googler                     dynamic             $REPO_GOOGLER
+gopass                      static              $REPO_GOPASS
+goreleaser                  static              $REPO_GORELEASER
+gossa                       static              $REPO_GOSSA
+gosu                        static              $REPO_GOSU
+gotty                       dynamic             $REPO_GOTTY
+govc                        static              $REPO_GOVC
+gpldr-client                dynamic             $REPO_GPLDR_CLIENT
+gpldr-server                dynamic             $REPO_GPLDR_SERVER
 
 H
-handlr                      $REPO_HANDLR
-hexyl                       $REPO_HEXYL
-hey                         $REPO_HEY
-httpstat                    $REPO_HTTPSTAT
-hub                         $REPO_HUB
-hugo                        $REPO_HUGO
-hugo-extended               $REPO_HUGO_EXTENDED
-hyperfine                   $REPO_HYPERFINE
+handlr                      dynamic             $REPO_HANDLR
+hexyl                       dynamic             $REPO_HEXYL
+hey                         static              $REPO_HEY
+httpstat                    static              $REPO_HTTPSTAT
+hub                         dynamic             $REPO_HUB
+hugo                        static              $REPO_HUGO
+hugo-extended               dynamic             $REPO_HUGO_EXTENDED
+hyperfine                   dynamic             $REPO_HYPERFINE
 
 I
-identity                    $REPO_IDENTITY
-imdl                        $REPO_IMDL
-inlets                      $REPO_INLETS
-insect                      $REPO_INSECT
-intercert                   $REPO_INTERCERT
-ipfs                        $REPO_IPFS
+identity                    static              $REPO_IDENTITY
+imdl                        static              $REPO_IMDL
+inlets                      static              $REPO_INLETS
+insect                      dynamic             $REPO_INSECT
+intercert                   static              $REPO_INTERCERT
+ipfs                        dynamic             $REPO_IPFS
 
 J
-jailer                      $REPO_JAILER
-jellycli                    $REPO_JELLYCLI
-jq                          $REPO_JQ
-json2csv                    $REPO_JSON2CSV
-json5                       $REPO_JSON5
-jsteg                       $REPO_JSTEG
+jailer                      static              $REPO_JAILER
+jellycli                    dynamic             $REPO_JELLYCLI
+jq                          static              $REPO_JQ
+json2csv                    static              $REPO_JSON2CSV
+json5                       static              $REPO_JSON5
+jsteg                       static              $REPO_JSTEG
 
 K
-k3s                         $REPO_K3S
-k9s                         $REPO_K9S
-komga                       $REPO_KOMGA
-kompose                     $REPO_KOMPOSE
+k3s                         static              $REPO_K3S
+k9s                         static              $REPO_K9S
+komga                       dynamic             $REPO_KOMGA
+kompose                     static              $REPO_KOMPOSE
 
 L
-lazydocker                  $REPO_LAZYDOCKER
-lego                        $REPO_LEGO
-linuxkit                    $REPO_LINUXKIT
-linx-cleanup                $REPO_LINX_CLEANUP
-linx-genkey                 $REPO_LINX_GENKEY
-linx-server                 $REPO_LINX_SERVER
-logcli                      $REPO_LOGCLI
-loki                        $REPO_LOKI
-louketo-proxy               $REPO_LOUKETO_PROXY
-lucid                       $REPO_LUCID
+lazydocker                  static              $REPO_LAZYDOCKER
+lego                        static              $REPO_LEGO
+linuxkit                    static              $REPO_LINUXKIT
+linx-cleanup                static              $REPO_LINX_CLEANUP
+linx-genkey                 static              $REPO_LINX_GENKEY
+linx-server                 static              $REPO_LINX_SERVER
+logcli                      static              $REPO_LOGCLI
+loki                        static              $REPO_LOKI
+louketo-proxy               dynamic             $REPO_LOUKETO_PROXY
+lucid                       dynamic             $REPO_LUCID
 
 M
-magneticod                  $REPO_MAGNETICOD
-magneticow                  $REPO_MAGNETICOW
-matterbridge                $REPO_MATTERBRIDGE
-mdbook                      $REPO_MDBOOK
-micro                       $REPO_MICRO
-migrate                     $REPO_MIGRATE
-minify                      $REPO_MINIFY
-mkcert                      $REPO_MKCERT
-monitoror                   $REPO_MONITOROR
+magneticod                  dynamic             $REPO_MAGNETICOD
+magneticow                  dynamic             $REPO_MAGNETICOW
+matterbridge                static              $REPO_MATTERBRIDGE
+mdbook                      dynamic             $REPO_MDBOOK
+micro                       static              $REPO_MICRO
+migrate                     static              $REPO_MIGRATE
+minify                      static              $REPO_MINIFY
+mkcert                      static              $REPO_MKCERT
+monitoror                   static              $REPO_MONITOROR
 
 N
-naabu                       $REPO_NAABU
-navidrome                   $REPO_NAVIDROME
-nebula                      $REPO_NEBULA
-nebula-cert                 $REPO_NEBULA_CERT
-niltalk                     $REPO_NILTALK
-nnn                         $REPO_NNN
+naabu                       dynamic             $REPO_NAABU
+navidrome                   static              $REPO_NAVIDROME
+nebula                      dynamic             $REPO_NEBULA
+nebula-cert                 dynamic             $REPO_NEBULA_CERT
+niltalk                     static              $REPO_NILTALK
+nnn                         static              $REPO_NNN
 
 O
-oauth2-proxy                $REPO_OAUTH2_PROXY
-opa                         $REPO_OPA
-oragono                     $REPO_ORAGONO
+oauth2-proxy                static              $REPO_OAUTH2_PROXY
+opa                         static              $REPO_OPA
+oragono                     dynamic             $REPO_ORAGONO
 
 P
-parcello                    $REPO_PARCELLO
-pastel                      $REPO_PASTEL
-peach                       $REPO_PEACH
-pebble                      $REPO_PEBBLE
-pebble-challtestsrv         $REPO_PEBBLE_CHALLTESTSRV
-pegasus-fe                  $REPO_PEGASUS_FE
-pgweb                       $REPO_PGWEB
-phoneinfoga                 $REPO_PHONEINFOGA
-pkger                       $REPO_PKGER
-plexdrive                   $REPO_PLEXDRIVE
-plik                        $REPO_PLIK
-plikd                       $REPO_PLIKD
-podman-remote               $REPO_PODMAN_REMOTE
-pomerium                    $REPO_POMERIUM
-pomerium-cli                $REPO_POMERIUM_CLI
-portainer                   $REPO_PORTAINER
-promtail                    $REPO_PROMTAIL
+parcello                    static              $REPO_PARCELLO
+pastel                      dynamic             $REPO_PASTEL
+peach                       static              $REPO_PEACH
+pebble                      dynamic             $REPO_PEBBLE
+pebble-challtestsrv         dynamic             $REPO_PEBBLE_CHALLTESTSRV
+pegasus-fe                  dynamic             $REPO_PEGASUS_FE
+pgweb                       static              $REPO_PGWEB
+phoneinfoga                 static              $REPO_PHONEINFOGA
+pkger                       static              $REPO_PKGER
+plexdrive                   dynamic             $REPO_PLEXDRIVE
+plik                        dynamic             $REPO_PLIK
+plikd                       dynamic             $REPO_PLIKD
+podman-remote               dynamic             $REPO_PODMAN_REMOTE
+pomerium                    static              $REPO_POMERIUM
+pomerium-cli                static              $REPO_POMERIUM_CLI
+portainer                   static              $REPO_PORTAINER
+promtail                    dynamic             $REPO_PROMTAIL
 
 Q
-qrcp                        $REPO_QRCP
+qrcp                        static              $REPO_QRCP
 
 R
-rage                        $REPO_RAGE
-rage-keygen                 $REPO_RAGE_KEYGEN
-rattlesnakeos-stack         $REPO_RATTLESNAKEOS_STACK
-rclone                      $REPO_RCLONE
-red                         $REPO_RED
-reg                         $REPO_REG
-restic                      $REPO_RESTIC
-rg                          $REPO_RG
-rga                         $REPO_RGA
-rga-preproc                 $REPO_RGA_PREPROC
-rio                         $REPO_RIO
-rootlessctl                 $REPO_ROOTLESSCTL
-rootlesskit                 $REPO_ROOTLESSKIT
-rqbench                     $REPO_RQBENCH
-rqlite                      $REPO_RQLITE
-rqlited                     $REPO_RQLITED
+rage                        dynamic             $REPO_RAGE
+rage-keygen                 dynamic             $REPO_RAGE_KEYGEN
+rattlesnakeos-stack         dynamic             $REPO_RATTLESNAKEOS_STACK
+rclone                      static              $REPO_RCLONE
+red                         static              $REPO_RED
+reg                         static              $REPO_REG
+restic                      static              $REPO_RESTIC
+rg                          static              $REPO_RG
+rga                         static              $REPO_RGA
+rga-preproc                 static              $REPO_RGA_PREPROC
+rio                         static              $REPO_RIO
+rootlessctl                 static              $REPO_ROOTLESSCTL
+rootlesskit                 static              $REPO_ROOTLESSKIT
+rqbench                     dynamic             $REPO_RQBENCH
+rqlite                      dynamic             $REPO_RQLITE
+rqlited                     dynamic             $REPO_RQLITED
 
 S
-s                           $REPO_S
-s2c                         $REPO_S2C
-s2d                         $REPO_S2D
-sdns                        $REPO_SDNS
-shellcheck                  $REPO_SHELLCHECK
-simple-vpn                  $REPO_SIMPLE_VPN
-slack-term                  $REPO_SLACK_TERM
-slink                       $REPO_SLINK
-spotifyd                    $REPO_SPOTIFYD
-spt                         $REPO_SPT
-ssh-auditor                 $REPO_SSH_AUDITOR
-sslocal                     $REPO_SSLOCAL
-ssmanager                   $REPO_SSMANAGER
-ssserver                    $REPO_SSSERVER
-ssurl                       $REPO_SSURL
-starship                    $REPO_STARSHIP
-statping                    $REPO_STATPING
-stdiscosrv                  $REPO_STDISCOSRV
-stegify                     $REPO_STEGIFY
-step                        $REPO_STEP
-strelaysrv                  $REPO_STRELAYSRV
-sup                         $REPO_SUP
-swagger                     $REPO_SWAGGER
-swarm-cronjob               $REPO_SWARM_CRONJOB
-syncthing                   $REPO_SYNCTHING
+s                           dynamic             $REPO_S
+s2c                         static              $REPO_S2C
+s2d                         static              $REPO_S2D
+sdns                        static              $REPO_SDNS
+shellcheck                  static              $REPO_SHELLCHECK
+simple-vpn                  dynamic             $REPO_SIMPLE_VPN
+slack-term                  static              $REPO_SLACK_TERM
+slink                       static              $REPO_SLINK
+spotifyd                    static              $REPO_SPOTIFYD
+spt                         dynamic             $REPO_SPT
+ssh-auditor                 static              $REPO_SSH_AUDITOR
+sslocal                     dynamic             $REPO_SSLOCAL
+ssmanager                   dynamic             $REPO_SSMANAGER
+ssserver                    dynamic             $REPO_SSSERVER
+ssurl                       dynamic             $REPO_SSURL
+starship                    dynamic             $REPO_STARSHIP
+statping                    static              $REPO_STATPING
+stdiscosrv                  static              $REPO_STDISCOSRV
+stegify                     static              $REPO_STEGIFY
+step                        static              $REPO_STEP
+strelaysrv                  static              $REPO_STRELAYSRV
+sup                         static              $REPO_SUP
+swagger                     static              $REPO_SWAGGER
+swarm-cronjob               static              $REPO_SWARM_CRONJOB
+syncthing                   static              $REPO_SYNCTHING
 
 T
-tableview                   $REPO_TABLEVIEW
-task                        $REPO_TASK
-tengo                       $REPO_TENGO
-tldr++                      $REPO_TLDR_PLUS_PLUS
-traefik                     $REPO_TRAEFIK
-transfersh                  $REPO_TRANSFERSH
-travis-wait-enhanced        $REPO_TRAVIS_WAIT_ENHANCED
-trivy                       $REPO_TRIVY
-trivy-to-vuls               $REPO_TRIVY_TO_VULS
-txeh                        $REPO_TXEH
+tableview                   static              $REPO_TABLEVIEW
+task                        static              $REPO_TASK
+tengo                       static              $REPO_TENGO
+tldr++                      static              $REPO_TLDR_PLUS_PLUS
+traefik                     static              $REPO_TRAEFIK
+transfersh                  static              $REPO_TRANSFERSH
+travis-wait-enhanced        static              $REPO_TRAVIS_WAIT_ENHANCED
+trivy                       static              $REPO_TRIVY
+trivy-to-vuls               dynamic             $REPO_TRIVY_TO_VULS
+txeh                        static              $REPO_TXEH
 
 U
-unetbootin                  $REPO_UNETBOOTIN
-unftp                       $REPO_UNFTP
-up                          $REPO_UP
-uplink                      $REPO_UPLINK
-upx                         $REPO_UPX
+unetbootin                  static              $REPO_UNETBOOTIN
+unftp                       static              $REPO_UNFTP
+up                          static              $REPO_UP
+uplink                      static              $REPO_UPLINK
+upx                         static              $REPO_UPX
 
 V
-vector                      $REPO_VECTOR
-velero                      $REPO_VELERO
-vigil                       $REPO_VIGIL
-vivid                       $REPO_VIVID
-vsphere-influxdb-go         $REPO_VSPHERE_INFLUXDB_GO
-vuls                        $REPO_VULS
+vector                      static              $REPO_VECTOR
+velero                      static              $REPO_VELERO
+vigil                       static              $REPO_VIGIL
+vivid                       dynamic             $REPO_VIVID
+vsphere-influxdb-go         dynamic             $REPO_VSPHERE_INFLUXDB_GO
+vuls                        dynamic             $REPO_VULS
 
 W
-watchtower                  $REPO_WATCHTOWER
-wrangler                    $REPO_WRANGLER
-wuzz                        $REPO_WUZZ
+watchtower                  static              $REPO_WATCHTOWER
+wrangler                    static              $REPO_WRANGLER
+wuzz                        static              $REPO_WUZZ
 
 X
-xsv                         $REPO_XSV
+xsv                         static              $REPO_XSV
 
 Y
-youtube-dl                  $REPO_YOUTUBE_DL
-yq                          $REPO_YQ
-ytop                        $REPO_YTOP
+youtube-dl                  dynamic             $REPO_YOUTUBE_DL
+yq                          static              $REPO_YQ
+ytop                        dynamic             $REPO_YTOP
 
 Z
-zenith                      $REPO_ZENITH
-zola                        $REPO_ZOLA"
+zenith                      static              $REPO_ZENITH
+zola                        dynamic             $REPO_ZOLA"
 
 # ------------------------------------------------------------------ #
 
 HELP="About:
-  ginstall.sh is a script for installing and updating statically compiled applications.
+  ginstall.sh is a script for installing/updating the compiled binaries of statically and dynamically linked applications.
 
 Usage:
   ginstall.sh [flags] <app> <version>
@@ -682,13 +682,13 @@ case "$1" in
         ;;
 
         "ffmpeg")
-          CHECK_RESULT="$(curl -sSL https://ffmpeg.org/releases/ | grep "tar.gz\"" | sed 's|^.\{62\}||g;s|.tar.gz.*||g' | sort | sed '$!d')"
+          CHECK_RESULT="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
           echo -e "The latest version of $2 is v${CHECK_RESULT}."
           exit 0
         ;;
 
         "go")
-          CHECK_RESULT="$(curl -sSL https://golang.org/dl/ | grep "span class.*src.tar.gz" | sed 's|^.\{27\}||g;s|.src.*||g')"
+          CHECK_RESULT="$(curl -sSL https://golang.org/dl/ | grep "downloadBox.*linux-amd64" | sed 's|.*go||g;s|.linux.*||g')"
           echo -e "The latest version of $2 is v${CHECK_RESULT}."
           exit 0
         ;;
@@ -1167,7 +1167,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "ffmpeg")
       case "$3" in
         "latest")
-          APP_VERSION="$(curl -sSL https://ffmpeg.org/releases/ | grep "tar.gz\"" | sed 's|^.\{62\}||g;s|.tar.gz.*||g' | sort | sed '$!d')"
+          APP_VERSION="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
           INSTALL_SUCCESS="The latest version of $2 (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
           FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
         ;;
@@ -1188,7 +1188,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "go")
       if [ -z "${DIR_FLAG}" ]; then INSTALL_DIR=/usr/local; fi
       if [ "$3" = "latest" ]; then
-        APP_VERSION="$(curl -sSL https://golang.org/dl/ | grep "span class.*src.tar.gz" | sed 's|^.\{27\}||g;s|.src.*||g')"
+        APP_VERSION="$(curl -sSL https://golang.org/dl/ | grep "downloadBox.*linux-amd64" | sed 's|.*go||g;s|.linux.*||g')"
         INSTALL_SUCCESS="The latest version of $2 (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
       fi
       rm -rf "${INSTALL_DIR:?}"/"${APP_NAME}" && \

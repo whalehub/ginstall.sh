@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.1] - 2020-06-16
+### Changed
+- The output of the `--list` flag now has a column for displaying the linker type of supported applications.
+- The documentation and the output of the `--help` flag have been updated to reflect the aforementioned change.
+
+### Fixed
+- A bug that could prevent the successful installation of `ffmpeg` and `go` when using the version argument "latest" under some circumstances.
+
 ## [2.7.0] - 2020-06-16
 ### Added
 - A hidden `+debug` option to enable automated tests (only relevant for other developers).

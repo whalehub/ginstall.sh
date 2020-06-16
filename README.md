@@ -1,5 +1,5 @@
 ## About
-This script can be used to install/update a number of statically compiled applications from the command line.
+This script can be used to install/update the compiled binaries of statically and dynamically linked applications from the command line.
 
 It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to dynamically fetch git repository assets whenever possible.
 
@@ -22,7 +22,12 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 
 ## Installation
 
-You can install `ginstall.sh` by downloading the latest release, moving it to `/usr/local/bin` and making it executable.
+You can install `ginstall.sh` by downloading the latest release, moving it to `/usr/local/bin` and making it executable:
+
+```
+curl -L -o /usr/local/bin/ginstall.sh https://github.com/whalehub/ginstall.sh/releases/download/v2.7.1/ginstall.sh && \
+chmod +x /usr/local/bin/ginstall.sh
+```
 
 The dependency `gget` can be installed by running `ginstall.sh` with the `--first-run` flag.
 
