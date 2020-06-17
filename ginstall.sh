@@ -19,8 +19,8 @@ VERSION_PREFIX="@v"
 
 MISSING_DEPENDENCY="Error: To use this flag, you must first install ginstall.sh's dependency gget."
 MISSING_DEPENDENCY_INSTALL="Error: To install an application with ginstall.sh, you must first install its dependency gget."
-PERMISSION_DENIED="Error: This script needs to be running as root or with sudo."
-UNSUPPORTED_APP="Error: This application is not supported by ginstall.sh."
+PERMISSION_DENIED="Error: To install an application to /usr/local/bin, this script needs to be running as root or with sudo."
+UNSUPPORTED_APP="Error: The application you specified is not supported by ginstall.sh."
 
 USAGE_INFORMATION="Please run \"ginstall.sh --help\" for usage information."
 
@@ -72,6 +72,7 @@ REPO_CTOP="github.com/bcicen/ctop"
 REPO_DDGR="github.com/jarun/ddgr"
 REPO_DDNS_ROUTE53="github.com/crazy-max/ddns-route53"
 REPO_DELTA="github.com/dandavison/delta"
+REPO_DENO_LINT="github.com/denoland/deno_lint"
 REPO_DGRAPH="github.com/dgraph-io/dgraph"
 REPO_DGRAPH_RATEL="github.com/dgraph-io/dgraph"
 REPO_DISCORD_CONSOLE="github.com/discordconsole-team/DiscordConsole"
@@ -128,6 +129,7 @@ REPO_GIT_HOOKS="github.com/git-hooks/git-hooks"
 REPO_GIT_REWRITE_AUTHOR="github.com/crazy-max/git-rewrite-author"
 REPO_GITBATCH="github.com/isacikgoz/gitbatch"
 REPO_GITEA="github.com/go-gitea/gitea"
+REPO_GITUI="github.com/extrawurst/gitui"
 REPO_GO="github.com/golang/go"
 REPO_GO_AUTO_YT="github.com/XiovV/Golty"
 REPO_GOATCOUNTER="github.com/zgoat/goatcounter"
@@ -154,6 +156,7 @@ REPO_HTTPSTAT="github.com/davecheney/httpstat"
 REPO_HUB="github.com/github/hub"
 REPO_HUGO="github.com/gohugoio/hugo"
 REPO_HUGO_EXTENDED="github.com/gohugoio/hugo"
+REPO_HYDRA="github.com/ory/hydra"
 REPO_HYPERFINE="github.com/sharkdp/hyperfine"
 
 # I
@@ -253,6 +256,7 @@ REPO_ROOTLESSKIT="github.com/rootless-containers/rootlesskit"
 REPO_RQBENCH="github.com/rqlite/rqlite"
 REPO_RQLITE="github.com/rqlite/rqlite"
 REPO_RQLITED="github.com/rqlite/rqlite"
+REPO_RUST_ANALYZER="github.com/rust-analyzer/rust-analyzer"
 
 # S
 REPO_S="github.com/zquestz/s"
@@ -266,6 +270,7 @@ REPO_SLINK="github.com/lukechampine/jsteg"
 REPO_SPOTIFYD="github.com/Spotifyd/spotifyd"
 REPO_SPT="github.com/Rigellute/spotify-tui"
 REPO_SSH_AUDITOR="github.com/ncsa/ssh-auditor"
+REPO_SSHCODE="github.com/cdr/sshcode"
 REPO_SSLOCAL="github.com/shadowsocks/shadowsocks-rust"
 REPO_SSMANAGER="github.com/shadowsocks/shadowsocks-rust"
 REPO_SSSERVER="github.com/shadowsocks/shadowsocks-rust"
@@ -309,6 +314,7 @@ REPO_VSPHERE_INFLUXDB_GO="github.com/Oxalide/vsphere-influxdb-go"
 REPO_VULS="github.com/future-architect/vuls"
 
 # W
+REPO_WAL_G="github.com/wal-g/wal-g"
 REPO_WATCHTOWER="github.com/containrrr/watchtower"
 REPO_WRANGLER="github.com/cloudflare/wrangler"
 REPO_WUZZ="github.com/asciimoo/wuzz"
@@ -328,7 +334,7 @@ REPO_ZOLA="github.com/getzola/zola"
 # ------------------------------------------------------------------ #
 
 SUPPORTED_APPS_HEADER="Application:                Linker Type:        Repository:
-------------                -----------         -----------"
+------------                ------------        -----------"
 
 SUPPORTED_APPS_LIST="
 A
@@ -377,6 +383,7 @@ D
 ddgr                        dynamic             $REPO_DDGR
 ddns-route53                static              $REPO_DDNS_ROUTE53
 delta                       dynamic             $REPO_DELTA
+deno_lint                   dynamic             $REPO_DENO_LINT
 dgraph                      dynamic             $REPO_DGRAPH
 dgraph-ratel                dynamic             $REPO_DGRAPH_RATEL
 discord-console             static              $REPO_DISCORD_CONSOLE
@@ -432,6 +439,7 @@ git-hooks                   static              $REPO_GIT_HOOKS
 git-rewrite-author          static              $REPO_GIT_REWRITE_AUTHOR
 gitbatch                    static              $REPO_GITBATCH
 gitea                       static              $REPO_GITEA
+gitui                       static              $REPO_GITUI
 go                          dynamic             $REPO_GO
 go-auto-yt                  dynamic             $REPO_GO_AUTO_YT
 goatcounter                 static              $REPO_GOATCOUNTER
@@ -458,6 +466,7 @@ httpstat                    static              $REPO_HTTPSTAT
 hub                         dynamic             $REPO_HUB
 hugo                        static              $REPO_HUGO
 hugo-extended               dynamic             $REPO_HUGO_EXTENDED
+hydra                       static              $REPO_HYDRA
 hyperfine                   dynamic             $REPO_HYPERFINE
 
 I
@@ -557,6 +566,7 @@ rootlesskit                 static              $REPO_ROOTLESSKIT
 rqbench                     dynamic             $REPO_RQBENCH
 rqlite                      dynamic             $REPO_RQLITE
 rqlited                     dynamic             $REPO_RQLITED
+rust-analyzer               dynamic             $REPO_RUST_ANALYZER
 
 S
 s                           dynamic             $REPO_S
@@ -570,6 +580,7 @@ slink                       static              $REPO_SLINK
 spotifyd                    static              $REPO_SPOTIFYD
 spt                         dynamic             $REPO_SPT
 ssh-auditor                 static              $REPO_SSH_AUDITOR
+sshcode                     dynamic             $REPO_SSHCODE
 sslocal                     dynamic             $REPO_SSLOCAL
 ssmanager                   dynamic             $REPO_SSMANAGER
 ssserver                    dynamic             $REPO_SSSERVER
@@ -613,6 +624,7 @@ vsphere-influxdb-go         dynamic             $REPO_VSPHERE_INFLUXDB_GO
 vuls                        dynamic             $REPO_VULS
 
 W
+wal-g                       dynamic             $REPO_WAL_G
 watchtower                  static              $REPO_WATCHTOWER
 wrangler                    static              $REPO_WRANGLER
 wuzz                        static              $REPO_WUZZ
@@ -662,7 +674,9 @@ Info:
 
 ARGS="$(getopt -l check:,directory:,first-run,help,list,remove:,search:,self-update,version -o c:d:hlr:s:v -n ginstall.sh -- "$@")"
 
-if [ $? -ne 0 ]; then exit 1; fi
+if [ $? -ne 0 ]; then
+  exit 1
+fi
 
 eval set -- "$ARGS"
 unset ARGS
@@ -676,58 +690,33 @@ case "$1" in
       exit 1
     else
       case "$2" in
-        "age" | "age-keygen")
-          echo -e "The latest version of $2 is v1.0.0-beta2."
-          exit 0
-        ;;
-
         "ffmpeg")
-          CHECK_RESULT="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
-          echo -e "The latest version of $2 is v${CHECK_RESULT}."
+          APP_VERSION="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
+          echo -e "The latest version of $2 is v${APP_VERSION}."
           exit 0
         ;;
 
         "go")
-          CHECK_RESULT="$(curl -sSL https://golang.org/dl/ | grep "downloadBox.*linux-amd64" | sed 's|.*go||g;s|.linux.*||g')"
-          echo -e "The latest version of $2 is v${CHECK_RESULT}."
-          exit 0
-        ;;
-
-        "go-auto-yt")
-          echo -e "The latest version of $2 is v0.5.1."
-          exit 0
-        ;;
-
-        "insect")
-          echo -e "The latest version of $2 is v5.3.0."
-          exit 0
-        ;;
-
-        "intercert")
-          echo -e "The latest version of $2 is v0.0.2."
-          exit 0
-        ;;
-
-        "louketo-proxy")
-          echo -e "The latest version of $2 is v1.0.0-alpha.1."
-          exit 0
-        ;;
-
-        "rage" | "rage-keygen")
-          echo -e "The latest version of $2 is v0.4.0."
+          APP_VERSION="$(curl -sSL https://golang.org/dl/ | grep "downloadBox.*linux-amd64" | sed 's|.*go||g;s|.linux.*||g')"
+          echo -e "The latest version of $2 is v${APP_VERSION}."
           exit 0
         ;;
 
         *)
-          REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g' | sed 's/+/_PLUS/g')"
-          CHECK_RESULT="$(gget --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
-          if [ -z "${CHECK_RESULT}" ]; then
+          REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g;s/+/_PLUS/g')"
+          if [ -z "${!REPO}" ]; then
             echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}"
             exit 1
-          else
-            echo -e "The latest version of $2 is v${CHECK_RESULT}."
-            exit 0
           fi
+
+          VERSION_CHECK="$(gget --ref-stability=stable --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+          if [ -z "${VERSION_CHECK}" ]; then
+            APP_VERSION="$(gget --ref-stability=pre-release --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+          else
+            APP_VERSION="${VERSION_CHECK}"
+          fi
+          echo -e "The latest version of $2 is v${APP_VERSION}."
+          exit 0
         ;;
       esac
     fi
@@ -780,7 +769,7 @@ case "$1" in
 
   "--remove" | "-r")
     UNINSTALL_SUCCESS="$2 was uninstalled successfully."
-    REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g' | sed 's/+/_PLUS/g')"
+    REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g;s/+/_PLUS/g')"
     if [ -z "${!REPO}" ]; then
       echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}"
       exit 1
@@ -836,7 +825,7 @@ case "$1" in
       echo -e "${MISSING_DEPENDENCY}\n${USAGE_INFORMATION}"
       exit 1
     else
-      APP_VERSION="$(gget --show-ref "${REPO_GINSTALL_SH}" | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+      APP_VERSION="$(gget --ref-stability=stable --show-ref "${REPO_GINSTALL_SH}" | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
       gget --stdout "${REPO_GINSTALL_SH}""${VERSION_PREFIX}""${APP_VERSION}" 'ginstall.sh' > "$0" && \
       chmod 0755 "$0" && \
       echo -e "ginstall.sh successfully updated itself to the latest version (v${APP_VERSION})."
@@ -869,7 +858,7 @@ APP_NAME="$2"
 APP_RESOURCE="$2"
 APP_VERSION="$3"
 
-REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g' | sed 's/+/_PLUS/g')"
+REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g;s/+/_PLUS/g')"
 
 INSTALL_SUCCESS="${APP_NAME} v${APP_VERSION} was successfully installed to ${INSTALL_DIR}."
 
@@ -881,22 +870,18 @@ if [ "$3" = "latest" ]; then
       "ffmpeg" | "go")
       ;;
 
-      "age" | "age-keygen" | "go-auto-yt" | "insect" | "intercert" | "louketo-proxy" | "rage" | "rage-keygen")
-        if [ "$2" = "age" ] || [ "$2" = "age-keygen" ]; then APP_VERSION="1.0.0-beta2"; fi
-        if [ "$2" = "go-auto-yt" ]; then APP_VERSION="0.5.1"; fi
-        if [ "$2" = "insect" ]; then APP_VERSION="5.3.0"; fi
-        if [ "$2" = "intercert" ]; then APP_VERSION="0.0.2"; fi
-        if [ "$2" = "louketo-proxy" ]; then APP_VERSION="1.0.0-alpha.1"; fi
-        if [ "$2" = "rage" ] || [ "$2" = "rage-keygen" ]; then APP_VERSION="0.4.0"; fi
-        INSTALL_SUCCESS="The latest version of ${APP_NAME} (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
-      ;;
-
       *)
         if [ -z "${!REPO}" ]; then
           echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}"
           exit 1
         fi
-        APP_VERSION="$(gget --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+
+        VERSION_CHECK="$(gget --ref-stability=stable --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+        if [ -z "${VERSION_CHECK}" ]; then
+          APP_VERSION="$(gget --ref-stability=pre-release --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+        else
+          APP_VERSION="${VERSION_CHECK}"
+        fi
         INSTALL_SUCCESS="The latest version of ${APP_NAME} (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
       ;;
     esac
@@ -950,7 +935,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "annie" | "borg" | "captainhook" | "cloud-torrent" | "composer" | "delta" | "discord-console" | "discord-delete" | "dnscrypt-proxy" | "docker-compose" | \
     "docker-gen" | "edgedns" | "eureka" | "findomain" | "fluxctl" | "fn" | "frece" | "ftpgrab" | "fx" |"fzf" | "gdrive" | "git-rewrite-author" | "go-auto-yt" | \
     "gosu" | "inlets" | "jq" | "louketo-proxy" | "monitoror" | "naabu" | "pegasus-fe" | "plexdrive" | "plik" | "plikd" | "portainer" | "qrcp" | "rg" | \
-    "simple-vpn" | "unetbootin" | "xsv" | "youtube-dl" | "yq" | "ytop" | "zenith")
+    "rust-analyzer" | "simple-vpn" | "unetbootin" | "xsv" | "youtube-dl" | "yq" | "ytop" | "zenith")
       VERSION_PREFIX="@"
     ;;
   esac
@@ -965,9 +950,9 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
   case "$2" in
     "acme-dns" | "act" | "annie" | "apizza" | "badger" | "caddy" | "captainhook" | "chroma" | "coredns" | "croc" | "ddns-route53" | "dgraph" | \
     "dgraph-ratel" | "diun" | "dive" | "docker-gen" | "drone" | "filebrowser" | "ftpgrab" | "fzf" | "gau" | "geoip-updater" | "git-rewrite-author" | \
-    "gitbatch" | "gopass" | "goreleaser" | "intercert" | "k9s" | "lazydocker" | "lego" | "minify" | "naabu" | "navidrome" | "nebula" | \
-    "nebula-cert" | "niltalk" | "parcello" | "peach" | "phoneinfoga" | "pkger" | "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "statping" | \
-    "swarm-cronjob" | "task" | "tengo" | "traefik" | "travis-wait-enhanced" | "trivy" | "txeh" | "up" | "vsphere-influxdb-go" | "watchtower")
+    "gitbatch" | "gopass" | "goreleaser" | "hydra" | "intercert" | "k9s" | "lazydocker" | "lego" | "minify" | "naabu" | "navidrome" | "nebula" | "nebula-cert" | \
+    "niltalk" | "parcello" | "peach" | "phoneinfoga" | "pkger" | "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "sshcode" | "statping" | \
+    "swarm-cronjob" | "task" | "tengo" | "traefik" | "travis-wait-enhanced" | "trivy" | "txeh" | "up" | "vsphere-influxdb-go" | "wal-g" | "watchtower")
       gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
@@ -989,13 +974,14 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "age" | "age-keygen" | "autocert" | "frpc" | "frps" | "gh" | "hub" | "ipfs" | "plik" | "plikd" | "rage" | "rage-keygen" | "step" | "vector" | "vigil")
+    "age" | "age-keygen" | "autocert" | "frpc" | "frps" | "gh" | "gitui" | "hub" | "ipfs" | "plik" | "plikd" | "rage" | "rage-keygen" | "step" | "vector" | "vigil")
       COMPONENT_COUNT="1"
       APP_RESOURCE_PREFIX="inux"
       if [ "$2" = "age" ] || [ "$2" = "age-keygen" ]; then FOLDER_PREFIX="age"; fi
       if [ "$2" = "autocert" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
       if [ "$2" = "frpc" ] || [ "$2" = "frps" ]; then FOLDER_PREFIX="frp_${APP_VERSION}_linux_amd64"; fi
       if [ "$2" = "gh" ] || [ "$2" = "hub" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
+      if [ "$2" = "gitui" ]; then FOLDER_PREFIX="." COMPONENT_COUNT="1" APP_RESOURCE_PREFIX="musl"; fi
       if [ "$2" = "ipfs" ]; then FOLDER_PREFIX="go-ipfs"; fi
       if [ "$2" = "plik" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/clients/linux-amd64" COMPONENT_COUNT="3"; fi
       if [ "$2" = "plikd" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/server" COMPONENT_COUNT="2"; fi
@@ -1078,16 +1064,19 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "comics-downloader" | "composer" | "findomain" | "firecracker" | "jailer" | "magneticod" | "magneticow" | "ginstall.sh" | "gosu" | "handlr" | "inlets" | "k3s" | "komga" | "youtube-dl")
+    "comics-downloader" | "composer" | "findomain" | "firecracker" | "jailer" | "magneticod" | "magneticow" | "ginstall.sh" | "gosu" | "handlr" | "inlets" | "k3s" | "komga" | "rust-analyzer" | "youtube-dl")
       APP_RESOURCE_SUFFIX="*"
       case "$2" in
         "comics-downloader" | "ginstall.sh" | "handlr" | "inlets" | "k3s" | "magneticod" | "magneticow" | "youtube-dl")
            APP_RESOURCE_SUFFIX=""
         ;;
+        "rust-analyzer")
+          APP_RESOURCE_SUFFIX="inux"
+        ;;
       esac
       if [ "$2" = "composer" ]; then APP_EXTENSION=".phar"; fi
       if [ "$2" = "komga" ]; then APP_EXTENSION=".jar"; fi
-      gget --executable ${EXCLUDE_GENERIC} ${EXCLUDE_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}""${APP_EXTENSION}"="${APP_RESOURCE}""${APP_RESOURCE_SUFFIX}" && \
+      gget --executable ${EXCLUDE_GENERIC} ${EXCLUDE_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}""${APP_EXTENSION}"=\*"${APP_RESOURCE}"\*"${APP_RESOURCE_SUFFIX}"\* && \
       echo_success-exit_0
     ;;
 
@@ -1137,7 +1126,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       rm_tmp_file-chmod_binary-echo_success-exit_0
     ;;
 
-    "identity" | "uplink")
+    "deno_lint" | "identity" | "uplink")
       gget ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"="${APP_RESOURCE}"\*inux\* && \
       unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}" -d "${INSTALL_DIR:?}" && \
       rm_tmp_file-chmod_binary-echo_success-exit_0

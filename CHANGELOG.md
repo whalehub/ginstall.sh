@@ -3,6 +3,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Added
+- Support for [Deno_Lint](https://github.com/denoland/deno_lint).
+- Support for [GitUI](https://github.com/extrawurst/gitui).
+- Support for [Hydra](https://github.com/ory/hydra).
+- Support for [Rust-Analyzer](https://github.com/rust-analyzer/rust-analyzer).
+- Support for [SSHCode](https://github.com/cdr/sshcode).
+- Support for [WAL-G](https://github.com/wal-g/wal-g).
+
+### Changed
+- Thanks to a recent improvement in the dependency `gget`, `ginstall.sh` can now also dynamically check for and install the latest version of applications which only have "pre-release" tags.
+- Bump required version of `gget` to v(TBD).
+
+### Removed
+- The hardcoded stopgap solution for supporting applications that only have "pre-release" tags as it is now obsolete.
+
 ## [2.7.1] - 2020-06-16
 ### Changed
 - The output of the `--list` flag now has a column for displaying the linker type of supported applications.

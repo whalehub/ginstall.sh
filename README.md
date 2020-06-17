@@ -334,7 +334,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 ```
 whalehub@pdh:~# ginstall.sh --list
 Application:                Linker Type:        Repository:
-------------                -----------         -----------
+------------                ------------        -----------
 A
 acme-dns                    dynamic             github.com/joohoi/acme-dns
 act                         static              github.com/nektos/act
