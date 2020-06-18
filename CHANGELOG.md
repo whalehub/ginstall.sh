@@ -13,11 +13,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [WAL-G](https://github.com/wal-g/wal-g).
 
 ### Changed
-- Thanks to a recent improvement in the dependency `gget`, `ginstall.sh` can now also dynamically check for and install the latest version of applications which only have "pre-release" tags.
+- Add extensive comments to `ginstall.sh` which detail both the steps performed by the script and the rationale behind some of the design choices.
+- Thanks to a recent improvement in its dependency `gget`, `ginstall.sh` can now also dynamically check for and install the latest version of applications which only have "pre-release" tags (e.g. `age`).
 - Bump required version of `gget` to v(TBD).
 
 ### Removed
-- The hardcoded stopgap solution for supporting applications that only have "pre-release" tags as it is now obsolete.
+- The hard-coded stopgap solution for supporting applications that only have "pre-release" tags as it is now obsolete.
 
 ## [2.7.1] - 2020-06-16
 ### Changed
