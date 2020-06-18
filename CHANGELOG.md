@@ -7,8 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 - Support for [Deno_Lint](https://github.com/denoland/deno_lint).
 - Support for [GitUI](https://github.com/extrawurst/gitui).
+- Support for [Gorush](https://github.com/appleboy/gorush).
+- Support for [gRPCurl](https://github.com/fullstorydev/grpcurl).
+- Support for [Helm](https://github.com/helm/helm).
 - Support for [Hydra](https://github.com/ory/hydra).
+- Support for [Nakama](https://github.com/heroiclabs/nakama).
+- Support for [RKE](https://github.com/rancher/rke).
 - Support for [Rust-Analyzer](https://github.com/rust-analyzer/rust-analyzer).
+- Support for [SCCache](https://github.com/mozilla/sccache).
 - Support for [SSHCode](https://github.com/cdr/sshcode).
 - Support for [WAL-G](https://github.com/wal-g/wal-g).
 

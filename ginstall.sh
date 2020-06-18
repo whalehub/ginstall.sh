@@ -133,15 +133,18 @@ REPO_GOMUKS="github.com/tulir/gomuks"
 REPO_GOOGLER="github.com/jarun/googler"
 REPO_GOPASS="github.com/gopasspw/gopass"
 REPO_GORELEASER="github.com/goreleaser/goreleaser"
+REPO_GORUSH="github.com/appleboy/gorush"
 REPO_GOSSA="github.com/pldubouilh/gossa"
 REPO_GOSU="github.com/tianon/gosu"
 REPO_GOTTY="github.com/yudai/gotty"
 REPO_GOVC="github.com/vmware/govmomi"
 REPO_GPLDR_CLIENT="github.com/Depado/goploader"
 REPO_GPLDR_SERVER="github.com/Depado/goploader"
+REPO_GRPCURL="github.com/fullstorydev/grpcurl"
 
 REPO_HANDLR="github.com/chmln/handlr"
 REPO_HEXYL="github.com/sharkdp/hexyl"
+REPO_HELM="github.com/helm/helm"
 REPO_HEY="github.com/rakyll/hey"
 REPO_HTTPSTAT="github.com/davecheney/httpstat"
 REPO_HUB="github.com/github/hub"
@@ -191,6 +194,7 @@ REPO_MKCERT="github.com/FiloSottile/mkcert"
 REPO_MONITOROR="github.com/monitoror/monitoror"
 
 REPO_NAABU="github.com/projectdiscovery/naabu"
+REPO_NAKAMA="github.com/heroiclabs/nakama"
 REPO_NAVIDROME="github.com/deluan/navidrome"
 REPO_NEBULA="github.com/slackhq/nebula"
 REPO_NEBULA_CERT="github.com/slackhq/nebula"
@@ -232,6 +236,7 @@ REPO_RG="github.com/BurntSushi/ripgrep"
 REPO_RGA="github.com/phiresky/ripgrep-all"
 REPO_RGA_PREPROC="github.com/phiresky/ripgrep-all"
 REPO_RIO="github.com/rancher/rio"
+REPO_RKE="github.com/rancher/rke"
 REPO_ROOTLESSCTL="github.com/rootless-containers/rootlesskit"
 REPO_ROOTLESSKIT="github.com/rootless-containers/rootlesskit"
 REPO_RQBENCH="github.com/rqlite/rqlite"
@@ -242,6 +247,7 @@ REPO_RUST_ANALYZER="github.com/rust-analyzer/rust-analyzer"
 REPO_S="github.com/zquestz/s"
 REPO_S2C="github.com/klauspost/compress"
 REPO_S2D="github.com/klauspost/compress"
+REPO_SCCACHE="github.com/mozilla/sccache"
 REPO_SDNS="github.com/semihalev/sdns"
 REPO_SHELLCHECK="github.com/koalaman/shellcheck"
 REPO_SIMPLE_VPN="github.com/skx/simple-vpn"
@@ -428,15 +434,18 @@ gomuks                      static              $REPO_GOMUKS
 googler                     dynamic             $REPO_GOOGLER
 gopass                      static              $REPO_GOPASS
 goreleaser                  static              $REPO_GORELEASER
+gorush                      dynamic             $REPO_GORUSH
 gossa                       static              $REPO_GOSSA
 gosu                        static              $REPO_GOSU
 gotty                       dynamic             $REPO_GOTTY
 govc                        static              $REPO_GOVC
 gpldr-client                dynamic             $REPO_GPLDR_CLIENT
 gpldr-server                dynamic             $REPO_GPLDR_SERVER
+grpcurl                     static              $REPO_GRPCURL
 
 H
 handlr                      dynamic             $REPO_HANDLR
+helm                        static              $REPO_HELM
 hexyl                       dynamic             $REPO_HEXYL
 hey                         static              $REPO_HEY
 httpstat                    static              $REPO_HTTPSTAT
@@ -493,6 +502,7 @@ monitoror                   static              $REPO_MONITOROR
 
 N
 naabu                       dynamic             $REPO_NAABU
+nakama                      dynamic             $REPO_NAKAMA
 navidrome                   static              $REPO_NAVIDROME
 nebula                      dynamic             $REPO_NEBULA
 nebula-cert                 dynamic             $REPO_NEBULA_CERT
@@ -538,6 +548,7 @@ rg                          static              $REPO_RG
 rga                         static              $REPO_RGA
 rga-preproc                 static              $REPO_RGA_PREPROC
 rio                         static              $REPO_RIO
+rke                         static              $REPO_RKE
 rootlessctl                 static              $REPO_ROOTLESSCTL
 rootlesskit                 static              $REPO_ROOTLESSKIT
 rqbench                     dynamic             $REPO_RQBENCH
@@ -549,6 +560,7 @@ S
 s                           dynamic             $REPO_S
 s2c                         static              $REPO_S2C
 s2d                         static              $REPO_S2D
+sccache                     static              $REPO_SCCACHE
 sdns                        static              $REPO_SDNS
 shellcheck                  static              $REPO_SHELLCHECK
 simple-vpn                  dynamic             $REPO_SIMPLE_VPN
@@ -1127,26 +1139,26 @@ echo_success-exit_0() {
 # in a supported format, gget will save it to a
 # temporary location and verify the checksums
 # even if matches an exclusion pattern.
-EXCLUDE_GENERIC="--exclude=\"*-arm*\"       --exclude=\"*-canary-*\"    --exclude=\"*-gui\"
-                 --exclude=\"*-slim\"       --exclude=\"*-source*\"     --exclude=\"*.asc\"
-                 --exclude=\"*.cid\"        --exclude=\"*.deb\"         --exclude=\"*.exe\"
-                 --exclude=\"*.log\"        --exclude=\"*.md5\"         --exclude=\"*.minisig\"
-                 --exclude=\"*.msi\"        --exclude=\"*.nupkg*\"      --exclude=\"*.rpm\"
-                 --exclude=\"*.sha*5*\"     --exclude=\"*.txt\"         --exclude=\"*_arm*\"
-                 --exclude=\"*_musl_*\"     --exclude=\"*386*\"         --exclude=\"*686*\"
-                 --exclude=\"*32*bit*\"     --exclude=\"*aarch*\"       --exclude=\"*acOS*\"
-                 --exclude=\"*acos*\"       --exclude=\"*ARM*\"         --exclude=\"*arwin*\"
-                 --exclude=\"*DragonFly*\"  --exclude=\"*dragonfly*\"   --exclude=\"*FreeBSD*\"
-                 --exclude=\"*freebsd*\"    --exclude=\"*lan9*\"        --exclude=\"*llumos*\"
-                 --exclude=\"*lpine*\"      --exclude=\"*indows*\"      --exclude=\"*mips*\"
-                 --exclude=\"*NetBSD*\"     --exclude=\"*netbsd*\"      --exclude=\"*olaris*\"
-                 --exclude=\"*OpenBSD*\"    --exclude=\"*openbsd*\"     --exclude=\"*OSX*\"
-                 --exclude=\"*osx*\"        --exclude=\"*powerpc*\"     --exclude=\"*ppc64*\"
-                 --exclude=\"*riscv*\"      --exclude=\"*rpi*\"         --exclude=\"*s390x*\"
-                 --exclude=\"MD5SUMS\"      --exclude=\"SHA*SUMS\"      --exclude=\"sha*sums\""
+EXCL_EXTRAS="--exclude=\"*-arm*\"       --exclude=\"*-canary-*\"    --exclude=\"*-gui\"
+             --exclude=\"*-slim\"       --exclude=\"*-source*\"     --exclude=\"*.asc\"
+             --exclude=\"*.cid\"        --exclude=\"*.deb\"         --exclude=\"*.exe\"
+             --exclude=\"*.log\"        --exclude=\"*.md5\"         --exclude=\"*.minisig\"
+             --exclude=\"*.msi\"        --exclude=\"*.nupkg*\"      --exclude=\"*.rpm\"
+             --exclude=\"*.sha*5*\"     --exclude=\"*.txt\"         --exclude=\"*_arm*\"
+             --exclude=\"*_musl_*\"     --exclude=\"*386*\"         --exclude=\"*686*\"
+             --exclude=\"*32*bit*\"     --exclude=\"*aarch*\"       --exclude=\"*acOS*\"
+             --exclude=\"*acos*\"       --exclude=\"*ARM*\"         --exclude=\"*arwin*\"
+             --exclude=\"*DragonFly*\"  --exclude=\"*dragonfly*\"   --exclude=\"*FreeBSD*\"
+             --exclude=\"*freebsd*\"    --exclude=\"*lan9*\"        --exclude=\"*llumos*\"
+             --exclude=\"*lpine*\"      --exclude=\"*indows*\"      --exclude=\"*mips*\"
+             --exclude=\"*NetBSD*\"     --exclude=\"*netbsd*\"      --exclude=\"*olaris*\"
+             --exclude=\"*OpenBSD*\"    --exclude=\"*openbsd*\"     --exclude=\"*OSX*\"
+             --exclude=\"*osx*\"        --exclude=\"*powerpc*\"     --exclude=\"*ppc64*\"
+             --exclude=\"*riscv*\"      --exclude=\"*rpi*\"         --exclude=\"*s390x*\"
+             --exclude=\"MD5SUMS\"      --exclude=\"SHA*SUMS\"      --exclude=\"sha*sums\""
 
-EXCLUDE_ARCHIVES="--exclude=\"*.7z\"        --exclude=\"*.bz2\"         --exclude=\"*.gz\"
-                  --exclude=\"*.tar\"       --exclude=\"*.xz\"          --exclude=\"*.zip\""
+EXCL_ARCHIVES="--exclude=\"*.7z\"        --exclude=\"*.bz2\"         --exclude=\"*.gz\"
+               --exclude=\"*.tar\"       --exclude=\"*.xz\"          --exclude=\"*.zip\""
 
 # Check that the script is either running with the
 # permissions that are required to install an
@@ -1165,8 +1177,8 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "discord-delete" | "dnscrypt-proxy" | "docker-compose" | "docker-gen" | "edgedns" | "eureka" | \
     "findomain" | "fluxctl" | "fn" | "frece" | "ftpgrab" | "fx" |"fzf" | "gdrive" | "git-rewrite-author" | \
     "go-auto-yt" | "gosu" | "inlets" | "jq" | "louketo-proxy" | "monitoror" | "naabu" | "pegasus-fe" | \
-    "plexdrive" | "plik" | "plikd" | "portainer" | "qrcp" | "rg" | "rust-analyzer" | "simple-vpn" | \
-    "unetbootin" | "xsv" | "youtube-dl" | "yq" | "ytop" | "zenith")
+    "plexdrive" | "plik" | "plikd" | "portainer" | "qrcp" | "rg" | "rust-analyzer" | "sccache" | \
+    "simple-vpn" | "unetbootin" | "xsv" | "youtube-dl" | "yq" | "ytop" | "zenith")
       VERSION_PREFIX="@"
     ;;
   esac
@@ -1176,7 +1188,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     # verify that all supported applications can actually
     # be installed prior to a new release of ginstall.sh.
     "+debug")
-      gget --show-resources ${EXCL_EXTRAS} ${EXCL_VARIANTS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}"
+      gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}"
       exit 0
     ;;
   esac
@@ -1200,12 +1212,12 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "acme-dns" | "act" | "annie" | "apizza" | "badger" | "caddy" | "captainhook" | "chroma" | "coredns" | \
     "croc" | "ddns-route53" | "dgraph" | "dgraph-ratel" | "diun" | "dive" | "docker-gen" | "drone" | \
     "filebrowser" | "ftpgrab" | "fzf" | "gau" | "geoip-updater" | "git-rewrite-author" | "gitbatch" | \
-    "gopass" | "goreleaser" | "hydra" | "intercert" | "k9s" | "lazydocker" | "lego" | "minify" | "naabu" | \
-    "navidrome" | "nebula" | "nebula-cert" | "niltalk" | "parcello" | "peach" | "phoneinfoga" | "pkger" | \
-    "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "sshcode" | "statping" | "swarm-cronjob" | \
-    "task" | "tengo" | "traefik" | "travis-wait-enhanced" | "trivy" | "txeh" | "up" | "vsphere-influxdb-go" | \
-    "wal-g" | "watchtower")
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
+    "gopass" | "goreleaser" | "grpcurl" | "hydra" | "intercert" | "k9s" | "lazydocker" | "lego" | "minify" | \
+    "naabu" | "nakama" | "navidrome" | "nebula" | "nebula-cert" | "niltalk" | "parcello" | "peach" | "phoneinfoga" | \
+    "pkger" | "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "sshcode" | "statping" | \
+    "swarm-cronjob" | "task" | "tengo" | "traefik" | "travis-wait-enhanced" | "trivy" | "txeh" | "up" | \
+    "vsphere-influxdb-go" | "wal-g" | "watchtower")
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
     ;;
@@ -1218,9 +1230,9 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "gpldr-server" ]; then APP_RESOURCE_PREFIX="standalone" FOLDER_PREFIX="goploader-server" APP_NAME_ARCHIVED="server-standalone"; fi
       if [ "$2" = "micro" ]; then APP_RESOURCE_SUFFIX="static.tar.gz" FOLDER_PREFIX="${APP_NAME}-${APP_VERSION}" APP_NAME_ARCHIVED="${APP_NAME}"; fi
       if [ "$2" = "migrate" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}.linux-amd64"; fi
-      if [ "$2" = "oauth2-proxy" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')" APP_NAME_ARCHIVED="oauth2_proxy"; fi
+      if [ "$2" = "oauth2-proxy" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')" APP_NAME_ARCHIVED="oauth2_proxy"; fi
       if [ "$2" = "wrangler" ]; then APP_RESOURCE_PREFIX="" FOLDER_PREFIX="dist" APP_NAME_ARCHIVED="${APP_NAME}"; fi
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*64\*"${APP_RESOURCE_SUFFIX}" | \
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*64\*"${APP_RESOURCE_SUFFIX}" | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME_ARCHIVED}" ${TAR_ARGS} --strip-components=1 && \
       mv "${INSTALL_DIR:?}"/"${APP_NAME_ARCHIVED}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2>/dev/null ; \
       chmod_binary-echo_success-exit_0
@@ -1233,7 +1245,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "age" ] || [ "$2" = "age-keygen" ]; then FOLDER_PREFIX="age"; fi
       if [ "$2" = "autocert" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
       if [ "$2" = "frpc" ] || [ "$2" = "frps" ]; then FOLDER_PREFIX="frp_${APP_VERSION}_linux_amd64"; fi
-      if [ "$2" = "gh" ] || [ "$2" = "hub" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
+      if [ "$2" = "gh" ] || [ "$2" = "hub" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
       if [ "$2" = "gitui" ]; then FOLDER_PREFIX="." COMPONENT_COUNT="1" APP_RESOURCE_PREFIX="musl"; fi
       if [ "$2" = "ipfs" ]; then FOLDER_PREFIX="go-ipfs"; fi
       if [ "$2" = "plik" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/clients/linux-amd64" COMPONENT_COUNT="3"; fi
@@ -1242,7 +1254,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "step" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
       if [ "$2" = "vector" ]; then FOLDER_PREFIX="./${APP_NAME}-x86_64-unknown-linux-musl/bin" COMPONENT_COUNT="3"; fi
       if [ "$2" = "vigil" ]; then FOLDER_PREFIX="./${APP_NAME}" COMPONENT_COUNT="2" APP_RESOURCE_PREFIX="64"; fi
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\* | \
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" && \
       chmod_binary-echo_success-exit_0
     ;;
@@ -1250,17 +1262,17 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "andesite" | "arc" | "argocd" | "avif" | "blocky" | "bombardier" | "borg" | "ctop" | "docker-compose" | \
     "docker-machine" | "duplicacy" | "eureka" | "ffsend" | "fluxctl" | "gdrive" | "gget" | "gitea" | "go-auto-yt" | \
     "gomplate" | "gomuks" | "gossa" | "gpldr-client" | "httpstat" | "insect" | "jq" | "kompose" | "linuxkit" | \
-    "matterbridge" | "mkcert" | "monitoror" | "opa" | "plexdrive" | "reg" | "rio" | "simple-vpn" | "slack-term" | \
-    "stegify" | "sup" | "swagger" | "tableview" | "unetbootin" | "transfersh" | "wuzz" | "yq")
+    "matterbridge" | "mkcert" | "monitoror" | "opa" | "plexdrive" | "reg" | "rio" | "rke" | "simple-vpn" | \
+    "slack-term" | "stegify" | "sup" | "swagger" | "tableview" | "unetbootin" | "transfersh" | "wuzz" | "yq")
       if [ "$2" = "ffsend" ]; then APP_RESOURCE_SUFFIX="static"; fi
-      gget --executable ${EXCLUDE_GENERIC} ${EXCLUDE_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\*64\*"${APP_RESOURCE_SUFFIX}" && \
+      gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\*64\*"${APP_RESOURCE_SUFFIX}" && \
       echo_success-exit_0
     ;;
 
     "authelia" | "brig" | "jellycli" | "nnn" | "podman-remote" | "sdns" | "spotifyd" | "spt" | "tldr++" | "zenith")
       APP_RESOURCE_PREFIX="inux"
       APP_RESOURCE_SUFFIX="64"
-      if [ "$2" = "authelia" ] || [ "$2" = "brig" ]; then RESOURCE_NAME="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"; fi
+      if [ "$2" = "authelia" ] || [ "$2" = "brig" ]; then RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"; fi
       if [ "$2" = "jellycli" ]; then RESOURCE_NAME="Jellycli"; fi
       if [ "$2" = "nnn" ]; then APP_RESOURCE_PREFIX="static" RESOURCE_NAME="${APP_NAME}-static"; fi
       if [ "$2" = "podman-remote" ]; then APP_RESOURCE_PREFIX="static" APP_RESOURCE_SUFFIX=".tar.gz" RESOURCE_NAME="${APP_NAME}"; fi
@@ -1269,18 +1281,18 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "spt" ]; then APP_RESOURCE_SUFFIX="" RESOURCE_NAME="${APP_NAME}"; fi
       if [ "$2" = "tldr++" ]; then RESOURCE_NAME="tldr"; fi
       if [ "$2" = "zenith" ]; then APP_RESOURCE_SUFFIX=".tgz" RESOURCE_NAME="${APP_NAME}"; fi
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* | \
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}" ${TAR_ARGS} && \
       mv "${INSTALL_DIR:?}"/"${RESOURCE_NAME:?}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2>/dev/null ; \
       chmod_binary-echo_success-exit_0
     ;;
 
     "bat" | "delta" | "diskus" | "fd" | "frece" | "hexyl" | "hyperfine" | "lucid" | "pastel" | "rg" | "rga" | \
-    "rga-preproc" | "vivid")
+    "rga-preproc" | "sccache" | "vivid")
       APP_ARCH="gnu"
-      if [ "$2" = "rg" ] || [ "$2" = "rga" ] || [ "$2" = "rga-preproc" ]; then APP_ARCH="musl"; fi
-      RESOURCE_NAME="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | sed 's|.tar.gz||g')"
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | \
+      if [ "$2" = "rg" ] || [ "$2" = "rga" ] || [ "$2" = "rga-preproc" ] || [ "$2" = "sccache" ]; then APP_ARCH="musl"; fi
+      RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | sed 's|.tar.gz||g')"
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod_binary-echo_success-exit_0
     ;;
@@ -1288,12 +1300,12 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "bed" | "caire" | "ccat" | "dnscrypt-proxy" | "dnsproxy" | "etcd" | "etcdctl" | "gogs" | "golangci-lint" | \
     "json2csv" | "louketo-proxy" | "oragono" | "portainer" | "rqbench" |"rqlite" |"rqlited" | "ssh-auditor" | \
     "stdiscosrv" | "strelaysrv" | "syncthing" | "velero")
-      RESOURCE_NAME="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"
+      RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"
       if [ "$2" = "dnscrypt-proxy" ]; then RESOURCE_NAME="linux-x86_64"; fi
       if [ "$2" = "dnsproxy" ]; then RESOURCE_NAME="linux-amd64"; fi
       if [ "$2" = "gogs" ]; then RESOURCE_NAME="gogs" APP_RESOURCE_SUFFIX=".tar.gz"; fi
       if [ "$2" = "portainer" ]; then RESOURCE_NAME="portainer"; fi
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\*"${APP_RESOURCE_SUFFIX}" | \
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\*"${APP_RESOURCE_SUFFIX}" | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod_binary-echo_success-exit_0
     ;;
@@ -1301,7 +1313,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "bin" | "cobalt" | "edgedns" | "imdl" | "mdbook" | "starship" | "xsv" | "ytop" | "zola")
       APP_ARCH="gnu"
       if [ "$2" = "imdl" ] || [ "$2" = "xsv" ]; then APP_ARCH="musl"; fi
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | \
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
     ;;
@@ -1309,47 +1321,48 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "bw" | "ethr" | "json5" | "pegasus-fe" | "rattlesnakeos-stack")
       APP_RESOURCE_PREFIX="inux"
       if [ "$2" = "pegasus-fe" ]; then APP_RESOURCE_PREFIX="x11-static"; fi
-      gget ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\*&& \
+      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\*&& \
       unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}" -d "${INSTALL_DIR:?}" && \
       rm_tmp_file-chmod_binary-echo_success-exit_0
     ;;
 
     "chisel" | "cloud-torrent" | "goatcounter" | "govc")
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
-      gzip -d > "${INSTALL_DIR:?}"/"${APP_NAME}" && \
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
+      gunzip > "${INSTALL_DIR:?}"/"${APP_NAME}" && \
       chmod_binary-echo_success-exit_0
     ;;
 
     "comics-downloader" | "composer" | "findomain" | "firecracker" | "jailer" | "magneticod" | "magneticow" | \
-    "ginstall.sh" | "gosu" | "handlr" | "inlets" | "k3s" | "komga" | "rust-analyzer" | "youtube-dl")
+    "ginstall.sh" | "gorush" | "gosu" | "handlr" | "inlets" | "k3s" | "komga" | "rust-analyzer" | "youtube-dl")
       APP_RESOURCE_SUFFIX="*"
       case "$2" in
         "comics-downloader" | "ginstall.sh" | "handlr" | "inlets" | "k3s" | "magneticod" | "magneticow" | \
         "youtube-dl")
            APP_RESOURCE_SUFFIX=""
         ;;
+
         "rust-analyzer")
           APP_RESOURCE_SUFFIX="inux"
         ;;
       esac
       if [ "$2" = "composer" ]; then APP_EXTENSION=".phar"; fi
       if [ "$2" = "komga" ]; then APP_EXTENSION=".jar"; fi
-      gget --executable ${EXCLUDE_GENERIC} ${EXCLUDE_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}""${APP_EXTENSION}"=\*"${APP_RESOURCE}"\*"${APP_RESOURCE_SUFFIX}"\* && \
+      gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}""${APP_EXTENSION}"=\*"${APP_RESOURCE}"\*"${APP_RESOURCE_SUFFIX}"\* && \
       echo_success-exit_0
     ;;
 
     "ddgr" | "googler" | "shellcheck" | "upx")
       if [ "$2" = "ddgr" ] || [ "$2" = "googler" ]; then FOLDER_PREFIX="usr/bin" COMPONENT_COUNT="2"; fi
       if [ "$2" = "shellcheck" ]; then FOLDER_PREFIX="shellcheck-v${APP_VERSION}" COMPONENT_COUNT="1"; fi
-      if [ "$2" = "upx" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | \
+      if [ "$2" = "upx" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | \
       tar -xJf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" && \
       chmod_binary-echo_success-exit_0
     ;;
 
     "amass" | "discord-console" | "rclone" | "s")
-      RESOURCE_NAME="$(gget --show-resources ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* | sed 's|.zip||g')"
-      gget ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\* && \
+      RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* | sed 's|.zip||g')"
+      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\* && \
       if [ "$2" = "discord-console" ]; then
         APP_NAME_ARCHIVED="DiscordConsole"
         unzip -qjo "${TMP_DIR_ZIP}" "${RESOURCE_NAME:?}"/64-bit/"${APP_NAME_ARCHIVED}" -d "${INSTALL_DIR:?}"
@@ -1362,7 +1375,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     ;;
 
     "discord-delete" | "dnscontrol" | "dobi" | "drive" | "fn")
-      gget --executable ${EXCLUDE_GENERIC} ${EXCLUDE_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\* && \
+      gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\* && \
       echo_success-exit_0
     ;;
 
@@ -1371,7 +1384,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "rootlesskit" ] || [ "$2" = "rootlessctl" ]; then APP_RESOURCE=""; fi
       if [ "$2" = "hugo" ]; then APP_RESOURCE="hugo_${APP_VERSION}"; fi
       if [ "$2" = "hugo-extended" ]; then APP_RESOURCE="hugo_extended" APP_NAME="hugo"; fi
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${APP_RESOURCE}"\*64\* | \
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${APP_RESOURCE}"\*64\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
     ;;
@@ -1379,38 +1392,36 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "exa" | "pgweb")
       if [ "$2" = "exa" ]; then APP_NAME_SUFFIX="-linux-x86_64"; fi
       if [ "$2" = "pgweb" ]; then APP_NAME_SUFFIX="_linux_amd64"; fi
-      gget ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\*64\* && \
+      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\*64\* && \
       unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}""${APP_NAME_SUFFIX}" -d "${INSTALL_DIR:?}" && \
       mv "${INSTALL_DIR:?}"/"${APP_NAME}""${APP_NAME_SUFFIX}" "${INSTALL_DIR:?}"/"${APP_NAME}" && \
       rm_tmp_file-chmod_binary-echo_success-exit_0
     ;;
 
     "deno_lint" | "identity" | "uplink")
-      gget ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"="${APP_RESOURCE}"\*inux\* && \
+      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"="${APP_RESOURCE}"\*inux\* && \
       unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}" -d "${INSTALL_DIR:?}" && \
       rm_tmp_file-chmod_binary-echo_success-exit_0
     ;;
 
     "jsteg" | "linx-cleanup" | "linx-genkey" | "linx-server" | "pebble" | "pebble-challtestsrv" | "slink")
       if [ "$2" = "pebble" ]; then APP_RESOURCE="pebble_"; fi
-      gget --executable ${EXCLUDE_GENERIC} ${EXCLUDE_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"="${APP_RESOURCE}"\*inux\*64\* && \
+      gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"="${APP_RESOURCE}"\*inux\*64\* && \
       echo_success-exit_0
     ;;
 
     "logcli" | "loki" | "promtail")
-      gget ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"="${APP_RESOURCE}"\*inux\*64\* && \
+      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"="${APP_RESOURCE}"\*inux\*64\* && \
       unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}"-linux-amd64 -d "${INSTALL_DIR:?}" && \
       mv "${INSTALL_DIR:?}"/"${APP_NAME}"-linux-amd64 "${INSTALL_DIR:?}"/"${APP_NAME}" && \
       rm_tmp_file-chmod_binary-echo_success-exit_0
     ;;
 
     "sslocal" | "ssmanager" | "ssserver" | "ssurl")
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*gnu\* | \
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*gnu\* | \
       tar -xJf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
     ;;
-
-# ------------------------------------------------------------------ #
 
     "ffmpeg")
       case "$3" in
@@ -1446,9 +1457,15 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     ;;
 
     "gobuster")
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* > "${TMP_DIR_7Z}" && \
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* > "${TMP_DIR_7Z}" && \
       7z e -so "${TMP_DIR_7Z}" > "${INSTALL_DIR:?}"/"${APP_NAME}" && \
       rm "${TMP_DIR_7Z:?}" && \
+      chmod_binary-echo_success-exit_0
+    ;;
+
+    "helm")
+      curl -Lf https://get.helm.sh/helm-v"${APP_VERSION}"-linux-amd64.tar.gz | \
+      tar -xzf- -C "${INSTALL_DIR:?}" linux-amd64/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod_binary-echo_success-exit_0
     ;;
 
@@ -1458,13 +1475,13 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     ;;
 
     "restic")
-      gget --stdout ${EXCLUDE_GENERIC} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
-      bzip2 -d > "${INSTALL_DIR:?}"/"${APP_NAME}" && \
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
+      bunzip2 > "${INSTALL_DIR:?}"/"${APP_NAME}" && \
       chmod_binary-echo_success-exit_0
     ;;
 
     "unftp")
-      gget --executable ${EXCLUDE_GENERIC} ${EXCLUDE_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*64\*inux\*-musl && \
+      gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*64\*inux\*-musl && \
       echo_success-exit_0
     ;;
 
