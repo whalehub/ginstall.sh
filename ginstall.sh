@@ -747,10 +747,11 @@ case "$1" in
           # latest version in ginstall.sh (more on that
           # below).
           #
-          # We use the value "stable" (= latest) for this
-          # new flag by default since almost all of the
-          # supported applications have a "latest" release
-          # tag.
+          # Almost all of the applications that this script
+          # supports have a "latest" release tag and since
+          # gget queries the "latest" tag by default, there
+          # is no need to specify the new flag for the
+          # default version check.
           #
           # The raw output of the gget command contains
           # more than just the version number, so we pipe
@@ -766,7 +767,7 @@ case "$1" in
           #
           # The filtered output is then used as the value
           # of the $VERSION_CHECK variable.
-          VERSION_CHECK="$(gget --ref-stability=stable --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+          VERSION_CHECK="$(gget --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
           
           # The gget command above pipes its error output to
           # /dev/null, which allows us to determine whether
@@ -776,8 +777,8 @@ case "$1" in
           # 
           # If it is empty (i.e. if the application only has
           # "pre-release" tags), we repeat the same command,
-          # only this time, we use the value "pre-release"
-          # for the --ref-stablity flag and use the filtered
+          # only this time, we add the new --ref-stability flag
+          # with the value "pre-release" and use the filtered
           # output as the value of the $APP_VERSION variable.
           # 
           # If it is not empty (i.e. if the application does
@@ -867,7 +868,7 @@ case "$1" in
     # beginning of this script), ginstall.sh needs to be
     # running as root or with sudo.
     # 
-    # If the user doesn't have the required permissions to,
+    # If the user doesn't have the required permissions to
     # run it, print a message with usage information.
     # 
     # If they do, install gget to /usr/local/bin using curl
@@ -1018,7 +1019,7 @@ case "$1" in
     # from so that we can update it even if it is saved
     # outside of /usr/local/bin or even outside of the
     # user's $PATH.
-      APP_VERSION="$(gget --ref-stability=stable --show-ref "${REPO_GINSTALL_SH}" | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+      APP_VERSION="$(gget --show-ref "${REPO_GINSTALL_SH}" | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
       gget --stdout "${REPO_GINSTALL_SH}""${VERSION_PREFIX}""${APP_VERSION}" 'ginstall.sh' > "$0" && \
       chmod 0755 "$0" && \
       echo -e "ginstall.sh successfully updated itself to the latest version (v${APP_VERSION})."
@@ -1096,7 +1097,7 @@ if [ "$3" = "latest" ]; then
       # the latest available version of an application
       # regardless of whether or not it has a "latest"
       # release tag.
-        VERSION_CHECK="$(gget --ref-stability=stable --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+        VERSION_CHECK="$(gget --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
         if [ -z "${VERSION_CHECK}" ]; then
           APP_VERSION="$(gget --ref-stability=pre-release --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
         else
