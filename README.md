@@ -74,7 +74,7 @@ export GITHUB_TOKEN=replace_this_string_with_your_token
 If you would like to see an application added to the list of supported ones, please feel free to either open an issue or a pull request.
 
 ## Supported Applications
-You can view a markdown-formatted version of the list with easily-clickable repository links by opening the spoiler below.
+You can view a markdown-formatted version of the `--list` flag's output with easily-clickable repository links by opening the spoiler below.
 
 <details>
   <summary>Spoiler</summary>
@@ -139,6 +139,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | docker-machine              | static              | https://github.com/docker/machine |
 | drive                       | static              | https://github.com/odeke-em/drive |
 | drone                       | static              | https://github.com/drone/drone-cli |
+| dstask                      | static              | https://github.com/naggie/dstask |
 | duplicacy                   | static              | https://github.com/gilbertchen/duplicacy |
 | edgedns                     | dynamic             | https://github.com/jedisct1/edgedns |
 | etcd                        | static              | https://github.com/etcd-io/etcd |
@@ -186,6 +187,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | gorush                      | dynamic             | https://github.com/appleboy/gorush |
 | gossa                       | static              | https://github.com/pldubouilh/gossa |
 | gosu                        | static              | https://github.com/tianon/gosu |
+| gotop                       | dynamic             | https://github.com/xxxserxxx/gotop |
 | gotty                       | dynamic             | https://github.com/yudai/gotty |
 | govc                        | static              | https://github.com/vmware/govmomi |
 | gpldr-client                | dynamic             | https://github.com/Depado/goploader |
@@ -311,6 +313,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | syncthing                   | static              | https://github.com/syncthing/syncthing |
 | tableview                   | static              | https://github.com/informationsea/tableview |
 | task                        | static              | https://github.com/go-task/task |
+| tasklite                    | dynamic             | https://github.com/ad-si/TaskLite |
 | tengo                       | static              | https://github.com/d5/tengo |
 | tldr++                      | static              | https://github.com/isacikgoz/tldr |
 | traefik                     | static              | https://github.com/containous/traefik |
@@ -340,320 +343,4 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | ytop                        | dynamic             | https://github.com/cjbassi/ytop |
 | zenith                      | static              | https://github.com/bvaisvil/zenith |
 | zola                        | dynamic             | https://github.com/getzola/zola |
-
 </details>
-
-```
-whalehub@pdh:~# ginstall.sh --list
-Application:                Linker Type:        Repository:
-------------                ------------        -----------
-A
-acme-dns                    dynamic             github.com/joohoi/acme-dns
-act                         static              github.com/nektos/act
-adguardhome                 static              github.com/AdguardTeam/AdGuardHome
-age                         static              github.com/FiloSottile/age
-age-keygen                  static              github.com/FiloSottile/age
-amass                       static              github.com/OWASP/Amass
-andesite                    dynamic             github.com/nektro/andesite
-annie                       static              github.com/iawia002/annie
-apizza                      static              github.com/harrybrwn/apizza
-arc                         static              github.com/mholt/archiver
-argocd                      static              github.com/argoproj/argo-cd
-authelia                    static              github.com/authelia/authelia
-autocert                    static              github.com/smallstep/autocert
-avif                        static              github.com/Kagami/go-avif
-
-B
-badger                      dynamic             github.com/dgraph-io/dgraph
-bat                         dynamic             github.com/sharkdp/bat
-bed                         static              github.com/itchyny/bed
-bin                         dynamic             github.com/w4/bin
-blocky                      dynamic             github.com/0xERR0R/blocky
-bombardier                  static              github.com/codesenberg/bombardier
-borg                        dynamic             github.com/borgbackup/borg
-brig                        dynamic             github.com/sahib/brig
-bw                          dynamic             github.com/bitwarden/cli
-
-C
-caddy                       static              github.com/caddyserver/caddy
-caire                       dynamic             github.com/esimov/caire
-captainhook                 static              github.com/bketelsen/captainhook
-ccat                        static              github.com/jingweno/ccat
-chisel                      static              github.com/jpillora/chisel
-chroma                      dynamic             github.com/alecthomas/chroma
-cloud-torrent               static              github.com/jpillora/cloud-torrent
-cobalt                      dynamic             github.com/cobalt-org/cobalt.rs
-comics-downloader           static              github.com/Girbons/comics-downloader
-composer                    dynamic             github.com/composer/composer
-coredns                     static              github.com/coredns/coredns
-croc                        static              github.com/schollz/croc
-ctop                        dynamic             github.com/bcicen/ctop
-
-D
-ddgr                        dynamic             github.com/jarun/ddgr
-ddns-route53                static              github.com/crazy-max/ddns-route53
-delta                       dynamic             github.com/dandavison/delta
-deno_lint                   dynamic             github.com/denoland/deno_lint
-dgraph                      dynamic             github.com/dgraph-io/dgraph
-dgraph-ratel                dynamic             github.com/dgraph-io/dgraph
-discord-console             static              github.com/discordconsole-team/DiscordConsole
-discord-delete              dynamic             github.com/adversarialtools/discord-delete
-diskus                      dynamic             github.com/sharkdp/diskus
-diun                        static              github.com/crazy-max/diun
-dive                        static              github.com/wagoodman/dive
-dnscontrol                  static              github.com/StackExchange/dnscontrol
-dnscrypt-proxy              static              github.com/DNSCrypt/dnscrypt-proxy
-dnsproxy                    dynamic             github.com/AdguardTeam/dnsproxy
-dobi                        static              github.com/dnephin/dobi
-docker-compose              dynamic             github.com/docker/compose
-docker-credential-pass      static              github.com/docker/docker-credential-helpers
-docker-gen                  static              github.com/jwilder/docker-gen
-docker-machine              static              github.com/docker/machine
-drive                       static              github.com/odeke-em/drive
-drone                       static              github.com/drone/drone-cli
-duplicacy                   static              github.com/gilbertchen/duplicacy
-
-E
-edgedns                     dynamic             github.com/jedisct1/edgedns
-etcd                        static              github.com/etcd-io/etcd
-etcdctl                     static              github.com/etcd-io/etcd
-ethr                        dynamic             github.com/microsoft/ethr
-eureka                      static              github.com/mimoo/eureka
-exa                         dynamic             github.com/ogham/exa
-
-F
-fd                          dynamic             github.com/sharkdp/fd
-ffmpeg                      static              github.com/FFmpeg/FFmpeg
-ffsend                      static              github.com/timvisee/ffsend
-filebrowser                 static              github.com/filebrowser/filebrowser
-findomain                   dynamic             github.com/Edu4rdSHL/findomain
-firecracker                 static              github.com/firecracker-microvm/firecracker
-fluxctl                     static              github.com/fluxcd/flux
-fn                          dynamic             github.com/iron-io/functions
-frece                       dynamic             github.com/YodaEmbedding/frece
-frpc                        static              github.com/fatedier/frp
-frps                        static              github.com/fatedier/frp
-ftpgrab                     static              github.com/ftpgrab/ftpgrab
-future-vuls                 dynamic             github.com/future-architect/vuls
-fx                          dynamic             github.com/metrue/fx
-fzf                         static              github.com/junegunn/fzf
-
-G
-gau                         static              github.com/lc/gau
-gdrive                      dynamic             github.com/gdrive-org/gdrive
-geoip-updater               static              github.com/crazy-max/geoip-updater
-gget                        static              github.com/dpb587/gget
-gh                          dynamic             github.com/cli/cli
-ginstall.sh                 dynamic             github.com/whalehub/ginstall.sh
-git-hooks                   static              github.com/git-hooks/git-hooks
-git-rewrite-author          static              github.com/crazy-max/git-rewrite-author
-gitbatch                    static              github.com/isacikgoz/gitbatch
-gitea                       static              github.com/go-gitea/gitea
-gitui                       static              github.com/extrawurst/gitui
-go                          dynamic             github.com/golang/go
-go-auto-yt                  dynamic             github.com/XiovV/Golty
-goatcounter                 static              github.com/zgoat/goatcounter
-gobuster                    dynamic             github.com/OJ/gobuster
-gogs                        dynamic             github.com/gogs/gogs
-golangci-lint               static              github.com/golangci/golangci-lint
-gomplate                    static              github.com/hairyhenderson/gomplate
-gomuks                      static              github.com/tulir/gomuks
-googler                     dynamic             github.com/jarun/googler
-gopass                      static              github.com/gopasspw/gopass
-goreleaser                  static              github.com/goreleaser/goreleaser
-gorush                      dynamic             github.com/appleboy/gorush
-gossa                       static              github.com/pldubouilh/gossa
-gosu                        static              github.com/tianon/gosu
-gotty                       dynamic             github.com/yudai/gotty
-govc                        static              github.com/vmware/govmomi
-gpldr-client                dynamic             github.com/Depado/goploader
-gpldr-server                dynamic             github.com/Depado/goploader
-grpcurl                     static              github.com/fullstorydev/grpcurl
-
-H
-handlr                      dynamic             github.com/chmln/handlr
-helm                        static              github.com/helm/helm
-hexyl                       dynamic             github.com/sharkdp/hexyl
-hey                         static              github.com/rakyll/hey
-httpstat                    static              github.com/davecheney/httpstat
-hub                         dynamic             github.com/github/hub
-hugo                        static              github.com/gohugoio/hugo
-hugo-extended               dynamic             github.com/gohugoio/hugo
-hydra                       static              github.com/ory/hydra
-hyperfine                   dynamic             github.com/sharkdp/hyperfine
-
-I
-identity                    static              github.com/storj/storj
-imdl                        static              github.com/casey/intermodal
-inlets                      static              github.com/inlets/inlets
-insect                      dynamic             github.com/sharkdp/insect
-intercert                   static              github.com/evenh/intercert
-ipfs                        dynamic             github.com/ipfs/go-ipfs
-
-J
-jailer                      static              github.com/firecracker-microvm/firecracker
-jellycli                    dynamic             github.com/tryffel/jellycli
-jq                          static              github.com/stedolan/jq
-json2csv                    static              github.com/jehiah/json2csv
-json5                       static              github.com/yosuke-furukawa/json5
-jsteg                       static              github.com/lukechampine/jsteg
-
-K
-k3s                         static              github.com/rancher/k3s
-k9s                         static              github.com/derailed/k9s
-komga                       dynamic             github.com/gotson/komga
-kompose                     static              github.com/kubernetes/kompose
-
-L
-lazydocker                  static              github.com/jesseduffield/lazydocker
-lego                        static              github.com/go-acme/lego
-linuxkit                    static              github.com/linuxkit/linuxkit
-linx-cleanup                static              github.com/andreimarcu/linx-server
-linx-genkey                 static              github.com/andreimarcu/linx-server
-linx-server                 static              github.com/andreimarcu/linx-server
-logcli                      static              github.com/grafana/loki
-loki                        static              github.com/grafana/loki
-louketo-proxy               dynamic             github.com/louketo/louketo-proxy
-lucid                       dynamic             github.com/sharkdp/lucid
-
-M
-magneticod                  dynamic             github.com/boramalper/magnetico
-magneticow                  dynamic             github.com/boramalper/magnetico
-matterbridge                static              github.com/42wim/matterbridge
-mdbook                      dynamic             github.com/rust-lang/mdBook
-micro                       static              github.com/zyedidia/micro
-migrate                     static              github.com/golang-migrate/migrate
-minify                      static              github.com/tdewolff/minify
-mkcert                      static              github.com/FiloSottile/mkcert
-monitoror                   static              github.com/monitoror/monitoror
-
-N
-naabu                       dynamic             github.com/projectdiscovery/naabu
-nakama                      dynamic             github.com/heroiclabs/nakama
-navidrome                   static              github.com/deluan/navidrome
-nebula                      dynamic             github.com/slackhq/nebula
-nebula-cert                 dynamic             github.com/slackhq/nebula
-niltalk                     static              github.com/knadh/niltalk
-nnn                         static              github.com/jarun/nnn
-
-O
-oauth2-proxy                static              github.com/oauth2-proxy/oauth2-proxy
-opa                         static              github.com/open-policy-agent/opa
-oragono                     dynamic             github.com/oragono/oragono
-
-P
-parcello                    static              github.com/phogolabs/parcello
-pastel                      dynamic             github.com/sharkdp/pastel
-peach                       static              github.com/peachdocs/peach
-pebble                      dynamic             github.com/letsencrypt/pebble
-pebble-challtestsrv         dynamic             github.com/letsencrypt/pebble
-pegasus-fe                  dynamic             github.com/mmatyas/pegasus-frontend
-pgweb                       static              github.com/sosedoff/pgweb
-phoneinfoga                 static              github.com/sundowndev/PhoneInfoga
-pkger                       static              github.com/markbates/pkger
-plexdrive                   dynamic             github.com/plexdrive/plexdrive
-plik                        dynamic             github.com/root-gg/plik
-plikd                       dynamic             github.com/root-gg/plik
-podman-remote               dynamic             github.com/containers/libpod
-pomerium                    static              github.com/pomerium/pomerium
-pomerium-cli                static              github.com/pomerium/pomerium
-portainer                   static              github.com/portainer/portainer
-promtail                    dynamic             github.com/grafana/loki
-
-Q
-qrcp                        static              github.com/claudiodangelis/qrcp
-
-R
-rage                        dynamic             github.com/str4d/rage
-rage-keygen                 dynamic             github.com/str4d/rage
-rattlesnakeos-stack         dynamic             github.com/dan-v/rattlesnakeos-stack
-rclone                      static              github.com/rclone/rclone
-red                         static              github.com/antonmedv/red
-reg                         static              github.com/genuinetools/reg
-restic                      static              github.com/restic/restic
-rg                          static              github.com/BurntSushi/ripgrep
-rga                         static              github.com/phiresky/ripgrep-all
-rga-preproc                 static              github.com/phiresky/ripgrep-all
-rio                         static              github.com/rancher/rio
-rke                         static              github.com/rancher/rke
-rootlessctl                 static              github.com/rootless-containers/rootlesskit
-rootlesskit                 static              github.com/rootless-containers/rootlesskit
-rqbench                     dynamic             github.com/rqlite/rqlite
-rqlite                      dynamic             github.com/rqlite/rqlite
-rqlited                     dynamic             github.com/rqlite/rqlite
-rust-analyzer               dynamic             github.com/rust-analyzer/rust-analyzer
-
-S
-s                           dynamic             github.com/zquestz/s
-s2c                         static              github.com/klauspost/compress
-s2d                         static              github.com/klauspost/compress
-sccache                     static              github.com/mozilla/sccache
-sdns                        static              github.com/semihalev/sdns
-shellcheck                  static              github.com/koalaman/shellcheck
-simple-vpn                  dynamic             github.com/skx/simple-vpn
-slack-term                  static              github.com/erroneousboat/slack-term
-slink                       static              github.com/lukechampine/jsteg
-spotifyd                    static              github.com/Spotifyd/spotifyd
-spt                         dynamic             github.com/Rigellute/spotify-tui
-ssh-auditor                 static              github.com/ncsa/ssh-auditor
-sshcode                     dynamic             github.com/cdr/sshcode
-sslocal                     dynamic             github.com/shadowsocks/shadowsocks-rust
-ssmanager                   dynamic             github.com/shadowsocks/shadowsocks-rust
-ssserver                    dynamic             github.com/shadowsocks/shadowsocks-rust
-ssurl                       dynamic             github.com/shadowsocks/shadowsocks-rust
-starship                    dynamic             github.com/starship/starship
-statping                    static              github.com/statping/statping
-stdiscosrv                  static              github.com/syncthing/discosrv
-stegify                     static              github.com/DimitarPetrov/stegify
-step                        static              github.com/smallstep/cli
-strelaysrv                  static              github.com/syncthing/relaysrv
-sup                         static              github.com/pressly/sup
-swagger                     static              github.com/go-swagger/go-swagger
-swarm-cronjob               static              github.com/crazy-max/swarm-cronjob
-syncthing                   static              github.com/syncthing/syncthing
-
-T
-tableview                   static              github.com/informationsea/tableview
-task                        static              github.com/go-task/task
-tengo                       static              github.com/d5/tengo
-tldr++                      static              github.com/isacikgoz/tldr
-traefik                     static              github.com/containous/traefik
-transfersh                  static              github.com/dutchcoders/transfer.sh
-travis-wait-enhanced        static              github.com/crazy-max/travis-wait-enhanced
-trivy                       static              github.com/aquasecurity/trivy
-trivy-to-vuls               dynamic             github.com/future-architect/vuls
-txeh                        static              github.com/txn2/txeh
-
-U
-unetbootin                  static              github.com/unetbootin/unetbootin
-unftp                       static              github.com/bolcom/unFTP
-up                          static              github.com/apex/up
-uplink                      static              github.com/storj/storj
-upx                         static              github.com/upx/upx
-
-V
-vector                      static              github.com/timberio/vector
-velero                      static              github.com/vmware-tanzu/velero
-vigil                       static              github.com/valeriansaliou/vigil
-vivid                       dynamic             github.com/sharkdp/vivid
-vsphere-influxdb-go         dynamic             github.com/Oxalide/vsphere-influxdb-go
-vuls                        dynamic             github.com/future-architect/vuls
-
-W
-wal-g                       dynamic             github.com/wal-g/wal-g
-watchtower                  static              github.com/containrrr/watchtower
-wrangler                    static              github.com/cloudflare/wrangler
-wuzz                        static              github.com/asciimoo/wuzz
-
-X
-xsv                         static              github.com/BurntSushi/xsv
-
-Y
-youtube-dl                  dynamic             github.com/ytdl-org/youtube-dl
-yq                          static              github.com/mikefarah/yq
-ytop                        dynamic             github.com/cjbassi/ytop
-
-Z
-zenith                      static              github.com/bvaisvil/zenith
-zola                        dynamic             github.com/getzola/zola
-```

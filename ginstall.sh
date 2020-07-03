@@ -2,7 +2,7 @@
 
 # Set the default values for a list of environment variables
 # that are reused throughout the script.
-GINSTALL_SH_VERSION="3.0.0"
+GINSTALL_SH_VERSION="3.1.0"
 
 INSTALL_DIR="/usr/local/bin"
 GGET_LOCATION="$(command -v "gget")"
@@ -85,6 +85,7 @@ REPO_DOCKER_GEN="github.com/jwilder/docker-gen"
 REPO_DOCKER_MACHINE="github.com/docker/machine"
 REPO_DRIVE="github.com/odeke-em/drive"
 REPO_DRONE="github.com/drone/drone-cli"
+REPO_DSTASK="github.com/naggie/dstask"
 REPO_DUPLICACY="github.com/gilbertchen/duplicacy"
 
 REPO_EDGEDNS="github.com/jedisct1/edgedns"
@@ -136,6 +137,7 @@ REPO_GORELEASER="github.com/goreleaser/goreleaser"
 REPO_GORUSH="github.com/appleboy/gorush"
 REPO_GOSSA="github.com/pldubouilh/gossa"
 REPO_GOSU="github.com/tianon/gosu"
+REPO_GOTOP="github.com/xxxserxxx/gotop"
 REPO_GOTTY="github.com/yudai/gotty"
 REPO_GOVC="github.com/vmware/govmomi"
 REPO_GPLDR_CLIENT="github.com/Depado/goploader"
@@ -274,6 +276,7 @@ REPO_SYNCTHING="github.com/syncthing/syncthing"
 
 REPO_TABLEVIEW="github.com/informationsea/tableview"
 REPO_TASK="github.com/go-task/task"
+REPO_TASKLITE="github.com/ad-si/TaskLite"
 REPO_TENGO="github.com/d5/tengo"
 REPO_TLDR_PLUS_PLUS="github.com/isacikgoz/tldr"
 REPO_TRAEFIK="github.com/containous/traefik"
@@ -384,6 +387,7 @@ docker-gen                  static              $REPO_DOCKER_GEN
 docker-machine              static              $REPO_DOCKER_MACHINE
 drive                       static              $REPO_DRIVE
 drone                       static              $REPO_DRONE
+dstask                      static              $REPO_DSTASK
 duplicacy                   static              $REPO_DUPLICACY
 
 E
@@ -437,6 +441,7 @@ goreleaser                  static              $REPO_GORELEASER
 gorush                      dynamic             $REPO_GORUSH
 gossa                       static              $REPO_GOSSA
 gosu                        static              $REPO_GOSU
+gotop                       dynamic             $REPO_GOTOP
 gotty                       dynamic             $REPO_GOTTY
 govc                        static              $REPO_GOVC
 gpldr-client                dynamic             $REPO_GPLDR_CLIENT
@@ -588,6 +593,7 @@ syncthing                   static              $REPO_SYNCTHING
 T
 tableview                   static              $REPO_TABLEVIEW
 task                        static              $REPO_TASK
+tasklite                    dynamic             $REPO_TASKLITE
 tengo                       static              $REPO_TENGO
 tldr++                      static              $REPO_TLDR_PLUS_PLUS
 traefik                     static              $REPO_TRAEFIK
@@ -1252,11 +1258,11 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "acme-dns" | "act" | "annie" | "apizza" | "badger" | "caddy" | "captainhook" | "chroma" | "coredns" | \
     "croc" | "ddns-route53" | "dgraph" | "dgraph-ratel" | "diun" | "dive" | "docker-gen" | "drone" | \
     "filebrowser" | "ftpgrab" | "fzf" | "gau" | "geoip-updater" | "git-rewrite-author" | "gitbatch" | \
-    "gopass" | "goreleaser" | "grpcurl" | "hydra" | "intercert" | "k9s" | "lazydocker" | "lego" | "minify" | \
-    "naabu" | "nakama" | "navidrome" | "nebula" | "nebula-cert" | "niltalk" | "parcello" | "peach" | "phoneinfoga" | \
-    "pkger" | "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "sshcode" | "statping" | \
-    "swarm-cronjob" | "task" | "tengo" | "traefik" | "travis-wait-enhanced" | "trivy" | "txeh" | "up" | \
-    "vsphere-influxdb-go" | "wal-g" | "watchtower")
+    "gopass" | "goreleaser" | "gotop" | "grpcurl" | "hydra" | "intercert" | "k9s" | "lazydocker" | "lego" | \
+    "minify" | "naabu" | "nakama" | "navidrome" | "nebula" | "nebula-cert" | "niltalk" | "parcello" | "peach" | \
+    "phoneinfoga" | "pkger" | "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "sshcode" | \
+    "statping" | "swarm-cronjob" | "task" | "tengo" | "traefik" | "travis-wait-enhanced" | "trivy" | "txeh" | \
+    "up" | "vsphere-influxdb-go" | "wal-g" | "watchtower")
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
@@ -1300,9 +1306,9 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     ;;
 
     "andesite" | "arc" | "argocd" | "avif" | "blocky" | "bombardier" | "borg" | "ctop" | "docker-compose" | \
-    "docker-machine" | "duplicacy" | "eureka" | "ffsend" | "fluxctl" | "gdrive" | "gget" | "gitea" | "go-auto-yt" | \
-    "gomplate" | "gomuks" | "gossa" | "gpldr-client" | "httpstat" | "insect" | "jq" | "kompose" | "linuxkit" | \
-    "matterbridge" | "mkcert" | "monitoror" | "opa" | "plexdrive" | "reg" | "rio" | "rke" | "simple-vpn" | \
+    "docker-machine" | "dstask" | "duplicacy" | "eureka" | "ffsend" | "fluxctl" | "gdrive" | "gget" | "gitea" | \
+    "go-auto-yt" | "gomplate" | "gomuks" | "gossa" | "gpldr-client" | "httpstat" | "insect" | "jq" | "kompose" | \
+    "linuxkit" | "matterbridge" | "mkcert" | "monitoror" | "opa" | "plexdrive" | "reg" | "rio" | "rke" | "simple-vpn" | \
     "slack-term" | "stegify" | "sup" | "swagger" | "tableview" | "unetbootin" | "transfersh" | "wuzz" | "yq")
       if [ "${2}" = "ffsend" ]; then APP_RESOURCE_SUFFIX="static"; fi
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\*64\*"${APP_RESOURCE_SUFFIX}" && \
@@ -1358,7 +1364,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "bw" | "ethr" | "json5" | "pegasus-fe" | "rattlesnakeos-stack")
+    "bw" | "ethr" | "json5" | "pegasus-fe" | "rattlesnakeos-stack" | "tasklite")
       APP_RESOURCE_PREFIX="inux"
       if [ "${2}" = "pegasus-fe" ]; then APP_RESOURCE_PREFIX="x11-static"; fi
       gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\*&& \
