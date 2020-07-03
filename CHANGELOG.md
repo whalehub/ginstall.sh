@@ -3,8 +3,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [3.0.0] - 2020.07.03
 ### Added
+- A sanity check to verify that the installed version of `gget` is equal to or newer than the minimum required version.
 - Support for [Deno_Lint](https://github.com/denoland/deno_lint).
 - Support for [GitUI](https://github.com/extrawurst/gitui).
 - Support for [Gorush](https://github.com/appleboy/gorush).
@@ -19,9 +20,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Support for [WAL-G](https://github.com/wal-g/wal-g).
 
 ### Changed
-- Add extensive comments to `ginstall.sh` which detail both the steps performed by the script and the rationale behind some of the design choices.
-- Thanks to a recent improvement in its dependency `gget`, `ginstall.sh` can now also dynamically check for and install the latest version of applications which only have "pre-release" tags (e.g. `age`).
-- Bump required version of `gget` to v(TBD).
+- Bump minimum required version of `gget` to v0.5.1.
+- Add detailed inline comments to `ginstall.sh` to explain the steps performed by the script and the rationale behind some of the design choices.
+- Add curly brackets around positional variables.
+- Thanks to a recent improvement in its dependency `gget`, `ginstall.sh` can now also dynamically check for and install the latest version of applications which only have "pre-release" tags (e.g. `rage`).
 
 ### Removed
 - The hard-coded stopgap solution for supporting applications that only have "pre-release" tags as it is now obsolete.

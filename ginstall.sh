@@ -2,7 +2,7 @@
 
 # Set the default values for a list of environment variables
 # that are reused throughout the script.
-GINSTALL_SH_VERSION="2.7.1"
+GINSTALL_SH_VERSION="3.0.0"
 
 INSTALL_DIR="/usr/local/bin"
 GGET_LOCATION="$(command -v "gget")"
@@ -676,7 +676,7 @@ fi
 eval set -- "$ARGS"
 unset ARGS
 
-case "$1" in
+case "${1}" in
   # The --check flag is used to find out what the latest version
   # of a supported application is. It only takes one argument: the
   # name of the application to be checked.
@@ -687,117 +687,134 @@ case "$1" in
     if [ -z "${GGET_LOCATION}" ]; then
       echo -e "${MISSING_DEPENDENCY}\n${USAGE_INFORMATION}"
       exit 1
-    else
-      case "$2" in
-        # The dependency gget can only check the latest release tag
-        # of software that is hosted on GitHub or GitLab. Since the
-        # compiled binaries for ffmpeg are hosted on the website of
-        # a third party, we use use curl to fetch the download page,
-        # pipe the output through grep and sed to filter it down to
-        # the latest version number and then print it.
-        "ffmpeg")
-          APP_VERSION="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
-          echo -e "The latest version of $2 is v${APP_VERSION}."
-          exit 0
-        ;;
+	fi 
 
-        # We do the same thing for Go since the compiled binaries
-        # for it are distributed on golang.org instead of GitHub.
-        "go")
-          APP_VERSION="$(curl -sSL https://golang.org/dl/ | grep "downloadBox.*linux-amd64" | sed 's|.*go||g;s|.linux.*||g')"
-          echo -e "The latest version of $2 is v${APP_VERSION}."
-          exit 0
-        ;;
+    # Verify that the version of the dependency gget is equal to
+	# or newer than the minimum version required by this script.
+	#
+	# This sanity check utilizes gget's built-in --version flag
+	# which will make gget exit with an error if the installed
+	# version of it is outside of the specified version constaint.
+	#
+	# The exit status of the gget is used to determine whether
+	# to prompt the user to update gget to a newer version and
+	# exit or to proceed with the script normally.
+	gget --version='>=0.5.1' &>/dev/null
+	if [ ! $? -eq 0 ]; then
+	  echo -e "Error: The installed version of gget is older than the minimum version required by this script."
+	  echo -e "Tip: You can update gget to the required version by running this script with the --first-run flag."
+      exit 1
+	fi
 
-        # We use gget to dynamically fetch the latest version of
-        # all other supported applications.
-        *)
-          # First, we take the lower-case application name
-          # that was supplied by the user and convert it to
-          # upper-case. Next, we replace any dots or dashes
-          # in the name with underscores and any plus signs
-          # with "_PLUS". Finally, we prefix the resulting
-          # string with "REPO_", echo it and use the output
-          # as the value of the $REPO variable.
-          #
-          # The final variable name for the input "tldr++",
-          # for example, would be "REPO_TLDR_PLUS_PLUS",
-          # which corresponds to the environment variable
-          # that we defined for this application earlier in
-          # the script.
-          REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g;s/+/_PLUS/g')"
+    case "${2}" in
+	  # The dependency gget can only check the latest release tag
+      # of software that is hosted on GitHub or GitLab. Since the
+      # compiled binaries for ffmpeg are hosted on the website of
+      # a third party, we use use curl to fetch the download page,
+      # pipe the output through grep and sed to filter it down to
+      # the latest version number and then print it.
+      "ffmpeg")
+        APP_VERSION="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
+        echo -e "The latest version of ${2} is v${APP_VERSION}."
+        exit 0
+      ;;
 
-          # Utilizing shell expansion, perform a check to see
-          # if value of the $REPO variable is empty (this
-          # happens when the result of the expanded variable
-          # has not been defined anywhere in the script).
-          #
-          # If the value is empty, print usage information.
-          if [ -z "${!REPO}" ]; then
-            echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}"
-            exit 1
-          fi
+      # We do the same thing for Go since the compiled binaries
+      # for it are distributed on golang.org instead of GitHub.
+      "go")
+        APP_VERSION="$(curl -sSL https://golang.org/dl/ | grep "downloadBox.*linux-amd64" | sed 's|.*go||g;s|.linux.*||g')"
+        echo -e "The latest version of ${2} is v${APP_VERSION}."
+        exit 0
+      ;;
 
-          # The dependency gget recently added a new flag
-          # which allows one to specify whether to query
-          # the most recent "latest" or the most recent
-          # "pre-release" tag. This allows us to implement
-          # support for applications which only have "pre-
-          # release" tags without having to hard-code the
-          # latest version in ginstall.sh (more on that
-          # below).
-          #
-          # Almost all of the applications that this script
-          # supports have a "latest" release tag and since
-          # gget queries the "latest" tag by default, there
-          # is no need to specify the new flag for the
-          # default version check.
-          #
-          # The raw output of the gget command contains
-          # more than just the version number, so we pipe
-          # it through sed to filter it down to just the
-          # version number.
-          #
-          # Raw:
-          #   tag     v2.7.1
-          #   commit  2d54843e4c53d5bce9b7c2b5965a4d6c35f19202
-          #
-          # Filtered:
-          #   2.7.1
-          #
-          # The filtered output is then used as the value
-          # of the $VERSION_CHECK variable.
-          VERSION_CHECK="$(gget --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
-          
-          # The gget command above pipes its error output to
-          # /dev/null, which allows us to determine whether
-          # or not an application has a "latest" release tag
-          # by checking if the value of the $VERSION_CHECK
-          # variable is empty.
-          # 
-          # If it is empty (i.e. if the application only has
-          # "pre-release" tags), we repeat the same command,
-          # only this time, we add the new --ref-stability flag
-          # with the value "pre-release" and use the filtered
-          # output as the value of the $APP_VERSION variable.
-          # 
-          # If it is not empty (i.e. if the application does
-          # have a "latest" release tag), we reuse the value
-          # of the $VERSION_CHECK variable as the value of
-          # the $APP_VERSION variable.
-          # 
-          # The $APP_VERSION variable is then used to print
-          # the latest available version of the application.
-          if [ -z "${VERSION_CHECK}" ]; then
-            APP_VERSION="$(gget --ref-stability=pre-release --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
-          else
-            APP_VERSION="${VERSION_CHECK}"
-          fi
-          echo -e "The latest version of $2 is v${APP_VERSION}."
-          exit 0
-        ;;
-      esac
-    fi
+      # We use gget to dynamically fetch the latest version of
+      # all other supported applications.
+      *)
+        # First, we take the lower-case application name
+        # that was supplied by the user and convert it to
+        # upper-case. Next, we replace any dots or dashes
+        # in the name with underscores and any plus signs
+        # with "_PLUS". Finally, we prefix the resulting
+        # string with "REPO_", echo it and use the output
+        # as the value of the $REPO variable.
+        #
+        # The final variable name for the input "tldr++",
+        # for example, would be "REPO_TLDR_PLUS_PLUS",
+        # which corresponds to the environment variable
+        # that we defined for this application earlier in
+        # the script.
+        REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g;s/+/_PLUS/g')"
+
+        # Utilizing shell expansion, perform a check to see
+        # if value of the $REPO variable is empty (this
+        # happens when the result of the expanded variable
+        # has not been defined anywhere in the script).
+        #
+        # If the value is empty, print usage information.
+        if [ -z "${!REPO}" ]; then
+          echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}"
+          exit 1
+        fi
+
+        # The dependency gget recently added a new flag
+        # which allows one to specify whether to query
+        # the most recent "latest" or the most recent
+        # "pre-release" tag. This allows us to implement
+        # support for applications which only have "pre-
+        # release" tags without having to hard-code the
+        # latest version in ginstall.sh (more on that
+        # below).
+        #
+        # Almost all of the applications that this script
+        # supports have a "latest" release tag and since
+        # gget queries the "latest" tag by default, there
+        # is no need to specify the new flag for the
+        # default version check.
+        #
+        # The raw output of the gget command contains
+        # more than just the version number, so we pipe
+        # it through sed to filter it down to just the
+        # version number.
+        #
+        # Raw:
+        #   tag     v2.7.1
+        #   commit  2d54843e4c53d5bce9b7c2b5965a4d6c35f19202
+        #
+        # Filtered:
+        #   2.7.1
+        #
+        # The filtered output is then used as the value
+        # of the $VERSION_CHECK variable.
+        VERSION_CHECK="$(gget --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
+        
+        # The gget command above pipes its error output to
+        # /dev/null, which allows us to determine whether
+        # or not an application has a "latest" release tag
+        # by checking if the value of the $VERSION_CHECK
+        # variable is empty.
+        # 
+        # If it is empty (i.e. if the application only has
+        # "pre-release" tags), we repeat the same command,
+        # only this time, we add the new --ref-stability flag
+        # with the value "pre-release" and use the filtered
+        # output as the value of the $APP_VERSION variable.
+        # 
+        # If it is not empty (i.e. if the application does
+        # have a "latest" release tag), we reuse the value
+        # of the $VERSION_CHECK variable as the value of
+        # the $APP_VERSION variable.
+        # 
+        # The $APP_VERSION variable is then used to print
+        # the latest available version of the application.
+        if [ -z "${VERSION_CHECK}" ]; then
+          APP_VERSION="$(gget --ref-stability=pre-release --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
+        else
+          APP_VERSION="${VERSION_CHECK}"
+        fi
+        echo -e "The latest version of ${2} is v${APP_VERSION}."
+        exit 0
+      ;;
+	esac
   ;;
 
   # The --directory flag is used to specify a custom installation
@@ -806,7 +823,7 @@ case "$1" in
   "--directory" | "-d")
     # The custom installation directory is preserved throughout
     # the script as the value of the $INSTALL_DIR variable.
-    INSTALL_DIR="$2"
+    INSTALL_DIR="${2}"
 
     # When the --directory flag is used, we set the variable
     # $DIR_FLAG to "true" so we can still determine that the
@@ -818,10 +835,10 @@ case "$1" in
     # If the --directory flag is used with an argument other than
     # the name of an application or the --first-run flag, print a
     # message with usage information.
-    case "$3" in
+    case "${3}" in
       "--check" | "-c" | "--help" | "-h" | "--list" | "-l" | "--remove" | "-r" | \
       "--search" | "-s" | "--self-update" | "--version" | "-version")
-        echo -e "The $1 flag can only be used as a prefix for the --first-run flag or the app argument.\n${USAGE_INFORMATION}"
+        echo -e "The ${1} flag can only be used as a prefix for the --first-run flag or the app argument.\n${USAGE_INFORMATION}"
         exit 1
       ;;
 
@@ -830,7 +847,7 @@ case "$1" in
       # custom installation directory via curl and make it executable
       # with chmod.
       "--first-run")
-        curl -Lf -o "${INSTALL_DIR:?}"/gget https://"${REPO_GGET}"/releases/download/v0.3.0/gget-0.3.0-linux-amd64 && \
+        curl -Lf -o "${INSTALL_DIR:?}"/gget https://"${REPO_GGET}"/releases/download/v0.5.1/gget-0.5.1-linux-amd64 && \
         chmod 0755 "${INSTALL_DIR:?}"/gget && \
         echo -e "\nThe dependency gget has been successfully installed and ginstall.sh is now ready for use."
         exit 0
@@ -877,7 +894,7 @@ case "$1" in
       echo -e "${PERMISSION_DENIED}\n${USAGE_INFORMATION}"
       exit 1
     else
-      curl -Lf -o "${INSTALL_DIR:?}"/gget https://"${REPO_GGET}"/releases/download/v0.3.0/gget-0.3.0-linux-amd64 && \
+      curl -Lf -o "${INSTALL_DIR:?}"/gget https://"${REPO_GGET}"/releases/download/v0.5.1/gget-0.5.1-linux-amd64 && \
       chmod 0755 "${INSTALL_DIR:?}"/gget && \
       echo -e "\nThe dependency gget has been successfully installed and ginstall.sh is now ready for use."
       exit 0
@@ -902,7 +919,7 @@ case "$1" in
   # application. It takes one argument: the name of the
   # application to be uninstalled.
   "--remove" | "-r")
-    UNINSTALL_SUCCESS="$2 was uninstalled successfully."
+    UNINSTALL_SUCCESS="${2} was uninstalled successfully."
     
     # We reuse the same logic that we used for the --check flag
     # earlier to verify if the application that was specified
@@ -925,7 +942,7 @@ case "$1" in
       echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}"
       exit 1
     else
-      case "$2" in
+      case "${2}" in
 
         # We use a sanity check to prompt the user to confirm
         # that they want to uninstall the dependency gget if
@@ -963,7 +980,7 @@ case "$1" in
         #
         # We then use rm with the -r flag to uninstall Go completely.
         "go")
-          APP_LOCATION="$(command -v "$2" | sed 's|/bin/go||g')"
+          APP_LOCATION="$(command -v "${2}" | sed 's|/bin/go||g')"
           rm -vr "${APP_LOCATION:?}" && \
           echo -e "${UNINSTALL_SUCCESS}"
           exit 0
@@ -973,7 +990,7 @@ case "$1" in
         # output of "command -v" as the value for the environment
         # variable $APP_LOCATION and provide it as an argument to rm.
         *)
-          APP_LOCATION="$(command -v "$2")"
+          APP_LOCATION="$(command -v "${2}")"
           # For composer and komga, we need to suffix the command with
           # their binary's extension to find out where they have been
           # installed.
@@ -981,9 +998,9 @@ case "$1" in
           # For hugo-extended, we need to query the user's $PATH for
           # the location of hugo since the former is merely a variant
           # of the latter and doesn't have a differently named binary.
-          if [ "$2" = "composer" ]; then APP_LOCATION="$(command -v "$2".phar)"; fi
-          if [ "$2" = "hugo-extended" ]; then APP_LOCATION="$(command -v "hugo")"; fi
-          if [ "$2" = "komga" ]; then APP_LOCATION="$(command -v "$2".jar)"; fi
+          if [ "${2}" = "composer" ]; then APP_LOCATION="$(command -v "${2}".phar)"; fi
+          if [ "${2}" = "hugo-extended" ]; then APP_LOCATION="$(command -v "hugo")"; fi
+          if [ "${2}" = "komga" ]; then APP_LOCATION="$(command -v "${2}".jar)"; fi
           rm -v "${APP_LOCATION:?}" && \
           echo -e "${UNINSTALL_SUCCESS}"
           exit 0
@@ -997,7 +1014,7 @@ case "$1" in
   # ginstall.sh. It takes one argument: the search
   # term to use when performing the search query.
   "--search" | "-s")
-    echo -e "${SUPPORTED_APPS_HEADER}""\n""$(echo -e "$SUPPORTED_APPS_LIST" | grep "$2")"
+    echo -e "${SUPPORTED_APPS_HEADER}""\n""$(echo -e "$SUPPORTED_APPS_LIST" | grep "${2}")"
     exit 0
   ;;
 
@@ -1005,26 +1022,34 @@ case "$1" in
   # script to the latest available version. It 
   # takes no arguments.
   "--self-update")
-    echo $0
-    exit 0
-    # We use the same logic that we used for the --check
-    # flag to verify that gget is installed prior to
-    # running any commands which require it.
+    # We use the same logic that we used for the --check flag
+	# to verify that gget is installed prior to running any
+	# commands which require it.
     if [ -z "${GGET_LOCATION}" ]; then
       echo -e "${MISSING_DEPENDENCY}\n${USAGE_INFORMATION}"
       exit 1
-    else
+	fi
+
+	# We reuse the sanity check from the --check flag to verify
+	# that the installed version of gget is equal to or newer
+	# than the minimum version required by this script.
+	gget --version='>=0.5.1' &>/dev/null
+	if [ ! $? -eq 0 ]; then
+	  echo -e "Error: The installed version of gget is older than the minimum version required by this script."
+	  echo -e "Tip: You can update gget to the required version by running this script with the --first-run flag."
+      exit 1
+	fi
+
     # We make use of the $0 argument which is always equal
     # to the full path that ginstall.sh is being executed
     # from so that we can update it even if it is saved
     # outside of /usr/local/bin or even outside of the
     # user's $PATH.
-      APP_VERSION="$(gget --show-ref "${REPO_GINSTALL_SH}" | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+      APP_VERSION="$(gget --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${REPO_GINSTALL_SH}" 2>/dev/null | sed 's|^v||g')"
       gget --stdout "${REPO_GINSTALL_SH}""${VERSION_PREFIX}""${APP_VERSION}" 'ginstall.sh' > "$0" && \
       chmod 0755 "$0" && \
       echo -e "ginstall.sh successfully updated itself to the latest version (v${APP_VERSION})."
       exit 0
-    fi
   ;;
 
   # The --version flag can be used to print the
@@ -1041,14 +1066,26 @@ esac
 if [ -z "${GGET_LOCATION}" ]; then
   echo -e "${MISSING_DEPENDENCY_INSTALL}\n${USAGE_INFORMATION}"
   exit 1
+fi
+
+# We also once again check that the installed version
+# of gget is equal to or newer than the minimum version
+# required by this script.
+gget --version='>=0.5.1' &>/dev/null
+if [ ! $? -eq 0 ]; then
+  echo -e "Error: The installed version of gget is older than the minimum version required by this script."
+  echo -e "Tip: You can update gget to the required version by running this script with the --first-run flag."
+  exit 1
+fi
+
 # We check that the user has supplied an application
 # name and print usage information if they have not.
-elif [ -z "$2" ]; then
+if [ -z "${2}" ]; then
   echo -e "Error: You forgot to supply an application name.\n${USAGE_INFORMATION}"
   exit 1
 # We check that the user has supplied an application
 # version and print usage information if they have not.
-elif [ -z "$3" ]; then
+elif [ -z "${3}" ]; then
   echo -e "Error: You forgot to supply a version number.\n${USAGE_INFORMATION}"
   exit 1
 fi
@@ -1056,15 +1093,15 @@ fi
 # Set the variables that are required for installing an
 # application by reusing the name and version that were
 # supplied by the user.
-APP_NAME="$2"
-APP_RESOURCE="$2"
-APP_VERSION="$3"
+APP_NAME="${2}"
+APP_RESOURCE="${2}"
+APP_VERSION="${3}"
 REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g;s/+/_PLUS/g')"
 INSTALL_SUCCESS="${APP_NAME} v${APP_VERSION} was successfully installed to ${INSTALL_DIR}."
 
 # This code block is invoked if the user supplies the version
 # argument "latest" instead of a specific version.
-if [ "$3" = "latest" ]; then
+if [ "${3}" = "latest" ]; then
   # Check that the script is either running with the
   # permissions that are required to install an
   # application to /usr/local/bin or that the user
@@ -1074,7 +1111,7 @@ if [ "$3" = "latest" ]; then
   # If neither condition is true, print usage
   # information.
   if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
-    case "$2" in
+    case "${2}" in
       # We don't perform a version check for ffmpeg and go
       # with gget for the same reasons we don't do it with
       # the --check flag. Their version checks are specified
@@ -1097,9 +1134,9 @@ if [ "$3" = "latest" ]; then
       # the latest available version of an application
       # regardless of whether or not it has a "latest"
       # release tag.
-        VERSION_CHECK="$(gget --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+        VERSION_CHECK="$(gget --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
         if [ -z "${VERSION_CHECK}" ]; then
-          APP_VERSION="$(gget --ref-stability=pre-release --show-ref "${!REPO}" 2>/dev/null | sed '2d;s|tag[[:blank:]]||g;s|v||g')"
+          APP_VERSION="$(gget --ref-stability=pre-release --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
         else
           APP_VERSION="${VERSION_CHECK}"
         fi
@@ -1170,7 +1207,7 @@ EXCL_ARCHIVES="--exclude=\"*.7z\"        --exclude=\"*.bz2\"         --exclude=\
 # If neither condition is true, print usage
 # information.
 if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
-  case "$2" in
+  case "${2}" in
     # For applications whose release tags are not prefixed
     # by a "v", change the default $VERSION_PREFIX variable
     # to one without a "v".
@@ -1184,13 +1221,15 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     ;;
   esac
 
-  case "$4" in
+  case "${4}" in
     # This argument is used for debugging purposes and to
     # verify that all supported applications can actually
     # be installed prior to a new release of ginstall.sh.
+	#
+	# The command used here may change from time to time
+	# since it is not meant to be invoked by the average
+	# user and should only be of interest to other devs.
     "+debug")
-      gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}"
-      exit 0
     ;;
   esac
 
@@ -1209,7 +1248,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
   # further by supporting almost every application
   # with just two or three code blocks through the
   # extensive use of variables and glob patterns.
-  case "$2" in
+  case "${2}" in
     "acme-dns" | "act" | "annie" | "apizza" | "badger" | "caddy" | "captainhook" | "chroma" | "coredns" | \
     "croc" | "ddns-route53" | "dgraph" | "dgraph-ratel" | "diun" | "dive" | "docker-gen" | "drone" | \
     "filebrowser" | "ftpgrab" | "fzf" | "gau" | "geoip-updater" | "git-rewrite-author" | "gitbatch" | \
@@ -1225,14 +1264,14 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
     "adguardhome" | "git-hooks" | "gotty" | "gpldr-server" | "micro" | "migrate" | "oauth2-proxy" | "wrangler")
       APP_RESOURCE_PREFIX="inux"
-      if [ "$2" = "adguardhome" ]; then FOLDER_PREFIX="AdGuardHome" APP_NAME_ARCHIVED="AdGuardHome"; fi
-      if [ "$2" = "git-hooks" ]; then FOLDER_PREFIX="build" APP_NAME_ARCHIVED="${APP_NAME}_linux_amd64"; fi
-      if [ "$2" = "gotty" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}"; fi
-      if [ "$2" = "gpldr-server" ]; then APP_RESOURCE_PREFIX="standalone" FOLDER_PREFIX="goploader-server" APP_NAME_ARCHIVED="server-standalone"; fi
-      if [ "$2" = "micro" ]; then APP_RESOURCE_SUFFIX="static.tar.gz" FOLDER_PREFIX="${APP_NAME}-${APP_VERSION}" APP_NAME_ARCHIVED="${APP_NAME}"; fi
-      if [ "$2" = "migrate" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}.linux-amd64"; fi
-      if [ "$2" = "oauth2-proxy" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')" APP_NAME_ARCHIVED="oauth2_proxy"; fi
-      if [ "$2" = "wrangler" ]; then APP_RESOURCE_PREFIX="" FOLDER_PREFIX="dist" APP_NAME_ARCHIVED="${APP_NAME}"; fi
+      if [ "${2}" = "adguardhome" ]; then FOLDER_PREFIX="AdGuardHome" APP_NAME_ARCHIVED="AdGuardHome"; fi
+      if [ "${2}" = "git-hooks" ]; then FOLDER_PREFIX="build" APP_NAME_ARCHIVED="${APP_NAME}_linux_amd64"; fi
+      if [ "${2}" = "gotty" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}"; fi
+      if [ "${2}" = "gpldr-server" ]; then APP_RESOURCE_PREFIX="standalone" FOLDER_PREFIX="goploader-server" APP_NAME_ARCHIVED="server-standalone"; fi
+      if [ "${2}" = "micro" ]; then APP_RESOURCE_SUFFIX="static.tar.gz" FOLDER_PREFIX="${APP_NAME}-${APP_VERSION}" APP_NAME_ARCHIVED="${APP_NAME}"; fi
+      if [ "${2}" = "migrate" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}.linux-amd64"; fi
+      if [ "${2}" = "oauth2-proxy" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')" APP_NAME_ARCHIVED="oauth2_proxy"; fi
+      if [ "${2}" = "wrangler" ]; then APP_RESOURCE_PREFIX="" FOLDER_PREFIX="dist" APP_NAME_ARCHIVED="${APP_NAME}"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*64\*"${APP_RESOURCE_SUFFIX}" | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME_ARCHIVED}" ${TAR_ARGS} --strip-components=1 && \
       mv "${INSTALL_DIR:?}"/"${APP_NAME_ARCHIVED}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2>/dev/null ; \
@@ -1243,18 +1282,18 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "rage" | "rage-keygen" | "step" | "vector" | "vigil")
       COMPONENT_COUNT="1"
       APP_RESOURCE_PREFIX="inux"
-      if [ "$2" = "age" ] || [ "$2" = "age-keygen" ]; then FOLDER_PREFIX="age"; fi
-      if [ "$2" = "autocert" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
-      if [ "$2" = "frpc" ] || [ "$2" = "frps" ]; then FOLDER_PREFIX="frp_${APP_VERSION}_linux_amd64"; fi
-      if [ "$2" = "gh" ] || [ "$2" = "hub" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
-      if [ "$2" = "gitui" ]; then FOLDER_PREFIX="." COMPONENT_COUNT="1" APP_RESOURCE_PREFIX="musl"; fi
-      if [ "$2" = "ipfs" ]; then FOLDER_PREFIX="go-ipfs"; fi
-      if [ "$2" = "plik" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/clients/linux-amd64" COMPONENT_COUNT="3"; fi
-      if [ "$2" = "plikd" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/server" COMPONENT_COUNT="2"; fi
-      if [ "$2" = "rage" ] || [ "$2" = "rage-keygen" ]; then FOLDER_PREFIX="rage"; fi
-      if [ "$2" = "step" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
-      if [ "$2" = "vector" ]; then FOLDER_PREFIX="./${APP_NAME}-x86_64-unknown-linux-musl/bin" COMPONENT_COUNT="3"; fi
-      if [ "$2" = "vigil" ]; then FOLDER_PREFIX="./${APP_NAME}" COMPONENT_COUNT="2" APP_RESOURCE_PREFIX="64"; fi
+      if [ "${2}" = "age" ] || [ "${2}" = "age-keygen" ]; then FOLDER_PREFIX="age"; fi
+      if [ "${2}" = "autocert" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
+      if [ "${2}" = "frpc" ] || [ "${2}" = "frps" ]; then FOLDER_PREFIX="frp_${APP_VERSION}_linux_amd64"; fi
+      if [ "${2}" = "gh" ] || [ "${2}" = "hub" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
+      if [ "${2}" = "gitui" ]; then FOLDER_PREFIX="." COMPONENT_COUNT="1" APP_RESOURCE_PREFIX="musl"; fi
+      if [ "${2}" = "ipfs" ]; then FOLDER_PREFIX="go-ipfs"; fi
+      if [ "${2}" = "plik" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/clients/linux-amd64" COMPONENT_COUNT="3"; fi
+      if [ "${2}" = "plikd" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/server" COMPONENT_COUNT="2"; fi
+      if [ "${2}" = "rage" ] || [ "${2}" = "rage-keygen" ]; then FOLDER_PREFIX="rage"; fi
+      if [ "${2}" = "step" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
+      if [ "${2}" = "vector" ]; then FOLDER_PREFIX="./${APP_NAME}-x86_64-unknown-linux-musl/bin" COMPONENT_COUNT="3"; fi
+      if [ "${2}" = "vigil" ]; then FOLDER_PREFIX="./${APP_NAME}" COMPONENT_COUNT="2" APP_RESOURCE_PREFIX="64"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" && \
       chmod_binary-echo_success-exit_0
@@ -1265,7 +1304,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "gomplate" | "gomuks" | "gossa" | "gpldr-client" | "httpstat" | "insect" | "jq" | "kompose" | "linuxkit" | \
     "matterbridge" | "mkcert" | "monitoror" | "opa" | "plexdrive" | "reg" | "rio" | "rke" | "simple-vpn" | \
     "slack-term" | "stegify" | "sup" | "swagger" | "tableview" | "unetbootin" | "transfersh" | "wuzz" | "yq")
-      if [ "$2" = "ffsend" ]; then APP_RESOURCE_SUFFIX="static"; fi
+      if [ "${2}" = "ffsend" ]; then APP_RESOURCE_SUFFIX="static"; fi
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\*64\*"${APP_RESOURCE_SUFFIX}" && \
       echo_success-exit_0
     ;;
@@ -1273,15 +1312,15 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "authelia" | "brig" | "jellycli" | "nnn" | "podman-remote" | "sdns" | "spotifyd" | "spt" | "tldr++" | "zenith")
       APP_RESOURCE_PREFIX="inux"
       APP_RESOURCE_SUFFIX="64"
-      if [ "$2" = "authelia" ] || [ "$2" = "brig" ]; then RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"; fi
-      if [ "$2" = "jellycli" ]; then RESOURCE_NAME="Jellycli"; fi
-      if [ "$2" = "nnn" ]; then APP_RESOURCE_PREFIX="static" RESOURCE_NAME="${APP_NAME}-static"; fi
-      if [ "$2" = "podman-remote" ]; then APP_RESOURCE_PREFIX="static" APP_RESOURCE_SUFFIX=".tar.gz" RESOURCE_NAME="${APP_NAME}"; fi
-      if [ "$2" = "sdns" ]; then RESOURCE_NAME="${APP_NAME}_linux_amd64"; fi
-      if [ "$2" = "spotifyd" ]; then APP_RESOURCE_SUFFIX="-full" RESOURCE_NAME="${APP_NAME}"; fi
-      if [ "$2" = "spt" ]; then APP_RESOURCE_SUFFIX="" RESOURCE_NAME="${APP_NAME}"; fi
-      if [ "$2" = "tldr++" ]; then RESOURCE_NAME="tldr"; fi
-      if [ "$2" = "zenith" ]; then APP_RESOURCE_SUFFIX=".tgz" RESOURCE_NAME="${APP_NAME}"; fi
+      if [ "${2}" = "authelia" ] || [ "${2}" = "brig" ]; then RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"; fi
+      if [ "${2}" = "jellycli" ]; then RESOURCE_NAME="Jellycli"; fi
+      if [ "${2}" = "nnn" ]; then APP_RESOURCE_PREFIX="static" RESOURCE_NAME="${APP_NAME}-static"; fi
+      if [ "${2}" = "podman-remote" ]; then APP_RESOURCE_PREFIX="static" APP_RESOURCE_SUFFIX=".tar.gz" RESOURCE_NAME="${APP_NAME}"; fi
+      if [ "${2}" = "sdns" ]; then RESOURCE_NAME="${APP_NAME}_linux_amd64"; fi
+      if [ "${2}" = "spotifyd" ]; then APP_RESOURCE_SUFFIX="-full" RESOURCE_NAME="${APP_NAME}"; fi
+      if [ "${2}" = "spt" ]; then APP_RESOURCE_SUFFIX="" RESOURCE_NAME="${APP_NAME}"; fi
+      if [ "${2}" = "tldr++" ]; then RESOURCE_NAME="tldr"; fi
+      if [ "${2}" = "zenith" ]; then APP_RESOURCE_SUFFIX=".tgz" RESOURCE_NAME="${APP_NAME}"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}" ${TAR_ARGS} && \
       mv "${INSTALL_DIR:?}"/"${RESOURCE_NAME:?}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2>/dev/null ; \
@@ -1291,7 +1330,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "bat" | "delta" | "diskus" | "fd" | "frece" | "hexyl" | "hyperfine" | "lucid" | "pastel" | "rg" | "rga" | \
     "rga-preproc" | "sccache" | "vivid")
       APP_ARCH="gnu"
-      if [ "$2" = "rg" ] || [ "$2" = "rga" ] || [ "$2" = "rga-preproc" ] || [ "$2" = "sccache" ]; then APP_ARCH="musl"; fi
+      if [ "${2}" = "rg" ] || [ "${2}" = "rga" ] || [ "${2}" = "rga-preproc" ] || [ "${2}" = "sccache" ]; then APP_ARCH="musl"; fi
       RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | sed 's|.tar.gz||g')"
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
@@ -1302,10 +1341,10 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "json2csv" | "louketo-proxy" | "oragono" | "portainer" | "rqbench" |"rqlite" |"rqlited" | "ssh-auditor" | \
     "stdiscosrv" | "strelaysrv" | "syncthing" | "velero")
       RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"
-      if [ "$2" = "dnscrypt-proxy" ]; then RESOURCE_NAME="linux-x86_64"; fi
-      if [ "$2" = "dnsproxy" ]; then RESOURCE_NAME="linux-amd64"; fi
-      if [ "$2" = "gogs" ]; then RESOURCE_NAME="gogs" APP_RESOURCE_SUFFIX=".tar.gz"; fi
-      if [ "$2" = "portainer" ]; then RESOURCE_NAME="portainer"; fi
+      if [ "${2}" = "dnscrypt-proxy" ]; then RESOURCE_NAME="linux-x86_64"; fi
+      if [ "${2}" = "dnsproxy" ]; then RESOURCE_NAME="linux-amd64"; fi
+      if [ "${2}" = "gogs" ]; then RESOURCE_NAME="gogs" APP_RESOURCE_SUFFIX=".tar.gz"; fi
+      if [ "${2}" = "portainer" ]; then RESOURCE_NAME="portainer"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\*"${APP_RESOURCE_SUFFIX}" | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod_binary-echo_success-exit_0
@@ -1313,7 +1352,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
     "bin" | "cobalt" | "edgedns" | "imdl" | "mdbook" | "starship" | "xsv" | "ytop" | "zola")
       APP_ARCH="gnu"
-      if [ "$2" = "imdl" ] || [ "$2" = "xsv" ]; then APP_ARCH="musl"; fi
+      if [ "${2}" = "imdl" ] || [ "${2}" = "xsv" ]; then APP_ARCH="musl"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
@@ -1321,7 +1360,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
     "bw" | "ethr" | "json5" | "pegasus-fe" | "rattlesnakeos-stack")
       APP_RESOURCE_PREFIX="inux"
-      if [ "$2" = "pegasus-fe" ]; then APP_RESOURCE_PREFIX="x11-static"; fi
+      if [ "${2}" = "pegasus-fe" ]; then APP_RESOURCE_PREFIX="x11-static"; fi
       gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\*&& \
       unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}" -d "${INSTALL_DIR:?}" && \
       rm_tmp_file-chmod_binary-echo_success-exit_0
@@ -1336,7 +1375,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "comics-downloader" | "composer" | "findomain" | "firecracker" | "jailer" | "magneticod" | "magneticow" | \
     "ginstall.sh" | "gorush" | "gosu" | "handlr" | "inlets" | "k3s" | "komga" | "rust-analyzer" | "youtube-dl")
       APP_RESOURCE_SUFFIX="*"
-      case "$2" in
+      case "${2}" in
         "comics-downloader" | "ginstall.sh" | "handlr" | "inlets" | "k3s" | "magneticod" | "magneticow" | \
         "youtube-dl")
            APP_RESOURCE_SUFFIX=""
@@ -1346,16 +1385,16 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
           APP_RESOURCE_SUFFIX="inux"
         ;;
       esac
-      if [ "$2" = "composer" ]; then APP_EXTENSION=".phar"; fi
-      if [ "$2" = "komga" ]; then APP_EXTENSION=".jar"; fi
+      if [ "${2}" = "composer" ]; then APP_EXTENSION=".phar"; fi
+      if [ "${2}" = "komga" ]; then APP_EXTENSION=".jar"; fi
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}""${APP_EXTENSION}"=\*"${APP_RESOURCE}"\*"${APP_RESOURCE_SUFFIX}"\* && \
       echo_success-exit_0
     ;;
 
     "ddgr" | "googler" | "shellcheck" | "upx")
-      if [ "$2" = "ddgr" ] || [ "$2" = "googler" ]; then FOLDER_PREFIX="usr/bin" COMPONENT_COUNT="2"; fi
-      if [ "$2" = "shellcheck" ]; then FOLDER_PREFIX="shellcheck-v${APP_VERSION}" COMPONENT_COUNT="1"; fi
-      if [ "$2" = "upx" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
+      if [ "${2}" = "ddgr" ] || [ "${2}" = "googler" ]; then FOLDER_PREFIX="usr/bin" COMPONENT_COUNT="2"; fi
+      if [ "${2}" = "shellcheck" ]; then FOLDER_PREFIX="shellcheck-v${APP_VERSION}" COMPONENT_COUNT="1"; fi
+      if [ "${2}" = "upx" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | \
       tar -xJf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" && \
       chmod_binary-echo_success-exit_0
@@ -1364,11 +1403,11 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "amass" | "discord-console" | "rclone" | "s")
       RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* | sed 's|.zip||g')"
       gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\* && \
-      if [ "$2" = "discord-console" ]; then
+      if [ "${2}" = "discord-console" ]; then
         APP_NAME_ARCHIVED="DiscordConsole"
         unzip -qjo "${TMP_DIR_ZIP}" "${RESOURCE_NAME:?}"/64-bit/"${APP_NAME_ARCHIVED}" -d "${INSTALL_DIR:?}"
       else
-        APP_NAME_ARCHIVED="$2"
+        APP_NAME_ARCHIVED="${2}"
         unzip -qjo "${TMP_DIR_ZIP}" "${RESOURCE_NAME:?}"/"${APP_NAME_ARCHIVED}" -d "${INSTALL_DIR:?}"
       fi
       mv "${INSTALL_DIR:?}"/"${APP_NAME_ARCHIVED}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2>/dev/null ; \
@@ -1382,17 +1421,17 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
     "docker-credential-pass" | "future-vuls" | "fx" | "hugo" | "hugo-extended" | "rootlessctl" | "rootlesskit" | \
     "trivy-to-vuls" | "vuls")
-      if [ "$2" = "rootlesskit" ] || [ "$2" = "rootlessctl" ]; then APP_RESOURCE=""; fi
-      if [ "$2" = "hugo" ]; then APP_RESOURCE="hugo_${APP_VERSION}"; fi
-      if [ "$2" = "hugo-extended" ]; then APP_RESOURCE="hugo_extended" APP_NAME="hugo"; fi
+      if [ "${2}" = "rootlesskit" ] || [ "${2}" = "rootlessctl" ]; then APP_RESOURCE=""; fi
+      if [ "${2}" = "hugo" ]; then APP_RESOURCE="hugo_${APP_VERSION}"; fi
+      if [ "${2}" = "hugo-extended" ]; then APP_RESOURCE="hugo_extended" APP_NAME="hugo"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${APP_RESOURCE}"\*64\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
     ;;
 
     "exa" | "pgweb")
-      if [ "$2" = "exa" ]; then APP_NAME_SUFFIX="-linux-x86_64"; fi
-      if [ "$2" = "pgweb" ]; then APP_NAME_SUFFIX="_linux_amd64"; fi
+      if [ "${2}" = "exa" ]; then APP_NAME_SUFFIX="-linux-x86_64"; fi
+      if [ "${2}" = "pgweb" ]; then APP_NAME_SUFFIX="_linux_amd64"; fi
       gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\*64\* && \
       unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}""${APP_NAME_SUFFIX}" -d "${INSTALL_DIR:?}" && \
       mv "${INSTALL_DIR:?}"/"${APP_NAME}""${APP_NAME_SUFFIX}" "${INSTALL_DIR:?}"/"${APP_NAME}" && \
@@ -1406,7 +1445,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     ;;
 
     "jsteg" | "linx-cleanup" | "linx-genkey" | "linx-server" | "pebble" | "pebble-challtestsrv" | "slink")
-      if [ "$2" = "pebble" ]; then APP_RESOURCE="pebble_"; fi
+      if [ "${2}" = "pebble" ]; then APP_RESOURCE="pebble_"; fi
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"="${APP_RESOURCE}"\*inux\*64\* && \
       echo_success-exit_0
     ;;
@@ -1425,10 +1464,10 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     ;;
 
     "ffmpeg")
-      case "$3" in
+      case "${3}" in
         "latest")
           APP_VERSION="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
-          INSTALL_SUCCESS="The latest version of $2 (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
+          INSTALL_SUCCESS="The latest version of ${2} (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
           FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
         ;;
 
@@ -1447,9 +1486,9 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
     "go")
       if [ -z "${DIR_FLAG}" ]; then INSTALL_DIR=/usr/local; fi
-      if [ "$3" = "latest" ]; then
+      if [ "${3}" = "latest" ]; then
         APP_VERSION="$(curl -sSL https://golang.org/dl/ | grep "downloadBox.*linux-amd64" | sed 's|.*go||g;s|.linux.*||g')"
-        INSTALL_SUCCESS="The latest version of $2 (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
+        INSTALL_SUCCESS="The latest version of ${2} (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
       fi
       rm -rf "${INSTALL_DIR:?}"/"${APP_NAME}" && \
       curl -Lf https://dl.google.com/go/go"${APP_VERSION}".linux-amd64.tar.gz | \

@@ -5,7 +5,7 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 
 ## Dependencies
 ### Mandatory
-• [gget](https://github.com/dpb587/gget) v0.3.0 or later
+• [gget](https://github.com/dpb587/gget) v0.5.1 or later
 
 • [curl](https://packages.debian.org/buster/curl)
 
@@ -121,6 +121,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | ddgr                        | dynamic             | https://github.com/jarun/ddgr |
 | ddns-route53                | static              | https://github.com/crazy-max/ddns-route53 |
 | delta                       | dynamic             | https://github.com/dandavison/delta |
+| deno_lint                   | dynamic             | https://github.com/denoland/deno_lint |
 | dgraph                      | dynamic             | https://github.com/dgraph-io/dgraph |
 | dgraph-ratel                | dynamic             | https://github.com/dgraph-io/dgraph |
 | discord-console             | static              | https://github.com/discordconsole-team/DiscordConsole |
@@ -170,6 +171,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | git-rewrite-author          | static              | https://github.com/crazy-max/git-rewrite-author |
 | gitbatch                    | static              | https://github.com/isacikgoz/gitbatch |
 | gitea                       | static              | https://github.com/go-gitea/gitea |
+| gitui                       | static              | https://github.com/extrawurst/gitui |
 | go                          | dynamic             | https://github.com/golang/go |
 | go-auto-yt                  | dynamic             | https://github.com/XiovV/Golty |
 | goatcounter                 | static              | https://github.com/zgoat/goatcounter |
@@ -181,19 +183,23 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | googler                     | dynamic             | https://github.com/jarun/googler |
 | gopass                      | static              | https://github.com/gopasspw/gopass |
 | goreleaser                  | static              | https://github.com/goreleaser/goreleaser |
+| gorush                      | dynamic             | https://github.com/appleboy/gorush |
 | gossa                       | static              | https://github.com/pldubouilh/gossa |
 | gosu                        | static              | https://github.com/tianon/gosu |
 | gotty                       | dynamic             | https://github.com/yudai/gotty |
 | govc                        | static              | https://github.com/vmware/govmomi |
 | gpldr-client                | dynamic             | https://github.com/Depado/goploader |
 | gpldr-server                | dynamic             | https://github.com/Depado/goploader |
+| grpcurl                     | static              | https://github.com/fullstorydev/grpcurl |
 | handlr                      | dynamic             | https://github.com/chmln/handlr |
+| helm                        | static              | https://github.com/helm/helm |
 | hexyl                       | dynamic             | https://github.com/sharkdp/hexyl |
 | hey                         | static              | https://github.com/rakyll/hey |
 | httpstat                    | static              | https://github.com/davecheney/httpstat |
 | hub                         | dynamic             | https://github.com/github/hub |
 | hugo                        | static              | https://github.com/gohugoio/hugo |
 | hugo-extended               | dynamic             | https://github.com/gohugoio/hugo |
+| hydra                       | static              | https://github.com/ory/hydra |
 | hyperfine                   | dynamic             | https://github.com/sharkdp/hyperfine |
 | identity                    | static              | https://github.com/storj/storj |
 | imdl                        | static              | https://github.com/casey/intermodal |
@@ -231,6 +237,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | mkcert                      | static              | https://github.com/FiloSottile/mkcert |
 | monitoror                   | static              | https://github.com/monitoror/monitoror |
 | naabu                       | dynamic             | https://github.com/projectdiscovery/naabu |
+| nakama                      | dynamic             | https://github.com/heroiclabs/nakama |
 | navidrome                   | static              | https://github.com/deluan/navidrome |
 | nebula                      | dynamic             | https://github.com/slackhq/nebula |
 | nebula-cert                 | dynamic             | https://github.com/slackhq/nebula |
@@ -268,14 +275,17 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | rga                         | static              | https://github.com/phiresky/ripgrep-all |
 | rga-preproc                 | static              | https://github.com/phiresky/ripgrep-all |
 | rio                         | static              | https://github.com/rancher/rio |
+| rke                         | static              | https://github.com/rancher/rke |
 | rootlessctl                 | static              | https://github.com/rootless-containers/rootlesskit |
 | rootlesskit                 | static              | https://github.com/rootless-containers/rootlesskit |
 | rqbench                     | dynamic             | https://github.com/rqlite/rqlite |
 | rqlite                      | dynamic             | https://github.com/rqlite/rqlite |
 | rqlited                     | dynamic             | https://github.com/rqlite/rqlite |
+| rust-analyzer               | dynamic             | https://github.com/rust-analyzer/rust-analyzer |
 | s                           | dynamic             | https://github.com/zquestz/s |
 | s2c                         | static              | https://github.com/klauspost/compress |
 | s2d                         | static              | https://github.com/klauspost/compress |
+| sccache                     | static              | https://github.com/mozilla/sccache |
 | sdns                        | static              | https://github.com/semihalev/sdns |
 | shellcheck                  | static              | https://github.com/koalaman/shellcheck |
 | simple-vpn                  | dynamic             | https://github.com/skx/simple-vpn |
@@ -284,6 +294,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | spotifyd                    | static              | https://github.com/Spotifyd/spotifyd |
 | spt                         | dynamic             | https://github.com/Rigellute/spotify-tui |
 | ssh-auditor                 | static              | https://github.com/ncsa/ssh-auditor |
+| sshcode                     | dynamic             | https://github.com/cdr/sshcode |
 | sslocal                     | dynamic             | https://github.com/shadowsocks/shadowsocks-rust |
 | ssmanager                   | dynamic             | https://github.com/shadowsocks/shadowsocks-rust |
 | ssserver                    | dynamic             | https://github.com/shadowsocks/shadowsocks-rust |
@@ -319,6 +330,7 @@ You can view a markdown-formatted version of the list with easily-clickable repo
 | vivid                       | dynamic             | https://github.com/sharkdp/vivid |
 | vsphere-influxdb-go         | dynamic             | https://github.com/Oxalide/vsphere-influxdb-go |
 | vuls                        | dynamic             | https://github.com/future-architect/vuls |
+| wal-g                       | dynamic             | https://github.com/wal-g/wal-g |
 | watchtower                  | static              | https://github.com/containrrr/watchtower |
 | wrangler                    | static              | https://github.com/cloudflare/wrangler |
 | wuzz                        | static              | https://github.com/asciimoo/wuzz |
@@ -381,6 +393,7 @@ D
 ddgr                        dynamic             github.com/jarun/ddgr
 ddns-route53                static              github.com/crazy-max/ddns-route53
 delta                       dynamic             github.com/dandavison/delta
+deno_lint                   dynamic             github.com/denoland/deno_lint
 dgraph                      dynamic             github.com/dgraph-io/dgraph
 dgraph-ratel                dynamic             github.com/dgraph-io/dgraph
 discord-console             static              github.com/discordconsole-team/DiscordConsole
@@ -436,6 +449,7 @@ git-hooks                   static              github.com/git-hooks/git-hooks
 git-rewrite-author          static              github.com/crazy-max/git-rewrite-author
 gitbatch                    static              github.com/isacikgoz/gitbatch
 gitea                       static              github.com/go-gitea/gitea
+gitui                       static              github.com/extrawurst/gitui
 go                          dynamic             github.com/golang/go
 go-auto-yt                  dynamic             github.com/XiovV/Golty
 goatcounter                 static              github.com/zgoat/goatcounter
@@ -447,21 +461,25 @@ gomuks                      static              github.com/tulir/gomuks
 googler                     dynamic             github.com/jarun/googler
 gopass                      static              github.com/gopasspw/gopass
 goreleaser                  static              github.com/goreleaser/goreleaser
+gorush                      dynamic             github.com/appleboy/gorush
 gossa                       static              github.com/pldubouilh/gossa
 gosu                        static              github.com/tianon/gosu
 gotty                       dynamic             github.com/yudai/gotty
 govc                        static              github.com/vmware/govmomi
 gpldr-client                dynamic             github.com/Depado/goploader
 gpldr-server                dynamic             github.com/Depado/goploader
+grpcurl                     static              github.com/fullstorydev/grpcurl
 
 H
 handlr                      dynamic             github.com/chmln/handlr
+helm                        static              github.com/helm/helm
 hexyl                       dynamic             github.com/sharkdp/hexyl
 hey                         static              github.com/rakyll/hey
 httpstat                    static              github.com/davecheney/httpstat
 hub                         dynamic             github.com/github/hub
 hugo                        static              github.com/gohugoio/hugo
 hugo-extended               dynamic             github.com/gohugoio/hugo
+hydra                       static              github.com/ory/hydra
 hyperfine                   dynamic             github.com/sharkdp/hyperfine
 
 I
@@ -511,6 +529,7 @@ monitoror                   static              github.com/monitoror/monitoror
 
 N
 naabu                       dynamic             github.com/projectdiscovery/naabu
+nakama                      dynamic             github.com/heroiclabs/nakama
 navidrome                   static              github.com/deluan/navidrome
 nebula                      dynamic             github.com/slackhq/nebula
 nebula-cert                 dynamic             github.com/slackhq/nebula
@@ -556,16 +575,19 @@ rg                          static              github.com/BurntSushi/ripgrep
 rga                         static              github.com/phiresky/ripgrep-all
 rga-preproc                 static              github.com/phiresky/ripgrep-all
 rio                         static              github.com/rancher/rio
+rke                         static              github.com/rancher/rke
 rootlessctl                 static              github.com/rootless-containers/rootlesskit
 rootlesskit                 static              github.com/rootless-containers/rootlesskit
 rqbench                     dynamic             github.com/rqlite/rqlite
 rqlite                      dynamic             github.com/rqlite/rqlite
 rqlited                     dynamic             github.com/rqlite/rqlite
+rust-analyzer               dynamic             github.com/rust-analyzer/rust-analyzer
 
 S
 s                           dynamic             github.com/zquestz/s
 s2c                         static              github.com/klauspost/compress
 s2d                         static              github.com/klauspost/compress
+sccache                     static              github.com/mozilla/sccache
 sdns                        static              github.com/semihalev/sdns
 shellcheck                  static              github.com/koalaman/shellcheck
 simple-vpn                  dynamic             github.com/skx/simple-vpn
@@ -574,6 +596,7 @@ slink                       static              github.com/lukechampine/jsteg
 spotifyd                    static              github.com/Spotifyd/spotifyd
 spt                         dynamic             github.com/Rigellute/spotify-tui
 ssh-auditor                 static              github.com/ncsa/ssh-auditor
+sshcode                     dynamic             github.com/cdr/sshcode
 sslocal                     dynamic             github.com/shadowsocks/shadowsocks-rust
 ssmanager                   dynamic             github.com/shadowsocks/shadowsocks-rust
 ssserver                    dynamic             github.com/shadowsocks/shadowsocks-rust
@@ -617,6 +640,7 @@ vsphere-influxdb-go         dynamic             github.com/Oxalide/vsphere-influ
 vuls                        dynamic             github.com/future-architect/vuls
 
 W
+wal-g                       dynamic             github.com/wal-g/wal-g
 watchtower                  static              github.com/containrrr/watchtower
 wrangler                    static              github.com/cloudflare/wrangler
 wuzz                        static              github.com/asciimoo/wuzz
