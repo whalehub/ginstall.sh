@@ -693,27 +693,27 @@ case "${1}" in
     if [ -z "${GGET_LOCATION}" ]; then
       echo -e "${MISSING_DEPENDENCY}\n${USAGE_INFORMATION}"
       exit 1
-	fi 
+    fi 
 
     # Verify that the version of the dependency gget is equal to
-	# or newer than the minimum version required by this script.
-	#
-	# This sanity check utilizes gget's built-in --version flag
-	# which will make gget exit with an error if the installed
-	# version of it is outside of the specified version constaint.
-	#
-	# The exit status of the gget is used to determine whether
-	# to prompt the user to update gget to a newer version and
-	# exit or to proceed with the script normally.
-	gget --version='>=0.5.1' &>/dev/null
-	if [ ! $? -eq 0 ]; then
-	  echo -e "Error: The installed version of gget is older than the minimum version required by this script."
-	  echo -e "Tip: You can update gget to the required version by running this script with the --first-run flag."
+    # or newer than the minimum version required by this script.
+    #
+    # This sanity check utilizes gget's built-in --version flag
+    # which will make gget exit with an error if the installed
+    # version of it is outside of the specified version constaint.
+    #
+    # The exit status of the gget is used to determine whether
+    # to prompt the user to update gget to a newer version and
+    # exit or to proceed with the script normally.
+    gget --version='>=0.5.1' &>/dev/null
+    if [ ! $? -eq 0 ]; then
+      echo -e "Error: The installed version of gget is older than the minimum version required by this script."
+      echo -e "Tip: You can update gget to the required version by running this script with the --first-run flag."
       exit 1
-	fi
+    fi
 
     case "${2}" in
-	  # The dependency gget can only check the latest release tag
+      # The dependency gget can only check the latest release tag
       # of software that is hosted on GitHub or GitLab. Since the
       # compiled binaries for ffmpeg are hosted on the website of
       # a third party, we use use curl to fetch the download page,
@@ -820,7 +820,7 @@ case "${1}" in
         echo -e "The latest version of ${2} is v${APP_VERSION}."
         exit 0
       ;;
-	esac
+    esac
   ;;
 
   # The --directory flag is used to specify a custom installation
@@ -1029,33 +1029,33 @@ case "${1}" in
   # takes no arguments.
   "--self-update")
     # We use the same logic that we used for the --check flag
-	# to verify that gget is installed prior to running any
-	# commands which require it.
+    # to verify that gget is installed prior to running any
+    # commands which require it.
     if [ -z "${GGET_LOCATION}" ]; then
       echo -e "${MISSING_DEPENDENCY}\n${USAGE_INFORMATION}"
       exit 1
-	fi
+    fi
 
-	# We reuse the sanity check from the --check flag to verify
-	# that the installed version of gget is equal to or newer
-	# than the minimum version required by this script.
-	gget --version='>=0.5.1' &>/dev/null
-	if [ ! $? -eq 0 ]; then
-	  echo -e "Error: The installed version of gget is older than the minimum version required by this script."
-	  echo -e "Tip: You can update gget to the required version by running this script with the --first-run flag."
+    # We reuse the sanity check from the --check flag to verify
+    # that the installed version of gget is equal to or newer
+    # than the minimum version required by this script.
+    gget --version='>=0.5.1' &>/dev/null
+    if [ ! $? -eq 0 ]; then
+      echo -e "Error: The installed version of gget is older than the minimum version required by this script."
+      echo -e "Tip: You can update gget to the required version by running this script with the --first-run flag."
       exit 1
-	fi
+    fi
 
     # We make use of the $0 argument which is always equal
     # to the full path that ginstall.sh is being executed
     # from so that we can update it even if it is saved
     # outside of /usr/local/bin or even outside of the
     # user's $PATH.
-      APP_VERSION="$(gget --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${REPO_GINSTALL_SH}" 2>/dev/null | sed 's|^v||g')"
-      gget --stdout "${REPO_GINSTALL_SH}""${VERSION_PREFIX}""${APP_VERSION}" 'ginstall.sh' > "$0" && \
-      chmod 0755 "$0" && \
-      echo -e "ginstall.sh successfully updated itself to the latest version (v${APP_VERSION})."
-      exit 0
+    APP_VERSION="$(gget --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${REPO_GINSTALL_SH}" 2>/dev/null | sed 's|^v||g')"
+    gget --stdout "${REPO_GINSTALL_SH}""${VERSION_PREFIX}""${APP_VERSION}" 'ginstall.sh' > "$0" && \
+    chmod 0755 "$0" && \
+    echo -e "ginstall.sh successfully updated itself to the latest version (v${APP_VERSION})."
+    exit 0
   ;;
 
   # The --version flag can be used to print the
@@ -1128,18 +1128,18 @@ if [ "${3}" = "latest" ]; then
       # For all other supported applications, we use gget to
       # fetch the latest version number.
       *)
-      # We reuse the logic from the --check flag to verify
-      # that the specified application is supported by this
-      # script.
+        # We reuse the logic from the --check flag to verify
+        # that the specified application is supported by this
+        # script.
         if [ -z "${!REPO}" ]; then
           echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}"
           exit 1
         fi
 
-      # We reuse the logic from the --check flag to get
-      # the latest available version of an application
-      # regardless of whether or not it has a "latest"
-      # release tag.
+        # We reuse the logic from the --check flag to get
+        # the latest available version of an application
+        # regardless of whether or not it has a "latest"
+        # release tag.
         VERSION_CHECK="$(gget --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
         if [ -z "${VERSION_CHECK}" ]; then
           APP_VERSION="$(gget --ref-stability=pre-release --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
@@ -1231,10 +1231,10 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     # This argument is used for debugging purposes and to
     # verify that all supported applications can actually
     # be installed prior to a new release of ginstall.sh.
-	#
-	# The command used here may change from time to time
-	# since it is not meant to be invoked by the average
-	# user and should only be of interest to other devs.
+    #
+    # The command used here may change from time to time
+    # since it is not meant to be invoked by the average
+    # user and should only be of interest to other devs.
     "+debug")
     ;;
   esac
