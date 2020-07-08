@@ -2,7 +2,7 @@
 
 # Set the default values for a list of environment variables
 # that are reused throughout the script.
-GINSTALL_SH_VERSION="3.1.0"
+GINSTALL_SH_VERSION="3.2.0"
 
 INSTALL_DIR="/usr/local/bin"
 GGET_LOCATION="$(command -v "gget")"
@@ -1276,7 +1276,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "${2}" = "gpldr-server" ]; then APP_RESOURCE_PREFIX="standalone" FOLDER_PREFIX="goploader-server" APP_NAME_ARCHIVED="server-standalone"; fi
       if [ "${2}" = "micro" ]; then APP_RESOURCE_SUFFIX="static.tar.gz" FOLDER_PREFIX="${APP_NAME}-${APP_VERSION}" APP_NAME_ARCHIVED="${APP_NAME}"; fi
       if [ "${2}" = "migrate" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}.linux-amd64"; fi
-      if [ "${2}" = "oauth2-proxy" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')" APP_NAME_ARCHIVED="oauth2_proxy"; fi
+      if [ "${2}" = "oauth2-proxy" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"; fi
       if [ "${2}" = "wrangler" ]; then APP_RESOURCE_PREFIX="" FOLDER_PREFIX="dist" APP_NAME_ARCHIVED="${APP_NAME}"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*64\*"${APP_RESOURCE_SUFFIX}" | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME_ARCHIVED}" ${TAR_ARGS} --strip-components=1 && \
@@ -1291,7 +1291,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "${2}" = "age" ] || [ "${2}" = "age-keygen" ]; then FOLDER_PREFIX="age"; fi
       if [ "${2}" = "autocert" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
       if [ "${2}" = "frpc" ] || [ "${2}" = "frps" ]; then FOLDER_PREFIX="frp_${APP_VERSION}_linux_amd64"; fi
-      if [ "${2}" = "gh" ] || [ "${2}" = "hub" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
+      if [ "${2}" = "gh" ] || [ "${2}" = "hub" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
       if [ "${2}" = "gitui" ]; then FOLDER_PREFIX="." COMPONENT_COUNT="1" APP_RESOURCE_PREFIX="musl"; fi
       if [ "${2}" = "ipfs" ]; then FOLDER_PREFIX="go-ipfs"; fi
       if [ "${2}" = "plik" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/clients/linux-amd64" COMPONENT_COUNT="3"; fi
@@ -1318,7 +1318,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "authelia" | "brig" | "jellycli" | "nnn" | "podman-remote" | "sdns" | "spotifyd" | "spt" | "tldr++" | "zenith")
       APP_RESOURCE_PREFIX="inux"
       APP_RESOURCE_SUFFIX="64"
-      if [ "${2}" = "authelia" ] || [ "${2}" = "brig" ]; then RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"; fi
+      if [ "${2}" = "authelia" ] || [ "${2}" = "brig" ]; then RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"; fi
       if [ "${2}" = "jellycli" ]; then RESOURCE_NAME="Jellycli"; fi
       if [ "${2}" = "nnn" ]; then APP_RESOURCE_PREFIX="static" RESOURCE_NAME="${APP_NAME}-static"; fi
       if [ "${2}" = "podman-remote" ]; then APP_RESOURCE_PREFIX="static" APP_RESOURCE_SUFFIX=".tar.gz" RESOURCE_NAME="${APP_NAME}"; fi
@@ -1337,7 +1337,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "rga-preproc" | "sccache" | "vivid")
       APP_ARCH="gnu"
       if [ "${2}" = "rg" ] || [ "${2}" = "rga" ] || [ "${2}" = "rga-preproc" ] || [ "${2}" = "sccache" ]; then APP_ARCH="musl"; fi
-      RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | sed 's|.tar.gz||g')"
+      RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | sed 's|.tar.gz||g')"
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod_binary-echo_success-exit_0
@@ -1346,7 +1346,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "bed" | "caire" | "ccat" | "dnscrypt-proxy" | "dnsproxy" | "etcd" | "etcdctl" | "gogs" | "golangci-lint" | \
     "json2csv" | "louketo-proxy" | "oragono" | "portainer" | "rqbench" |"rqlite" |"rqlited" | "ssh-auditor" | \
     "stdiscosrv" | "strelaysrv" | "syncthing" | "velero")
-      RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"
+      RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"
       if [ "${2}" = "dnscrypt-proxy" ]; then RESOURCE_NAME="linux-x86_64"; fi
       if [ "${2}" = "dnsproxy" ]; then RESOURCE_NAME="linux-amd64"; fi
       if [ "${2}" = "gogs" ]; then RESOURCE_NAME="gogs" APP_RESOURCE_SUFFIX=".tar.gz"; fi
@@ -1400,14 +1400,14 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "ddgr" | "googler" | "shellcheck" | "upx")
       if [ "${2}" = "ddgr" ] || [ "${2}" = "googler" ]; then FOLDER_PREFIX="usr/bin" COMPONENT_COUNT="2"; fi
       if [ "${2}" = "shellcheck" ]; then FOLDER_PREFIX="shellcheck-v${APP_VERSION}" COMPONENT_COUNT="1"; fi
-      if [ "${2}" = "upx" ]; then FOLDER_PREFIX="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
+      if [ "${2}" = "upx" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | \
       tar -xJf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" && \
       chmod_binary-echo_success-exit_0
     ;;
 
     "amass" | "discord-console" | "rclone" | "s")
-      RESOURCE_NAME="$(gget --show-resources ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* | sed 's|.zip||g')"
+      RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* | sed 's|.zip||g')"
       gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\* && \
       if [ "${2}" = "discord-console" ]; then
         APP_NAME_ARCHIVED="DiscordConsole"
