@@ -126,6 +126,7 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | dgraph-ratel                | dynamic             | https://github.com/dgraph-io/dgraph |
 | discord-console             | static              | https://github.com/discordconsole-team/DiscordConsole |
 | discord-delete              | dynamic             | https://github.com/adversarialtools/discord-delete |
+| diskonaut                   | static              | https://github.com/imsnif/diskonaut |
 | diskus                      | dynamic             | https://github.com/sharkdp/diskus |
 | diun                        | static              | https://github.com/crazy-max/diun |
 | dive                        | static              | https://github.com/wagoodman/dive |
@@ -142,6 +143,7 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | dstask                      | static              | https://github.com/naggie/dstask |
 | duplicacy                   | static              | https://github.com/gilbertchen/duplicacy |
 | edgedns                     | dynamic             | https://github.com/jedisct1/edgedns |
+| eksctl                      | static              | https://github.com/weaveworks/eksctl |
 | etcd                        | static              | https://github.com/etcd-io/etcd |
 | etcdctl                     | static              | https://github.com/etcd-io/etcd |
 | ethr                        | dynamic             | https://github.com/microsoft/ethr |
@@ -197,6 +199,7 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | helm                        | static              | https://github.com/helm/helm |
 | hexyl                       | dynamic             | https://github.com/sharkdp/hexyl |
 | hey                         | static              | https://github.com/rakyll/hey |
+| httprobe                    | dynamic             | https://github.com/tomnomnom/httprobe |
 | httpstat                    | static              | https://github.com/davecheney/httpstat |
 | hub                         | dynamic             | https://github.com/github/hub |
 | hugo                        | static              | https://github.com/gohugoio/hugo |
@@ -205,6 +208,10 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | hyperfine                   | dynamic             | https://github.com/sharkdp/hyperfine |
 | identity                    | static              | https://github.com/storj/storj |
 | imdl                        | static              | https://github.com/casey/intermodal |
+| immuadmin                   | static              | https://github.com/codenotary/immudb |
+| immucli                     | static              | https://github.com/codenotary/immudb |
+| immudb                      | static              | https://github.com/codenotary/immudb |
+| immugw                      | static              | https://github.com/codenotary/immudb |
 | inlets                      | static              | https://github.com/inlets/inlets |
 | insect                      | dynamic             | https://github.com/sharkdp/insect |
 | intercert                   | static              | https://github.com/evenh/intercert |
@@ -216,7 +223,9 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | json5                       | static              | https://github.com/yosuke-furukawa/json5 |
 | jsteg                       | static              | https://github.com/lukechampine/jsteg |
 | k3s                         | static              | https://github.com/rancher/k3s |
+| k6                          | static              | https://github.com/loadimpact/k6 |
 | k9s                         | static              | https://github.com/derailed/k9s |
+| kind                        | static              | https://github.com/kubernetes-sigs/kind |
 | komga                       | dynamic             | https://github.com/gotson/komga |
 | kompose                     | static              | https://github.com/kubernetes/kompose |
 | lazydocker                  | static              | https://github.com/jesseduffield/lazydocker |
@@ -228,15 +237,18 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | logcli                      | static              | https://github.com/grafana/loki |
 | loki                        | static              | https://github.com/grafana/loki |
 | louketo-proxy               | dynamic             | https://github.com/louketo/louketo-proxy |
+| lsd                         | dynamic             | https://github.com/Peltoche/lsd |
 | lucid                       | dynamic             | https://github.com/sharkdp/lucid |
 | magneticod                  | dynamic             | https://github.com/boramalper/magnetico |
 | magneticow                  | dynamic             | https://github.com/boramalper/magnetico |
+| mango                       | dynamic             | https://github.com/hkalexling/Mango |
 | matterbridge                | static              | https://github.com/42wim/matterbridge |
 | mdbook                      | dynamic             | https://github.com/rust-lang/mdBook |
 | micro                       | static              | https://github.com/zyedidia/micro |
 | migrate                     | static              | https://github.com/golang-migrate/migrate |
 | minify                      | static              | https://github.com/tdewolff/minify |
 | mkcert                      | static              | https://github.com/FiloSottile/mkcert |
+| mmark                       | static              | https://github.com/mmarkdown/mmark |
 | monitoror                   | static              | https://github.com/monitoror/monitoror |
 | naabu                       | dynamic             | https://github.com/projectdiscovery/naabu |
 | nakama                      | dynamic             | https://github.com/heroiclabs/nakama |
@@ -260,11 +272,12 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | plexdrive                   | dynamic             | https://github.com/plexdrive/plexdrive |
 | plik                        | dynamic             | https://github.com/root-gg/plik |
 | plikd                       | dynamic             | https://github.com/root-gg/plik |
-| podman-remote               | dynamic             | https://github.com/containers/libpod |
+| podman-remote               | dynamic             | https://github.com/containers/podman |
 | pomerium                    | static              | https://github.com/pomerium/pomerium |
 | pomerium-cli                | static              | https://github.com/pomerium/pomerium |
 | portainer                   | static              | https://github.com/portainer/portainer |
 | promtail                    | dynamic             | https://github.com/grafana/loki |
+| qalc                        | dynamic             | https://github.com/Qalculate/libqalculate |
 | qrcp                        | static              | https://github.com/claudiodangelis/qrcp |
 | rage                        | dynamic             | https://github.com/str4d/rage |
 | rage-keygen                 | dynamic             | https://github.com/str4d/rage |
@@ -289,6 +302,8 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | s2d                         | static              | https://github.com/klauspost/compress |
 | sccache                     | static              | https://github.com/mozilla/sccache |
 | sdns                        | static              | https://github.com/semihalev/sdns |
+| serverstatus                | dynamic             | https://github.com/mgerb/ServerStatus |
+| sftpgo                      | dynamic             | https://github.com/drakkan/sftpgo |
 | shellcheck                  | static              | https://github.com/koalaman/shellcheck |
 | simple-vpn                  | dynamic             | https://github.com/skx/simple-vpn |
 | slack-term                  | static              | https://github.com/erroneousboat/slack-term |
@@ -315,6 +330,8 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | task                        | static              | https://github.com/go-task/task |
 | tasklite                    | dynamic             | https://github.com/ad-si/TaskLite |
 | tengo                       | static              | https://github.com/d5/tengo |
+| tflint                      | static              | https://github.com/terraform-linters/tflint |
+| tfsec                       | static              | https://github.com/liamg/tfsec |
 | tldr++                      | static              | https://github.com/isacikgoz/tldr |
 | traefik                     | static              | https://github.com/containous/traefik |
 | transfersh                  | static              | https://github.com/dutchcoders/transfer.sh |
@@ -328,6 +345,7 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | uplink                      | static              | https://github.com/storj/storj |
 | upx                         | static              | https://github.com/upx/upx |
 | vector                      | static              | https://github.com/timberio/vector |
+| vegeta                      | static              | https://github.com/tsenart/vegeta |
 | velero                      | static              | https://github.com/vmware-tanzu/velero |
 | vigil                       | static              | https://github.com/valeriansaliou/vigil |
 | vivid                       | dynamic             | https://github.com/sharkdp/vivid |

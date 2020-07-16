@@ -3,9 +3,37 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.0] - 2020.07.16
+### Added
+- Support for [Diskonaut](https://github.com/imsnif/diskonaut).
+- Support for [EKSctl](https://github.com/weaveworks/eksctl).
+- Support for [HTTProbe](https://github.com/tomnomnom/httprobe).
+- Support for [ImmuDB](https://github.com/codenotary/immudb)'s components `immudb`, `immugw`, `immucli` and `immuadmin`.
+- Support for [K6](https://github.com/loadimpact/k6).
+- Support for [Kind](https://github.com/kubernetes-sigs/kind).
+- Support for [LSD](https://github.com/Peltoche/lsd).
+- Support for [Mango](https://github.com/hkalexling/Mango).
+- Support for [Mmark](https://github.com/mmarkdown/mmark).
+- Support for [Qalculate](https://github.com/Qalculate/libqalculate)'s component `qalc`.
+- Support for [SFTPGo](https://github.com/drakkan/sftpgo).
+- Support for [ServerStatus](https://github.com/mgerb/ServerStatus).
+- Support for [TFLint](https://github.com/terraform-linters/tflint).
+- Support for [TFSec](https://github.com/liamg/tfsec).
+- Support for [Vegeta](https://github.com/tsenart/vegeta).
+
+### Changed
+- The process of installing the latest version of `ffmpeg` no longer relies on a hardcoded version in `ginstall.sh`.
+- Update `ginstall.sh` to support the new GitHub repository and installation procedure for `podman-remote`.
+- Bump the version of `gget` that is installed by the `--first-run` flag to v0.5.2.
+
+### Fixed
+- A bug that caused `go` to be installed to `/usr/local/bin` instead of `/usr/local` by default.
+- A bug which could cause a pre-release tag to be unintentionally used instead of a latest tag under rare circumstances.
+- A visual bug which caused `ginstall.sh` to output the info about which file is being downloaded twice for a few applications. 
+
 ## [3.2.0] - 2020.07.08
 ### Changed
-- The install section of ginstall.sh now uses the new `gget` flags where applicable.
+- The install section of `ginstall.sh` now uses the new `gget` flags where applicable.
 
 ### Fixed
 - A bug that was preventing the successful installation of `oauth2-proxy`.

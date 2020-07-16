@@ -2,7 +2,7 @@
 
 # Set the default values for a list of environment variables
 # that are reused throughout the script.
-GINSTALL_SH_VERSION="3.2.0"
+GINSTALL_SH_VERSION="3.3.0"
 
 INSTALL_DIR="/usr/local/bin"
 GGET_LOCATION="$(command -v "gget")"
@@ -72,6 +72,7 @@ REPO_DGRAPH="github.com/dgraph-io/dgraph"
 REPO_DGRAPH_RATEL="github.com/dgraph-io/dgraph"
 REPO_DISCORD_CONSOLE="github.com/discordconsole-team/DiscordConsole"
 REPO_DISCORD_DELETE="github.com/adversarialtools/discord-delete"
+REPO_DISKONAUT="github.com/imsnif/diskonaut"
 REPO_DISKUS="github.com/sharkdp/diskus"
 REPO_DIUN="github.com/crazy-max/diun"
 REPO_DIVE="github.com/wagoodman/dive"
@@ -89,6 +90,7 @@ REPO_DSTASK="github.com/naggie/dstask"
 REPO_DUPLICACY="github.com/gilbertchen/duplicacy"
 
 REPO_EDGEDNS="github.com/jedisct1/edgedns"
+REPO_EKSCTL="github.com/weaveworks/eksctl"
 REPO_ETCD="github.com/etcd-io/etcd"
 REPO_ETCDCTL="github.com/etcd-io/etcd"
 REPO_ETHR="github.com/microsoft/ethr"
@@ -148,6 +150,7 @@ REPO_HANDLR="github.com/chmln/handlr"
 REPO_HEXYL="github.com/sharkdp/hexyl"
 REPO_HELM="github.com/helm/helm"
 REPO_HEY="github.com/rakyll/hey"
+REPO_HTTPROBE="github.com/tomnomnom/httprobe"
 REPO_HTTPSTAT="github.com/davecheney/httpstat"
 REPO_HUB="github.com/github/hub"
 REPO_HUGO="github.com/gohugoio/hugo"
@@ -157,6 +160,10 @@ REPO_HYPERFINE="github.com/sharkdp/hyperfine"
 
 REPO_IDENTITY="github.com/storj/storj"
 REPO_IMDL="github.com/casey/intermodal"
+REPO_IMMUADMIN="github.com/codenotary/immudb"
+REPO_IMMUCLI="github.com/codenotary/immudb"
+REPO_IMMUDB="github.com/codenotary/immudb"
+REPO_IMMUGW="github.com/codenotary/immudb"
 REPO_INLETS="github.com/inlets/inlets"
 REPO_INSECT="github.com/sharkdp/insect"
 REPO_INTERCERT="github.com/evenh/intercert"
@@ -170,7 +177,9 @@ REPO_JSON5="github.com/yosuke-furukawa/json5"
 REPO_JSTEG="github.com/lukechampine/jsteg"
 
 REPO_K3S="github.com/rancher/k3s"
+REPO_K6="github.com/loadimpact/k6"
 REPO_K9S="github.com/derailed/k9s"
+REPO_KIND="github.com/kubernetes-sigs/kind"
 REPO_KOMGA="github.com/gotson/komga"
 REPO_KOMPOSE="github.com/kubernetes/kompose"
 
@@ -183,16 +192,19 @@ REPO_LINX_SERVER="github.com/andreimarcu/linx-server"
 REPO_LOGCLI="github.com/grafana/loki"
 REPO_LOKI="github.com/grafana/loki"
 REPO_LOUKETO_PROXY="github.com/louketo/louketo-proxy"
+REPO_LSD="github.com/Peltoche/lsd"
 REPO_LUCID="github.com/sharkdp/lucid"
 
 REPO_MAGNETICOD="github.com/boramalper/magnetico"
 REPO_MAGNETICOW="github.com/boramalper/magnetico"
+REPO_MANGO="github.com/hkalexling/Mango"
 REPO_MATTERBRIDGE="github.com/42wim/matterbridge"
 REPO_MDBOOK="github.com/rust-lang/mdBook"
 REPO_MICRO="github.com/zyedidia/micro"
 REPO_MIGRATE="github.com/golang-migrate/migrate"
 REPO_MINIFY="github.com/tdewolff/minify"
 REPO_MKCERT="github.com/FiloSottile/mkcert"
+REPO_MMARK="github.com/mmarkdown/mmark"
 REPO_MONITOROR="github.com/monitoror/monitoror"
 
 REPO_NAABU="github.com/projectdiscovery/naabu"
@@ -219,12 +231,13 @@ REPO_PKGER="github.com/markbates/pkger"
 REPO_PLEXDRIVE="github.com/plexdrive/plexdrive"
 REPO_PLIK="github.com/root-gg/plik"
 REPO_PLIKD="github.com/root-gg/plik"
-REPO_PODMAN_REMOTE="github.com/containers/libpod"
+REPO_PODMAN_REMOTE="github.com/containers/podman"
 REPO_POMERIUM="github.com/pomerium/pomerium"
 REPO_POMERIUM_CLI="github.com/pomerium/pomerium"
 REPO_PORTAINER="github.com/portainer/portainer"
 REPO_PROMTAIL="github.com/grafana/loki"
 
+REPO_QALC="github.com/Qalculate/libqalculate"
 REPO_QRCP="github.com/claudiodangelis/qrcp"
 
 REPO_RAGE="github.com/str4d/rage"
@@ -251,6 +264,8 @@ REPO_S2C="github.com/klauspost/compress"
 REPO_S2D="github.com/klauspost/compress"
 REPO_SCCACHE="github.com/mozilla/sccache"
 REPO_SDNS="github.com/semihalev/sdns"
+REPO_SERVERSTATUS="github.com/mgerb/ServerStatus"
+REPO_SFTPGO="github.com/drakkan/sftpgo"
 REPO_SHELLCHECK="github.com/koalaman/shellcheck"
 REPO_SIMPLE_VPN="github.com/skx/simple-vpn"
 REPO_SLACK_TERM="github.com/erroneousboat/slack-term"
@@ -278,6 +293,8 @@ REPO_TABLEVIEW="github.com/informationsea/tableview"
 REPO_TASK="github.com/go-task/task"
 REPO_TASKLITE="github.com/ad-si/TaskLite"
 REPO_TENGO="github.com/d5/tengo"
+REPO_TFLINT="github.com/terraform-linters/tflint"
+REPO_TFSEC="github.com/liamg/tfsec"
 REPO_TLDR_PLUS_PLUS="github.com/isacikgoz/tldr"
 REPO_TRAEFIK="github.com/containous/traefik"
 REPO_TRANSFERSH="github.com/dutchcoders/transfer.sh"
@@ -293,6 +310,7 @@ REPO_UPLINK="github.com/storj/storj"
 REPO_UPX="github.com/upx/upx"
 
 REPO_VECTOR="github.com/timberio/vector"
+REPO_VEGETA="github.com/tsenart/vegeta"
 REPO_VELERO="github.com/vmware-tanzu/velero"
 REPO_VIGIL="github.com/valeriansaliou/vigil"
 REPO_VIVID="github.com/sharkdp/vivid"
@@ -324,317 +342,335 @@ SUPPORTED_APPS_HEADER="Application:                Linker Type:        Repositor
 # with the --list or --search flag.
 SUPPORTED_APPS_LIST="
 A
-acme-dns                    dynamic             $REPO_ACME_DNS
-act                         static              $REPO_ACT
-adguardhome                 static              $REPO_ADGUARDHOME
-age                         static              $REPO_AGE
-age-keygen                  static              $REPO_AGE_KEYGEN
-amass                       static              $REPO_AMASS
-andesite                    dynamic             $REPO_ANDESITE
-annie                       static              $REPO_ANNIE
-apizza                      static              $REPO_APIZZA
-arc                         static              $REPO_ARC
-argocd                      static              $REPO_ARGOCD
-authelia                    static              $REPO_AUTHELIA
-autocert                    static              $REPO_AUTOCERT
-avif                        static              $REPO_AVIF
+acme-dns                    dynamic             ${REPO_ACME_DNS}
+act                         static              ${REPO_ACT}
+adguardhome                 static              ${REPO_ADGUARDHOME}
+age                         static              ${REPO_AGE}
+age-keygen                  static              ${REPO_AGE_KEYGEN}
+amass                       static              ${REPO_AMASS}
+andesite                    dynamic             ${REPO_ANDESITE}
+annie                       static              ${REPO_ANNIE}
+apizza                      static              ${REPO_APIZZA}
+arc                         static              ${REPO_ARC}
+argocd                      static              ${REPO_ARGOCD}
+authelia                    static              ${REPO_AUTHELIA}
+autocert                    static              ${REPO_AUTOCERT}
+avif                        static              ${REPO_AVIF}
 
 B
-badger                      dynamic             $REPO_BADGER
-bat                         dynamic             $REPO_BAT
-bed                         static              $REPO_BED
-bin                         dynamic             $REPO_BIN
-blocky                      dynamic             $REPO_BLOCKY
-bombardier                  static              $REPO_BOMBARDIER
-borg                        dynamic             $REPO_BORG
-brig                        dynamic             $REPO_BRIG
-bw                          dynamic             $REPO_BW
+badger                      dynamic             ${REPO_BADGER}
+bat                         dynamic             ${REPO_BAT}
+bed                         static              ${REPO_BED}
+bin                         dynamic             ${REPO_BIN}
+blocky                      dynamic             ${REPO_BLOCKY}
+bombardier                  static              ${REPO_BOMBARDIER}
+borg                        dynamic             ${REPO_BORG}
+brig                        dynamic             ${REPO_BRIG}
+bw                          dynamic             ${REPO_BW}
 
 C
-caddy                       static              $REPO_CADDY
-caire                       dynamic             $REPO_CAIRE
-captainhook                 static              $REPO_CAPTAINHOOK
-ccat                        static              $REPO_CCAT
-chisel                      static              $REPO_CHISEL
-chroma                      dynamic             $REPO_CHROMA
-cloud-torrent               static              $REPO_CLOUD_TORRENT
-cobalt                      dynamic             $REPO_COBALT
-comics-downloader           static              $REPO_COMICS_DOWNLOADER
-composer                    dynamic             $REPO_COMPOSER
-coredns                     static              $REPO_COREDNS
-croc                        static              $REPO_CROC
-ctop                        dynamic             $REPO_CTOP
+caddy                       static              ${REPO_CADDY}
+caire                       dynamic             ${REPO_CAIRE}
+captainhook                 static              ${REPO_CAPTAINHOOK}
+ccat                        static              ${REPO_CCAT}
+chisel                      static              ${REPO_CHISEL}
+chroma                      dynamic             ${REPO_CHROMA}
+cloud-torrent               static              ${REPO_CLOUD_TORRENT}
+cobalt                      dynamic             ${REPO_COBALT}
+comics-downloader           static              ${REPO_COMICS_DOWNLOADER}
+composer                    dynamic             ${REPO_COMPOSER}
+coredns                     static              ${REPO_COREDNS}
+croc                        static              ${REPO_CROC}
+ctop                        dynamic             ${REPO_CTOP}
 
 D
-ddgr                        dynamic             $REPO_DDGR
-ddns-route53                static              $REPO_DDNS_ROUTE53
-delta                       dynamic             $REPO_DELTA
-deno_lint                   dynamic             $REPO_DENO_LINT
-dgraph                      dynamic             $REPO_DGRAPH
-dgraph-ratel                dynamic             $REPO_DGRAPH_RATEL
-discord-console             static              $REPO_DISCORD_CONSOLE
-discord-delete              dynamic             $REPO_DISCORD_DELETE
-diskus                      dynamic             $REPO_DISKUS
-diun                        static              $REPO_DIUN
-dive                        static              $REPO_DIVE
-dnscontrol                  static              $REPO_DNSCONTROL
-dnscrypt-proxy              static              $REPO_DNSCRYPT_PROXY
-dnsproxy                    dynamic             $REPO_DNSPROXY
-dobi                        static              $REPO_DOBI
-docker-compose              dynamic             $REPO_DOCKER_COMPOSE
-docker-credential-pass      static              $REPO_DOCKER_CREDENTIAL_PASS
-docker-gen                  static              $REPO_DOCKER_GEN
-docker-machine              static              $REPO_DOCKER_MACHINE
-drive                       static              $REPO_DRIVE
-drone                       static              $REPO_DRONE
-dstask                      static              $REPO_DSTASK
-duplicacy                   static              $REPO_DUPLICACY
+ddgr                        dynamic             ${REPO_DDGR}
+ddns-route53                static              ${REPO_DDNS_ROUTE53}
+delta                       dynamic             ${REPO_DELTA}
+deno_lint                   dynamic             ${REPO_DENO_LINT}
+dgraph                      dynamic             ${REPO_DGRAPH}
+dgraph-ratel                dynamic             ${REPO_DGRAPH_RATEL}
+discord-console             static              ${REPO_DISCORD_CONSOLE}
+discord-delete              dynamic             ${REPO_DISCORD_DELETE}
+diskonaut                   static              ${REPO_DISKONAUT}
+diskus                      dynamic             ${REPO_DISKUS}
+diun                        static              ${REPO_DIUN}
+dive                        static              ${REPO_DIVE}
+dnscontrol                  static              ${REPO_DNSCONTROL}
+dnscrypt-proxy              static              ${REPO_DNSCRYPT_PROXY}
+dnsproxy                    dynamic             ${REPO_DNSPROXY}
+dobi                        static              ${REPO_DOBI}
+docker-compose              dynamic             ${REPO_DOCKER_COMPOSE}
+docker-credential-pass      static              ${REPO_DOCKER_CREDENTIAL_PASS}
+docker-gen                  static              ${REPO_DOCKER_GEN}
+docker-machine              static              ${REPO_DOCKER_MACHINE}
+drive                       static              ${REPO_DRIVE}
+drone                       static              ${REPO_DRONE}
+dstask                      static              ${REPO_DSTASK}
+duplicacy                   static              ${REPO_DUPLICACY}
 
 E
-edgedns                     dynamic             $REPO_EDGEDNS
-etcd                        static              $REPO_ETCD
-etcdctl                     static              $REPO_ETCDCTL
-ethr                        dynamic             $REPO_ETHR
-eureka                      static              $REPO_EUREKA
-exa                         dynamic             $REPO_EXA
+edgedns                     dynamic             ${REPO_EDGEDNS}
+eksctl                      static              ${REPO_EKSCTL}
+etcd                        static              ${REPO_ETCD}
+etcdctl                     static              ${REPO_ETCDCTL}
+ethr                        dynamic             ${REPO_ETHR}
+eureka                      static              ${REPO_EUREKA}
+exa                         dynamic             ${REPO_EXA}
 
 F
-fd                          dynamic             $REPO_FD
-ffmpeg                      static              $REPO_FFMPEG
-ffsend                      static              $REPO_FFSEND
-filebrowser                 static              $REPO_FILEBROWSER
-findomain                   dynamic             $REPO_FINDOMAIN
-firecracker                 static              $REPO_FIRECRACKER
-fluxctl                     static              $REPO_FLUXCTL
-fn                          dynamic             $REPO_FN
-frece                       dynamic             $REPO_FRECE
-frpc                        static              $REPO_FRPC
-frps                        static              $REPO_FRPS
-ftpgrab                     static              $REPO_FTPGRAB
-future-vuls                 dynamic             $REPO_FUTURE_VULS
-fx                          dynamic             $REPO_FX
-fzf                         static              $REPO_FZF_SOURCE
+fd                          dynamic             ${REPO_FD}
+ffmpeg                      static              ${REPO_FFMPEG}
+ffsend                      static              ${REPO_FFSEND}
+filebrowser                 static              ${REPO_FILEBROWSER}
+findomain                   dynamic             ${REPO_FINDOMAIN}
+firecracker                 static              ${REPO_FIRECRACKER}
+fluxctl                     static              ${REPO_FLUXCTL}
+fn                          dynamic             ${REPO_FN}
+frece                       dynamic             ${REPO_FRECE}
+frpc                        static              ${REPO_FRPC}
+frps                        static              ${REPO_FRPS}
+ftpgrab                     static              ${REPO_FTPGRAB}
+future-vuls                 dynamic             ${REPO_FUTURE_VULS}
+fx                          dynamic             ${REPO_FX}
+fzf                         static              ${REPO_FZF_SOURCE}
 
 G
-gau                         static              $REPO_GAU
-gdrive                      dynamic             $REPO_GDRIVE
-geoip-updater               static              $REPO_GEOIP_UPDATER
-gget                        static              $REPO_GGET
-gh                          dynamic             $REPO_GH
-ginstall.sh                 dynamic             $REPO_GINSTALL_SH
-git-hooks                   static              $REPO_GIT_HOOKS
-git-rewrite-author          static              $REPO_GIT_REWRITE_AUTHOR
-gitbatch                    static              $REPO_GITBATCH
-gitea                       static              $REPO_GITEA
-gitui                       static              $REPO_GITUI
-go                          dynamic             $REPO_GO
-go-auto-yt                  dynamic             $REPO_GO_AUTO_YT
-goatcounter                 static              $REPO_GOATCOUNTER
-gobuster                    dynamic             $REPO_GOBUSTER
-gogs                        dynamic             $REPO_GOGS
-golangci-lint               static              $REPO_GOLANGCI_LINT
-gomplate                    static              $REPO_GOMPLATE
-gomuks                      static              $REPO_GOMUKS
-googler                     dynamic             $REPO_GOOGLER
-gopass                      static              $REPO_GOPASS
-goreleaser                  static              $REPO_GORELEASER
-gorush                      dynamic             $REPO_GORUSH
-gossa                       static              $REPO_GOSSA
-gosu                        static              $REPO_GOSU
-gotop                       dynamic             $REPO_GOTOP
-gotty                       dynamic             $REPO_GOTTY
-govc                        static              $REPO_GOVC
-gpldr-client                dynamic             $REPO_GPLDR_CLIENT
-gpldr-server                dynamic             $REPO_GPLDR_SERVER
-grpcurl                     static              $REPO_GRPCURL
+gau                         static              ${REPO_GAU}
+gdrive                      dynamic             ${REPO_GDRIVE}
+geoip-updater               static              ${REPO_GEOIP_UPDATER}
+gget                        static              ${REPO_GGET}
+gh                          dynamic             ${REPO_GH}
+ginstall.sh                 dynamic             ${REPO_GINSTALL_SH}
+git-hooks                   static              ${REPO_GIT_HOOKS}
+git-rewrite-author          static              ${REPO_GIT_REWRITE_AUTHOR}
+gitbatch                    static              ${REPO_GITBATCH}
+gitea                       static              ${REPO_GITEA}
+gitui                       static              ${REPO_GITUI}
+go                          dynamic             ${REPO_GO}
+go-auto-yt                  dynamic             ${REPO_GO_AUTO_YT}
+goatcounter                 static              ${REPO_GOATCOUNTER}
+gobuster                    dynamic             ${REPO_GOBUSTER}
+gogs                        dynamic             ${REPO_GOGS}
+golangci-lint               static              ${REPO_GOLANGCI_LINT}
+gomplate                    static              ${REPO_GOMPLATE}
+gomuks                      static              ${REPO_GOMUKS}
+googler                     dynamic             ${REPO_GOOGLER}
+gopass                      static              ${REPO_GOPASS}
+goreleaser                  static              ${REPO_GORELEASER}
+gorush                      dynamic             ${REPO_GORUSH}
+gossa                       static              ${REPO_GOSSA}
+gosu                        static              ${REPO_GOSU}
+gotop                       dynamic             ${REPO_GOTOP}
+gotty                       dynamic             ${REPO_GOTTY}
+govc                        static              ${REPO_GOVC}
+gpldr-client                dynamic             ${REPO_GPLDR_CLIENT}
+gpldr-server                dynamic             ${REPO_GPLDR_SERVER}
+grpcurl                     static              ${REPO_GRPCURL}
 
 H
-handlr                      dynamic             $REPO_HANDLR
-helm                        static              $REPO_HELM
-hexyl                       dynamic             $REPO_HEXYL
-hey                         static              $REPO_HEY
-httpstat                    static              $REPO_HTTPSTAT
-hub                         dynamic             $REPO_HUB
-hugo                        static              $REPO_HUGO
-hugo-extended               dynamic             $REPO_HUGO_EXTENDED
-hydra                       static              $REPO_HYDRA
-hyperfine                   dynamic             $REPO_HYPERFINE
+handlr                      dynamic             ${REPO_HANDLR}
+helm                        static              ${REPO_HELM}
+hexyl                       dynamic             ${REPO_HEXYL}
+hey                         static              ${REPO_HEY}
+httprobe                    dynamic             ${REPO_HTTPROBE}
+httpstat                    static              ${REPO_HTTPSTAT}
+hub                         dynamic             ${REPO_HUB}
+hugo                        static              ${REPO_HUGO}
+hugo-extended               dynamic             ${REPO_HUGO_EXTENDED}
+hydra                       static              ${REPO_HYDRA}
+hyperfine                   dynamic             ${REPO_HYPERFINE}
 
 I
-identity                    static              $REPO_IDENTITY
-imdl                        static              $REPO_IMDL
-inlets                      static              $REPO_INLETS
-insect                      dynamic             $REPO_INSECT
-intercert                   static              $REPO_INTERCERT
-ipfs                        dynamic             $REPO_IPFS
+identity                    static              ${REPO_IDENTITY}
+imdl                        static              ${REPO_IMDL}
+immuadmin                   static              ${REPO_IMMUADMIN}
+immucli                     static              ${REPO_IMMUCLI}
+immudb                      static              ${REPO_IMMUDB}
+immugw                      static              ${REPO_IMMUGW}
+inlets                      static              ${REPO_INLETS}
+insect                      dynamic             ${REPO_INSECT}
+intercert                   static              ${REPO_INTERCERT}
+ipfs                        dynamic             ${REPO_IPFS}
 
 J
-jailer                      static              $REPO_JAILER
-jellycli                    dynamic             $REPO_JELLYCLI
-jq                          static              $REPO_JQ
-json2csv                    static              $REPO_JSON2CSV
-json5                       static              $REPO_JSON5
-jsteg                       static              $REPO_JSTEG
+jailer                      static              ${REPO_JAILER}
+jellycli                    dynamic             ${REPO_JELLYCLI}
+jq                          static              ${REPO_JQ}
+json2csv                    static              ${REPO_JSON2CSV}
+json5                       static              ${REPO_JSON5}
+jsteg                       static              ${REPO_JSTEG}
 
 K
-k3s                         static              $REPO_K3S
-k9s                         static              $REPO_K9S
-komga                       dynamic             $REPO_KOMGA
-kompose                     static              $REPO_KOMPOSE
+k3s                         static              ${REPO_K3S}
+k6                          static              ${REPO_K6}
+k9s                         static              ${REPO_K9S}
+kind                        static              ${REPO_KIND}
+komga                       dynamic             ${REPO_KOMGA}
+kompose                     static              ${REPO_KOMPOSE}
 
 L
-lazydocker                  static              $REPO_LAZYDOCKER
-lego                        static              $REPO_LEGO
-linuxkit                    static              $REPO_LINUXKIT
-linx-cleanup                static              $REPO_LINX_CLEANUP
-linx-genkey                 static              $REPO_LINX_GENKEY
-linx-server                 static              $REPO_LINX_SERVER
-logcli                      static              $REPO_LOGCLI
-loki                        static              $REPO_LOKI
-louketo-proxy               dynamic             $REPO_LOUKETO_PROXY
-lucid                       dynamic             $REPO_LUCID
+lazydocker                  static              ${REPO_LAZYDOCKER}
+lego                        static              ${REPO_LEGO}
+linuxkit                    static              ${REPO_LINUXKIT}
+linx-cleanup                static              ${REPO_LINX_CLEANUP}
+linx-genkey                 static              ${REPO_LINX_GENKEY}
+linx-server                 static              ${REPO_LINX_SERVER}
+logcli                      static              ${REPO_LOGCLI}
+loki                        static              ${REPO_LOKI}
+louketo-proxy               dynamic             ${REPO_LOUKETO_PROXY}
+lsd                         dynamic             ${REPO_LSD}
+lucid                       dynamic             ${REPO_LUCID}
 
 M
-magneticod                  dynamic             $REPO_MAGNETICOD
-magneticow                  dynamic             $REPO_MAGNETICOW
-matterbridge                static              $REPO_MATTERBRIDGE
-mdbook                      dynamic             $REPO_MDBOOK
-micro                       static              $REPO_MICRO
-migrate                     static              $REPO_MIGRATE
-minify                      static              $REPO_MINIFY
-mkcert                      static              $REPO_MKCERT
-monitoror                   static              $REPO_MONITOROR
+magneticod                  dynamic             ${REPO_MAGNETICOD}
+magneticow                  dynamic             ${REPO_MAGNETICOW}
+mango                       dynamic             ${REPO_MANGO}
+matterbridge                static              ${REPO_MATTERBRIDGE}
+mdbook                      dynamic             ${REPO_MDBOOK}
+micro                       static              ${REPO_MICRO}
+migrate                     static              ${REPO_MIGRATE}
+minify                      static              ${REPO_MINIFY}
+mkcert                      static              ${REPO_MKCERT}
+mmark                       static              ${REPO_MMARK}
+monitoror                   static              ${REPO_MONITOROR}
 
 N
-naabu                       dynamic             $REPO_NAABU
-nakama                      dynamic             $REPO_NAKAMA
-navidrome                   static              $REPO_NAVIDROME
-nebula                      dynamic             $REPO_NEBULA
-nebula-cert                 dynamic             $REPO_NEBULA_CERT
-niltalk                     static              $REPO_NILTALK
-nnn                         static              $REPO_NNN
+naabu                       dynamic             ${REPO_NAABU}
+nakama                      dynamic             ${REPO_NAKAMA}
+navidrome                   static              ${REPO_NAVIDROME}
+nebula                      dynamic             ${REPO_NEBULA}
+nebula-cert                 dynamic             ${REPO_NEBULA_CERT}
+niltalk                     static              ${REPO_NILTALK}
+nnn                         static              ${REPO_NNN}
 
 O
-oauth2-proxy                static              $REPO_OAUTH2_PROXY
-opa                         static              $REPO_OPA
-oragono                     dynamic             $REPO_ORAGONO
+oauth2-proxy                static              ${REPO_OAUTH2_PROXY}
+opa                         static              ${REPO_OPA}
+oragono                     dynamic             ${REPO_ORAGONO}
 
 P
-parcello                    static              $REPO_PARCELLO
-pastel                      dynamic             $REPO_PASTEL
-peach                       static              $REPO_PEACH
-pebble                      dynamic             $REPO_PEBBLE
-pebble-challtestsrv         dynamic             $REPO_PEBBLE_CHALLTESTSRV
-pegasus-fe                  dynamic             $REPO_PEGASUS_FE
-pgweb                       static              $REPO_PGWEB
-phoneinfoga                 static              $REPO_PHONEINFOGA
-pkger                       static              $REPO_PKGER
-plexdrive                   dynamic             $REPO_PLEXDRIVE
-plik                        dynamic             $REPO_PLIK
-plikd                       dynamic             $REPO_PLIKD
-podman-remote               dynamic             $REPO_PODMAN_REMOTE
-pomerium                    static              $REPO_POMERIUM
-pomerium-cli                static              $REPO_POMERIUM_CLI
-portainer                   static              $REPO_PORTAINER
-promtail                    dynamic             $REPO_PROMTAIL
+parcello                    static              ${REPO_PARCELLO}
+pastel                      dynamic             ${REPO_PASTEL}
+peach                       static              ${REPO_PEACH}
+pebble                      dynamic             ${REPO_PEBBLE}
+pebble-challtestsrv         dynamic             ${REPO_PEBBLE_CHALLTESTSRV}
+pegasus-fe                  dynamic             ${REPO_PEGASUS_FE}
+pgweb                       static              ${REPO_PGWEB}
+phoneinfoga                 static              ${REPO_PHONEINFOGA}
+pkger                       static              ${REPO_PKGER}
+plexdrive                   dynamic             ${REPO_PLEXDRIVE}
+plik                        dynamic             ${REPO_PLIK}
+plikd                       dynamic             ${REPO_PLIKD}
+podman-remote               dynamic             ${REPO_PODMAN_REMOTE}
+pomerium                    static              ${REPO_POMERIUM}
+pomerium-cli                static              ${REPO_POMERIUM_CLI}
+portainer                   static              ${REPO_PORTAINER}
+promtail                    dynamic             ${REPO_PROMTAIL}
 
 Q
-qrcp                        static              $REPO_QRCP
+qalc                        dynamic             ${REPO_QALC}
+qrcp                        static              ${REPO_QRCP}
 
 R
-rage                        dynamic             $REPO_RAGE
-rage-keygen                 dynamic             $REPO_RAGE_KEYGEN
-rattlesnakeos-stack         dynamic             $REPO_RATTLESNAKEOS_STACK
-rclone                      static              $REPO_RCLONE
-red                         static              $REPO_RED
-reg                         static              $REPO_REG
-restic                      static              $REPO_RESTIC
-rg                          static              $REPO_RG
-rga                         static              $REPO_RGA
-rga-preproc                 static              $REPO_RGA_PREPROC
-rio                         static              $REPO_RIO
-rke                         static              $REPO_RKE
-rootlessctl                 static              $REPO_ROOTLESSCTL
-rootlesskit                 static              $REPO_ROOTLESSKIT
-rqbench                     dynamic             $REPO_RQBENCH
-rqlite                      dynamic             $REPO_RQLITE
-rqlited                     dynamic             $REPO_RQLITED
-rust-analyzer               dynamic             $REPO_RUST_ANALYZER
+rage                        dynamic             ${REPO_RAGE}
+rage-keygen                 dynamic             ${REPO_RAGE_KEYGEN}
+rattlesnakeos-stack         dynamic             ${REPO_RATTLESNAKEOS_STACK}
+rclone                      static              ${REPO_RCLONE}
+red                         static              ${REPO_RED}
+reg                         static              ${REPO_REG}
+restic                      static              ${REPO_RESTIC}
+rg                          static              ${REPO_RG}
+rga                         static              ${REPO_RGA}
+rga-preproc                 static              ${REPO_RGA_PREPROC}
+rio                         static              ${REPO_RIO}
+rke                         static              ${REPO_RKE}
+rootlessctl                 static              ${REPO_ROOTLESSCTL}
+rootlesskit                 static              ${REPO_ROOTLESSKIT}
+rqbench                     dynamic             ${REPO_RQBENCH}
+rqlite                      dynamic             ${REPO_RQLITE}
+rqlited                     dynamic             ${REPO_RQLITED}
+rust-analyzer               dynamic             ${REPO_RUST_ANALYZER}
 
 S
-s                           dynamic             $REPO_S
-s2c                         static              $REPO_S2C
-s2d                         static              $REPO_S2D
-sccache                     static              $REPO_SCCACHE
-sdns                        static              $REPO_SDNS
-shellcheck                  static              $REPO_SHELLCHECK
-simple-vpn                  dynamic             $REPO_SIMPLE_VPN
-slack-term                  static              $REPO_SLACK_TERM
-slink                       static              $REPO_SLINK
-spotifyd                    static              $REPO_SPOTIFYD
-spt                         dynamic             $REPO_SPT
-ssh-auditor                 static              $REPO_SSH_AUDITOR
-sshcode                     dynamic             $REPO_SSHCODE
-sslocal                     dynamic             $REPO_SSLOCAL
-ssmanager                   dynamic             $REPO_SSMANAGER
-ssserver                    dynamic             $REPO_SSSERVER
-ssurl                       dynamic             $REPO_SSURL
-starship                    dynamic             $REPO_STARSHIP
-statping                    static              $REPO_STATPING
-stdiscosrv                  static              $REPO_STDISCOSRV
-stegify                     static              $REPO_STEGIFY
-step                        static              $REPO_STEP
-strelaysrv                  static              $REPO_STRELAYSRV
-sup                         static              $REPO_SUP
-swagger                     static              $REPO_SWAGGER
-swarm-cronjob               static              $REPO_SWARM_CRONJOB
-syncthing                   static              $REPO_SYNCTHING
+s                           dynamic             ${REPO_S}
+s2c                         static              ${REPO_S2C}
+s2d                         static              ${REPO_S2D}
+sccache                     static              ${REPO_SCCACHE}
+sdns                        static              ${REPO_SDNS}
+serverstatus                dynamic             ${REPO_SERVERSTATUS}
+sftpgo                      dynamic             ${REPO_SFTPGO}
+shellcheck                  static              ${REPO_SHELLCHECK}
+simple-vpn                  dynamic             ${REPO_SIMPLE_VPN}
+slack-term                  static              ${REPO_SLACK_TERM}
+slink                       static              ${REPO_SLINK}
+spotifyd                    static              ${REPO_SPOTIFYD}
+spt                         dynamic             ${REPO_SPT}
+ssh-auditor                 static              ${REPO_SSH_AUDITOR}
+sshcode                     dynamic             ${REPO_SSHCODE}
+sslocal                     dynamic             ${REPO_SSLOCAL}
+ssmanager                   dynamic             ${REPO_SSMANAGER}
+ssserver                    dynamic             ${REPO_SSSERVER}
+ssurl                       dynamic             ${REPO_SSURL}
+starship                    dynamic             ${REPO_STARSHIP}
+statping                    static              ${REPO_STATPING}
+stdiscosrv                  static              ${REPO_STDISCOSRV}
+stegify                     static              ${REPO_STEGIFY}
+step                        static              ${REPO_STEP}
+strelaysrv                  static              ${REPO_STRELAYSRV}
+sup                         static              ${REPO_SUP}
+swagger                     static              ${REPO_SWAGGER}
+swarm-cronjob               static              ${REPO_SWARM_CRONJOB}
+syncthing                   static              ${REPO_SYNCTHING}
 
 T
-tableview                   static              $REPO_TABLEVIEW
-task                        static              $REPO_TASK
-tasklite                    dynamic             $REPO_TASKLITE
-tengo                       static              $REPO_TENGO
-tldr++                      static              $REPO_TLDR_PLUS_PLUS
-traefik                     static              $REPO_TRAEFIK
-transfersh                  static              $REPO_TRANSFERSH
-travis-wait-enhanced        static              $REPO_TRAVIS_WAIT_ENHANCED
-trivy                       static              $REPO_TRIVY
-trivy-to-vuls               dynamic             $REPO_TRIVY_TO_VULS
-txeh                        static              $REPO_TXEH
+tableview                   static              ${REPO_TABLEVIEW}
+task                        static              ${REPO_TASK}
+tasklite                    dynamic             ${REPO_TASKLITE}
+tengo                       static              ${REPO_TENGO}
+tflint                      static              ${REPO_TFLINT}
+tfsec                       static              ${REPO_TFSEC}
+tldr++                      static              ${REPO_TLDR_PLUS_PLUS}
+traefik                     static              ${REPO_TRAEFIK}
+transfersh                  static              ${REPO_TRANSFERSH}
+travis-wait-enhanced        static              ${REPO_TRAVIS_WAIT_ENHANCED}
+trivy                       static              ${REPO_TRIVY}
+trivy-to-vuls               dynamic             ${REPO_TRIVY_TO_VULS}
+txeh                        static              ${REPO_TXEH}
 
 U
-unetbootin                  static              $REPO_UNETBOOTIN
-unftp                       static              $REPO_UNFTP
-up                          static              $REPO_UP
-uplink                      static              $REPO_UPLINK
-upx                         static              $REPO_UPX
+unetbootin                  static              ${REPO_UNETBOOTIN}
+unftp                       static              ${REPO_UNFTP}
+up                          static              ${REPO_UP}
+uplink                      static              ${REPO_UPLINK}
+upx                         static              ${REPO_UPX}
 
 V
-vector                      static              $REPO_VECTOR
-velero                      static              $REPO_VELERO
-vigil                       static              $REPO_VIGIL
-vivid                       dynamic             $REPO_VIVID
-vsphere-influxdb-go         dynamic             $REPO_VSPHERE_INFLUXDB_GO
-vuls                        dynamic             $REPO_VULS
+vector                      static              ${REPO_VECTOR}
+vegeta                      static              ${REPO_VEGETA}
+velero                      static              ${REPO_VELERO}
+vigil                       static              ${REPO_VIGIL}
+vivid                       dynamic             ${REPO_VIVID}
+vsphere-influxdb-go         dynamic             ${REPO_VSPHERE_INFLUXDB_GO}
+vuls                        dynamic             ${REPO_VULS}
 
 W
-wal-g                       dynamic             $REPO_WAL_G
-watchtower                  static              $REPO_WATCHTOWER
-wrangler                    static              $REPO_WRANGLER
-wuzz                        static              $REPO_WUZZ
+wal-g                       dynamic             ${REPO_WAL_G}
+watchtower                  static              ${REPO_WATCHTOWER}
+wrangler                    static              ${REPO_WRANGLER}
+wuzz                        static              ${REPO_WUZZ}
 
 X
-xsv                         static              $REPO_XSV
+xsv                         static              ${REPO_XSV}
 
 Y
-youtube-dl                  dynamic             $REPO_YOUTUBE_DL
-yq                          static              $REPO_YQ
-ytop                        dynamic             $REPO_YTOP
+youtube-dl                  dynamic             ${REPO_YOUTUBE_DL}
+yq                          static              ${REPO_YQ}
+ytop                        dynamic             ${REPO_YTOP}
 
 Z
-zenith                      static              $REPO_ZENITH
-zola                        dynamic             $REPO_ZOLA"
+zenith                      static              ${REPO_ZENITH}
+zola                        dynamic             ${REPO_ZOLA}"
 
 # This environment variable is used to define a help page that is
 # displayed when the user invokes this script with the --help flag.
@@ -679,7 +715,7 @@ fi
 # correctly.
 # 
 # Reference: /usr/share/doc/util-linux/examples/getopt-parse.bash
-eval set -- "$ARGS"
+eval set -- "${ARGS}"
 unset ARGS
 
 case "${1}" in
@@ -742,7 +778,7 @@ case "${1}" in
         # in the name with underscores and any plus signs
         # with "_PLUS". Finally, we prefix the resulting
         # string with "REPO_", echo it and use the output
-        # as the value of the $REPO variable.
+        # as the value of the REPO variable.
         #
         # The final variable name for the input "tldr++",
         # for example, would be "REPO_TLDR_PLUS_PLUS",
@@ -752,7 +788,7 @@ case "${1}" in
         REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g;s/+/_PLUS/g')"
 
         # Utilizing shell expansion, perform a check to see
-        # if value of the $REPO variable is empty (this
+        # if value of the REPO variable is empty (this
         # happens when the result of the expanded variable
         # has not been defined anywhere in the script).
         #
@@ -791,8 +827,8 @@ case "${1}" in
         #
         # The filtered output is then used as the value
         # of the $VERSION_CHECK variable.
-        VERSION_CHECK="$(gget --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
-        
+        VERSION_CHECK="$(gget --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
+
         # The gget command above pipes its error output to
         # /dev/null, which allows us to determine whether
         # or not an application has a "latest" release tag
@@ -813,7 +849,7 @@ case "${1}" in
         # The $APP_VERSION variable is then used to print
         # the latest available version of the application.
         if [ -z "${VERSION_CHECK}" ]; then
-          APP_VERSION="$(gget --ref-stability=pre-release --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
+          APP_VERSION="$(gget --ref-stability=pre-release --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
         else
           APP_VERSION="${VERSION_CHECK}"
         fi
@@ -853,7 +889,7 @@ case "${1}" in
       # custom installation directory via curl and make it executable
       # with chmod.
       "--first-run")
-        curl -Lf -o "${INSTALL_DIR:?}"/gget https://"${REPO_GGET}"/releases/download/v0.5.1/gget-0.5.1-linux-amd64 && \
+        curl -Lf -o "${INSTALL_DIR:?}"/gget https://"${REPO_GGET}"/releases/download/v0.5.2/gget-0.5.2-linux-amd64 && \
         chmod 0755 "${INSTALL_DIR:?}"/gget && \
         echo -e "\nThe dependency gget has been successfully installed and ginstall.sh is now ready for use."
         exit 0
@@ -900,7 +936,7 @@ case "${1}" in
       echo -e "${PERMISSION_DENIED}\n${USAGE_INFORMATION}"
       exit 1
     else
-      curl -Lf -o "${INSTALL_DIR:?}"/gget https://"${REPO_GGET}"/releases/download/v0.5.1/gget-0.5.1-linux-amd64 && \
+      curl -Lf -o "${INSTALL_DIR:?}"/gget https://"${REPO_GGET}"/releases/download/v0.5.2/gget-0.5.2-linux-amd64 && \
       chmod 0755 "${INSTALL_DIR:?}"/gget && \
       echo -e "\nThe dependency gget has been successfully installed and ginstall.sh is now ready for use."
       exit 0
@@ -1051,7 +1087,7 @@ case "${1}" in
     # from so that we can update it even if it is saved
     # outside of /usr/local/bin or even outside of the
     # user's $PATH.
-    APP_VERSION="$(gget --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${REPO_GINSTALL_SH}" 2>/dev/null | sed 's|^v||g')"
+    APP_VERSION="$(gget --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${REPO_GINSTALL_SH}" 2>/dev/null | sed 's|^v||g')"
     gget --stdout "${REPO_GINSTALL_SH}""${VERSION_PREFIX}""${APP_VERSION}" 'ginstall.sh' > "$0" && \
     chmod 0755 "$0" && \
     echo -e "ginstall.sh successfully updated itself to the latest version (v${APP_VERSION})."
@@ -1140,9 +1176,9 @@ if [ "${3}" = "latest" ]; then
         # the latest available version of an application
         # regardless of whether or not it has a "latest"
         # release tag.
-        VERSION_CHECK="$(gget --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
+        VERSION_CHECK="$(gget --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
         if [ -z "${VERSION_CHECK}" ]; then
-          APP_VERSION="$(gget --ref-stability=pre-release --ignore-missing=* --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
+          APP_VERSION="$(gget --ref-stability=pre-release --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
         else
           APP_VERSION="${VERSION_CHECK}"
         fi
@@ -1186,20 +1222,22 @@ echo_success-exit_0() {
 EXCL_EXTRAS="--exclude=\"*-arm*\"       --exclude=\"*-canary-*\"    --exclude=\"*-gui\"
              --exclude=\"*-slim\"       --exclude=\"*-source*\"     --exclude=\"*.asc\"
              --exclude=\"*.cid\"        --exclude=\"*.deb\"         --exclude=\"*.exe\"
-             --exclude=\"*.log\"        --exclude=\"*.md5\"         --exclude=\"*.minisig\"
-             --exclude=\"*.msi\"        --exclude=\"*.nupkg*\"      --exclude=\"*.rpm\"
-             --exclude=\"*.sha*5*\"     --exclude=\"*.txt\"         --exclude=\"*_arm*\"
-             --exclude=\"*_musl_*\"     --exclude=\"*386*\"         --exclude=\"*686*\"
-             --exclude=\"*32*bit*\"     --exclude=\"*aarch*\"       --exclude=\"*acOS*\"
-             --exclude=\"*acos*\"       --exclude=\"*ARM*\"         --exclude=\"*arwin*\"
-             --exclude=\"*DragonFly*\"  --exclude=\"*dragonfly*\"   --exclude=\"*FreeBSD*\"
-             --exclude=\"*freebsd*\"    --exclude=\"*lan9*\"        --exclude=\"*llumos*\"
-             --exclude=\"*lpine*\"      --exclude=\"*indows*\"      --exclude=\"*mips*\"
-             --exclude=\"*NetBSD*\"     --exclude=\"*netbsd*\"      --exclude=\"*olaris*\"
-             --exclude=\"*OpenBSD*\"    --exclude=\"*openbsd*\"     --exclude=\"*OSX*\"
-             --exclude=\"*osx*\"        --exclude=\"*powerpc*\"     --exclude=\"*ppc64*\"
-             --exclude=\"*riscv*\"      --exclude=\"*rpi*\"         --exclude=\"*s390x*\"
-             --exclude=\"MD5SUMS\"      --exclude=\"SHA*SUMS\"      --exclude=\"sha*sums\""
+             --exclude=\"*.json\"       --exclude=\"*.log\"         --exclude=\"*.md5\"
+             --exclude=\"*.md\"
+             --exclude=\"*.minisig\"    --exclude=\"*.msi\"         --exclude=\"*.nupkg*\"
+             --exclude=\"*.rpm\"        --exclude=\"*.sha*5*\"      --exclude=\"*.txt\"
+             --exclude=\"*_arm*\"       --exclude=\"*_musl_*\"      --exclude=\"*386*\"
+             --exclude=\"*686*\"        --exclude=\"*32*bit*\"      --exclude=\"*aarch*\"
+             --exclude=\"*acOS*\"       --exclude=\"*acos*\"        --exclude=\"*ARM*\"
+             --exclude=\"*arwin*\"      --exclude=\"*DragonFly*\"   --exclude=\"*dragonfly*\"
+             --exclude=\"*FreeBSD*\"    --exclude=\"*freebsd*\"     --exclude=\"*lan9*\"
+             --exclude=\"*llumos*\"     --exclude=\"*lpine*\"       --exclude=\"*indows*\"
+             --exclude=\"*mips*\"       --exclude=\"*NetBSD*\"      --exclude=\"*netbsd*\"
+             --exclude=\"*olaris*\"     --exclude=\"*OpenBSD*\"     --exclude=\"*openbsd*\"
+             --exclude=\"*OSX*\"        --exclude=\"*osx*\"         --exclude=\"*powerpc*\"
+             --exclude=\"*ppc64*\"      --exclude=\"*riscv*\"       --exclude=\"*rpi*\"
+             --exclude=\"*s390x*\"      --exclude=\"LICENSE-*\"     --exclude=\"MD5SUMS\"
+             --exclude=\"SHA*SUMS\"     --exclude=\"sha*sums\""
 
 EXCL_ARCHIVES="--exclude=\"*.7z\"        --exclude=\"*.bz2\"         --exclude=\"*.gz\"
                --exclude=\"*.tar\"       --exclude=\"*.xz\"          --exclude=\"*.zip\""
@@ -1218,11 +1256,12 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     # by a "v", change the default $VERSION_PREFIX variable
     # to one without a "v".
     "annie" | "borg" | "captainhook" | "cloud-torrent" | "composer" | "delta" | "discord-console" | \
-    "discord-delete" | "dnscrypt-proxy" | "docker-compose" | "docker-gen" | "edgedns" | "eureka" | \
-    "findomain" | "fluxctl" | "fn" | "frece" | "ftpgrab" | "fx" |"fzf" | "gdrive" | "git-rewrite-author" | \
-    "go-auto-yt" | "gosu" | "inlets" | "jq" | "louketo-proxy" | "monitoror" | "naabu" | "pegasus-fe" | \
-    "plexdrive" | "plik" | "plikd" | "portainer" | "qrcp" | "rg" | "rust-analyzer" | "sccache" | \
-    "simple-vpn" | "unetbootin" | "xsv" | "youtube-dl" | "yq" | "ytop" | "zenith")
+    "discord-delete" | "diskonaut" | "dnscrypt-proxy" | "docker-compose" | "docker-gen" | "edgedns" | \
+    "eksctl" | "eureka" | "findomain" | "fluxctl" | "fn" | "frece" | "ftpgrab" | "fx" |"fzf" | \
+    "gdrive" | "git-rewrite-author" | "go-auto-yt" | "gosu" | "inlets" | "jq" | "louketo-proxy" | \
+    "lsd" | "monitoror" | "naabu" | "pegasus-fe" | "plexdrive" | "plik" | "plikd" | "portainer" | \
+    "qrcp" | "rg" | "rust-analyzer" | "sccache" | "simple-vpn" | "unetbootin" | "xsv" | "youtube-dl" | \
+    "yq" | "ytop" | "zenith")
       VERSION_PREFIX="@"
     ;;
   esac
@@ -1257,26 +1296,26 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
   case "${2}" in
     "acme-dns" | "act" | "annie" | "apizza" | "badger" | "caddy" | "captainhook" | "chroma" | "coredns" | \
     "croc" | "ddns-route53" | "dgraph" | "dgraph-ratel" | "diun" | "dive" | "docker-gen" | "drone" | \
-    "filebrowser" | "ftpgrab" | "fzf" | "gau" | "geoip-updater" | "git-rewrite-author" | "gitbatch" | \
-    "gopass" | "goreleaser" | "gotop" | "grpcurl" | "hydra" | "intercert" | "k9s" | "lazydocker" | "lego" | \
-    "minify" | "naabu" | "nakama" | "navidrome" | "nebula" | "nebula-cert" | "niltalk" | "parcello" | "peach" | \
-    "phoneinfoga" | "pkger" | "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "sshcode" | \
+    "eksctl" | "filebrowser" | "ftpgrab" | "fzf" | "gau" | "geoip-updater" | "git-rewrite-author" | "gitbatch" | \
+    "gopass" | "goreleaser" | "gotop" | "grpcurl" | "httprobe" | "hydra" | "intercert" | "k9s" | "lazydocker" | \
+    "lego" | "minify" | "mmark" | "naabu" | "nakama" | "navidrome" | "nebula" | "nebula-cert" | "niltalk" | \
+    "parcello" | "peach" | "phoneinfoga" | "pkger" | "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "sshcode" | \
     "statping" | "swarm-cronjob" | "task" | "tengo" | "traefik" | "travis-wait-enhanced" | "trivy" | "txeh" | \
-    "up" | "vsphere-influxdb-go" | "wal-g" | "watchtower")
+    "up" | "vegeta" | "vsphere-influxdb-go" | "wal-g" | "watchtower")
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
     ;;
 
-    "adguardhome" | "git-hooks" | "gotty" | "gpldr-server" | "micro" | "migrate" | "oauth2-proxy" | "wrangler")
+    "adguardhome" | "git-hooks" | "gotty" | "gpldr-server" | "k6" | "micro" | "migrate" | "oauth2-proxy" | "wrangler")
       APP_RESOURCE_PREFIX="inux"
       if [ "${2}" = "adguardhome" ]; then FOLDER_PREFIX="AdGuardHome" APP_NAME_ARCHIVED="AdGuardHome"; fi
       if [ "${2}" = "git-hooks" ]; then FOLDER_PREFIX="build" APP_NAME_ARCHIVED="${APP_NAME}_linux_amd64"; fi
       if [ "${2}" = "gotty" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}"; fi
       if [ "${2}" = "gpldr-server" ]; then APP_RESOURCE_PREFIX="standalone" FOLDER_PREFIX="goploader-server" APP_NAME_ARCHIVED="server-standalone"; fi
+      if [ "${2}" = "k6" ] || [ "${2}" = "oauth2-proxy" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* 2>/dev/null | sed 's|.tar.gz||g')"; fi
       if [ "${2}" = "micro" ]; then APP_RESOURCE_SUFFIX="static.tar.gz" FOLDER_PREFIX="${APP_NAME}-${APP_VERSION}" APP_NAME_ARCHIVED="${APP_NAME}"; fi
       if [ "${2}" = "migrate" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}.linux-amd64"; fi
-      if [ "${2}" = "oauth2-proxy" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"; fi
       if [ "${2}" = "wrangler" ]; then APP_RESOURCE_PREFIX="" FOLDER_PREFIX="dist" APP_NAME_ARCHIVED="${APP_NAME}"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*64\*"${APP_RESOURCE_SUFFIX}" | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME_ARCHIVED}" ${TAR_ARGS} --strip-components=1 && \
@@ -1291,7 +1330,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "${2}" = "age" ] || [ "${2}" = "age-keygen" ]; then FOLDER_PREFIX="age"; fi
       if [ "${2}" = "autocert" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
       if [ "${2}" = "frpc" ] || [ "${2}" = "frps" ]; then FOLDER_PREFIX="frp_${APP_VERSION}_linux_amd64"; fi
-      if [ "${2}" = "gh" ] || [ "${2}" = "hub" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
+      if [ "${2}" = "gh" ] || [ "${2}" = "hub" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* 2>/dev/null | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
       if [ "${2}" = "gitui" ]; then FOLDER_PREFIX="." COMPONENT_COUNT="1" APP_RESOURCE_PREFIX="musl"; fi
       if [ "${2}" = "ipfs" ]; then FOLDER_PREFIX="go-ipfs"; fi
       if [ "${2}" = "plik" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/clients/linux-amd64" COMPONENT_COUNT="3"; fi
@@ -1307,24 +1346,25 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
     "andesite" | "arc" | "argocd" | "avif" | "blocky" | "bombardier" | "borg" | "ctop" | "docker-compose" | \
     "docker-machine" | "dstask" | "duplicacy" | "eureka" | "ffsend" | "fluxctl" | "gdrive" | "gget" | "gitea" | \
-    "go-auto-yt" | "gomplate" | "gomuks" | "gossa" | "gpldr-client" | "httpstat" | "insect" | "jq" | "kompose" | \
-    "linuxkit" | "matterbridge" | "mkcert" | "monitoror" | "opa" | "plexdrive" | "reg" | "rio" | "rke" | "simple-vpn" | \
-    "slack-term" | "stegify" | "sup" | "swagger" | "tableview" | "unetbootin" | "transfersh" | "wuzz" | "yq")
+    "go-auto-yt" | "gomplate" | "gomuks" | "gossa" | "gpldr-client" | "httpstat" | "insect" | "jq" | "kind" | \
+    "kompose" | "linuxkit" | "matterbridge" | "mkcert" | "monitoror" | "opa" | "plexdrive" | "reg" | "rio" | \
+    "rke" | "simple-vpn" | "slack-term" | "stegify" | "sup" | "swagger" | "tableview" | "unetbootin" | "tfsec" | \
+    "transfersh" | "wuzz" | "yq")
       if [ "${2}" = "ffsend" ]; then APP_RESOURCE_SUFFIX="static"; fi
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\*64\*"${APP_RESOURCE_SUFFIX}" && \
       echo_success-exit_0
     ;;
 
-    "authelia" | "brig" | "jellycli" | "nnn" | "podman-remote" | "sdns" | "spotifyd" | "spt" | "tldr++" | "zenith")
+    "authelia" | "brig" | "diskonaut" | "jellycli" | "nnn" | "podman-remote" | "sdns" | "spotifyd" | "spt" | "tldr++" | "zenith")
       APP_RESOURCE_PREFIX="inux"
       APP_RESOURCE_SUFFIX="64"
-      if [ "${2}" = "authelia" ] || [ "${2}" = "brig" ]; then RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"; fi
+      if [ "${2}" = "authelia" ] || [ "${2}" = "brig" ]; then RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* 2>/dev/null | sed 's|.tar.gz||g')"; fi
       if [ "${2}" = "jellycli" ]; then RESOURCE_NAME="Jellycli"; fi
       if [ "${2}" = "nnn" ]; then APP_RESOURCE_PREFIX="static" RESOURCE_NAME="${APP_NAME}-static"; fi
-      if [ "${2}" = "podman-remote" ]; then APP_RESOURCE_PREFIX="static" APP_RESOURCE_SUFFIX=".tar.gz" RESOURCE_NAME="${APP_NAME}"; fi
+      if [ "${2}" = "podman-remote" ]; then APP_RESOURCE_PREFIX="static" APP_RESOURCE_SUFFIX=".tar.gz" RESOURCE_NAME="${APP_NAME}-static"; fi
       if [ "${2}" = "sdns" ]; then RESOURCE_NAME="${APP_NAME}_linux_amd64"; fi
       if [ "${2}" = "spotifyd" ]; then APP_RESOURCE_SUFFIX="-full" RESOURCE_NAME="${APP_NAME}"; fi
-      if [ "${2}" = "spt" ]; then APP_RESOURCE_SUFFIX="" RESOURCE_NAME="${APP_NAME}"; fi
+      if [ "${2}" = "diskonaut" ] || [ "${2}" = "spt" ]; then APP_RESOURCE_SUFFIX="" RESOURCE_NAME="${APP_NAME}"; fi
       if [ "${2}" = "tldr++" ]; then RESOURCE_NAME="tldr"; fi
       if [ "${2}" = "zenith" ]; then APP_RESOURCE_SUFFIX=".tgz" RESOURCE_NAME="${APP_NAME}"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* | \
@@ -1333,11 +1373,11 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "bat" | "delta" | "diskus" | "fd" | "frece" | "hexyl" | "hyperfine" | "lucid" | "pastel" | "rg" | "rga" | \
+    "bat" | "delta" | "diskus" | "fd" | "frece" | "hexyl" | "hyperfine" | "lsd" | "lucid" | "pastel" | "rg" | "rga" | \
     "rga-preproc" | "sccache" | "vivid")
       APP_ARCH="gnu"
       if [ "${2}" = "rg" ] || [ "${2}" = "rga" ] || [ "${2}" = "rga-preproc" ] || [ "${2}" = "sccache" ]; then APP_ARCH="musl"; fi
-      RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | sed 's|.tar.gz||g')"
+      RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* 2>/dev/null | sed 's|.tar.gz||g')"
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod_binary-echo_success-exit_0
@@ -1346,7 +1386,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "bed" | "caire" | "ccat" | "dnscrypt-proxy" | "dnsproxy" | "etcd" | "etcdctl" | "gogs" | "golangci-lint" | \
     "json2csv" | "louketo-proxy" | "oragono" | "portainer" | "rqbench" |"rqlite" |"rqlited" | "ssh-auditor" | \
     "stdiscosrv" | "strelaysrv" | "syncthing" | "velero")
-      RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | sed 's|.tar.gz||g')"
+      RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\*  2>/dev/null | sed 's|.tar.gz||g')"
       if [ "${2}" = "dnscrypt-proxy" ]; then RESOURCE_NAME="linux-x86_64"; fi
       if [ "${2}" = "dnsproxy" ]; then RESOURCE_NAME="linux-amd64"; fi
       if [ "${2}" = "gogs" ]; then RESOURCE_NAME="gogs" APP_RESOURCE_SUFFIX=".tar.gz"; fi
@@ -1364,7 +1404,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
-    "bw" | "ethr" | "json5" | "pegasus-fe" | "rattlesnakeos-stack" | "tasklite")
+    "bw" | "ethr" | "json5" | "pegasus-fe" | "rattlesnakeos-stack" | "tasklite" | "tflint")
       APP_RESOURCE_PREFIX="inux"
       if [ "${2}" = "pegasus-fe" ]; then APP_RESOURCE_PREFIX="x11-static"; fi
       gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\*&& \
@@ -1379,15 +1419,25 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     ;;
 
     "comics-downloader" | "composer" | "findomain" | "firecracker" | "jailer" | "magneticod" | "magneticow" | \
-    "ginstall.sh" | "gorush" | "gosu" | "handlr" | "inlets" | "k3s" | "komga" | "rust-analyzer" | "youtube-dl")
+    "ginstall.sh" | "gorush" | "gosu" | "handlr" | "immuadmin" | "immucli" | "immudb" | "immugw" | "inlets" | \
+    "k3s" | "komga" | "mango" | "rust-analyzer" | "serverstatus" | "youtube-dl")
       APP_RESOURCE_SUFFIX="*"
       case "${2}" in
         "comics-downloader" | "ginstall.sh" | "handlr" | "inlets" | "k3s" | "magneticod" | "magneticow" | \
-        "youtube-dl")
+        "mango" | "youtube-dl")
            APP_RESOURCE_SUFFIX=""
         ;;
 
+        "immuadmin" | "immucli" | "immudb" | "immugw")
+          APP_RESOURCE_SUFFIX="-static"
+        ;;
+
         "rust-analyzer")
+          APP_RESOURCE_SUFFIX="inux"
+        ;;
+
+        "serverstatus")
+          APP_RESOURCE="ServerStatus"
           APP_RESOURCE_SUFFIX="inux"
         ;;
       esac
@@ -1397,17 +1447,18 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       echo_success-exit_0
     ;;
 
-    "ddgr" | "googler" | "shellcheck" | "upx")
+    "ddgr" | "googler" | "qalc" | "shellcheck" | "upx")
       if [ "${2}" = "ddgr" ] || [ "${2}" = "googler" ]; then FOLDER_PREFIX="usr/bin" COMPONENT_COUNT="2"; fi
+      if [ "${2}" = "qalc" ]; then FOLDER_PREFIX="qalculate-${APP_VERSION}" COMPONENT_COUNT="1"; fi
       if [ "${2}" = "shellcheck" ]; then FOLDER_PREFIX="shellcheck-v${APP_VERSION}" COMPONENT_COUNT="1"; fi
-      if [ "${2}" = "upx" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
+      if [ "${2}" = "upx" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz 2>/dev/null | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz | \
       tar -xJf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" && \
       chmod_binary-echo_success-exit_0
     ;;
 
     "amass" | "discord-console" | "rclone" | "s")
-      RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* | sed 's|.zip||g')"
+      RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* 2>/dev/null | sed 's|.zip||g')"
       gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\* && \
       if [ "${2}" = "discord-console" ]; then
         APP_NAME_ARCHIVED="DiscordConsole"
@@ -1470,28 +1521,23 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     ;;
 
     "ffmpeg")
-      case "${3}" in
-        "latest")
-          APP_VERSION="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
-          INSTALL_SUCCESS="The latest version of ${2} (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
-          FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
-        ;;
-
-        "4.2.3")
-          FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
-        ;;
-
-        *)
-          FFMPEG_URL="https://www.johnvansickle.com/ffmpeg/old-releases/ffmpeg-${APP_VERSION}-amd64-static.tar.xz"
-        ;;
-      esac
+      APP_VERSION="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
+      if [ "${3}" = "latest" ]; then
+        INSTALL_SUCCESS="The latest version of ${2} (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
+        FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
+      elif [ "${3}" = "${APP_VERSION}" ]; then
+        FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
+      else
+        APP_VERSION="${3}"
+        FFMPEG_URL="https://www.johnvansickle.com/ffmpeg/old-releases/ffmpeg-${APP_VERSION}-amd64-static.tar.xz"
+      fi
       curl -Lf "${FFMPEG_URL}" | \
       tar -xJf- -C "${INSTALL_DIR:?}" "${APP_NAME}"-"${APP_VERSION}"-amd64-static/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 && \
       chmod_binary-echo_success-exit_0
     ;;
 
     "go")
-      if [ -z "${DIR_FLAG}" ]; then INSTALL_DIR=/usr/local; fi
+      if [ "${DIR_FLAG}" = "false" ]; then INSTALL_DIR="/usr/local"; fi
       if [ "${3}" = "latest" ]; then
         APP_VERSION="$(curl -sSL https://golang.org/dl/ | grep "downloadBox.*linux-amd64" | sed 's|.*go||g;s|.linux.*||g')"
         INSTALL_SUCCESS="The latest version of ${2} (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
@@ -1523,6 +1569,12 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "restic")
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
       bunzip2 > "${INSTALL_DIR:?}"/"${APP_NAME}" && \
+      chmod_binary-echo_success-exit_0
+    ;;
+
+    "sftpgo")
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
+      tar -xJf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
     ;;
 
