@@ -2,7 +2,7 @@
 
 # Set the default values for a list of environment variables
 # that are reused throughout the script.
-GINSTALL_SH_VERSION="3.3.0"
+GINSTALL_SH_VERSION="3.3.1"
 
 INSTALL_DIR="/usr/local/bin"
 GGET_LOCATION="$(command -v "gget")"
@@ -1223,21 +1223,21 @@ EXCL_EXTRAS="--exclude=\"*-arm*\"       --exclude=\"*-canary-*\"    --exclude=\"
              --exclude=\"*-slim\"       --exclude=\"*-source*\"     --exclude=\"*.asc\"
              --exclude=\"*.cid\"        --exclude=\"*.deb\"         --exclude=\"*.exe\"
              --exclude=\"*.json\"       --exclude=\"*.log\"         --exclude=\"*.md5\"
-             --exclude=\"*.md\"
-             --exclude=\"*.minisig\"    --exclude=\"*.msi\"         --exclude=\"*.nupkg*\"
-             --exclude=\"*.rpm\"        --exclude=\"*.sha*5*\"      --exclude=\"*.txt\"
-             --exclude=\"*_arm*\"       --exclude=\"*_musl_*\"      --exclude=\"*386*\"
-             --exclude=\"*686*\"        --exclude=\"*32*bit*\"      --exclude=\"*aarch*\"
-             --exclude=\"*acOS*\"       --exclude=\"*acos*\"        --exclude=\"*ARM*\"
-             --exclude=\"*arwin*\"      --exclude=\"*DragonFly*\"   --exclude=\"*dragonfly*\"
-             --exclude=\"*FreeBSD*\"    --exclude=\"*freebsd*\"     --exclude=\"*lan9*\"
-             --exclude=\"*llumos*\"     --exclude=\"*lpine*\"       --exclude=\"*indows*\"
-             --exclude=\"*mips*\"       --exclude=\"*NetBSD*\"      --exclude=\"*netbsd*\"
-             --exclude=\"*olaris*\"     --exclude=\"*OpenBSD*\"     --exclude=\"*openbsd*\"
-             --exclude=\"*OSX*\"        --exclude=\"*osx*\"         --exclude=\"*powerpc*\"
-             --exclude=\"*ppc64*\"      --exclude=\"*riscv*\"       --exclude=\"*rpi*\"
-             --exclude=\"*s390x*\"      --exclude=\"LICENSE-*\"     --exclude=\"MD5SUMS\"
-             --exclude=\"SHA*SUMS\"     --exclude=\"sha*sums\""
+             --exclude=\"*.md\"         --exclude=\"*.minisig\"     --exclude=\"*.msi\"
+             --exclude=\"*.nupkg*\"     --exclude=\"*.rpm\"         --exclude=\"*.sha*5*\"
+             --exclude=\"*.sig\"        --exclude=\"*.txt\"         --exclude=\"*_arm*\"
+             --exclude=\"*_musl_*\"     --exclude=\"*386*\"         --exclude=\"*686*\"
+             --exclude=\"*32*bit*\"     --exclude=\"*aarch*\"       --exclude=\"*acOS*\"
+             --exclude=\"*acos*\"       --exclude=\"*ARM*\"         --exclude=\"*arwin*\"
+             --exclude=\"*DragonFly*\"  --exclude=\"*dragonfly*\"   --exclude=\"*FreeBSD*\"
+             --exclude=\"*freebsd*\"    --exclude=\"*lan9*\"        --exclude=\"*llumos*\"
+             --exclude=\"*lpine*\"      --exclude=\"*indows*\"      --exclude=\"*mips*\"
+             --exclude=\"*NetBSD*\"     --exclude=\"*netbsd*\"      --exclude=\"*olaris*\"
+             --exclude=\"*OpenBSD*\"    --exclude=\"*openbsd*\"     --exclude=\"*OSX*\"
+             --exclude=\"*osx*\"        --exclude=\"*powerpc*\"     --exclude=\"*ppc64*\"
+             --exclude=\"*riscv*\"      --exclude=\"*rpi*\"         --exclude=\"*s390x*\"
+             --exclude=\"LICENSE-*\"    --exclude=\"MD5SUMS\"       --exclude=\"SHA*SUMS\"
+             --exclude=\"sha*sums\""
 
 EXCL_ARCHIVES="--exclude=\"*.7z\"        --exclude=\"*.bz2\"         --exclude=\"*.gz\"
                --exclude=\"*.tar\"       --exclude=\"*.xz\"          --exclude=\"*.zip\""
@@ -1275,6 +1275,8 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     # since it is not meant to be invoked by the average
     # user and should only be of interest to other devs.
     "+debug")
+      gget --no-download --list ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}"
+      exit 0
     ;;
   esac
 
@@ -1425,7 +1427,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       case "${2}" in
         "comics-downloader" | "ginstall.sh" | "handlr" | "inlets" | "k3s" | "magneticod" | "magneticow" | \
         "mango" | "youtube-dl")
-           APP_RESOURCE_SUFFIX=""
+          APP_RESOURCE_SUFFIX=""
         ;;
 
         "immuadmin" | "immucli" | "immudb" | "immugw")
