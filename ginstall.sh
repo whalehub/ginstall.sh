@@ -2,7 +2,7 @@
 
 # Set the default values for a list of environment variables
 # that are reused throughout the script.
-GINSTALL_SH_VERSION="3.3.1"
+GINSTALL_SH_VERSION="3.4.0"
 
 INSTALL_DIR="/usr/local/bin"
 GGET_LOCATION="$(command -v "gget")"
@@ -91,6 +91,7 @@ REPO_DUPLICACY="github.com/gilbertchen/duplicacy"
 
 REPO_EDGEDNS="github.com/jedisct1/edgedns"
 REPO_EKSCTL="github.com/weaveworks/eksctl"
+REPO_ESPANSO="github.com/federico-terzi/espanso"
 REPO_ETCD="github.com/etcd-io/etcd"
 REPO_ETCDCTL="github.com/etcd-io/etcd"
 REPO_ETHR="github.com/microsoft/ethr"
@@ -206,6 +207,7 @@ REPO_MINIFY="github.com/tdewolff/minify"
 REPO_MKCERT="github.com/FiloSottile/mkcert"
 REPO_MMARK="github.com/mmarkdown/mmark"
 REPO_MONITOROR="github.com/monitoror/monitoror"
+REPO_MONOLITH="github.com/Y2Z/monolith"
 
 REPO_NAABU="github.com/projectdiscovery/naabu"
 REPO_NAKAMA="github.com/heroiclabs/nakama"
@@ -330,6 +332,7 @@ REPO_YTOP="github.com/cjbassi/ytop"
 
 REPO_ZENITH="github.com/bvaisvil/zenith"
 REPO_ZOLA="github.com/getzola/zola"
+REPO_ZOXIDE="github.com/ajeetdsouza/zoxide"
 
 # Note: This environment variable is separate from the one that
 # follows it purely for formatting reasons.
@@ -412,6 +415,7 @@ duplicacy                   static              ${REPO_DUPLICACY}
 E
 edgedns                     dynamic             ${REPO_EDGEDNS}
 eksctl                      static              ${REPO_EKSCTL}
+espanso                     dynamic             ${REPO_ESPANSO}
 etcd                        static              ${REPO_ETCD}
 etcdctl                     static              ${REPO_ETCDCTL}
 ethr                        dynamic             ${REPO_ETHR}
@@ -534,6 +538,7 @@ minify                      static              ${REPO_MINIFY}
 mkcert                      static              ${REPO_MKCERT}
 mmark                       static              ${REPO_MMARK}
 monitoror                   static              ${REPO_MONITOROR}
+monolith                    dynamic             ${REPO_MONOLITH}
 
 N
 naabu                       dynamic             ${REPO_NAABU}
@@ -670,7 +675,8 @@ ytop                        dynamic             ${REPO_YTOP}
 
 Z
 zenith                      static              ${REPO_ZENITH}
-zola                        dynamic             ${REPO_ZOLA}"
+zola                        dynamic             ${REPO_ZOLA}
+zoxide                      dynamic             ${REPO_ZOXIDE}"
 
 # This environment variable is used to define a help page that is
 # displayed when the user invokes this script with the --help flag.
@@ -813,18 +819,6 @@ case "${1}" in
         # is no need to specify the new flag for the
         # default version check.
         #
-        # The raw output of the gget command contains
-        # more than just the version number, so we pipe
-        # it through sed to filter it down to just the
-        # version number.
-        #
-        # Raw:
-        #   tag     v2.7.1
-        #   commit  2d54843e4c53d5bce9b7c2b5965a4d6c35f19202
-        #
-        # Filtered:
-        #   2.7.1
-        #
         # The filtered output is then used as the value
         # of the $VERSION_CHECK variable.
         VERSION_CHECK="$(gget --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
@@ -832,7 +826,7 @@ case "${1}" in
         # The gget command above pipes its error output to
         # /dev/null, which allows us to determine whether
         # or not an application has a "latest" release tag
-        # by checking if the value of the $VERSION_CHECK
+        # by checking if the value of the VERSION_CHECK
         # variable is empty.
         # 
         # If it is empty (i.e. if the application only has
@@ -843,10 +837,10 @@ case "${1}" in
         # 
         # If it is not empty (i.e. if the application does
         # have a "latest" release tag), we reuse the value
-        # of the $VERSION_CHECK variable as the value of
-        # the $APP_VERSION variable.
+        # of the VERSION_CHECK variable as the value of
+        # the APP_VERSION variable.
         # 
-        # The $APP_VERSION variable is then used to print
+        # The APP_VERSION variable is then used to print
         # the latest available version of the application.
         if [ -z "${VERSION_CHECK}" ]; then
           APP_VERSION="$(gget --ref-stability=pre-release --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2>/dev/null | sed 's|^v||g')"
@@ -864,11 +858,11 @@ case "${1}" in
   # only takes one argument: the path of the custom directory.
   "--directory" | "-d")
     # The custom installation directory is preserved throughout
-    # the script as the value of the $INSTALL_DIR variable.
+    # the script as the value of the INSTALL_DIR variable.
     INSTALL_DIR="${2}"
 
     # When the --directory flag is used, we set the variable
-    # $DIR_FLAG to "true" so we can still determine that the
+    # DIR_FLAG to "true" so we can still determine that the
     # flag was used after using "shift" to reposition the
     # arguments that were passed to ginstall.sh (more on that
     # below).
@@ -1297,13 +1291,13 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
   # extensive use of variables and glob patterns.
   case "${2}" in
     "acme-dns" | "act" | "annie" | "apizza" | "badger" | "caddy" | "captainhook" | "chroma" | "coredns" | \
-    "croc" | "ddns-route53" | "dgraph" | "dgraph-ratel" | "diun" | "dive" | "docker-gen" | "drone" | \
-    "eksctl" | "filebrowser" | "ftpgrab" | "fzf" | "gau" | "geoip-updater" | "git-rewrite-author" | "gitbatch" | \
-    "gopass" | "goreleaser" | "gotop" | "grpcurl" | "httprobe" | "hydra" | "intercert" | "k9s" | "lazydocker" | \
-    "lego" | "minify" | "mmark" | "naabu" | "nakama" | "navidrome" | "nebula" | "nebula-cert" | "niltalk" | \
-    "parcello" | "peach" | "phoneinfoga" | "pkger" | "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "sshcode" | \
-    "statping" | "swarm-cronjob" | "task" | "tengo" | "traefik" | "travis-wait-enhanced" | "trivy" | "txeh" | \
-    "up" | "vegeta" | "vsphere-influxdb-go" | "wal-g" | "watchtower")
+    "croc" | "ddns-route53" | "dgraph" | "dgraph-ratel" | "diun" | "dive" | "docker-gen" | "drone" | "eksctl" | \
+    "filebrowser" | "ftpgrab" | "fzf" | "gau" | "geoip-updater" | "git-rewrite-author" | "gitbatch" | "gopass" | \
+    "goreleaser" | "gotop" | "grpcurl" | "httprobe" | "hydra" | "intercert" | "k9s" | "lazydocker" | "lego" | \
+    "minify" | "mmark" | "naabu" | "nakama" | "navidrome" | "nebula" | "nebula-cert" | "niltalk" | "parcello" | \
+    "peach" | "phoneinfoga" | "pkger" | "pomerium" | "pomerium-cli" | "qrcp" | "red" | "s2c" | "s2d" | "sshcode" | \
+    "statping" | "swarm-cronjob" | "task" | "tengo" | "traefik" | "travis-wait-enhanced" | "trivy" | "txeh" | "up" | \
+    "vegeta" | "vsphere-influxdb-go" | "wal-g" | "watchtower")
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* | \
       tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
       chmod_binary-echo_success-exit_0
@@ -1349,9 +1343,9 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     "andesite" | "arc" | "argocd" | "avif" | "blocky" | "bombardier" | "borg" | "ctop" | "docker-compose" | \
     "docker-machine" | "dstask" | "duplicacy" | "eureka" | "ffsend" | "fluxctl" | "gdrive" | "gget" | "gitea" | \
     "go-auto-yt" | "gomplate" | "gomuks" | "gossa" | "gpldr-client" | "httpstat" | "insect" | "jq" | "kind" | \
-    "kompose" | "linuxkit" | "matterbridge" | "mkcert" | "monitoror" | "opa" | "plexdrive" | "reg" | "rio" | \
-    "rke" | "simple-vpn" | "slack-term" | "stegify" | "sup" | "swagger" | "tableview" | "unetbootin" | "tfsec" | \
-    "transfersh" | "wuzz" | "yq")
+    "kompose" | "linuxkit" | "matterbridge" | "mkcert" | "monitoror" | "monolith" | "opa" | "plexdrive" | "reg" | \
+    "rio" | "rke" | "simple-vpn" | "slack-term" | "stegify" | "sup" | "swagger" | "tableview" | "unetbootin" | \
+    "tfsec" | "transfersh" | "wuzz" | "yq")
       if [ "${2}" = "ffsend" ]; then APP_RESOURCE_SUFFIX="static"; fi
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\*64\*"${APP_RESOURCE_SUFFIX}" && \
       echo_success-exit_0
@@ -1522,6 +1516,12 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       chmod_binary-echo_success-exit_0
     ;;
 
+    "espanso")
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* | \
+      tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} && \
+      chmod_binary-echo_success-exit_0
+    ;;
+
     "ffmpeg")
       APP_VERSION="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
       if [ "${3}" = "latest" ]; then
@@ -1582,6 +1582,11 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
     "unftp")
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*64\*inux\*-musl && \
+      echo_success-exit_0
+    ;;
+
+    "zoxide")
+      gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*64\*inux\*-gnu && \
       echo_success-exit_0
     ;;
 

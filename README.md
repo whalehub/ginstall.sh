@@ -144,6 +144,7 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | duplicacy                   | static              | https://github.com/gilbertchen/duplicacy |
 | edgedns                     | dynamic             | https://github.com/jedisct1/edgedns |
 | eksctl                      | static              | https://github.com/weaveworks/eksctl |
+| espanso                     | dynamic             | https://github.com/federico-terzi/espanso |
 | etcd                        | static              | https://github.com/etcd-io/etcd |
 | etcdctl                     | static              | https://github.com/etcd-io/etcd |
 | ethr                        | dynamic             | https://github.com/microsoft/ethr |
@@ -250,6 +251,7 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | mkcert                      | static              | https://github.com/FiloSottile/mkcert |
 | mmark                       | static              | https://github.com/mmarkdown/mmark |
 | monitoror                   | static              | https://github.com/monitoror/monitoror |
+| monolith                    | dynamic             | https://github.com/Y2Z/monolith |
 | naabu                       | dynamic             | https://github.com/projectdiscovery/naabu |
 | nakama                      | dynamic             | https://github.com/heroiclabs/nakama |
 | navidrome                   | static              | https://github.com/deluan/navidrome |
@@ -361,4 +363,5 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | ytop                        | dynamic             | https://github.com/cjbassi/ytop |
 | zenith                      | static              | https://github.com/bvaisvil/zenith |
 | zola                        | dynamic             | https://github.com/getzola/zola |
+| zoxide                      | dynamic             | https://github.com/ajeetdsouza/zoxide |
 </details>
