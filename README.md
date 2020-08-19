@@ -24,7 +24,7 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 You can install `ginstall.sh` by downloading the latest release, moving it to `/usr/local/bin` and making it executable:
 
 ```
-curl -L -o /usr/local/bin/ginstall.sh https://github.com/whalehub/ginstall.sh/releases/download/v3.1.0/ginstall.sh
+curl -L -o /usr/local/bin/ginstall.sh https://github.com/whalehub/ginstall.sh/releases/download/v3.4.0/ginstall.sh
 chmod +x /usr/local/bin/ginstall.sh
 ```
 
