@@ -957,7 +957,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       statping | swarm-cronjob | task | tengo | traefik | travis-wait-enhanced | trivy | txeh | up | \
       vegeta | vsphere-influxdb-go | wal-g | watchtower)
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* |
-        tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
         chmod_binary-echo_success-exit_0
       ;;
     adguardhome | git-hooks | gotty | gpldr-server | k6 | micro | migrate | oauth2-proxy | wrangler)
@@ -972,7 +972,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "wrangler" ]; then APP_RESOURCE_PREFIX="" FOLDER_PREFIX="dist" APP_NAME_ARCHIVED="${APP_NAME}"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*64\*"${APP_RESOURCE_SUFFIX}" |
-        tar -xzf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME_ARCHIVED}" ${TAR_ARGS} --strip-components=1 &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME_ARCHIVED}" ${TAR_ARGS} --strip-components=1 &&
         mv "${INSTALL_DIR:?}"/"${APP_NAME_ARCHIVED}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2> /dev/null
       chmod_binary-echo_success-exit_0
       ;;
@@ -993,7 +993,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "vigil" ]; then FOLDER_PREFIX="./${APP_NAME}" COMPONENT_COUNT="2" APP_RESOURCE_PREFIX="64"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\* |
-        tar -xzf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" &&
         chmod_binary-echo_success-exit_0
       ;;
     andesite | arc | argocd | avif | blocky | bombardier | borg | ctop | docker-compose | \
@@ -1021,7 +1021,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "zenith" ]; then APP_RESOURCE_SUFFIX=".tgz" RESOURCE_NAME="${APP_NAME}"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* |
-        tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}" ${TAR_ARGS} &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}" ${TAR_ARGS} &&
         mv "${INSTALL_DIR:?}"/"${RESOURCE_NAME:?}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2> /dev/null &&
         chmod_binary-echo_success-exit_0
       ;;
@@ -1031,7 +1031,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
       RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* 2> /dev/null | sed 's|.tar.gz||g')"
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* |
-        tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
         chmod_binary-echo_success-exit_0
       ;;
     bed | caire | ccat | dnscrypt-proxy | dnsproxy | etcd | etcdctl | gogs | golangci-lint | \
@@ -1044,7 +1044,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "portainer" ]; then RESOURCE_NAME="portainer"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\*"${APP_RESOURCE_SUFFIX}" |
-        tar -xzf- -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
         chmod_binary-echo_success-exit_0
       ;;
     bin | cobalt | edgedns | imdl | mdbook | starship | xsv | ytop | zola)
@@ -1052,7 +1052,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "imdl" ] || [ "$2" = "xsv" ]; then APP_ARCH="musl"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* |
-        tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
         chmod_binary-echo_success-exit_0
       ;;
     bw | ethr | json5 | pegasus-fe | rattlesnakeos-stack | tasklite | tflint)
@@ -1105,7 +1105,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "upx" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz 2> /dev/null | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz |
-        tar -xJf- -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" &&
+        tar -xJf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" &&
         chmod_binary-echo_success-exit_0
       ;;
     amass | discord-console | rclone | s)
@@ -1133,7 +1133,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "hugo-extended" ]; then APP_RESOURCE="hugo_extended" APP_NAME="hugo"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${APP_RESOURCE}"\*64\* |
-        tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
         chmod_binary-echo_success-exit_0
       ;;
     exa | pgweb)
@@ -1164,12 +1164,12 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       ;;
     sslocal | ssmanager | ssserver | ssurl)
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*gnu\* |
-        tar -xJf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
+        tar -xJf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
         chmod_binary-echo_success-exit_0
       ;;
     espanso)
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* |
-        tar -xzf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
         chmod_binary-echo_success-exit_0
       ;;
     ffmpeg)
@@ -1185,7 +1185,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       fi
 
       curl -Lf "${FFMPEG_URL}" |
-        tar -xJf- -C "${INSTALL_DIR:?}" "${APP_NAME}"-"${APP_VERSION}"-amd64-static/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
+        tar -xJf - -C "${INSTALL_DIR:?}" "${APP_NAME}"-"${APP_VERSION}"-amd64-static/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
         chmod_binary-echo_success-exit_0
       ;;
     go)
@@ -1197,7 +1197,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
       rm -rf "${INSTALL_DIR:?}"/"${APP_NAME}" &&
         curl -Lf https://dl.google.com/go/go"${APP_VERSION}".linux-amd64.tar.gz |
-        tar -xzf- -C "${INSTALL_DIR:?}" ${TAR_ARGS} &&
+        tar -xzf - -C "${INSTALL_DIR:?}" ${TAR_ARGS} &&
         echo_success-exit_0
       ;;
     gobuster)
@@ -1208,7 +1208,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       ;;
     helm)
       curl -Lf https://get.helm.sh/helm-v"${APP_VERSION}"-linux-amd64.tar.gz |
-        tar -xzf- -C "${INSTALL_DIR:?}" linux-amd64/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
+        tar -xzf - -C "${INSTALL_DIR:?}" linux-amd64/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
         chmod_binary-echo_success-exit_0
       ;;
     hey)
@@ -1222,7 +1222,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       ;;
     sftpgo)
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* |
-        tar -xJf- -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
+        tar -xJf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
         chmod_binary-echo_success-exit_0
       ;;
     unftp)
