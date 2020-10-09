@@ -17,13 +17,14 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 - [bzip2](https://packages.debian.org/buster/bzip2) (only required for installing `restic`)
 - [gzip](https://packages.debian.org/buster/gzip) (only required for installing `chisel`, `cloud-torrent`, `goatcounter` and `govc`)
 - [p7zip](https://packages.debian.org/buster/p7zip) (only required for installing `gobuster`)
+- [sudo](https://packages.debian.org/buster/sudo) (only required for installing to `/usr/local/bin`)
 
 ## Installation
 You can install `ginstall.sh` by downloading the latest release, moving it to `/usr/local/bin` and making it executable:
 
 ```
-curl -L -o /usr/local/bin/ginstall.sh https://github.com/whalehub/ginstall.sh/releases/download/v3.4.1/ginstall.sh
-chmod +x /usr/local/bin/ginstall.sh
+sudo curl -L -o /usr/local/bin/ginstall.sh https://github.com/whalehub/ginstall.sh/releases/download/v3.4.1/ginstall.sh
+sudo chmod +x /usr/local/bin/ginstall.sh
 ```
 
 The dependency `gget` can be installed by running `ginstall.sh` with the `--first-run` flag.
