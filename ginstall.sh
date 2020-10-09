@@ -693,7 +693,7 @@ Info:
 
 ARGS="$(getopt -l check:,directory:,first-run,help,list,remove:,search:,self-update,version -o c:d:hlr:s:v -n ginstall.sh -- "$@")"
 
-if [ $? -ne 0 ]; then
+if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
@@ -702,7 +702,7 @@ unset ARGS
 
 case "$1" in
   --check | -c)
-    if [ -z "${GGET_LOCATION}" ]; then
+    if [[ -z ${GGET_LOCATION} ]]; then
       echo -e "${MISSING_DEPENDENCY}\n${USAGE_INFORMATION}" && exit 1
     fi
 
@@ -725,12 +725,12 @@ case "$1" in
 
       *)
         REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g;s/+/_PLUS/g')"
-        if [ -z "${!REPO}" ]; then
+        if [[ -z ${!REPO} ]]; then
           echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}" && exit 1
         fi
 
         VERSION_CHECK="$(gget --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2> /dev/null | sed 's|^v||g')"
-        if [ -z "${VERSION_CHECK}" ]; then
+        if [[ -z ${VERSION_CHECK} ]]; then
           APP_VERSION="$(gget --ref-stability=pre-release --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2> /dev/null | sed 's|^v||g')"
         else
           APP_VERSION="${VERSION_CHECK}"
@@ -762,7 +762,7 @@ case "$1" in
     esac
     ;;
   --first-run)
-    if [ ! "$(id -u)" = "0" ]; then
+    if [[ "$(id -u)" != "0" ]]; then
       echo -e "${PERMISSION_DENIED}\n${USAGE_INFORMATION}" && exit 1
     else
       curl -Lf -o "${INSTALL_DIR:?}"/gget https://"${REPO_GGET}"/releases/download/v0.5.2/gget-0.5.2-linux-amd64 &&
@@ -781,9 +781,8 @@ case "$1" in
     UNINSTALL_SUCCESS="$2 was uninstalled successfully."
 
     REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g;s/+/_PLUS/g')"
-    if [ -z "${!REPO}" ]; then
-      echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}"
-      exit 1
+    if [[ -z ${!REPO} ]]; then
+      echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}" && exit 1
     else
       case "$2" in
         gget)
@@ -811,9 +810,9 @@ case "$1" in
 
         *)
           APP_LOCATION="$(command -v "$2")"
-          if [ "$2" = "composer" ]; then APP_LOCATION="$(command -v "$2".phar)"; fi
-          if [ "$2" = "hugo-extended" ]; then APP_LOCATION="$(command -v "hugo")"; fi
-          if [ "$2" = "komga" ]; then APP_LOCATION="$(command -v "$2".jar)"; fi
+          if [[ $2 == "composer" ]]; then APP_LOCATION="$(command -v "$2".phar)"; fi
+          if [[ $2 == "hugo-extended" ]]; then APP_LOCATION="$(command -v "hugo")"; fi
+          if [[ $2 == "komga" ]]; then APP_LOCATION="$(command -v "$2".jar)"; fi
           rm -v "${APP_LOCATION:?}" && echo -e "${UNINSTALL_SUCCESS}" && exit 0
           ;;
       esac
@@ -823,7 +822,7 @@ case "$1" in
     echo -e "${SUPPORTED_APPS_HEADER}""\n""$(echo -e "$SUPPORTED_APPS_LIST" | grep "$2")" && exit 0
     ;;
   --self-update)
-    if [ -z "${GGET_LOCATION}" ]; then
+    if [[ -z ${GGET_LOCATION} ]]; then
       echo -e "${MISSING_DEPENDENCY}\n${USAGE_INFORMATION}" && exit 1
     fi
 
@@ -844,7 +843,7 @@ case "$1" in
     ;;
 esac
 
-if [ -z "${GGET_LOCATION}" ]; then
+if [[ -z ${GGET_LOCATION} ]]; then
   echo -e "${MISSING_DEPENDENCY_INSTALL}\n${USAGE_INFORMATION}" && exit 1
 fi
 
@@ -854,9 +853,9 @@ if ! gget --version='>=0.5.2' &> /dev/null; then
     exit 1
 fi
 
-if [ -z "$2" ]; then
+if [[ -z $2 ]]; then
   echo -e "Error: You forgot to supply an application name.\n${USAGE_INFORMATION}" && exit 1
-elif [ -z "$3" ]; then
+elif [[ -z $3 ]]; then
   echo -e "Error: You forgot to supply a version number.\n${USAGE_INFORMATION}" && exit 1
 fi
 
@@ -866,18 +865,18 @@ APP_VERSION="$3"
 REPO="$(echo "REPO_${2^^}" | sed 's/[-.]/_/g;s/+/_PLUS/g')"
 INSTALL_SUCCESS="${APP_NAME} v${APP_VERSION} was successfully installed to ${INSTALL_DIR}."
 
-if [ "$3" = "latest" ]; then
-  if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
+if [[ $3 == "latest" ]]; then
+  if [[ "$(id -u)" == "0" ]] || [[ ${DIR_FLAG} == "true" ]]; then
     case "$2" in
       ffmpeg | go) ;;
       *)
-        if [ -z "${!REPO}" ]; then
+        if [[ -z ${!REPO} ]]; then
           echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}"
           exit 1
         fi
 
         VERSION_CHECK="$(gget --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2> /dev/null | sed 's|^v||g')"
-        if [ -z "${VERSION_CHECK}" ]; then
+        if [[ -z ${VERSION_CHECK} ]]; then
           APP_VERSION="$(gget --ref-stability=pre-release --ignore-missing=* --verify-checksum=none --no-download --export jsonpath='{.origin.ref}' "${!REPO}" 2> /dev/null | sed 's|^v||g')"
         else
           APP_VERSION="${VERSION_CHECK}"
@@ -921,7 +920,7 @@ EXCL_EXTRAS='--exclude="*-arm*"       --exclude="*-canary-*"    --exclude="*-gui
 EXCL_ARCHIVES='--exclude="*.7z"        --exclude="*.bz2"         --exclude="*.gz"
                --exclude="*.tar"       --exclude="*.xz"          --exclude="*.zip"'
 
-if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
+if [[ "$(id -u)" == "0" ]] || [[ ${DIR_FLAG} == "true" ]]; then
   case "$2" in
     annie | borg | captainhook | cloud-torrent | composer | delta | discord-console | \
       discord-delete | diskonaut | dnscrypt-proxy | docker-compose | docker-gen | edgedns | \
@@ -955,14 +954,14 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       ;;
     adguardhome | git-hooks | gotty | gpldr-server | k6 | micro | migrate | oauth2-proxy | wrangler)
       APP_RESOURCE_PREFIX="inux"
-      if [ "$2" = "adguardhome" ]; then FOLDER_PREFIX="AdGuardHome" APP_NAME_ARCHIVED="AdGuardHome"; fi
-      if [ "$2" = "git-hooks" ]; then FOLDER_PREFIX="build" APP_NAME_ARCHIVED="${APP_NAME}_linux_amd64"; fi
-      if [ "$2" = "gotty" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}"; fi
-      if [ "$2" = "gpldr-server" ]; then APP_RESOURCE_PREFIX="standalone" FOLDER_PREFIX="goploader-server" APP_NAME_ARCHIVED="server-standalone"; fi
-      if [ "$2" = "k6" ] || [ "$2" = "oauth2-proxy" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* 2> /dev/null | sed 's|.tar.gz||g')"; fi
-      if [ "$2" = "micro" ]; then APP_RESOURCE_SUFFIX="static.tar.gz" FOLDER_PREFIX="${APP_NAME}-${APP_VERSION}" APP_NAME_ARCHIVED="${APP_NAME}"; fi
-      if [ "$2" = "migrate" ]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}.linux-amd64"; fi
-      if [ "$2" = "wrangler" ]; then APP_RESOURCE_PREFIX="" FOLDER_PREFIX="dist" APP_NAME_ARCHIVED="${APP_NAME}"; fi
+      if [[ $2 == "adguardhome" ]]; then FOLDER_PREFIX="AdGuardHome" APP_NAME_ARCHIVED="AdGuardHome"; fi
+      if [[ $2 == "git-hooks" ]]; then FOLDER_PREFIX="build" APP_NAME_ARCHIVED="${APP_NAME}_linux_amd64"; fi
+      if [[ $2 == "gotty" ]]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}"; fi
+      if [[ $2 == "gpldr-server" ]]; then APP_RESOURCE_PREFIX="standalone" FOLDER_PREFIX="goploader-server" APP_NAME_ARCHIVED="server-standalone"; fi
+      if [[ $2 == "k6" ]] || [[ $2 == "oauth2-proxy" ]]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* 2> /dev/null | sed 's|.tar.gz||g')"; fi
+      if [[ $2 == "micro" ]]; then APP_RESOURCE_SUFFIX="static.tar.gz" FOLDER_PREFIX="${APP_NAME}-${APP_VERSION}" APP_NAME_ARCHIVED="${APP_NAME}"; fi
+      if [[ $2 == "migrate" ]]; then FOLDER_PREFIX="." APP_NAME_ARCHIVED="${APP_NAME}.linux-amd64"; fi
+      if [[ $2 == "wrangler" ]]; then APP_RESOURCE_PREFIX="" FOLDER_PREFIX="dist" APP_NAME_ARCHIVED="${APP_NAME}"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*64\*"${APP_RESOURCE_SUFFIX}" |
         tar -xzf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME_ARCHIVED}" --strip-components=1 &&
@@ -972,18 +971,18 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     age | age-keygen | autocert | frpc | frps | gh | gitui | hub | ipfs | plik | plikd | rage | rage-keygen | step | vector | vigil)
       COMPONENT_COUNT="1"
       APP_RESOURCE_PREFIX="inux"
-      if [ "$2" = "age" ] || [ "$2" = "age-keygen" ]; then FOLDER_PREFIX="age"; fi
-      if [ "$2" = "autocert" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
-      if [ "$2" = "frpc" ] || [ "$2" = "frps" ]; then FOLDER_PREFIX="frp_${APP_VERSION}_linux_amd64"; fi
-      if [ "$2" = "gh" ] || [ "$2" = "hub" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* 2> /dev/null | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
-      if [ "$2" = "gitui" ]; then FOLDER_PREFIX="." COMPONENT_COUNT="1" APP_RESOURCE_PREFIX="musl"; fi
-      if [ "$2" = "ipfs" ]; then FOLDER_PREFIX="go-ipfs"; fi
-      if [ "$2" = "plik" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/clients/linux-amd64" COMPONENT_COUNT="3"; fi
-      if [ "$2" = "plikd" ]; then FOLDER_PREFIX="plik-${APP_VERSION}/server" COMPONENT_COUNT="2"; fi
-      if [ "$2" = "rage" ] || [ "$2" = "rage-keygen" ]; then FOLDER_PREFIX="rage"; fi
-      if [ "$2" = "step" ]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
-      if [ "$2" = "vector" ]; then FOLDER_PREFIX="./${APP_NAME}-x86_64-unknown-linux-musl/bin" COMPONENT_COUNT="3"; fi
-      if [ "$2" = "vigil" ]; then FOLDER_PREFIX="./${APP_NAME}" COMPONENT_COUNT="2" APP_RESOURCE_PREFIX="64"; fi
+      if [[ $2 == "age" ]] || [[ $2 == "age-keygen" ]]; then FOLDER_PREFIX="age"; fi
+      if [[ $2 == "autocert" ]]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
+      if [[ $2 == "frpc" ]] || [[ $2 == "frps" ]]; then FOLDER_PREFIX="frp_${APP_VERSION}_linux_amd64"; fi
+      if [[ $2 == "gh" ]] || [[ $2 == "hub" ]]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* 2> /dev/null | sed 's|.t.*gz|/bin|g')" COMPONENT_COUNT="2"; fi
+      if [[ $2 == "gitui" ]]; then FOLDER_PREFIX="." COMPONENT_COUNT="1" APP_RESOURCE_PREFIX="musl"; fi
+      if [[ $2 == "ipfs" ]]; then FOLDER_PREFIX="go-ipfs"; fi
+      if [[ $2 == "plik" ]]; then FOLDER_PREFIX="plik-${APP_VERSION}/clients/linux-amd64" COMPONENT_COUNT="3"; fi
+      if [[ $2 == "plikd" ]]; then FOLDER_PREFIX="plik-${APP_VERSION}/server" COMPONENT_COUNT="2"; fi
+      if [[ $2 == "rage" ]] || [[ $2 == "rage-keygen" ]]; then FOLDER_PREFIX="rage"; fi
+      if [[ $2 == "step" ]]; then FOLDER_PREFIX="${APP_NAME}_${APP_VERSION}/bin" COMPONENT_COUNT="2"; fi
+      if [[ $2 == "vector" ]]; then FOLDER_PREFIX="./${APP_NAME}-x86_64-unknown-linux-musl/bin" COMPONENT_COUNT="3"; fi
+      if [[ $2 == "vigil" ]]; then FOLDER_PREFIX="./${APP_NAME}" COMPONENT_COUNT="2" APP_RESOURCE_PREFIX="64"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\* |
         tar -xzf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" --strip-components="${COMPONENT_COUNT}" &&
@@ -995,7 +994,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       kompose | linuxkit | matterbridge | mkcert | monitoror | monolith | opa | plexdrive | reg | \
       rio | rke | simple-vpn | slack-term | stegify | sup | swagger | tableview | unetbootin | \
       tfsec | transfersh | wuzz | yq)
-      if [ "$2" = "ffsend" ]; then APP_RESOURCE_SUFFIX="static"; fi
+      if [[ $2 == "ffsend" ]]; then APP_RESOURCE_SUFFIX="static"; fi
 
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\*64\*"${APP_RESOURCE_SUFFIX}" &&
         post-install_cleanup
@@ -1003,15 +1002,15 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
     authelia | brig | diskonaut | jellycli | nnn | podman-remote | sdns | spotifyd | spt | tldr++ | zenith)
       APP_RESOURCE_PREFIX="inux"
       APP_RESOURCE_SUFFIX="64"
-      if [ "$2" = "authelia" ] || [ "$2" = "brig" ]; then RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* 2> /dev/null | sed 's|.tar.gz||g')"; fi
-      if [ "$2" = "jellycli" ]; then RESOURCE_NAME="Jellycli"; fi
-      if [ "$2" = "nnn" ]; then APP_RESOURCE_PREFIX="static" RESOURCE_NAME="${APP_NAME}-static"; fi
-      if [ "$2" = "podman-remote" ]; then APP_RESOURCE_PREFIX="static" APP_RESOURCE_SUFFIX=".tar.gz" RESOURCE_NAME="${APP_NAME}-static"; fi
-      if [ "$2" = "sdns" ]; then RESOURCE_NAME="${APP_NAME}_linux_amd64"; fi
-      if [ "$2" = "spotifyd" ]; then APP_RESOURCE_SUFFIX="-full" RESOURCE_NAME="${APP_NAME}"; fi
-      if [ "$2" = "diskonaut" ] || [ "$2" = "spt" ]; then APP_RESOURCE_SUFFIX="" RESOURCE_NAME="${APP_NAME}"; fi
-      if [ "$2" = "tldr++" ]; then RESOURCE_NAME="tldr"; fi
-      if [ "$2" = "zenith" ]; then APP_RESOURCE_SUFFIX=".tgz" RESOURCE_NAME="${APP_NAME}"; fi
+      if [[ $2 == "authelia" ]] || [[ $2 == "brig" ]]; then RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* 2> /dev/null | sed 's|.tar.gz||g')"; fi
+      if [[ $2 == "jellycli" ]]; then RESOURCE_NAME="Jellycli"; fi
+      if [[ $2 == "nnn" ]]; then APP_RESOURCE_PREFIX="static" RESOURCE_NAME="${APP_NAME}-static"; fi
+      if [[ $2 == "podman-remote" ]]; then APP_RESOURCE_PREFIX="static" APP_RESOURCE_SUFFIX=".tar.gz" RESOURCE_NAME="${APP_NAME}-static"; fi
+      if [[ $2 == "sdns" ]]; then RESOURCE_NAME="${APP_NAME}_linux_amd64"; fi
+      if [[ $2 == "spotifyd" ]]; then APP_RESOURCE_SUFFIX="-full" RESOURCE_NAME="${APP_NAME}"; fi
+      if [[ $2 == "diskonaut" ]] || [[ $2 == "spt" ]]; then APP_RESOURCE_SUFFIX="" RESOURCE_NAME="${APP_NAME}"; fi
+      if [[ $2 == "tldr++" ]]; then RESOURCE_NAME="tldr"; fi
+      if [[ $2 == "zenith" ]]; then APP_RESOURCE_SUFFIX=".tgz" RESOURCE_NAME="${APP_NAME}"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* |
         tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}" &&
@@ -1020,7 +1019,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       ;;
     bat | delta | diskus | fd | frece | hexyl | hyperfine | lsd | lucid | pastel | rg | rga | rga-preproc | sccache | vivid)
       APP_ARCH="gnu"
-      if [ "$2" = "rg" ] || [ "$2" = "rga" ] || [ "$2" = "rga-preproc" ] || [ "$2" = "sccache" ]; then APP_ARCH="musl"; fi
+      if [[ $2 == "rg" ]] || [[ $2 == "rga" ]] || [[ $2 == "rga-preproc" ]] || [[ $2 == "sccache" ]]; then APP_ARCH="musl"; fi
 
       RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* 2> /dev/null | sed 's|.tar.gz||g')"
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* |
@@ -1031,10 +1030,10 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       json2csv | louketo-proxy | oragono | portainer | rqbench | rqlite | rqlited | ssh-auditor | \
       stdiscosrv | strelaysrv | syncthing | velero)
       RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* 2> /dev/null | sed 's|.tar.gz||g')"
-      if [ "$2" = "dnscrypt-proxy" ]; then RESOURCE_NAME="linux-x86_64"; fi
-      if [ "$2" = "dnsproxy" ]; then RESOURCE_NAME="linux-amd64"; fi
-      if [ "$2" = "gogs" ]; then RESOURCE_NAME="gogs" APP_RESOURCE_SUFFIX=".tar.gz"; fi
-      if [ "$2" = "portainer" ]; then RESOURCE_NAME="portainer"; fi
+      if [[ $2 == "dnscrypt-proxy" ]]; then RESOURCE_NAME="linux-x86_64"; fi
+      if [[ $2 == "dnsproxy" ]]; then RESOURCE_NAME="linux-amd64"; fi
+      if [[ $2 == "gogs" ]]; then RESOURCE_NAME="gogs" APP_RESOURCE_SUFFIX=".tar.gz"; fi
+      if [[ $2 == "portainer" ]]; then RESOURCE_NAME="portainer"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\*"${APP_RESOURCE_SUFFIX}" |
         tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" --strip-components=1 &&
@@ -1042,7 +1041,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       ;;
     bin | cobalt | edgedns | imdl | mdbook | starship | xsv | ytop | zola)
       APP_ARCH="gnu"
-      if [ "$2" = "imdl" ] || [ "$2" = "xsv" ]; then APP_ARCH="musl"; fi
+      if [[ $2 == "imdl" ]] || [[ $2 == "xsv" ]]; then APP_ARCH="musl"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* |
         tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" &&
@@ -1050,7 +1049,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       ;;
     bw | ethr | json5 | pegasus-fe | rattlesnakeos-stack | tasklite | tflint)
       APP_RESOURCE_PREFIX="inux"
-      if [ "$2" = "pegasus-fe" ]; then APP_RESOURCE_PREFIX="x11-static"; fi
+      if [[ $2 == "pegasus-fe" ]]; then APP_RESOURCE_PREFIX="x11-static"; fi
 
       gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_FILE}"=\*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* &&
         unzip -qjo "${TMP_FILE}" "${APP_NAME}" -d "${INSTALL_DIR:?}" &&
@@ -1085,17 +1084,17 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
           ;;
       esac
 
-      if [ "$2" = "composer" ]; then APP_EXTENSION=".phar"; fi
-      if [ "$2" = "komga" ]; then APP_EXTENSION=".jar"; fi
+      if [[ $2 == "composer" ]]; then APP_EXTENSION=".phar"; fi
+      if [[ $2 == "komga" ]]; then APP_EXTENSION=".jar"; fi
 
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}""${APP_EXTENSION}"=\*"${APP_RESOURCE}"\*"${APP_RESOURCE_SUFFIX}"\* &&
         post-install_cleanup
       ;;
     ddgr | googler | qalc | shellcheck | upx)
-      if [ "$2" = "ddgr" ] || [ "$2" = "googler" ]; then FOLDER_PREFIX="usr/bin" COMPONENT_COUNT="2"; fi
-      if [ "$2" = "qalc" ]; then FOLDER_PREFIX="qalculate-${APP_VERSION}" COMPONENT_COUNT="1"; fi
-      if [ "$2" = "shellcheck" ]; then FOLDER_PREFIX="shellcheck-v${APP_VERSION}" COMPONENT_COUNT="1"; fi
-      if [ "$2" = "upx" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz 2> /dev/null | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
+      if [[ $2 == "ddgr" ]] || [[ $2 == "googler" ]]; then FOLDER_PREFIX="usr/bin" COMPONENT_COUNT="2"; fi
+      if [[ $2 == "qalc" ]]; then FOLDER_PREFIX="qalculate-${APP_VERSION}" COMPONENT_COUNT="1"; fi
+      if [[ $2 == "shellcheck" ]]; then FOLDER_PREFIX="shellcheck-v${APP_VERSION}" COMPONENT_COUNT="1"; fi
+      if [[ $2 == "upx" ]]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz 2> /dev/null | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz |
         tar -xJf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" --strip-components="${COMPONENT_COUNT}" &&
@@ -1105,7 +1104,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* 2> /dev/null | sed 's|.zip||g')"
       gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_FILE}"=\*inux\*
 
-      if [ "$2" = "discord-console" ]; then
+      if [[ $2 == "discord-console" ]]; then
         APP_NAME_ARCHIVED="DiscordConsole"
         unzip -qjo "${TMP_FILE}" "${RESOURCE_NAME:?}"/64-bit/"${APP_NAME_ARCHIVED}" -d "${INSTALL_DIR:?}"
       else
@@ -1121,17 +1120,17 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
         post-install_cleanup
       ;;
     docker-credential-pass | future-vuls | fx | hugo | hugo-extended | rootlessctl | rootlesskit | trivy-to-vuls | vuls)
-      if [ "$2" = "rootlesskit" ] || [ "$2" = "rootlessctl" ]; then APP_RESOURCE=""; fi
-      if [ "$2" = "hugo" ]; then APP_RESOURCE="hugo_${APP_VERSION}"; fi
-      if [ "$2" = "hugo-extended" ]; then APP_RESOURCE="hugo_extended" APP_NAME="hugo"; fi
+      if [[ $2 == "rootlesskit" ]] || [[ $2 == "rootlessctl" ]]; then APP_RESOURCE=""; fi
+      if [[ $2 == "hugo" ]]; then APP_RESOURCE="hugo_${APP_VERSION}"; fi
+      if [[ $2 == "hugo-extended" ]]; then APP_RESOURCE="hugo_extended" APP_NAME="hugo"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${APP_RESOURCE}"\*64\* |
         tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" &&
         post-install_cleanup
       ;;
     exa | pgweb)
-      if [ "$2" = "exa" ]; then APP_NAME_SUFFIX="-linux-x86_64"; fi
-      if [ "$2" = "pgweb" ]; then APP_NAME_SUFFIX="_linux_amd64"; fi
+      if [[ $2 == "exa" ]]; then APP_NAME_SUFFIX="-linux-x86_64"; fi
+      if [[ $2 == "pgweb" ]]; then APP_NAME_SUFFIX="_linux_amd64"; fi
 
       gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_FILE}"=\*inux\*64\* &&
         unzip -qjo "${TMP_FILE}" "${APP_NAME}""${APP_NAME_SUFFIX}" -d "${INSTALL_DIR:?}" &&
@@ -1144,7 +1143,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
         post-install_cleanup
       ;;
     jsteg | linx-cleanup | linx-genkey | linx-server | pebble | pebble-challtestsrv | slink)
-      if [ "$2" = "pebble" ]; then APP_RESOURCE="pebble_"; fi
+      if [[ $2 == "pebble" ]]; then APP_RESOURCE="pebble_"; fi
 
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"="${APP_RESOURCE}"\*inux\*64\* &&
         post-install_cleanup
@@ -1167,10 +1166,10 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       ;;
     ffmpeg)
       APP_VERSION="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
-      if [ "$3" = "latest" ]; then
+      if [[ $3 == "latest" ]]; then
         INSTALL_SUCCESS="The latest version of $2 (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
         FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
-      elif [ "$3" = "${APP_VERSION}" ]; then
+      elif [[ $3 == "${APP_VERSION}" ]]; then
         FFMPEG_URL="https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz"
       else
         APP_VERSION="$3"
@@ -1182,8 +1181,8 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
         post-install_cleanup
       ;;
     go)
-      if [ "${DIR_FLAG}" = "false" ]; then INSTALL_DIR="/usr/local"; fi
-      if [ "$3" = "latest" ]; then
+      if [[ ${DIR_FLAG} == "false" ]]; then INSTALL_DIR="/usr/local"; fi
+      if [[ $3 == "latest" ]]; then
         APP_VERSION="$(curl -sSL https://golang.org/dl/ | grep "downloadBox.*linux-amd64" | sed 's|.*go||g;s|.linux.*||g')"
         INSTALL_SUCCESS="The latest version of $2 (v$APP_VERSION) was successfully installed to ${INSTALL_DIR}."
       fi
