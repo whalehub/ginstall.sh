@@ -1,3 +1,6 @@
+## ⚠ Warning ⚠
+This project has reached EOL with the release of v3.4.1 and will be succeeded by a new script that was written from scratch soon™. This repository will be archived at that point.
+
 ## About
 This script can be used to install/update the compiled binaries of statically and dynamically linked applications from the command line.
 
@@ -5,26 +8,21 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 
 ## Dependencies
 ### Mandatory
-• [gget](https://github.com/dpb587/gget) v0.5.1 or later
-
-• [curl](https://packages.debian.org/buster/curl)
-
-• [tar](https://packages.debian.org/buster/tar)
-
-• [unzip](https://packages.debian.org/buster/unzip)
+- [gget](https://github.com/dpb587/gget) v0.5.2 or later
+- [curl](https://packages.debian.org/buster/curl)
+- [tar](https://packages.debian.org/buster/tar)
+- [unzip](https://packages.debian.org/buster/unzip)
 
 ### Optional
-• [bzip2](https://packages.debian.org/buster/bzip2) (only required for installing `restic`)
-
-• [gzip](https://packages.debian.org/buster/gzip) (only required for installing `chisel`, `cloud-torrent`, `goatcounter` and `govc`)
-
-• [p7zip](https://packages.debian.org/buster/p7zip) (only required for installing `gobuster`)
+- [bzip2](https://packages.debian.org/buster/bzip2) (only required for installing `restic`)
+- [gzip](https://packages.debian.org/buster/gzip) (only required for installing `chisel`, `cloud-torrent`, `goatcounter` and `govc`)
+- [p7zip](https://packages.debian.org/buster/p7zip) (only required for installing `gobuster`)
 
 ## Installation
 You can install `ginstall.sh` by downloading the latest release, moving it to `/usr/local/bin` and making it executable:
 
 ```
-curl -L -o /usr/local/bin/ginstall.sh https://github.com/whalehub/ginstall.sh/releases/download/v3.4.0/ginstall.sh
+curl -L -o /usr/local/bin/ginstall.sh https://github.com/whalehub/ginstall.sh/releases/download/v3.4.1/ginstall.sh
 chmod +x /usr/local/bin/ginstall.sh
 ```
 

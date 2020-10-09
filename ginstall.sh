@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2086,SC2089,SC2090
 
-GINSTALL_SH_VERSION="3.4.0"
+GINSTALL_SH_VERSION="3.5.0"
 
 INSTALL_DIR="/usr/local/bin"
 GGET_LOCATION="$(command -v "gget")"
