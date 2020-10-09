@@ -10,10 +10,7 @@ INSTALL_DIR="/usr/local/bin"
 GGET_LOCATION="$(command -v "gget")"
 VERSION_PREFIX="@v"
 DIR_FLAG="false"
-
-TMP_DIR_7Z="/tmp/ginstall.7z"
-TMP_DIR_ZIP="/tmp/ginstall.zip"
-TAR_ARGS="--no-same-owner --no-same-permissions"
+TMP_FILE="/tmp/ginstall.tmp"
 
 MISSING_DEPENDENCY="Error: To use this flag, you must first install ginstall.sh's dependency gget."
 MISSING_DEPENDENCY_INSTALL="Error: To install an application with ginstall.sh, you must first install its dependency gget."
@@ -893,16 +890,12 @@ if [ "$3" = "latest" ]; then
   fi
 fi
 
-rm_tmp_file-chmod_binary-echo_success-exit_0() {
-  rm "${TMP_DIR_ZIP:?}" && chmod 0755 "${INSTALL_DIR:?}"/"${APP_NAME}" && echo -e "${INSTALL_SUCCESS}" && exit 0
-}
-
-chmod_binary-echo_success-exit_0() {
-  chmod 0755 "${INSTALL_DIR:?}"/"${APP_NAME}" && echo -e "${INSTALL_SUCCESS}" && exit 0
-}
-
-echo_success-exit_0() {
-  echo -e "${INSTALL_SUCCESS}" && exit 0
+post-install_cleanup() {
+  chmod 0755 "${INSTALL_DIR:?}"/"${APP_NAME}" &&
+    chown "$(id -u)":"$(id -g)" "${INSTALL_DIR:?}"/"${APP_NAME}" &&
+    rm -f "${TMP_FILE:?}" &&
+    echo -e "${INSTALL_SUCCESS}" &&
+    exit 0
 }
 
 EXCL_EXTRAS='--exclude="*-arm*"       --exclude="*-canary-*"    --exclude="*-gui"
@@ -957,8 +950,8 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       statping | swarm-cronjob | task | tengo | traefik | travis-wait-enhanced | trivy | txeh | up | \
       vegeta | vsphere-influxdb-go | wal-g | watchtower)
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* |
-        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
-        chmod_binary-echo_success-exit_0
+        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" &&
+        post-install_cleanup
       ;;
     adguardhome | git-hooks | gotty | gpldr-server | k6 | micro | migrate | oauth2-proxy | wrangler)
       APP_RESOURCE_PREFIX="inux"
@@ -972,9 +965,9 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "wrangler" ]; then APP_RESOURCE_PREFIX="" FOLDER_PREFIX="dist" APP_NAME_ARCHIVED="${APP_NAME}"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*64\*"${APP_RESOURCE_SUFFIX}" |
-        tar -xzf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME_ARCHIVED}" ${TAR_ARGS} --strip-components=1 &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME_ARCHIVED}" --strip-components=1 &&
         mv "${INSTALL_DIR:?}"/"${APP_NAME_ARCHIVED}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2> /dev/null
-      chmod_binary-echo_success-exit_0
+      post-install_cleanup
       ;;
     age | age-keygen | autocert | frpc | frps | gh | gitui | hub | ipfs | plik | plikd | rage | rage-keygen | step | vector | vigil)
       COMPONENT_COUNT="1"
@@ -993,8 +986,8 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "vigil" ]; then FOLDER_PREFIX="./${APP_NAME}" COMPONENT_COUNT="2" APP_RESOURCE_PREFIX="64"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\* |
-        tar -xzf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" &&
-        chmod_binary-echo_success-exit_0
+        tar -xzf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" --strip-components="${COMPONENT_COUNT}" &&
+        post-install_cleanup
       ;;
     andesite | arc | argocd | avif | blocky | bombardier | borg | ctop | docker-compose | \
       docker-machine | dstask | duplicacy | eureka | ffsend | fluxctl | gdrive | gget | gitea | \
@@ -1005,7 +998,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "ffsend" ]; then APP_RESOURCE_SUFFIX="static"; fi
 
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\*64\*"${APP_RESOURCE_SUFFIX}" &&
-        echo_success-exit_0
+        post-install_cleanup
       ;;
     authelia | brig | diskonaut | jellycli | nnn | podman-remote | sdns | spotifyd | spt | tldr++ | zenith)
       APP_RESOURCE_PREFIX="inux"
@@ -1021,9 +1014,9 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "zenith" ]; then APP_RESOURCE_SUFFIX=".tgz" RESOURCE_NAME="${APP_NAME}"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* |
-        tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}" ${TAR_ARGS} &&
+        tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}" &&
         mv "${INSTALL_DIR:?}"/"${RESOURCE_NAME:?}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2> /dev/null &&
-        chmod_binary-echo_success-exit_0
+        post-install_cleanup
       ;;
     bat | delta | diskus | fd | frece | hexyl | hyperfine | lsd | lucid | pastel | rg | rga | rga-preproc | sccache | vivid)
       APP_ARCH="gnu"
@@ -1031,8 +1024,8 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
       RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* 2> /dev/null | sed 's|.tar.gz||g')"
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* |
-        tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
-        chmod_binary-echo_success-exit_0
+        tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" --strip-components=1 &&
+        post-install_cleanup
       ;;
     bed | caire | ccat | dnscrypt-proxy | dnsproxy | etcd | etcdctl | gogs | golangci-lint | \
       json2csv | louketo-proxy | oragono | portainer | rqbench | rqlite | rqlited | ssh-auditor | \
@@ -1044,29 +1037,29 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "portainer" ]; then RESOURCE_NAME="portainer"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\*"${APP_RESOURCE_SUFFIX}" |
-        tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
-        chmod_binary-echo_success-exit_0
+        tar -xzf - -C "${INSTALL_DIR:?}" "${RESOURCE_NAME:?}"/"${APP_NAME}" --strip-components=1 &&
+        post-install_cleanup
       ;;
     bin | cobalt | edgedns | imdl | mdbook | starship | xsv | ytop | zola)
       APP_ARCH="gnu"
       if [ "$2" = "imdl" ] || [ "$2" = "xsv" ]; then APP_ARCH="musl"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*"${APP_ARCH}"\* |
-        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
-        chmod_binary-echo_success-exit_0
+        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" &&
+        post-install_cleanup
       ;;
     bw | ethr | json5 | pegasus-fe | rattlesnakeos-stack | tasklite | tflint)
       APP_RESOURCE_PREFIX="inux"
       if [ "$2" = "pegasus-fe" ]; then APP_RESOURCE_PREFIX="x11-static"; fi
 
-      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* &&
-        unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}" -d "${INSTALL_DIR:?}" &&
-        rm_tmp_file-chmod_binary-echo_success-exit_0
+      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_FILE}"=\*"${APP_RESOURCE_PREFIX}"\*"${APP_RESOURCE_SUFFIX}"\* &&
+        unzip -qjo "${TMP_FILE}" "${APP_NAME}" -d "${INSTALL_DIR:?}" &&
+        post-install_cleanup
       ;;
     chisel | cloud-torrent | goatcounter | govc)
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* |
         gunzip > "${INSTALL_DIR:?}"/"${APP_NAME}" &&
-        chmod_binary-echo_success-exit_0
+        post-install_cleanup
       ;;
     comics-downloader | composer | findomain | firecracker | jailer | magneticod | magneticow | \
       ginstall.sh | gorush | gosu | handlr | immuadmin | immucli | immudb | immugw | inlets | \
@@ -1096,7 +1089,7 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "komga" ]; then APP_EXTENSION=".jar"; fi
 
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}""${APP_EXTENSION}"=\*"${APP_RESOURCE}"\*"${APP_RESOURCE_SUFFIX}"\* &&
-        echo_success-exit_0
+        post-install_cleanup
       ;;
     ddgr | googler | qalc | shellcheck | upx)
       if [ "$2" = "ddgr" ] || [ "$2" = "googler" ]; then FOLDER_PREFIX="usr/bin" COMPONENT_COUNT="2"; fi
@@ -1105,27 +1098,27 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "upx" ]; then FOLDER_PREFIX="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz 2> /dev/null | sed 's|.tar.xz||g')" COMPONENT_COUNT="1"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*tar.xz |
-        tar -xJf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" ${TAR_ARGS} --strip-components="${COMPONENT_COUNT}" &&
-        chmod_binary-echo_success-exit_0
+        tar -xJf - -C "${INSTALL_DIR:?}" "${FOLDER_PREFIX}"/"${APP_NAME}" --strip-components="${COMPONENT_COUNT}" &&
+        post-install_cleanup
       ;;
     amass | discord-console | rclone | s)
       RESOURCE_NAME="$(gget --no-download --list ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* 2> /dev/null | sed 's|.zip||g')"
-      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\*
+      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_FILE}"=\*inux\*
 
       if [ "$2" = "discord-console" ]; then
         APP_NAME_ARCHIVED="DiscordConsole"
-        unzip -qjo "${TMP_DIR_ZIP}" "${RESOURCE_NAME:?}"/64-bit/"${APP_NAME_ARCHIVED}" -d "${INSTALL_DIR:?}"
+        unzip -qjo "${TMP_FILE}" "${RESOURCE_NAME:?}"/64-bit/"${APP_NAME_ARCHIVED}" -d "${INSTALL_DIR:?}"
       else
         APP_NAME_ARCHIVED="$2"
-        unzip -qjo "${TMP_DIR_ZIP}" "${RESOURCE_NAME:?}"/"${APP_NAME_ARCHIVED}" -d "${INSTALL_DIR:?}"
+        unzip -qjo "${TMP_FILE}" "${RESOURCE_NAME:?}"/"${APP_NAME_ARCHIVED}" -d "${INSTALL_DIR:?}"
       fi
 
       mv "${INSTALL_DIR:?}"/"${APP_NAME_ARCHIVED}" "${INSTALL_DIR:?}"/"${APP_NAME}" 2> /dev/null &&
-        rm_tmp_file-chmod_binary-echo_success-exit_0
+        post-install_cleanup
       ;;
     discord-delete | dnscontrol | dobi | drive | fn)
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*inux\* &&
-        echo_success-exit_0
+        post-install_cleanup
       ;;
     docker-credential-pass | future-vuls | fx | hugo | hugo-extended | rootlessctl | rootlesskit | trivy-to-vuls | vuls)
       if [ "$2" = "rootlesskit" ] || [ "$2" = "rootlessctl" ]; then APP_RESOURCE=""; fi
@@ -1133,44 +1126,44 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       if [ "$2" = "hugo-extended" ]; then APP_RESOURCE="hugo_extended" APP_NAME="hugo"; fi
 
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${APP_RESOURCE}"\*64\* |
-        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
-        chmod_binary-echo_success-exit_0
+        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" &&
+        post-install_cleanup
       ;;
     exa | pgweb)
       if [ "$2" = "exa" ]; then APP_NAME_SUFFIX="-linux-x86_64"; fi
       if [ "$2" = "pgweb" ]; then APP_NAME_SUFFIX="_linux_amd64"; fi
 
-      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"=\*inux\*64\* &&
-        unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}""${APP_NAME_SUFFIX}" -d "${INSTALL_DIR:?}" &&
+      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_FILE}"=\*inux\*64\* &&
+        unzip -qjo "${TMP_FILE}" "${APP_NAME}""${APP_NAME_SUFFIX}" -d "${INSTALL_DIR:?}" &&
         mv "${INSTALL_DIR:?}"/"${APP_NAME}""${APP_NAME_SUFFIX}" "${INSTALL_DIR:?}"/"${APP_NAME}" &&
-        rm_tmp_file-chmod_binary-echo_success-exit_0
+        post-install_cleanup
       ;;
     deno_lint | identity | uplink)
-      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"="${APP_RESOURCE}"\*inux\* &&
-        unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}" -d "${INSTALL_DIR:?}" &&
-        rm_tmp_file-chmod_binary-echo_success-exit_0
+      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_FILE}"="${APP_RESOURCE}"\*inux\* &&
+        unzip -qjo "${TMP_FILE}" "${APP_NAME}" -d "${INSTALL_DIR:?}" &&
+        post-install_cleanup
       ;;
     jsteg | linx-cleanup | linx-genkey | linx-server | pebble | pebble-challtestsrv | slink)
       if [ "$2" = "pebble" ]; then APP_RESOURCE="pebble_"; fi
 
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"="${APP_RESOURCE}"\*inux\*64\* &&
-        echo_success-exit_0
+        post-install_cleanup
       ;;
     logcli | loki | promtail)
-      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_DIR_ZIP}"="${APP_RESOURCE}"\*inux\*64\* &&
-        unzip -qjo "${TMP_DIR_ZIP}" "${APP_NAME}"-linux-amd64 -d "${INSTALL_DIR:?}" &&
+      gget ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${TMP_FILE}"="${APP_RESOURCE}"\*inux\*64\* &&
+        unzip -qjo "${TMP_FILE}" "${APP_NAME}"-linux-amd64 -d "${INSTALL_DIR:?}" &&
         mv "${INSTALL_DIR:?}"/"${APP_NAME}"-linux-amd64 "${INSTALL_DIR:?}"/"${APP_NAME}" &&
-        rm_tmp_file-chmod_binary-echo_success-exit_0
+        post-install_cleanup
       ;;
     sslocal | ssmanager | ssserver | ssurl)
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*64\*inux\*gnu\* |
-        tar -xJf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
-        chmod_binary-echo_success-exit_0
+        tar -xJf - -C "${INSTALL_DIR:?}" "${APP_NAME}" &&
+        post-install_cleanup
       ;;
     espanso)
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\* |
-        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
-        chmod_binary-echo_success-exit_0
+        tar -xzf - -C "${INSTALL_DIR:?}" "${APP_NAME}" &&
+        post-install_cleanup
       ;;
     ffmpeg)
       APP_VERSION="$(curl -sSL https://johnvansickle.com/ffmpeg/ | grep release: | sed 's|.* ||g;s|</th>||g')"
@@ -1185,8 +1178,8 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
       fi
 
       curl -Lf "${FFMPEG_URL}" |
-        tar -xJf - -C "${INSTALL_DIR:?}" "${APP_NAME}"-"${APP_VERSION}"-amd64-static/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
-        chmod_binary-echo_success-exit_0
+        tar -xJf - -C "${INSTALL_DIR:?}" "${APP_NAME}"-"${APP_VERSION}"-amd64-static/"${APP_NAME}" --strip-components=1 &&
+        post-install_cleanup
       ;;
     go)
       if [ "${DIR_FLAG}" = "false" ]; then INSTALL_DIR="/usr/local"; fi
@@ -1197,41 +1190,41 @@ if [ "$(id -u)" = "0" ] || [ "${DIR_FLAG}" = "true" ]; then
 
       rm -rf "${INSTALL_DIR:?}"/"${APP_NAME}" &&
         curl -Lf https://dl.google.com/go/go"${APP_VERSION}".linux-amd64.tar.gz |
-        tar -xzf - -C "${INSTALL_DIR:?}" ${TAR_ARGS} &&
-        echo_success-exit_0
+        tar -xzf - -C "${INSTALL_DIR:?}" &&
+        post-install_cleanup
       ;;
     gobuster)
-      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* > "${TMP_DIR_7Z}" &&
-        7z e -so "${TMP_DIR_7Z}" > "${INSTALL_DIR:?}"/"${APP_NAME}" &&
-        rm "${TMP_DIR_7Z:?}" &&
-        chmod_binary-echo_success-exit_0
+      gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* > "${TMP_FILE}" &&
+        7z e -so "${TMP_FILE}" > "${INSTALL_DIR:?}"/"${APP_NAME}" &&
+        rm "${TMP_FILE:?}" &&
+        post-install_cleanup
       ;;
     helm)
       curl -Lf https://get.helm.sh/helm-v"${APP_VERSION}"-linux-amd64.tar.gz |
-        tar -xzf - -C "${INSTALL_DIR:?}" linux-amd64/"${APP_NAME}" ${TAR_ARGS} --strip-components=1 &&
-        chmod_binary-echo_success-exit_0
+        tar -xzf - -C "${INSTALL_DIR:?}" linux-amd64/"${APP_NAME}" --strip-components=1 &&
+        post-install_cleanup
       ;;
     hey)
       curl -Lf -o "${INSTALL_DIR:?}"/"${APP_NAME}" https://storage.googleapis.com/hey-release/hey_linux_amd64 &&
-        chmod_binary-echo_success-exit_0
+        post-install_cleanup
       ;;
     restic)
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* |
         bunzip2 > "${INSTALL_DIR:?}"/"${APP_NAME}" &&
-        chmod_binary-echo_success-exit_0
+        post-install_cleanup
       ;;
     sftpgo)
       gget --stdout ${EXCL_EXTRAS} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" \*inux\*64\* |
-        tar -xJf - -C "${INSTALL_DIR:?}" "${APP_NAME}" ${TAR_ARGS} &&
-        chmod_binary-echo_success-exit_0
+        tar -xJf - -C "${INSTALL_DIR:?}" "${APP_NAME}" &&
+        post-install_cleanup
       ;;
     unftp)
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*64\*inux\*-musl &&
-        echo_success-exit_0
+        post-install_cleanup
       ;;
     zoxide)
       gget --executable ${EXCL_EXTRAS} ${EXCL_ARCHIVES} "${!REPO}""${VERSION_PREFIX}""${APP_VERSION}" "${INSTALL_DIR:?}"/"${APP_NAME}"=\*64\*inux\*-gnu &&
-        echo_success-exit_0
+        post-install_cleanup
       ;;
     *)
       echo -e "${UNSUPPORTED_APP}\n${USAGE_INFORMATION}" && exit 1
