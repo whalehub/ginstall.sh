@@ -8,9 +8,9 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 
 ## Dependencies
 ### Mandatory
+- standard tools (bash, chmod, chown, grep, mv, rm, sed, tar) 
 - [gget](https://github.com/dpb587/gget) v0.5.2 or later
 - [curl](https://packages.debian.org/buster/curl)
-- [tar](https://packages.debian.org/buster/tar)
 - [unzip](https://packages.debian.org/buster/unzip)
 
 ### Optional
