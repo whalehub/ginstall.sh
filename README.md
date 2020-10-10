@@ -89,7 +89,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | bed                         | static              | https://github.com/itchyny/bed |
 | bombardier                  | static              | https://github.com/codesenberg/bombardier |
 | borg                        | dynamic             | https://github.com/borgbackup/borg |
-| bw                          | dynamic             | https://github.com/bitwarden/cli |
 | cavif                       | static              | https://github.com/kornelski/cavif-rs |
 | ccat                        | static              | https://github.com/jingweno/ccat |
 | chroma                      | dynamic             | https://github.com/alecthomas/chroma |
