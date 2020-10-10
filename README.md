@@ -180,6 +180,7 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | tldr                        | static              | https://github.com/isacikgoz/tldr |
 | tmate                       | static              | https://github.com/tmate-io/tmate |
 | topgrade                    | dynamic             | https://github.com/r-darwish/topgrade |
+| trivy                       | static              | https://github.com/aquasecurity/trivy |
 | txeh                        | static              | https://github.com/txn2/txeh |
 | upx                         | static              | https://github.com/upx/upx |
 | vegeta                      | static              | https://github.com/tsenart/vegeta |
