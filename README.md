@@ -106,7 +106,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | dive                        | static              | https://github.com/wagoodman/dive |
 | docker-credential-pass      | static              | https://github.com/docker/docker-credential-helpers |
 | duplicacy                   | static              | https://github.com/gilbertchen/duplicacy |
-| ethr                        | dynamic             | https://github.com/microsoft/ethr |
 | eureka                      | static              | https://github.com/mimoo/eureka |
 | exa                         | dynamic             | https://github.com/ogham/exa |
 | fd                          | dynamic             | https://github.com/sharkdp/fd |
