@@ -129,7 +129,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | hugo                        | static              | https://github.com/gohugoio/hugo |
 | hugo-extended               | dynamic             | https://github.com/gohugoio/hugo |
 | hyperfine                   | dynamic             | https://github.com/sharkdp/hyperfine |
-| identity                    | static              | https://github.com/storj/storj |
 | imdl                        | static              | https://github.com/casey/intermodal |
 | k6                          | static              | https://github.com/loadimpact/k6 |
 | kompose                     | static              | https://github.com/kubernetes/kompose |
