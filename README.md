@@ -86,7 +86,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | annie                       | static              | https://github.com/iawia002/annie |
 | arc                         | static              | https://github.com/mholt/archiver |
 | bat                         | dynamic             | https://github.com/sharkdp/bat |
-| bed                         | static              | https://github.com/itchyny/bed |
 | bombardier                  | static              | https://github.com/codesenberg/bombardier |
 | borg                        | dynamic             | https://github.com/borgbackup/borg |
 | btm                         | dynamic             | https://github.com/ClementTsang/bottom |
@@ -126,7 +125,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | grex                        | static              | https://github.com/pemistahl/grex |
 | grv                         | static              | https://github.com/rgburke/grv |
 | haste                       | dynamic             | https://github.com/zneix/haste-client |
-| hexyl                       | dynamic             | https://github.com/sharkdp/hexyl |
 | httprobe                    | dynamic             | https://github.com/tomnomnom/httprobe |
 | hugo                        | static              | https://github.com/gohugoio/hugo |
 | hugo-extended               | dynamic             | https://github.com/gohugoio/hugo |
