@@ -85,7 +85,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | amass                       | static              | https://github.com/OWASP/Amass |
 | annie                       | static              | https://github.com/iawia002/annie |
 | arc                         | static              | https://github.com/mholt/archiver |
-| avif                        | static              | https://github.com/Kagami/go-avif |
 | bat                         | dynamic             | https://github.com/sharkdp/bat |
 | bed                         | static              | https://github.com/itchyny/bed |
 | bombardier                  | static              | https://github.com/codesenberg/bombardier |
