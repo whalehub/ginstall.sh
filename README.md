@@ -90,7 +90,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | bombardier                  | static              | https://github.com/codesenberg/bombardier |
 | borg                        | dynamic             | https://github.com/borgbackup/borg |
 | cavif                       | static              | https://github.com/kornelski/cavif-rs |
-| ccat                        | static              | https://github.com/jingweno/ccat |
 | chroma                      | dynamic             | https://github.com/alecthomas/chroma |
 | cobalt                      | dynamic             | https://github.com/cobalt-org/cobalt.rs |
 | comics-downloader           | static              | https://github.com/Girbons/comics-downloader |
