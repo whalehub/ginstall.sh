@@ -134,7 +134,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | lazygit                     | static              | https://github.com/jesseduffield/lazygit |
 | lego                        | static              | https://github.com/go-acme/lego |
 | lsd                         | dynamic             | https://github.com/Peltoche/lsd |
-| lucid                       | dynamic             | https://github.com/sharkdp/lucid |
 | mcrcon                      | dynamic             | https://github.com/Tiiffi/mcrcon |
 | mdbook                      | dynamic             | https://github.com/rust-lang/mdBook |
 | minify                      | static              | https://github.com/tdewolff/minify |
