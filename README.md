@@ -119,8 +119,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | git-rewrite-author          | static              | https://github.com/crazy-max/git-rewrite-author |
 | gitbatch                    | static              | https://github.com/isacikgoz/gitbatch |
 | gitui                       | static              | https://github.com/extrawurst/gitui |
-| gobuster                    | dynamic             | https://github.com/OJ/gobuster |
-| golangci-lint               | static              | https://github.com/golangci/golangci-lint |
 | gomuks                      | static              | https://github.com/tulir/gomuks |
 | googler                     | dynamic             | https://github.com/jarun/googler |
 | gopass                      | static              | https://github.com/gopasspw/gopass |
