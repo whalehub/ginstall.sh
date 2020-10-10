@@ -87,7 +87,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | arc                         | static              | https://github.com/mholt/archiver |
 | bat                         | dynamic             | https://github.com/sharkdp/bat |
 | bombardier                  | static              | https://github.com/codesenberg/bombardier |
-| borg                        | dynamic             | https://github.com/borgbackup/borg |
 | btm                         | dynamic             | https://github.com/ClementTsang/bottom |
 | cavif                       | static              | https://github.com/kornelski/cavif-rs |
 | chroma                      | dynamic             | https://github.com/alecthomas/chroma |
