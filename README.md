@@ -20,7 +20,7 @@ It makes heavy use of [gget](https://github.com/dpb587/gget) under the hood to d
 - [sudo](https://packages.debian.org/buster/sudo) (only required for installing to `/usr/local/bin`)
 
 ## Installation
-You can install `ginstall.sh` by downloading the latest release, moving it to `/usr/local/bin` and making it executable:
+You can install `ginstall.sh` by downloading the latest release to `/usr/local/bin` and making it executable:
 
 ```
 sudo curl -L -o /usr/local/bin/ginstall.sh https://github.com/whalehub/ginstall.sh/releases/download/v3.4.1/ginstall.sh
