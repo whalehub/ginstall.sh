@@ -104,7 +104,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | diskus                      | dynamic             | https://github.com/sharkdp/diskus |
 | dive                        | static              | https://github.com/wagoodman/dive |
 | docker-credential-pass      | static              | https://github.com/docker/docker-credential-helpers |
-| drone                       | static              | https://github.com/drone/drone-cli |
 | dstask                      | static              | https://github.com/naggie/dstask |
 | duplicacy                   | static              | https://github.com/gilbertchen/duplicacy |
 | edgedns                     | dynamic             | https://github.com/jedisct1/edgedns |
