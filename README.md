@@ -82,6 +82,7 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | Application | Linker Type | Repository |
 | ----------- | ----------- | ---------- |
 | act                         | static              | https://github.com/nektos/act |
+| ali                         | static              | https://github.com/nakabonne/ali |
 | amass                       | static              | https://github.com/OWASP/Amass |
 | annie                       | static              | https://github.com/iawia002/annie |
 | arc                         | static              | https://github.com/mholt/archiver |
@@ -119,11 +120,13 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | eureka                      | static              | https://github.com/mimoo/eureka |
 | exa                         | dynamic             | https://github.com/ogham/exa |
 | fd                          | dynamic             | https://github.com/sharkdp/fd |
+| fetch                       | static              | https://github.com/gruntwork-io/fetch |
 | ffsend                      | static              | https://github.com/timvisee/ffsend |
 | findomain                   | dynamic             | https://github.com/Edu4rdSHL/findomain |
 | fzf                         | static              | https://github.com/junegunn/fzf |
 | gau                         | static              | https://github.com/lc/gau |
 | gget                        | static              | https://github.com/dpb587/gget |
+| git-credential-manager-core | dynamic             | https://github.com/microsoft/Git-Credential-Manager-Core |
 | git-rewrite-author          | static              | https://github.com/crazy-max/git-rewrite-author |
 | gitbatch                    | static              | https://github.com/isacikgoz/gitbatch |
 | gitui                       | static              | https://github.com/extrawurst/gitui |
@@ -133,6 +136,9 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | googler                     | dynamic             | https://github.com/jarun/googler |
 | gopass                      | static              | https://github.com/gopasspw/gopass |
 | gotop                       | dynamic             | https://github.com/xxxserxxx/gotop |
+| grex                        | static              | https://github.com/pemistahl/grex |
+| grv                         | static              | https://github.com/rgburke/grv |
+| haste                       | dynamic             | https://github.com/zneix/haste-client |
 | hexyl                       | dynamic             | https://github.com/sharkdp/hexyl |
 | httprobe                    | dynamic             | https://github.com/tomnomnom/httprobe |
 | hugo                        | static              | https://github.com/gohugoio/hugo |
@@ -143,9 +149,11 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | k6                          | static              | https://github.com/loadimpact/k6 |
 | kompose                     | static              | https://github.com/kubernetes/kompose |
 | lazydocker                  | static              | https://github.com/jesseduffield/lazydocker |
+| lazygit                     | static              | https://github.com/jesseduffield/lazygit |
 | lego                        | static              | https://github.com/go-acme/lego |
 | lsd                         | dynamic             | https://github.com/Peltoche/lsd |
 | lucid                       | dynamic             | https://github.com/sharkdp/lucid |
+| mcrcon                      | dynamic             | https://github.com/Tiiffi/mcrcon |
 | mdbook                      | dynamic             | https://github.com/rust-lang/mdBook |
 | minify                      | static              | https://github.com/tdewolff/minify |
 | mkcert                      | static              | https://github.com/FiloSottile/mkcert |
@@ -165,12 +173,15 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | rga                         | static              | https://github.com/phiresky/ripgrep-all |
 | rga-preproc                 | static              | https://github.com/phiresky/ripgrep-all |
 | shellcheck                  | static              | https://github.com/koalaman/shellcheck |
+| shfmt                       | static              | https://github.com/mvdan/sh |
 | slack-term                  | static              | https://github.com/erroneousboat/slack-term |
 | ssh-auditor                 | static              | https://github.com/ncsa/ssh-auditor |
 | starship                    | dynamic             | https://github.com/starship/starship |
 | stegify                     | static              | https://github.com/DimitarPetrov/stegify |
 | step                        | static              | https://github.com/smallstep/cli |
 | tldr                        | static              | https://github.com/isacikgoz/tldr |
+| tmate                       | static              | https://github.com/tmate-io/tmate |
+| topgrade                    | dynamic             | https://github.com/r-darwish/topgrade |
 | txeh                        | static              | https://github.com/txn2/txeh |
 | upx                         | static              | https://github.com/upx/upx |
 | vegeta                      | static              | https://github.com/tsenart/vegeta |
