@@ -89,13 +89,11 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | bombardier                  | static              | https://github.com/codesenberg/bombardier |
 | btm                         | dynamic             | https://github.com/ClementTsang/bottom |
 | cavif                       | static              | https://github.com/kornelski/cavif-rs |
-| chroma                      | dynamic             | https://github.com/alecthomas/chroma |
 | cobalt                      | dynamic             | https://github.com/cobalt-org/cobalt.rs |
 | comics-downloader           | static              | https://github.com/Girbons/comics-downloader |
 | composer                    | dynamic             | https://github.com/composer/composer |
 | croc                        | static              | https://github.com/schollz/croc |
 | ctop                        | dynamic             | https://github.com/bcicen/ctop |
-| ddgr                        | dynamic             | https://github.com/jarun/ddgr |
 | delta                       | dynamic             | https://github.com/dandavison/delta |
 | discord-console             | static              | https://github.com/discordconsole-team/DiscordConsole |
 | discord-delete              | dynamic             | https://github.com/adversarialtools/discord-delete |
