@@ -103,7 +103,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | diskonaut                   | static              | https://github.com/imsnif/diskonaut |
 | diskus                      | dynamic             | https://github.com/sharkdp/diskus |
 | dive                        | static              | https://github.com/wagoodman/dive |
-| dobi                        | static              | https://github.com/dnephin/dobi |
 | docker-credential-pass      | static              | https://github.com/docker/docker-credential-helpers |
 | docker-gen                  | static              | https://github.com/jwilder/docker-gen |
 | docker-machine              | static              | https://github.com/docker/machine |
