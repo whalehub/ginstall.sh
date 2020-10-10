@@ -149,9 +149,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | rage                        | dynamic             | https://github.com/str4d/rage |
 | rage-keygen                 | dynamic             | https://github.com/str4d/rage |
 | rclone                      | static              | https://github.com/rclone/rclone |
-| rg                          | static              | https://github.com/BurntSushi/ripgrep |
-| rga                         | static              | https://github.com/phiresky/ripgrep-all |
-| rga-preproc                 | static              | https://github.com/phiresky/ripgrep-all |
 | shellcheck                  | static              | https://github.com/koalaman/shellcheck |
 | shfmt                       | static              | https://github.com/mvdan/sh |
 | slack-term                  | static              | https://github.com/erroneousboat/slack-term |
