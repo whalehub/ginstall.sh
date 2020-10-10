@@ -149,7 +149,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | rage                        | dynamic             | https://github.com/str4d/rage |
 | rage-keygen                 | dynamic             | https://github.com/str4d/rage |
 | rclone                      | static              | https://github.com/rclone/rclone |
-| restic                      | static              | https://github.com/restic/restic |
 | rg                          | static              | https://github.com/BurntSushi/ripgrep |
 | rga                         | static              | https://github.com/phiresky/ripgrep-all |
 | rga-preproc                 | static              | https://github.com/phiresky/ripgrep-all |
