@@ -103,12 +103,9 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | docker-credential-pass      | static              | https://github.com/docker/docker-credential-helpers |
 | duplicacy                   | static              | https://github.com/gilbertchen/duplicacy |
 | eureka                      | static              | https://github.com/mimoo/eureka |
-| exa                         | dynamic             | https://github.com/ogham/exa |
-| fd                          | dynamic             | https://github.com/sharkdp/fd |
 | fetch                       | static              | https://github.com/gruntwork-io/fetch |
 | ffsend                      | static              | https://github.com/timvisee/ffsend |
 | findomain                   | dynamic             | https://github.com/Edu4rdSHL/findomain |
-| fzf                         | static              | https://github.com/junegunn/fzf |
 | gau                         | static              | https://github.com/lc/gau |
 | gget                        | static              | https://github.com/dpb587/gget |
 | git-credential-manager-core | dynamic             | https://github.com/microsoft/Git-Credential-Manager-Core |
