@@ -81,7 +81,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 
 | Application | Linker Type | Repository |
 | ----------- | ----------- | ---------- |
-| act                         | static              | https://github.com/nektos/act |
 | ali                         | static              | https://github.com/nakabonne/ali |
 | amass                       | static              | https://github.com/OWASP/Amass |
 | annie                       | static              | https://github.com/iawia002/annie |
