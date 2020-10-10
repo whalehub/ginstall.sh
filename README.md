@@ -143,7 +143,6 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | rage                        | dynamic             | https://github.com/str4d/rage |
 | rage-keygen                 | dynamic             | https://github.com/str4d/rage |
 | rclone                      | static              | https://github.com/rclone/rclone |
-| shellcheck                  | static              | https://github.com/koalaman/shellcheck |
 | shfmt                       | static              | https://github.com/mvdan/sh |
 | slack-term                  | static              | https://github.com/erroneousboat/slack-term |
 | ssh-auditor                 | static              | https://github.com/ncsa/ssh-auditor |
@@ -151,14 +150,11 @@ You can view a markdown-formatted version of the `--list` flag's output with eas
 | stegify                     | static              | https://github.com/DimitarPetrov/stegify |
 | step                        | static              | https://github.com/smallstep/cli |
 | tldr                        | static              | https://github.com/isacikgoz/tldr |
-| tmate                       | static              | https://github.com/tmate-io/tmate |
 | topgrade                    | dynamic             | https://github.com/r-darwish/topgrade |
 | trivy                       | static              | https://github.com/aquasecurity/trivy |
 | txeh                        | static              | https://github.com/txn2/txeh |
-| upx                         | static              | https://github.com/upx/upx |
 | vegeta                      | static              | https://github.com/tsenart/vegeta |
 | vivid                       | dynamic             | https://github.com/sharkdp/vivid |
-| wuzz                        | static              | https://github.com/asciimoo/wuzz |
 | yq                          | static              | https://github.com/mikefarah/yq |
 | zenith                      | static              | https://github.com/bvaisvil/zenith |
 | zola                        | dynamic             | https://github.com/getzola/zola |
